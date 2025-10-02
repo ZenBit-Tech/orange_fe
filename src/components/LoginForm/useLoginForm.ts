@@ -1,27 +1,29 @@
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-type ExampleWorkFormInputs = {
+export type LoginFormInputs = {
   email: string;
   message: string;
 };
 
-export const useExampleWorkForm = () => {
+export const useLoginForm = () => {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
-  } = useForm<ExampleWorkFormInputs>();
+  } = useForm<LoginFormInputs>();
 
   const { t } = useTranslation();
 
-  const onSubmit = (data: ExampleWorkFormInputs) => {
+  const onSubmit = (data: LoginFormInputs) => {
     console.log('Form Data:', data);
   };
 
   return {
     register,
     handleSubmit,
+    watch,
     errors,
     t,
     onSubmit,

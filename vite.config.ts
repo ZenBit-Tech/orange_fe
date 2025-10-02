@@ -7,10 +7,10 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      'components/*': path.resolve(__dirname, 'src/components'),
-      'pages/*': path.resolve(__dirname, 'src/pages'),
-      'store/*': path.resolve(__dirname, 'src/store'),
-      i18n: path.resolve(__dirname, 'src/i18n.ts'),
+      'components': path.resolve(__dirname, 'src/components'),
+      'pages': path.resolve(__dirname, 'src/pages'),
+      'store': path.resolve(__dirname, 'src/store'),
+      'i18n': path.resolve(__dirname, 'src/i18n'),
     },
   },
 });

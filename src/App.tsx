@@ -1,5 +1,5 @@
-import { HomePage } from 'pages';
 import { Route, Routes } from 'react-router-dom';
+import { LoginPage } from './pages/LoginPage';
 
 import { GlobalStyle } from './style';
 
@@ -8,7 +8,7 @@ export const App: React.FC = () => {
     <>
       <GlobalStyle />
       <Routes>
-        <Route index element={<HomePage />} />
+        <Route path='/login' element={<LoginPage />} />
       </Routes>
     </>
   );

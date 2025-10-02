@@ -1,0 +1,30 @@
+{
+  "Header": {
+    "title": "PlasmAI",
+    "links": {
+      "our-solution": "Our Solution",
+      "use-cases": "Use Cases",
+      "about-us": "About Us"
+    },
+    "button": "Get Started"
+  },
+  "Form": {
+    "login-form": {
+      "email": "Email",
+      "email_required": "Email is required",
+      "message": "Message",
+      "message_required": "Message is required",
+      "submit": "Send",
+      "terms":"By continuing you agree to system Privacy Policy and Terms&Conditions",
+      "login":"Sign in",
+      "loginWithGoogle":"Sign in with Google",
+      "loginWithFacebook":"Sign in with Facebook",
+      "loginWithLinkedin":"Sign in with LinkedIn",
+      "subtitle":"Sign in to access your personalized blood test analysis. Your data is secure and private",
+      "title":"Welcome to PlasmAI",
+      "linkExpiredTitle":"Your sign-in link has expired",
+      "linkExpiredSubtitle":"For your security, sign-in links are only valid for a short time. Please request a new one to continue.",
+      "resendLink":"Request new link"
+    }
+  }
+}

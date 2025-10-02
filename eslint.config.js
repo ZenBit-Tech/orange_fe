@@ -7,10 +7,12 @@ import jsxA11y from 'eslint-plugin-jsx-a11y';
 import tseslint from 'typescript-eslint';
 import prettier from 'eslint-plugin-prettier';
 import eslintConfigPrettier from 'eslint-config-prettier';
-import { defineConfig, globalIgnores } from 'eslint/config';
+import importPlugin from 'eslint-plugin-import';
 
-export default defineConfig([
-  globalIgnores(['dist', 'node_modules']),
+export default [
+  { ignores: ['dist', 'node_modules'] },
+  js.configs.recommended,
+  ...tseslint.configs.recommended,
   {
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
@@ -23,21 +25,13 @@ export default defineConfig([
       'react-refresh': reactRefresh,
       'jsx-a11y': jsxA11y,
       prettier,
+      import: importPlugin,
     },
-    extends: [
-      js.configs.recommended,
-      tseslint.configs.recommended,
-      react.configs.recommended,
-      reactHooks.configs['recommended-latest'],
-      reactRefresh.configs.vite,
-      'plugin:jsx-a11y/recommended',
-      eslintConfigPrettier,
-      'eslint:recommended',
-      'plugin:import/recommended',
-      'plugin:import/typescript',
-      'prettier',
-    ],
     rules: {
+      ...react.configs.recommended.rules,
+      ...reactHooks.configs.recommended.rules,
+      ...jsxA11y.configs.recommended.rules,
+      ...eslintConfigPrettier.rules,
       'prettier/prettier': 'error',
       'react/react-in-jsx-scope': 'off',
       'react/prop-types': 'off',
@@ -63,6 +57,10 @@ export default defineConfig([
       react: {
         version: 'detect',
       },
+      'import/resolver': {
+        typescript: true,
+        node: true,
+      },
     },
   },
-]);
+];

@@ -1,1 +1,1 @@
-export * from './ExampleWorkHomePage';
+export * from './LoginPage';
