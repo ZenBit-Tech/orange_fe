@@ -1,14 +1,12 @@
 import { Button } from '@mui/material';
 import TextField from '@mui/material/TextField';
-import { useExampleWorkForm } from './useExampleWorkForm';
+
 import { WrapperForm } from './styles';
+import { useExampleWorkForm } from './useExampleWorkForm';
+
 
 export const ExampleWorkForm: React.FC = () => {
-  const {register,
-    handleSubmit,
-    errors,
-    t,
-    onSubmit,} = useExampleWorkForm()
+  const { register, handleSubmit, errors, t, onSubmit } = useExampleWorkForm();
 
   return (
     <WrapperForm

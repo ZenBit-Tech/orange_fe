@@ -1,9 +1,9 @@
-import { useExampleWorkHeaderHook } from './useExampleWorkHeaderHook';
-import { StyledLink, WrapperHeader } from './styles';
 import { Button } from '@mui/material';
 
+import { StyledLink, WrapperHeader } from './styles';
+import { useExampleWorkHeaderHook } from './useExampleWorkHeaderHook';
+
 export const ExampleWorkHeader: React.FC = () => {
-  
   const { t, links } = useExampleWorkHeaderHook();
 
   return (

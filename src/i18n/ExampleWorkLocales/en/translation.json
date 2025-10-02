@@ -1,21 +1,20 @@
 {
-    "Header":{
-        "title":"PlasmAI",
-        "links":{
-            "our-solution":"Our Solution",
-            "use-cases":"Use Cases",
-            "about-us":"About Us"
-        },
-        "button":"Get Started"
+  "Header": {
+    "title": "PlasmAI",
+    "links": {
+      "our-solution": "Our Solution",
+      "use-cases": "Use Cases",
+      "about-us": "About Us"
     },
-    "Form":{
-        "welcome-form":{
-            "email":"Email",
-            "email_required":"Email is required",
-            "message":"Message",
-            "message_required":"Message is required",
-            "submit":"Send"
-
-        }
+    "button": "Get Started"
+  },
+  "Form": {
+    "welcome-form": {
+      "email": "Email",
+      "email_required": "Email is required",
+      "message": "Message",
+      "message_required": "Message is required",
+      "submit": "Send"
     }
+  }
 }
