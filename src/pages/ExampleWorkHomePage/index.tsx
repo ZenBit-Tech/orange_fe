@@ -1,4 +1,4 @@
-import { ExampleWorkForm,ExampleWorkHeader } from '../../components/';
+import { ExampleWorkForm,ExampleWorkHeader } from 'components';
 import { WrapperHomePage } from './styles';
 
 export const HomePage: React.FC = () => {

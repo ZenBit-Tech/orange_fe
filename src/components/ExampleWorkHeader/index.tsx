@@ -3,7 +3,9 @@ import { StyledLink, WrapperHeader } from './styles';
 import { Button } from '@mui/material';
 
 export const ExampleWorkHeader: React.FC = () => {
+  
   const { t, links } = useExampleWorkHeaderHook();
+
   return (
     <WrapperHeader>
       <h1>{t('Header.title')}</h1>

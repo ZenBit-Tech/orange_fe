@@ -12,6 +12,7 @@ export const useExampleWorkForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<ExampleWorkFormInputs>();
+
   const { t } = useTranslation();
 
   const onSubmit = (data: ExampleWorkFormInputs) => {
