@@ -5,6 +5,6 @@ import { typography } from "./typography";
 
 export const theme = createTheme({
   palette,
-typography,
+  typography,
 
 });

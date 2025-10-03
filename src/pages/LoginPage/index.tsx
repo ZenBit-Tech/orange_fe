@@ -1,4 +1,4 @@
-import { WrapperHomePage } from './styles';
+import { PageWrapper } from './styles';
 
 import { LoginForm } from 'components';
 
@@ -7,9 +7,9 @@ export const LoginPage: React.FC = () => {
     <div>
       <div>
       
-      <WrapperHomePage>
+      <PageWrapper>
         <LoginForm  />
-      </WrapperHomePage>
+      </PageWrapper>
       </div>
 
     </div>

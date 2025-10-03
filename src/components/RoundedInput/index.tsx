@@ -1,6 +1,6 @@
 import { RoundedInput } from "./styles";
 import type { FieldErrors, UseFormRegister } from "react-hook-form";
-import type { LoginFormInputs } from "../LoginForm/useLoginForm"; // import the existing type
+import type { LoginFormInputs } from "../LoginForm/useLoginForm"; 
 
 interface EmailFieldProps {
   register: UseFormRegister<LoginFormInputs>;

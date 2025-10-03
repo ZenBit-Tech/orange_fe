@@ -3,6 +3,7 @@ import { styled } from "styled-components";
 
 export const RoundedInput = styled(TextField)`
   & .MuiOutlinedInput-root {
+  height: 40px;
     border-radius: 12px; 
   }
 
@@ -11,6 +12,7 @@ export const RoundedInput = styled(TextField)`
   }
 
   & .MuiOutlinedInput-input {
+    
     padding: 12px 16px;
   }
 `;

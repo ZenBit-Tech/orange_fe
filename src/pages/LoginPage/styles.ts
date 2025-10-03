@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
-export const WrapperHomePage = styled.div`
+export const PageWrapper = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  align-items: center;
+  min-height: 100vh;
+  background: #f9f9f9; 
 `;

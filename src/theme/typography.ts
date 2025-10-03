@@ -14,6 +14,11 @@ export const typography: ThemeOptions['typography'] = {
     fontWeight: 400,
     lineHeight: 1.4,
   },
+  body2: {
+    fontSize: '14px',
+    fontWeight: 500,
+    lineHeight: 1.5,
+  },
   button: {
     textTransform: 'none',
     fontSize: '16px',

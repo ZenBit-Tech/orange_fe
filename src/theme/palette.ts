@@ -25,6 +25,7 @@ export const palette: PaletteOptions = {
     facebook: "#1976D2",
     linkedin: "#4C9BE0",
   },
+
 };
 
 declare module "@mui/material/styles" {

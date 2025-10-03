@@ -1,9 +1,10 @@
-import { Box } from '@mui/material';
 import type { BoxProps } from '@mui/material';
-import { Divider } from "@mui/material";
+import { Box } from '@mui/material';
+import { Divider } from '@mui/material';
 import styled from 'styled-components';
 import { theme } from '@theme';
-
+import { green } from '@mui/material/colors';
+import { grey } from '@mui/material/colors';
 
 export const CenteredText = styled.div`
   text-align: center;
@@ -13,7 +14,7 @@ export const CenteredText = styled.div`
     margin: 0;
     font-size: ${theme.typography.h5.fontSize};
     line-height: ${theme.typography.h5.lineHeight || 1.2};
-    font-weight: ${700};
+    font-weight: ${500};
     font-family: ${theme.typography.fontFamily};
     color: ${theme.palette.text?.primary ?? '#000'};
   }
@@ -28,12 +29,23 @@ export const CenteredText = styled.div`
 
 export const WrapperForm = styled(Box)<BoxProps>`
   display: flex;
-  justify-content: center;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  flex-direction: column; 
   gap: 16px;
-  max-width: 400px;
-  align-content: center;
+  max-width: 450px;
+  width: 100%;
+
+  background: #fff;
+  border-radius: 20px;
+  border: 1px solid #e0e0e0;
+  padding: 32px 50px;
+
+  margin: 40px auto;
 `;
+
 
 export const StyledDivider = styled(Divider)`
   && {
@@ -47,6 +59,12 @@ export const StyledDivider = styled(Divider)`
   }
 `;
 
+export const DividerText = styled.span`
+  font-size: ${theme.typography.body2?.fontSize || '14px'};
+  color: ${theme.palette.custom.textGray};
+  font-family: ${theme.typography.fontFamily};
+`;
+
 export const Button = styled.button<{ disabledBg?: string; disabledColor?: string }>`
   display: flex;
   padding: 8px 22px;
@@ -54,11 +72,10 @@ export const Button = styled.button<{ disabledBg?: string; disabledColor?: strin
   justify-content: center;
   align-items: center;
   border-radius: 12px;
-  border: 1px solid #E0E0E0;
+  border: 1px solid #e0e0e0;
   gap: 9px;
-  margin-bottom: 12px;
-  background-color: ${(props) => props.disabledBg || "transparent"};
-  color: ${(props) => props.disabledColor || "#fff"};
+  background-color: ${(props) => props.disabledBg || 'transparent'};
+  color: ${(props) => props.disabledColor || '#fff'};
   cursor: pointer;
   @media (max-width: 768px) {
     padding: 8px 16px;
@@ -69,10 +86,9 @@ export const Button = styled.button<{ disabledBg?: string; disabledColor?: strin
 `;
 
 export const BtnSubmit = styled(Button)`
-
-  background-color: #000;
+  background-color: ${green[700]};
   color: #fff;
-
+  width: 100%;
   &:disabled {
     background-color: #e0e0e0;
     color: #9e9e9e;
@@ -80,4 +96,13 @@ export const BtnSubmit = styled(Button)`
     cursor: not-allowed;
     pointer-events: none;
   }
+`;
+
+
+export const Terms = styled.p`
+  text-align: center;
+  margin: 8px 0 0;
+  font-size: ${theme.typography.body2?.fontSize };
+  color: ${"#4A5565"};
+  font-family: ${theme.typography.fontFamily};
 `;

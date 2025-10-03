@@ -1,7 +1,7 @@
 import React from "react";
 import { Typography, useTheme  } from "@mui/material";
 
-import { WrapperForm, StyledDivider, CenteredText, BtnSubmit } from './styles';
+import { WrapperForm, StyledDivider, CenteredText, BtnSubmit, Terms } from './styles';
 import { useLoginForm } from './useLoginForm';
 
 import SocialLoginButton from '../SocialLoginButton';
@@ -59,6 +59,10 @@ export const LoginForm: React.FC = () => {
       <BtnSubmit type="submit" disabled={!isEmailValid} >
         {t('Form.login-form.submit')}
       </BtnSubmit>
+
+      <Terms>
+        {t("Form.login-form.terms")}
+      </Terms>
     </WrapperForm>
   );
 };
