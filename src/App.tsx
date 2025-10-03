@@ -1,6 +1,6 @@
-import { HomePage } from 'pages';
 import { Route, Routes } from 'react-router-dom';
-
+import { LoginPage } from './pages/LoginPage';
+import {LinkExpiredPage} from './pages/LinkExpiredPage';
 import { GlobalStyle } from './style';
 
 export const App: React.FC = () => {
@@ -8,7 +8,8 @@ export const App: React.FC = () => {
     <>
       <GlobalStyle />
       <Routes>
-        <Route index element={<HomePage />} />
+        <Route path='/login' element={<LoginPage />} />
+        <Route path='/link-expired' element={<LinkExpiredPage />} />
       </Routes>
     </>
   );
