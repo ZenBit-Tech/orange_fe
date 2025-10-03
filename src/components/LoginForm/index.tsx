@@ -12,8 +12,6 @@ import { FaLinkedin } from "react-icons/fa";
 import EmailField from '../RoundedInput';
 import { emailRegex } from '../../constants/validation';
 
-import { theme } from '@theme';
-
 export const LoginForm: React.FC = () => {
   const { register, handleSubmit,watch, errors, t, onSubmit } = useLoginForm();
   const emailValue = watch('email') || '';

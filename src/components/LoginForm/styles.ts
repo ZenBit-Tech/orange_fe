@@ -4,7 +4,6 @@ import { Divider } from '@mui/material';
 import styled from 'styled-components';
 import { theme } from '@theme';
 import { green } from '@mui/material/colors';
-import { grey } from '@mui/material/colors';
 
 export const CenteredText = styled.div`
   text-align: center;
