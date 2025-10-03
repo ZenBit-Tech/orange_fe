@@ -1,5 +1,5 @@
 import React from "react";
-import { Typography } from "@mui/material";
+import { Typography, useTheme  } from "@mui/material";
 
 import { WrapperForm, StyledDivider, CenteredText, BtnSubmit } from './styles';
 import { useLoginForm } from './useLoginForm';
@@ -10,11 +10,15 @@ import { FaFacebook } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 
 import EmailField from '../RoundedInput';
+import { emailRegex } from '../../constants/validation';
 
+import { theme } from '@theme';
 
 export const LoginForm: React.FC = () => {
   const { register, handleSubmit,watch, errors, t, onSubmit } = useLoginForm();
   const emailValue = watch('email') || '';
+  const theme = useTheme();
+
   const handleGoogleLogin = () => {
     // Implement Google login logic here
   }
@@ -25,7 +29,7 @@ export const LoginForm: React.FC = () => {
     // Implement Linkedin login logic here
   }
   
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  
   const isEmailValid = emailRegex.test(emailValue);
   return (
     <WrapperForm
@@ -39,12 +43,12 @@ export const LoginForm: React.FC = () => {
 
 
       <SocialLoginButton icon={<FcGoogle />} label={t('Form.login-form.loginWithGoogle')} onClick={handleGoogleLogin}  />
-      <SocialLoginButton icon={<FaFacebook color='#1976D2' onClick={handleFacebookLogin} />} label={t('Form.login-form.loginWithFacebook')}  />
-      <SocialLoginButton icon={<FaLinkedin color='#4C9BE0' onClick={handleLinkedinLogin} />} label={t('Form.login-form.loginWithLinkedin')}  />
+      <SocialLoginButton icon={<FaFacebook color={theme.palette.custom.facebook}  onClick={handleFacebookLogin} />} label={t('Form.login-form.loginWithFacebook')}  />
+      <SocialLoginButton icon={<FaLinkedin color={theme.palette.custom.linkedin} onClick={handleLinkedinLogin} />} label={t('Form.login-form.loginWithLinkedin')}  />
 
       <StyledDivider>
-        <Typography variant="body2" sx={{ color: "#666" }}>
-          Or
+        <Typography variant="body2" sx={{ color: theme.palette.custom.textGray }}>
+           {t('Form.login-form.or')}
         </Typography>
       </StyledDivider>
 

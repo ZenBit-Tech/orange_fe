@@ -2,22 +2,29 @@ import { Box } from '@mui/material';
 import type { BoxProps } from '@mui/material';
 import { Divider } from "@mui/material";
 import styled from 'styled-components';
+import { theme } from '@theme';
+
 
 export const CenteredText = styled.div`
   text-align: center;
   margin-bottom: 20px;
 
-  h1 {
+  h5 {
     margin: 0;
-    font-size: 1.6rem;
-    line-height: 1.2;
+    font-size: ${theme.typography.h5.fontSize};
+    line-height: ${theme.typography.h5.lineHeight || 1.2};
+    font-weight: ${700};
+    font-family: ${theme.typography.fontFamily};
+    color: ${theme.palette.text?.primary ?? '#000'};
   }
 
   p {
     margin: 8px 0 0;
-    color: #666;
-    font-size: 0.95rem;
-}`;
+    color: ${theme.palette.custom.textGray};
+    font-size: ${theme.typography.body1.fontSize};
+    font-family: ${theme.typography.fontFamily};
+  }
+`;
 
 export const WrapperForm = styled(Box)<BoxProps>`
   display: flex;
@@ -30,12 +37,12 @@ export const WrapperForm = styled(Box)<BoxProps>`
 
 export const StyledDivider = styled(Divider)`
   && {
-    margin: 5px 0;
+    margin: 8px 0;
     font-size: 14px;
-    color: #888;
+    color:${theme.palette.custom.textGray};
     ::before,
     ::after {
-      border-color: #ccc;
+      border-color: #e6e6e6;
     }
   }
 `;
