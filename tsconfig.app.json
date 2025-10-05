@@ -2,21 +2,7 @@
   "compilerOptions": {
     "baseUrl": "src",
     "paths": {
-      "@/*": [
-        "*"
-      ],
-      "components/*": [
-        "components/*"
-      ],
-      "i18n/*": [
-        "i18n/*"
-      ],
-      "pages/*": [
-        "pages/*"
-      ],
-      "store/*": [
-        "store/*"
-      ],
+      "@/*": ["*"],
       "@theme/*": ["theme/*"],
       "@theme": ["theme"]
     },

@@ -1,6 +1,20 @@
 import type { ThemeOptions } from "@mui/material/styles";
-
-export const typography: ThemeOptions['typography'] = {
+export const typography: ThemeOptions['typography'] & {
+  sizes: {
+    h1: string;
+    h1Mobile: string;
+    h4: string;
+    h4Mobile: string;
+    h5: string;
+    h5Mobile: string;
+    body1: string;
+    body1Mobile: string;
+    body2: string;
+    body2Mobile: string;
+    button: string;
+    terms: string;
+  };
+} = {
   fontFamily: "'Inter', Helvetica, Arial, sans-serif",
   fontSize: 16,
 
@@ -23,4 +37,39 @@ export const typography: ThemeOptions['typography'] = {
     textTransform: 'none',
     fontSize: '16px',
   },
+
+  // semantic size variables + mobile overrides
+  sizes: {
+    h1: '28px',
+    h1Mobile: '22px',
+    h4: '26px',
+    h4Mobile: '20px',
+    h5: '24px',
+    h5Mobile: '20px',   // your requested example
+    body1: '16px',
+    body1Mobile: '14px',
+    body2: '14px',
+    body2Mobile: '13px',
+    button: '16px',
+    terms: '12px',
+  },
 };
+
+declare module '@mui/material/styles' {
+  interface TypographyVariants {
+    sizes: {
+      h1: string;
+      h1Mobile: string;
+      h4: string;
+      h4Mobile: string;
+      h5: string;
+      h5Mobile: string;
+      body1: string;
+      body1Mobile: string;
+      body2: string;
+      body2Mobile: string;
+      button: string;
+      terms: string;
+    };
+  }
+}

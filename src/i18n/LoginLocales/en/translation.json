@@ -12,6 +12,7 @@
     "login-form": {
       "email": "Email",
       "email_required": "Email is required",
+      "email_invalid": "Please enter a valid email address",
       "message": "Message",
       "message_required": "Message is required",
       "submit": "Sign in",
@@ -25,7 +26,7 @@
       "linkExpiredTitle":"Your sign-in link has expired",
       "linkExpiredSubtitle":"For your security, sign-in links are only valid for a short time. Please request a new one to continue.",
       "resendLink":"Request new link",
-      "or":"or"
+      "or":"Or"
     }
   }
 }

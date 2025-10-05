@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import { WrapperForm, CenteredText, BtnSubmit } from '../LoginForm/styles';
+import { WrapperForm, CenteredText, BtnSubmit } from '@/components/LoginForm/styles';
 
 export const LinkExpired: React.FC = () => {
   const { t } = useTranslation();
