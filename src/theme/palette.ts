@@ -26,31 +26,24 @@ export const palette: PaletteOptions = {
     linkedin: "#4C9BE0",
   },
 
-
   loginColors: {
     textDisabled: "rgba(0, 0, 0, 0.38)",
     socialButtonsColor: "rgba(0, 0, 0, 0.87)",
     titleColor: "#000000",
     subtitleColor: "#101828",
-    // card background used in WrapperForm
-    loginBg: "#ffffff",            // was #fff
-    // border and divider shades
-    border: "#e0e0e0",            // used for 1px borders
-    divider: "#e6e6e6",           // divider line color
-    // disabled states
-    disabledBg: "#e0e0e0",        // submit disabled background
-    disabledText: "#9e9e9e",      // disabled text color
-    // button main color (submit)
-    buttonMain: green[700],       // maps to green[700]
-    // general gray used for small text       // fallback for text-gray usages
-    termsText: "#4A5565",         // terms and conditions text color
+    loginBg: "#ffffff",
+    border: "#e0e0e0",
+    divider: "#e6e6e6",
+    disabledBg: "#e0e0e0",
+    disabledText: "#9e9e9e",
+    buttonMain: green[700],
+    termsText: "#4A5565",  
     pageWrapperBg:"#f9f9f9"
   },
 
   globalColors: {
     textGray: grey[500],          
   }
-
 
 };
 
@@ -106,7 +99,5 @@ declare module "@mui/material/styles" {
       textGray?: string;
     };
   }
-
-
 
 }

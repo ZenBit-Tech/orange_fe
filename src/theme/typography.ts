@@ -38,14 +38,13 @@ export const typography: ThemeOptions['typography'] & {
     fontSize: '16px',
   },
 
-  // semantic size variables + mobile overrides
   sizes: {
     h1: '28px',
     h1Mobile: '22px',
     h4: '26px',
     h4Mobile: '20px',
     h5: '24px',
-    h5Mobile: '20px',   // your requested example
+    h5Mobile: '20px', 
     body1: '16px',
     body1Mobile: '14px',
     body2: '14px',
