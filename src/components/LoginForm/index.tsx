@@ -12,6 +12,7 @@ import { FaLinkedin } from "react-icons/fa";
 import { EmailField } from '@/components/RoundedInput';
 import { emailRegex } from '@/constants/validation';
 
+
 export const LoginForm: React.FC = () => {
   const { register, handleSubmit,watch, errors, t, onSubmit } = useLoginForm();
   const emailValue = watch('email') || '';
@@ -35,7 +36,7 @@ export const LoginForm: React.FC = () => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <CenteredText>
-        <h1>{t('Form.login-form.title')}</h1>
+        <h5>{t('Form.login-form.title')}</h5>
         <p>{t('Form.login-form.subtitle')}</p>
       </CenteredText>
 
@@ -59,5 +60,7 @@ export const LoginForm: React.FC = () => {
         {t("Form.login-form.terms")}
       </Terms>
     </WrapperForm>
+
+ 
   );
 };

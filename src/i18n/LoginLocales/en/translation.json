@@ -28,5 +28,10 @@
       "resendLink":"Request new link",
       "or":"Or"
     }
+  },
+  "Footer": {
+    "logo": "© 2025 PlasmAI",
+    "help": "Help",
+    "privacy": "Privacy Policy and Terms&Conditions"
   }
 }

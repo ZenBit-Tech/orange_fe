@@ -31,18 +31,18 @@ export const palette: PaletteOptions = {
     socialButtonsColor: "rgba(0, 0, 0, 0.87)",
     titleColor: "#000000",
     subtitleColor: "#101828",
+    subtitleColor1:"#4A5565",
     loginBg: "#ffffff",
     border: "#e0e0e0",
     divider: "#e6e6e6",
     disabledBg: "#e0e0e0",
     disabledText: "#9e9e9e",
-    buttonMain: green[700],
-    termsText: "#4A5565",  
     pageWrapperBg:"#f9f9f9"
   },
 
   globalColors: {
-    textGray: grey[500],          
+    textGray: grey[500],      
+    primaryGreen: green[700],   
   }
 
 };
@@ -59,17 +59,17 @@ declare module "@mui/material/styles" {
       socialButtonsColor: string;
       titleColor: string;
       subtitleColor: string;
+      subtitleColor1: string;
       loginBg: string;
       border: string;
       divider: string;
       disabledBg: string;
       disabledText: string;
-      buttonMain: string;
-      termsText?: string;
       pageWrapperBg?: string;
     };
 
     globalColors: {
+      primaryGreen: string;
       textGray: string;
     };
   }
@@ -85,17 +85,17 @@ declare module "@mui/material/styles" {
       socialButtonsColor?: string;
       titleColor?: string;
       subtitleColor?: string;
+      subtitleColor1?: string;
       loginBg?: string;
       border?: string;
       divider?: string;
       disabledBg?: string;
       disabledText?: string;
-      buttonMain?: string;
-      termsText?: string;
       pageWrapperBg?: string;
     };
 
     globalColors?: {
+      primaryGreen?: string;
       textGray?: string;
     };
   }

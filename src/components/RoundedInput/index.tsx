@@ -13,8 +13,9 @@ const StyledTextField = styled((props: TextFieldProps) => (
     .MuiOutlinedInput-root {
       height: 40px;
       border-radius: 10px;
-
+      align-items: center;
       input {
+        
         height: 100%;
         padding: 0 14px;
         box-sizing: border-box;
@@ -45,7 +46,7 @@ const StyledTextField = styled((props: TextFieldProps) => (
     .MuiInputLabel-root.Mui-focused,
     .MuiInputLabel-root.MuiFormLabel-filled {
       color: ${theme.palette.common.black};
-      transform: translate(14px, -8px) scale(0.85);
+      transform: translate(8px, -8px) scale(0.85);
       padding: 0 4px;
     }
   }
