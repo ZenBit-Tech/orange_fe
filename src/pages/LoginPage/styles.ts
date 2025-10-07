@@ -6,7 +6,7 @@ export const PageWrapper = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: ${theme.palette.loginColors?.pageWrapperBg ?? theme.palette.background?.default};
+  background: ${theme.palette.loginColors?.pageWrapperBg };
   padding: 24px;
 
   @media (min-width: 1200px) {

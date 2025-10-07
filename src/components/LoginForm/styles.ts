@@ -43,7 +43,7 @@ export const WrapperForm = styled(Box)<BoxProps>`
   max-width: 480px;
   box-sizing: border-box;
 
-  background: ${theme.palette.loginColors?.loginBg ?? theme.palette.background?.paper};
+  background: ${theme.palette.loginColors?.loginBg };
   border-radius: 20px;
   border: 1px solid ${theme.palette.loginColors?.border ?? theme.palette.divider};
   padding: 32px 50px;

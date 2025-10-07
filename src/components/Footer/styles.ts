@@ -4,10 +4,10 @@ import type { BoxProps } from '@mui/material';
 import { theme } from '@theme';
 
 export const Wrapper = styled(Box)<BoxProps>`
-  display: flex;;
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  background: ${theme.palette.loginColors.loginBg};
+  background: ${theme.palette.loginColors?.pageWrapperBg};
   border-top: 1px solid ${theme.palette.loginColors.border};
   padding: 20px 50px;
   color: ${theme.palette.loginColors.subtitleColor1};

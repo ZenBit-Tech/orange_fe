@@ -7,7 +7,7 @@ export const Wrapper = styled(Box)<BoxProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: ${theme.palette.loginColors.loginBg};
+  background: ${theme.palette.loginColors?.pageWrapperBg};
   border-bottom: 1px solid ${theme.palette.loginColors.border};
   padding: 5px 50px;
   color: ${theme.palette.loginColors.subtitleColor1};
