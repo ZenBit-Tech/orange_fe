@@ -1,9 +1,12 @@
 import React from 'react';
+
+import { CiClock2 } from 'react-icons/ci';
+
 import { useTranslation } from 'react-i18next';
 
-import {  BtnSubmit } from '@/components/LoginForm/styles';
-import { WrapperForm, CenteredText} from './styles';
-import clock from "@/assets/clock.svg";
+import { BtnSubmit } from '@/components/LoginForm/styles';
+
+import { CenteredText, WrapperForm } from './styles';
 
 export const LinkExpired: React.FC = () => {
   const { t } = useTranslation();
@@ -11,10 +14,10 @@ export const LinkExpired: React.FC = () => {
   const handleRequestNewLink = () => {
     //  implement request logic
   };
-  
+
   return (
     <WrapperForm component="div" aria-labelledby="link-expired-title">
-      <img src={clock} alt="Clock icon" />
+      <CiClock2 />
       <CenteredText>
         <h5 id="link-expired-title">{t('Form.login-form.linkExpiredTitle')}</h5>
         <p>{t('Form.login-form.linkExpiredSubtitle')}</p>
@@ -25,7 +28,6 @@ export const LinkExpired: React.FC = () => {
       </BtnSubmit>
     </WrapperForm>
   );
-}; 
-
+};
 
 export default LinkExpired;

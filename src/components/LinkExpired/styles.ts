@@ -1,16 +1,15 @@
-import { styled } from "styled-components";
 import { Box } from '@mui/material';
 import type { BoxProps } from '@mui/material';
+
 import { theme } from '@theme';
+import { styled } from 'styled-components';
 
 export const WrapperForm = styled(Box)<BoxProps>`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  gap: 24px; 
-
+  gap: 24px;
   max-width: 600px;
   width: 100%;
   background: ${theme.palette.loginColors.loginBg};
@@ -18,8 +17,11 @@ export const WrapperForm = styled(Box)<BoxProps>`
   border: 1px solid ${theme.palette.loginColors.border};
   padding: 32px 50px;
   margin: 40px auto;
-`;
 
+  svg {
+    font-size: 48px;
+  }
+`;
 
 export const CenteredText = styled.div`
   text-align: center;
