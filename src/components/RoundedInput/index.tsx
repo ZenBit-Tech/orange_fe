@@ -1,10 +1,13 @@
-import React from "react";
-import { styled } from "styled-components";
-import TextField from "@mui/material/TextField";
-import type { TextFieldProps } from "@mui/material";
-import type { FieldErrors, UseFormRegister } from "react-hook-form";
-import type { LoginFormInputs } from "@/components/LoginForm/useLoginForm"; 
-import { theme } from "@theme";
+import React from 'react';
+
+import type { TextFieldProps } from '@mui/material';
+import TextField from '@mui/material/TextField';
+
+import { theme } from '@theme';
+import type { FieldErrors, UseFormRegister } from 'react-hook-form';
+import { styled } from 'styled-components';
+
+import type { LoginFormInputs } from '@/components/LoginForm/useLoginForm';
 
 const StyledTextField = styled((props: TextFieldProps) => (
   <TextField {...props} fullWidth id="outlined-basic" label="Email" variant="outlined" />
@@ -15,7 +18,6 @@ const StyledTextField = styled((props: TextFieldProps) => (
       border-radius: 10px;
       align-items: center;
       input {
-        
         height: 100%;
         padding: 0 14px;
         box-sizing: border-box;
@@ -63,11 +65,11 @@ export const EmailField: React.FC<EmailFieldProps> = ({ register, errors, t }) =
       type="email"
       error={!!errors.email}
       helperText={errors.email?.message}
-      {...register("email", {
-        required: t("Form.login-form.email_required") as string,
+      {...register('email', {
+        required: t('Form.login-form.email_required') as string,
         pattern: {
           value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, // Basic email regex
-          message: t("Form.login-form.email_invalid") as string,
+          message: t('Form.login-form.email_invalid') as string,
         },
       })}
     />

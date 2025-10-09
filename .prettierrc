@@ -6,13 +6,14 @@
   "endOfLine": "lf",
   "plugins": ["@trivago/prettier-plugin-sort-imports"],
   "importOrder": [
-    "^react$",             
-    "^@mui/(.*)$",           
-    "^react-icons/(.*)$",    
+    "^react$",
+    "^@mui/(.*)$",
+    "^react-icons/(.*)$",
     "<THIRD_PARTY_MODULES>",
-    "^@/(.*)$",           
-    "^[./]"                  
+    "^@/(.*)$",
+    "^[./]"
   ],
   "importOrderSeparation": true,
-  "importOrderSortSpecifiers": true
+  "importOrderSortSpecifiers": true,
+  "importOrderAddNewlines": true
 }

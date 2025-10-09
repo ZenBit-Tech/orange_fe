@@ -37,6 +37,12 @@ export default [
       'react/prop-types': 'off',
       '@typescript-eslint/no-explicit-any': 'warn',
       'import/order': 'off',
+      'jsx-a11y/anchor-is-valid': 'off',
+      'padding-line-between-statements': [
+        'error',
+        { blankLine: 'always', prev: 'import', next: '*' },
+        { blankLine: 'any', prev: 'import', next: 'import' }
+      ],
     },
     settings: {
       react: {

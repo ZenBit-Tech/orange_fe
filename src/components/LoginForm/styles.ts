@@ -1,7 +1,8 @@
 import type { BoxProps } from '@mui/material';
 import { Box, Stack, Typography } from '@mui/material';
-import styled from 'styled-components';
+
 import { theme } from '@theme';
+import styled from 'styled-components';
 
 export const CenteredText = styled.div`
   text-align: center;
@@ -43,7 +44,7 @@ export const WrapperForm = styled(Box)<BoxProps>`
   max-width: 480px;
   box-sizing: border-box;
 
-  background: ${theme.palette.loginColors?.loginBg };
+  background: ${theme.palette.loginColors?.loginBg};
   border-radius: 20px;
   border: 1px solid ${theme.palette.loginColors?.border ?? theme.palette.divider};
   padding: 32px 50px;

@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 export const store = configureStore({
   reducer: {},

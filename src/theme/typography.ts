@@ -1,14 +1,14 @@
-import "@fontsource/poppins/400.css";
-import "@fontsource/poppins/500.css";
-import "@fontsource/poppins/600.css";
-import "@fontsource/poppins/700.css";
+import type { ThemeOptions } from '@mui/material/styles';
 
-import "@fontsource/inter/400.css";
-import "@fontsource/inter/500.css";
-import "@fontsource/inter/600.css";
-import "@fontsource/inter/700.css";
+import '@fontsource/inter/400.css';
+import '@fontsource/inter/500.css';
+import '@fontsource/inter/600.css';
+import '@fontsource/inter/700.css';
+import '@fontsource/poppins/400.css';
+import '@fontsource/poppins/500.css';
+import '@fontsource/poppins/600.css';
+import '@fontsource/poppins/700.css';
 
-import type { ThemeOptions } from "@mui/material/styles";
 export const typography: ThemeOptions['typography'] & {
   sizes: {
     h1: string;
@@ -26,7 +26,6 @@ export const typography: ThemeOptions['typography'] & {
   };
 } = {
   fontFamily: "'Inter', Helvetica, Arial, sans-serif",
-  
 
   h5: {
     fontFamily: "'Poppins', Helvetica, Arial, sans-serif",
@@ -55,7 +54,7 @@ export const typography: ThemeOptions['typography'] & {
     h4: '26px',
     h4Mobile: '20px',
     h5: '24px',
-    h5Mobile: '20px', 
+    h5Mobile: '20px',
     body1: '16px',
     body1Mobile: '14px',
     body2: '14px',
