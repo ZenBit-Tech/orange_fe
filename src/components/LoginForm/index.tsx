@@ -27,7 +27,7 @@ export const LoginForm: React.FC = () => {
   const theme = useTheme();
 
   const handleGoogleLogin = () => {
-    // Implement Google login logic here
+    window.location.href = import.meta.env.VITE_GOOGLE_AUTH;
   };
   const handleFacebookLogin = () => {
     // Implement Facebook login logic here
