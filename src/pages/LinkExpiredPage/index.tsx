@@ -1,13 +1,18 @@
-import { PageWrapper } from '../LoginPage/styles';
 import { LinkExpired } from 'components';
 
+import { Footer } from '@/components/Footer';
+import { Nav } from '@/components/Nav';
+
+import { PageWrapper } from '../LoginPage/styles';
 
 export const LinkExpiredPage: React.FC = () => {
   return (
     <div>
-        <PageWrapper>
-            <LinkExpired  />
-        </PageWrapper>
+      <Nav />
+      <PageWrapper>
+        <LinkExpired />
+      </PageWrapper>
+      <Footer />
     </div>
   );
 };

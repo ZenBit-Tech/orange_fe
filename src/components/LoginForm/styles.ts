@@ -1,18 +1,19 @@
 import type { BoxProps } from '@mui/material';
 import { Box, Stack, Typography } from '@mui/material';
-import styled from 'styled-components';
+
 import { theme } from '@theme';
+import styled from 'styled-components';
 
 export const CenteredText = styled.div`
   text-align: center;
-  margin-bottom: 20px;
+  margin: 15px 0 40px;
 
   h5 {
     margin: 0;
     font-size: ${theme.typography.h5?.fontSize};
     line-height: ${theme.typography.h5?.lineHeight || 1.2};
     font-weight: ${theme.typography.h5?.fontWeight || 500};
-    font-family: ${theme.typography.fontFamily};
+    font-family: ${theme.typography.h5.fontFamily};
     color: ${theme.palette.text?.primary};
   }
 
@@ -43,7 +44,7 @@ export const WrapperForm = styled(Box)<BoxProps>`
   max-width: 480px;
   box-sizing: border-box;
 
-  background: ${theme.palette.loginColors?.loginBg ?? theme.palette.background?.paper};
+  background: ${theme.palette.loginColors?.loginBg};
   border-radius: 20px;
   border: 1px solid ${theme.palette.loginColors?.border ?? theme.palette.divider};
   padding: 32px 50px;
@@ -124,7 +125,7 @@ export const Button = styled.button<{ disabledBg?: string; disabledColor?: strin
 `;
 
 export const BtnSubmit = styled(Button)`
-  background-color: ${theme.palette.loginColors?.buttonMain ?? theme.palette.primary?.main};
+  background-color: ${theme.palette.globalColors.primaryGreen ?? theme.palette.primary?.main};
   color: ${theme.palette.common.white};
   width: 100%;
 
@@ -141,7 +142,7 @@ export const Terms = styled.p`
   text-align: center;
   margin: 8px 0 0;
   font-size: ${theme.typography.body2?.fontSize};
-  color: ${theme.palette.loginColors?.termsText ?? theme.palette.text?.secondary};
+  color: ${theme.palette.loginColors?.subtitleColor1 ?? theme.palette.text?.secondary};
   font-family: ${theme.typography.fontFamily};
 
   @media (max-width: 480px) {

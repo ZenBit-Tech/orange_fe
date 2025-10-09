@@ -40,7 +40,7 @@ export const LoginForm: React.FC = () => {
   return (
     <WrapperForm component="form" onSubmit={handleSubmit(onSubmit)}>
       <CenteredText>
-        <h1>{t('Form.login-form.title')}</h1>
+        <h5>{t('Form.login-form.title')}</h5>
         <p>{t('Form.login-form.subtitle')}</p>
       </CenteredText>
 

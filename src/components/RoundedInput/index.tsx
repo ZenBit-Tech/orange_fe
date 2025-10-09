@@ -1,10 +1,13 @@
-import React from "react";
-import { styled } from "styled-components";
-import TextField from "@mui/material/TextField";
-import type { TextFieldProps } from "@mui/material";
-import type { FieldErrors, UseFormRegister } from "react-hook-form";
-import type { LoginFormInputs } from "@/components/LoginForm/useLoginForm"; 
-import { theme } from "@theme";
+import React from 'react';
+
+import type { TextFieldProps } from '@mui/material';
+import TextField from '@mui/material/TextField';
+
+import { theme } from '@theme';
+import type { FieldErrors, UseFormRegister } from 'react-hook-form';
+import { styled } from 'styled-components';
+
+import type { LoginFormInputs } from '@/components/LoginForm/useLoginForm';
 
 const StyledTextField = styled((props: TextFieldProps) => (
   <TextField {...props} fullWidth id="outlined-basic" label="Email" variant="outlined" />
@@ -13,7 +16,7 @@ const StyledTextField = styled((props: TextFieldProps) => (
     .MuiOutlinedInput-root {
       height: 40px;
       border-radius: 10px;
-
+      align-items: center;
       input {
         height: 100%;
         padding: 0 14px;
@@ -45,7 +48,7 @@ const StyledTextField = styled((props: TextFieldProps) => (
     .MuiInputLabel-root.Mui-focused,
     .MuiInputLabel-root.MuiFormLabel-filled {
       color: ${theme.palette.common.black};
-      transform: translate(14px, -8px) scale(0.85);
+      transform: translate(8px, -8px) scale(0.85);
       padding: 0 4px;
     }
   }
@@ -62,11 +65,11 @@ export const EmailField: React.FC<EmailFieldProps> = ({ register, errors, t }) =
       type="email"
       error={!!errors.email}
       helperText={errors.email?.message}
-      {...register("email", {
-        required: t("Form.login-form.email_required") as string,
+      {...register('email', {
+        required: t('Form.login-form.email_required') as string,
         pattern: {
           value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, // Basic email regex
-          message: t("Form.login-form.email_invalid") as string,
+          message: t('Form.login-form.email_invalid') as string,
         },
       })}
     />

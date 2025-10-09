@@ -27,6 +27,15 @@
       "linkExpiredSubtitle":"For your security, sign-in links are only valid for a short time. Please request a new one to continue.",
       "resendLink":"Request new link",
       "or":"Or"
+
+    },
+    "nav":{
+      "logoAlt":"PlasmaAI logo"
     }
+  },
+  "Footer": {
+    "logo": "© 2025 PlasmAI",
+    "help": "Help",
+    "privacy": "Privacy Policy and Terms&Conditions"
   }
 }
