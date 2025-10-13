@@ -33,7 +33,7 @@ export const LoginForm: React.FC = () => {
     // Implement Facebook login logic here
   };
   const handleLinkedinLogin = () => {
-    // Implement Linkedin login logic here
+    window.location.href = import.meta.env.VITE_LINKEDIN_AUTH;
   };
 
   const isEmailValid = emailRegex.test(emailValue);
@@ -50,15 +50,13 @@ export const LoginForm: React.FC = () => {
         onClick={handleGoogleLogin}
       />
       <SocialLoginButton
-        icon={
-          <FaFacebook color={theme.palette.iconColors.facebook} onClick={handleFacebookLogin} />
-        }
+        onClick={handleFacebookLogin}
+        icon={<FaFacebook color={theme.palette.iconColors.facebook} />}
         label={t('Form.login-form.loginWithFacebook')}
       />
       <SocialLoginButton
-        icon={
-          <FaLinkedin color={theme.palette.iconColors.linkedin} onClick={handleLinkedinLogin} />
-        }
+        onClick={handleLinkedinLogin}
+        icon={<FaLinkedin color={theme.palette.iconColors.linkedin} />}
         label={t('Form.login-form.loginWithLinkedin')}
       />
 
