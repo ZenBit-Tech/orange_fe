@@ -26,14 +26,8 @@ export const LoginForm: React.FC = () => {
   const emailValue = watch('email') || '';
   const theme = useTheme();
 
-  const handleGoogleLogin = () => {
-    window.location.href = import.meta.env.VITE_GOOGLE_AUTH;
-  };
   const handleFacebookLogin = () => {
     // Implement Facebook login logic here
-  };
-  const handleLinkedinLogin = () => {
-    // Implement Linkedin login logic here
   };
 
   const isEmailValid = emailRegex.test(emailValue);
@@ -47,19 +41,19 @@ export const LoginForm: React.FC = () => {
       <SocialLoginButton
         icon={<FcGoogle />}
         label={t('Form.login-form.loginWithGoogle')}
-        onClick={handleGoogleLogin}
+        linkPath={import.meta.env.VITE_GOOGLE_AUTH}
       />
+
       <SocialLoginButton
-        icon={
-          <FaFacebook color={theme.palette.iconColors.facebook} onClick={handleFacebookLogin} />
-        }
+        onClick={handleFacebookLogin}
+        icon={<FaFacebook color={theme.palette.iconColors.facebook} />}
         label={t('Form.login-form.loginWithFacebook')}
       />
+
       <SocialLoginButton
-        icon={
-          <FaLinkedin color={theme.palette.iconColors.linkedin} onClick={handleLinkedinLogin} />
-        }
+        icon={<FaLinkedin color={theme.palette.iconColors.linkedin} />}
         label={t('Form.login-form.loginWithLinkedin')}
+        linkPath={import.meta.env.VITE_LINKEDIN_AUTH}
       />
 
       <DividerContainer direction="row">

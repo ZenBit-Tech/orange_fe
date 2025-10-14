@@ -1,6 +1,7 @@
 import Button from '@mui/material/Button';
 
 import { theme } from '@theme';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const StyledButton = styled(Button)`
@@ -36,9 +37,22 @@ export const Emoji = styled.span`
     width: 24px;
     height: 24px;
     margin-right: 10px;
+
     & > svg {
       width: 18px;
       height: 18px;
     }
   }
+`;
+
+export const StyledLink = styled.div`
+  display: flex;
+  width: 100%;
+`;
+
+export const StyledRouterLink = styled(Link)`
+  align-items: center;
+  display: flex;
+  width: 100%;
+  text-decoration: none;
 `;
