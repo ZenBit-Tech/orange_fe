@@ -19,9 +19,7 @@ export const CenteredContent = styled(Box)`
 
 export const LoadingText = styled(Typography)`
   display: flex;
-
   justify-content: center;
-
   font-size: ${theme.typography.sizes.body1};
 `;
 
