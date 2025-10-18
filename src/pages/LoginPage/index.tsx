@@ -2,19 +2,16 @@ import { LoginForm } from 'components';
 import Footer from 'components/Footer';
 import Nav from 'components/Nav';
 
-import { PageWrapper } from './styles';
+import { ContentWrapper, PageWrapper } from './styles';
 
 export const LoginPage: React.FC = () => {
   return (
-    <div>
+    <PageWrapper>
       <Nav />
-      <div>
-        <PageWrapper>
-          <LoginForm />
-        </PageWrapper>
-      </div>
-
+      <ContentWrapper>
+        <LoginForm />
+      </ContentWrapper>
       <Footer />
-    </div>
+    </PageWrapper>
   );
 };

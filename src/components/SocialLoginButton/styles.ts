@@ -16,6 +16,12 @@ export const StyledButton = styled(Button)`
     border: 1px solid ${theme.palette.loginColors?.border ?? theme.palette.divider};
     background: ${theme.palette.common.white};
     color: ${theme.palette.loginColors?.socialButtonsColor ?? theme.palette.text?.primary};
+    @media (min-width: 1024px) and (max-height: 760px) {
+      font-size: 14px;
+      padding: 2px 24px;
+      height: 36px;
+      border-radius: 10px;
+    }
   }
 `;
 
