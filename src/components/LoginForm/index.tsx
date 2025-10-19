@@ -26,10 +26,6 @@ export const LoginForm: React.FC = () => {
   const emailValue = watch('email') || '';
   const theme = useTheme();
 
-  const handleFacebookLogin = () => {
-    // Implement Facebook login logic here
-  };
-
   const isEmailValid = emailRegex.test(emailValue);
   return (
     <WrapperForm component="form" onSubmit={handleSubmit(onSubmit)}>
@@ -45,9 +41,9 @@ export const LoginForm: React.FC = () => {
       />
 
       <SocialLoginButton
-        onClick={handleFacebookLogin}
         icon={<FaFacebook color={theme.palette.iconColors.facebook} />}
         label={t('Form.login-form.loginWithFacebook')}
+        linkPath={import.meta.env.VITE_FACEBOOK_AUTH}
       />
 
       <SocialLoginButton
