@@ -2,7 +2,7 @@ import { LoginForm } from 'components';
 import Footer from 'components/Footer';
 import Nav from 'components/Nav';
 
-import { PageWrapper } from './styles';
+import { PageWrapper } from '@/pages/LoginPage/styles';
 
 export const LoginPage: React.FC = () => {
   return (
@@ -13,7 +13,6 @@ export const LoginPage: React.FC = () => {
           <LoginForm />
         </PageWrapper>
       </div>
-
       <Footer />
     </div>
   );

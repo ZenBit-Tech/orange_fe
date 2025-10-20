@@ -1,10 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
 
-import { PrivacyPolicyPage } from './pages/LegalPages/PrivacyPolicyPage';
-import { TermsPage } from './pages/LegalPages/TermsPage';
-import { LinkExpiredPage } from './pages/LinkExpiredPage';
-import { LoginPage } from './pages/LoginPage';
-import { GlobalStyle } from './style';
+import { PrivacyPolicyPage } from '@/pages/LegalPages/PrivacyPolicyPage';
+import { TermsPage } from '@/pages/LegalPages/TermsPage';
+import { LinkExpiredPage } from '@/pages/LinkExpiredPage';
+import { LoginPage } from '@/pages/LoginPage';
+import { GlobalStyle } from '@/style';
 
 export const App: React.FC = () => {
   return (

@@ -38,6 +38,7 @@ export const palette: PaletteOptions = {
     disabledBg: '#e0e0e0',
     disabledText: '#9e9e9e',
     pageWrapperBg: '#f9f9f9',
+    legalText: '#1E1E1E',
   },
 
   globalColors: {
@@ -65,6 +66,7 @@ declare module '@mui/material/styles' {
       disabledBg: string;
       disabledText: string;
       pageWrapperBg?: string;
+      legalText?: string;
     };
 
     globalColors: {
@@ -91,6 +93,7 @@ declare module '@mui/material/styles' {
       disabledBg?: string;
       disabledText?: string;
       pageWrapperBg?: string;
+      legalText?: string;
     };
 
     globalColors?: {

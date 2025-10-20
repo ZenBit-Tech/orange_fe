@@ -6,9 +6,7 @@ import { FaFacebook } from 'react-icons/fa';
 import { FaLinkedin } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 
-import { EmailField } from '@/components/RoundedInput';
-import SocialLoginButton from '@/components/SocialLoginButton';
-import { emailRegex } from '@/constants/validation';
+import { Link } from 'react-router-dom';
 
 import {
   BtnSubmit,
@@ -18,7 +16,11 @@ import {
   Terms,
   Text,
   WrapperForm,
-} from './styles';
+} from '@/components/LoginForm/styles';
+import { EmailField } from '@/components/RoundedInput';
+import SocialLoginButton from '@/components/SocialLoginButton';
+import { emailRegex } from '@/constants/validation';
+
 import { useLoginForm } from './useLoginForm';
 
 export const LoginForm: React.FC = () => {
@@ -67,8 +69,12 @@ export const LoginForm: React.FC = () => {
       <BtnSubmit type="submit" disabled={!isEmailValid}>
         {t('Form.login-form.submit')}
       </BtnSubmit>
-
-      <Terms>{t('Form.login-form.terms')}</Terms>
+      <Terms>
+        <span> {t('By continuing you agree to')} </span>
+        <Link to="/privacy">{t('Form.login-form.privacyLink')}</Link>
+        <span> {t('and')} </span>
+        <Link to="/terms">{t('Form.login-form.termsLink')}</Link>
+      </Terms>
     </WrapperForm>
   );
 };

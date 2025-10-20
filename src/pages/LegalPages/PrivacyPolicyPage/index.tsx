@@ -5,9 +5,8 @@ import ReactMarkdown from 'react-markdown';
 
 import Nav from '@/components/Nav';
 import privacyPolicyText from '@/content/legal/privacy-policy.en.md?raw';
-
-import { PageWrapper } from '../../LoginPage/styles';
-import { LegalContent } from '../styles';
+import { LegalContent } from '@/pages/LegalPages/styles';
+import { PageWrapper } from '@/pages/LoginPage/styles';
 
 export const PrivacyPolicyPage: React.FC = () => {
   return (

@@ -37,7 +37,7 @@ export const LegalContent = styled.section`
     width: 100%;
     max-width: 1062px;
     padding: 32px 64px 64px 64px;
-    background: #fff;
+    background: ${theme.palette.loginColors?.loginBg || theme.palette.background.paper};
     border-radius: 20px;
     border: 1px solid ${theme.palette.loginColors?.border ?? theme.palette.divider};
     box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
@@ -54,7 +54,7 @@ export const LegalContent = styled.section`
 
   & div.markdown p,
   li {
-    color: var(--text-default-text-secondary, #1e1e1e);
+    color: color: ${theme.palette.loginColors?.legalText};
     font-family: ${theme.typography.fontFamily || "'Inter', sans-serif"};
     font-size: ${theme.typography.body1?.fontSize || '16px'};
     font-style: normal;
@@ -66,7 +66,7 @@ export const LegalContent = styled.section`
   }
 
   & div.markdown h1 {
-    color: var(--text-default-text-primary, #080808);
+    color: ${theme.palette.loginColors?.titleColor};
     text-align: center;
     font-family: ${theme.typography.h5?.fontFamily || "'Poppins', sans-serif"};
     font-size: ${theme.typography.h5?.fontSize || '24px'};
@@ -79,7 +79,7 @@ export const LegalContent = styled.section`
   }
 
   & div.markdown h2 {
-    color: var(--text-default-text-primary, #080808);
+    color: ${theme.palette.loginColors?.titleColor};
     text-align: center;
     font-family: ${theme.typography.h6?.fontFamily || "'Poppins', sans-serif"};
     font-size: ${theme.typography.h6?.fontSize || '20px'};
@@ -91,7 +91,7 @@ export const LegalContent = styled.section`
     width: 100%;
   }
   & div.markdown h3 {
-    color: var(--text-default-text-primary, #080808);
+    color: ${theme.palette.loginColors?.titleColor};
     font-family: ${theme.typography.h6?.fontFamily || "'Poppins', sans-serif"};
     font-size: ${theme.typography.h6?.fontSize || '20px'};
     font-style: normal;
@@ -115,7 +115,7 @@ export const LegalContent = styled.section`
     }
 
     p {
-      font-size: ${theme.typography.sizes.body1Mobile || '14px'};
+      font-size: ${theme.typography.sizes.body2 || '14px'};
       line-height: 22px;
     }
   }
