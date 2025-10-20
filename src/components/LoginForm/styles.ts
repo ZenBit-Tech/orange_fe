@@ -27,12 +27,12 @@ export const CenteredText = styled.div`
   @media (min-width: 1024px) and (max-height: 860px) {
     margin: 20px 0;
     h5 {
-      font-size: 20px;
+       font-size: ${theme.typography.h5.fontSize};
       line-height: 1.2;
     }
     p {
       margin: 5px 0 0;
-      font-size: 12px;
+      font-size: ${theme.typography.sizes.body2};
     }
 
   @media (max-width: 480px) {
@@ -128,7 +128,7 @@ export const Button = styled.button<{ disabledBg?: string; disabledColor?: strin
   font-size: ${theme.typography.button?.fontSize || '16px'};
 
   @media (min-width: 1024px) and (max-height: 760px) {
-    font-size: 14px;
+    ${theme.typography.sizes.body2};
     padding: 2px 24px;
     height: 36px;
     border-radius: 10px;
@@ -165,7 +165,7 @@ export const Terms = styled.p`
   color: ${theme.palette.loginColors?.subtitleColor1 ?? theme.palette.text?.secondary};
   font-family: ${theme.typography.fontFamily};
   @media (min-width: 1024px) and (max-height: 760px) {
-    font-size: 11px;
+    font-size: ${theme.typography.sizes.body3Mobile};
   }
 
   @media (max-width: 480px) {
