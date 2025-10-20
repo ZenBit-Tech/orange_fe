@@ -40,6 +40,11 @@ export const palette: PaletteOptions = {
     pageWrapperBg: '#f9f9f9',
   },
 
+  backgrounds: {
+    mainGradient:
+      'linear-gradient(270deg, #f1faf3 26.68%, #edfbe4 52.54%, #e3f8d8 74.16%, #dbf2d6 103.78%)',
+  },
+
   globalColors: {
     textGray: grey[500],
     primaryGreen: green[700],
@@ -67,6 +72,10 @@ declare module '@mui/material/styles' {
       pageWrapperBg?: string;
     };
 
+    backgrounds: {
+      mainGradient: string;
+    };
+
     globalColors: {
       primaryGreen: string;
       textGray: string;
@@ -91,6 +100,10 @@ declare module '@mui/material/styles' {
       disabledBg?: string;
       disabledText?: string;
       pageWrapperBg?: string;
+    };
+
+    backgrounds?: {
+      mainGradient?: string;
     };
 
     globalColors?: {

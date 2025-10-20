@@ -6,13 +6,7 @@ export const PageWrapper = styled.div`
   flex-direction: column;
   min-height: 100vh;
   background: ${theme.palette.loginColors?.pageWrapperBg};
-  background: linear-gradient(
-    270deg,
-    #f1faf3 26.68%,
-    #edfbe4 52.54%,
-    #e3f8d8 74.16%,
-    #dbf2d6 103.78%
-  );
+  background: ${theme.palette.backgrounds.mainGradient};
   justify-content: space-between;
 `;
 export const ContentWrapper = styled.main`
