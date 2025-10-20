@@ -11,6 +11,9 @@ export const Wrapper = styled(Box)<BoxProps>`
   background: ${theme.palette.loginColors?.pageWrapperBg};
   border-top: 1px solid ${theme.palette.loginColors.border};
   padding: 20px 50px;
+  font-family: ${theme.typography.fontFamily || "'Inter', sans-serif"};
+  font-size: ${theme.typography.subtitle1?.fontSize || '16px'};
+  font-weight: ${theme.typography.subtitle1?.fontWeight || 500};
   color: ${theme.palette.loginColors.subtitleColor1};
   a {
     color: ${theme.palette.loginColors.subtitleColor1};
