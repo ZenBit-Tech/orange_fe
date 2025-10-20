@@ -4,7 +4,10 @@ import { PrivacyPolicyPage } from '@/pages/LegalPages/PrivacyPolicyPage';
 import { TermsPage } from '@/pages/LegalPages/TermsPage';
 import { LinkExpiredPage } from '@/pages/LinkExpiredPage';
 import { LoginPage } from '@/pages/LoginPage';
+import { VerifyPage } from '@/pages/VerifyPage';
 import { GlobalStyle } from '@/style';
+
+
 
 export const App: React.FC = () => {
   return (
@@ -15,6 +18,7 @@ export const App: React.FC = () => {
         <Route path="/privacy" element={<PrivacyPolicyPage />} />
         <Route path="/terms" element={<TermsPage />} />
         <Route path="/link-expired" element={<LinkExpiredPage />} />
+        <Route path="/verify" element={<VerifyPage />} />
       </Routes>
     </>
   );

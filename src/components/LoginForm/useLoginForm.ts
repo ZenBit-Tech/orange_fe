@@ -1,6 +1,8 @@
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
+import { useSendMagicLinkMutation } from '@/store/authApi';
+
 export type LoginFormInputs = {
   email: string;
   message: string;
@@ -14,10 +16,16 @@ export const useLoginForm = () => {
     formState: { errors },
   } = useForm<LoginFormInputs>();
 
+  const [sendMagicLink, { isSuccess }] = useSendMagicLinkMutation();
+
   const { t } = useTranslation();
 
-  const onSubmit = (data: LoginFormInputs) => {
-    console.log('Form Data:', data);
+  const onSubmit = async (data: LoginFormInputs) => {
+    try {
+      await sendMagicLink(data).unwrap();
+    } catch (error) {
+      console.error('Error sending magic link', error);
+    }
   };
 
   return {
@@ -27,5 +35,6 @@ export const useLoginForm = () => {
     errors,
     t,
     onSubmit,
+    isSuccess,
   };
 };
