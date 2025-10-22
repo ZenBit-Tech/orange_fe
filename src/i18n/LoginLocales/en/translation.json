@@ -45,5 +45,9 @@
     "error-text":"Error checking link",
     "success":"✓ The link has been confirmed successfully.",
     "status":"Preparation..."
+  },
+    "spinner": {
+    "analyzingTitle": "Analyzing your report...",
+    "analyzingDescription": "Our AI is extracting and validating your health data. This may take a few moments."
   }
 }
