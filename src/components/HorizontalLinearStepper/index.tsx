@@ -1,27 +1,16 @@
-import type { StepIconProps } from '@mui/material';
 import Step from '@mui/material/Step';
 
 import { getStepContent } from '@/helpers/getStep';
 
+import { StyledStepIcon } from '../StyledStepIcon';
 import {
   StepperWrapper,
   StyledConnector,
   StyledContent,
-  StyledStepIconRoot,
   StyledStepLabel,
   StyledStepper,
 } from './styles';
 import { useHorizontalLinearStepper } from './useHorizontalLinearStepper';
-
-export function StyledStepIcon(props: StepIconProps) {
-  const { active, completed, icon, error } = props;
-
-  return (
-    <StyledStepIconRoot ownerState={{ active, completed, error }}>
-      {String(icon)}
-    </StyledStepIconRoot>
-  );
-}
 
 export const HorizontalLinearStepper: React.FC = () => {
   const { steps, activeStep, handleNext } = useHorizontalLinearStepper();

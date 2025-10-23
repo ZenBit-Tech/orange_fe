@@ -1,9 +1,30 @@
 import { Box, Button, LinearProgress, Stack, Typography, styled } from '@mui/material';
 
+import { GrUpload } from 'react-icons/gr';
+import { IoIosCloseCircleOutline } from 'react-icons/io';
+
+export const TextClick = styled(Typography)(({ theme }) => ({
+  color: theme.palette.uploadColors.textClick,
+}));
+
+export const TextSupport = styled(Typography)(({ theme }) => ({
+  color: theme.palette.uploadColors.textSupport,
+}));
+
 export const BrowseButton = styled(Button)(({ theme }) => ({
   marginTop: theme.spacing(2),
   textTransform: 'none',
   borderRadius: '8px',
+}));
+
+export const StyledUploadIcon = styled(GrUpload)(({ theme }) => ({
+  color: theme.palette.uploadColors.borderColor,
+  fontSize: theme.spacing(3),
+  marginBottom: theme.spacing(1),
+}));
+
+export const StyledCloseIcon = styled(IoIosCloseCircleOutline)(({ theme }) => ({
+  fontSize: theme.spacing(3),
 }));
 
 export const FileWrapper = styled(Box)`
@@ -25,13 +46,10 @@ export const FileIconContainer = styled(Stack)(({ theme }) => ({
   minWidth: '40px',
 }));
 
-export const FileExtensionText = styled(Typography)({
-  fontWeight: 'bold',
-});
-
 export const FileInfoContainer = styled(Box)({
   flexGrow: 1,
   minWidth: 0,
+  textAlign: 'left',
 });
 
 export const FileTextSecondary = styled(Typography)(({ theme }) => ({
@@ -71,7 +89,7 @@ export const DropzoneArea = styled(Box)<{ $isUploading: boolean; $hasFiles: bool
     justifyContent: 'center',
     padding: theme.spacing(3),
     borderWidth: 1,
-    borderRadius: theme.shape.borderRadius,
+    borderRadius: 12,
     borderColor: theme.palette.uploadColors.borderColor,
     borderStyle: 'dashed',
     backgroundColor: theme.palette.uploadColors.backgroundColorSecondary,

@@ -1,17 +1,14 @@
 import { IconButton, Typography } from '@mui/material';
 
-import { GrUpload } from 'react-icons/gr';
-import { IoIosCloseCircleOutline as CloseIcon } from 'react-icons/io';
 import { MdOutlineInsertDriveFile as FileIcon } from 'react-icons/md';
 
 import type { DropzoneInputProps, DropzoneRootProps } from 'react-dropzone';
 
-import type { UploadStatus } from '../UploadStep/useUploadStep';
+import { UPLOAD_STATUS, type UploadStatus } from '../UploadStep/useUploadStep';
 import {
   BoxProgress,
   BrowseButton,
   DropzoneArea,
-  FileExtensionText,
   FileIconContainer,
   FileInfoContainer,
   FileItemContainer,
@@ -20,7 +17,11 @@ import {
   ProgressContainer,
   RejectedText,
   StatusText,
+  StyledCloseIcon,
   StyledLinearProgress,
+  StyledUploadIcon,
+  TextClick,
+  TextSupport,
 } from './styles';
 import { useDropzoneFile } from './useDropzoneFile';
 
@@ -61,9 +62,9 @@ export const DropzoneFile: React.FC<DropzoneFileProps> = ({
 
       {!hasFiles ? (
         <>
-          <GrUpload color="rgba(0, 153, 102, 1)" size={24} />
-          <Typography variant="body2">{t('Upload.drag-and-drop')}</Typography>
-          <Typography variant="body2">{t('Upload.supports')}</Typography>
+          <StyledUploadIcon />
+          <TextClick variant="body2">{t('Upload.drag-and-drop')}</TextClick>
+          <TextSupport variant="body2">{t('Upload.supports')}</TextSupport>
           <BrowseButton variant="outlined" color="success">
             {t('Upload.button')}
           </BrowseButton>
@@ -77,26 +78,32 @@ export const DropzoneFile: React.FC<DropzoneFileProps> = ({
               <FileItemContainer key={file.name}>
                 <FileIconContainer>
                   <FileIcon color="action" fontSize="large" />
-                  <FileExtensionText>{fileExtension}</FileExtensionText>
+                  <Typography variant="subtitle2">{fileExtension}</Typography>
                 </FileIconContainer>
                 <FileInfoContainer>
                   <Typography variant="body2">{file.name}</Typography>
                   <FileTextSecondary variant="body2">{formatBytes(file.size)}</FileTextSecondary>
-                  {uploadStatus === 'rejected' ? (
+                  {uploadStatus === UPLOAD_STATUS.Rejected ? (
                     <RejectedText variant="caption" color="error">
                       {errorMessage}
                     </RejectedText>
                   ) : (
                     <>
-                      <ProgressContainer>
-                        <BoxProgress>
-                          <StyledLinearProgress
-                            variant="determinate"
-                            value={progress}
-                            color={uploadStatus === 'error' ? 'error' : 'success'}
-                          />
-                        </BoxProgress>
-                      </ProgressContainer>
+                      {isUploading && (
+                        <ProgressContainer>
+                          <BoxProgress>
+                            <StyledLinearProgress
+                              variant="determinate"
+                              value={progress}
+                              color={
+                                uploadStatus === UPLOAD_STATUS.Error
+                                  ? UPLOAD_STATUS.Error
+                                  : UPLOAD_STATUS.Success
+                              }
+                            />
+                          </BoxProgress>
+                        </ProgressContainer>
+                      )}
                       <StatusText
                         variant="caption"
                         color={isUploading ? 'textSecondary' : statusDisplay.color}
@@ -109,7 +116,7 @@ export const DropzoneFile: React.FC<DropzoneFileProps> = ({
                   )}
                 </FileInfoContainer>
                 <IconButton size="small" onClick={(e) => handleRemoveFile(file.name, e)}>
-                  <CloseIcon size={24} />
+                  <StyledCloseIcon />
                 </IconButton>
               </FileItemContainer>
             );

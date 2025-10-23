@@ -18,7 +18,7 @@ export const StepperWrapper = styled(Box)(({ theme }) => ({
 export const StyledStepper = styled(Stepper)(({ theme }) => ({
   justifyContent: 'center',
   padding: theme.spacing(0, 1),
-  marginBottom: theme.spacing(1),
+  marginBottom: theme.spacing(3),
   [theme.breakpoints.up('md')]: {
     padding: 0,
   },
@@ -35,36 +35,6 @@ export const StyledContent = styled(Box)`
   justify-content: center;
   flex-direction: column;
 `;
-
-export const StyledStepIconRoot = styled('div')<{
-  ownerState: { active?: boolean; completed?: boolean; error?: boolean };
-}>(({ theme, ownerState }) => ({
-  backgroundColor: theme.palette.stepperColors.disabledStep,
-  color: theme.palette.stepperColors.nonActiveText,
-  width: 32,
-  height: 32,
-  display: 'flex',
-  borderRadius: '50%',
-  justifyContent: 'center',
-  alignItems: 'center',
-  fontWeight: 'normal',
-  [theme.breakpoints.up('md')]: {
-    width: 40,
-    height: 40,
-  },
-  ...(ownerState.active && {
-    backgroundColor: theme.palette.stepperColors.activeStep,
-    color: theme.palette.globalColors.primaryGreen,
-  }),
-  ...(ownerState.completed && {
-    backgroundColor: theme.palette.stepperColors.activeStep,
-    color: theme.palette.globalColors.primaryGreen,
-  }),
-  ...(ownerState.error && {
-    backgroundColor: theme.palette.stepperColors.errorStep,
-    color: theme.palette.error.main,
-  }),
-}));
 
 export const StyledConnector = styled(StepConnector)(({ theme }) => ({
   [`&.${stepConnectorClasses.root}`]: {

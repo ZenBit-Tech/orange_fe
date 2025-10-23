@@ -51,6 +51,7 @@
     "button-continue": "Continue",
     "button-uploading": "Uploading...",
     "invalid-types": "Invalid file type. Please upload a PDF, JPG, or PNG.",
-    "file-uploaded": "File uploaded successfully."
+    "file-uploaded": "File uploaded successfully.",
+    "file-too-large": "File is too large. The maximum size is 30MB."
   }
 }

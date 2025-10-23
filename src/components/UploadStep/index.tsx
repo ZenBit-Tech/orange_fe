@@ -2,7 +2,7 @@ import { Typography } from '@mui/material';
 
 import { DropzoneFile } from '../DropzoneFile';
 import { ButtonContainer, Spacer, StyledButton, WrapperUpload } from './styles';
-import { useUploadStep } from './useUploadStep';
+import { UPLOAD_STATUS, useUploadStep } from './useUploadStep';
 
 interface UploadStepProps {
   onContinue: () => void;
@@ -44,7 +44,7 @@ export const UploadStep: React.FC<UploadStepProps> = ({ onContinue }) => {
           variant="contained"
           onClick={onContinue}
           size="large"
-          disabled={uploadStatus !== 'success'}
+          disabled={uploadStatus !== UPLOAD_STATUS.Success}
         >
           {isUploading ? t('Upload.button-uploading') : t('Upload.button-continue')}
         </StyledButton>
