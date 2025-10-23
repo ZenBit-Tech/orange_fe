@@ -24,6 +24,17 @@ export const CenteredText = styled.div`
     font-family: ${theme.typography.fontFamily};
   }
 
+  @media (min-width: 1024px) and (max-height: 860px) {
+    margin: 20px 0;
+    h5 {
+       font-size: ${theme.typography.h5.fontSize};
+      line-height: 1.2;
+    }
+    p {
+      margin: 5px 0 0;
+      font-size: ${theme.typography.sizes.body2};
+    }
+
   @media (max-width: 480px) {
     h5 {
       font-size: ${theme.typography.sizes.h5Mobile};
@@ -51,9 +62,12 @@ export const WrapperForm = styled(Box)<BoxProps>`
   margin: 40px auto;
   box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
 
-  @media (max-width: 1024px) {
+  @media (min-width: 1024px) and (max-height: 760px) {
     max-width: 420px;
-    padding: 28px 36px;
+    gap: 5px;
+    padding: 32px 50px;
+    border-radius: 20px;
+    margin: 15px auto;
   }
 
   @media (max-width: 768px) {
@@ -113,6 +127,12 @@ export const Button = styled.button<{ disabledBg?: string; disabledColor?: strin
   font-family: ${theme.typography.fontFamily};
   font-size: ${theme.typography.button?.fontSize || '16px'};
 
+  @media (min-width: 1024px) and (max-height: 760px) {
+    ${theme.typography.sizes.body2};
+    padding: 2px 24px;
+    height: 36px;
+    border-radius: 10px;
+  }
   @media (max-width: 768px) {
     height: 44px;
     padding: 8px 16px;
@@ -144,6 +164,9 @@ export const Terms = styled.p`
   font-size: ${theme.typography.body2?.fontSize};
   color: ${theme.palette.loginColors?.subtitleColor1 ?? theme.palette.text?.secondary};
   font-family: ${theme.typography.fontFamily};
+  @media (min-width: 1024px) and (max-height: 760px) {
+    font-size: ${theme.typography.sizes.body3Mobile};
+  }
 
   @media (max-width: 480px) {
     font-size: ${theme.typography.sizes.terms};

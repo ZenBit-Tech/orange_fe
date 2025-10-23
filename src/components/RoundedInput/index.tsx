@@ -17,6 +17,9 @@ const StyledTextField = styled((props: TextFieldProps) => (
       height: 40px;
       border-radius: 10px;
       align-items: center;
+      @media (min-width: 1024px) and (max-height: 760px) {
+        height: 36px;
+      }
       input {
         height: 100%;
         padding: 0 14px;
