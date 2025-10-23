@@ -1,23 +1,12 @@
 import { theme } from '@theme';
 import styled from 'styled-components';
 
-export const LegalPageWrapper = styled.main`
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  justify-content: space-between;
-  background: linear-gradient(
-    180deg,
-    ${theme.palette.background.default} 0%,
-    ${theme.palette.loginColors?.pageWrapperBg || '#f9fafb'} 100%
-  );
-`;
-
 export const LegalContent = styled.section`
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: flex-start;
+  margin: 30px 40px;
   padding: 50px 80px;
   color: ${theme.palette.text.primary};
   line-height: 1.6;
@@ -29,6 +18,9 @@ export const LegalContent = styled.section`
     border: none;
     height: 0;
   }
+  & div.markdown strong {
+    font-weight: 500;
+  }
 
   & > div {
     display: flex;
@@ -37,7 +29,7 @@ export const LegalContent = styled.section`
     width: 100%;
     max-width: 1062px;
     padding: 32px 64px 64px 64px;
-    background: ${theme.palette.loginColors?.loginBg || theme.palette.background.paper};
+    background: ${theme.palette.loginColors?.loginBg};
     border-radius: 20px;
     border: 1px solid ${theme.palette.loginColors?.border ?? theme.palette.divider};
     box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
@@ -54,12 +46,10 @@ export const LegalContent = styled.section`
 
   & div.markdown p,
   li {
-    color: color: ${theme.palette.loginColors?.legalText};
-    font-family: ${theme.typography.fontFamily || "'Inter', sans-serif"};
-    font-size: ${theme.typography.body1?.fontSize || '16px'};
+    color: color: ${theme.palette.loginColors?.subtitleColor};
+    font-size: ${theme.typography.body1?.fontSize};
+    font-family: ${theme.typography.h5?.fontFamily};
     font-style: normal;
-    font-weight: ${theme.typography.body1?.fontWeight || 400};
-    line-height: ${theme.typography.body1?.lineHeight || '24px'};
     max-width: 100%;
     text-align: justify;
     margin: 0 0 10px;
@@ -68,11 +58,10 @@ export const LegalContent = styled.section`
   & div.markdown h1 {
     color: ${theme.palette.loginColors?.titleColor};
     text-align: center;
-    font-family: ${theme.typography.h5?.fontFamily || "'Poppins', sans-serif"};
-    font-size: ${theme.typography.h5?.fontSize || '24px'};
+    font-family: ${theme.typography.h5?.fontFamily};
+    font-size: ${theme.typography.h5?.fontSize};
     font-style: normal;
-    font-weight: ${theme.typography.h5?.fontWeight || 400};
-    line-height: ${theme.typography.h5?.lineHeight || '133.4%'};
+    font-weight: ${theme.typography.h5?.fontWeight};
     align-self: stretch;
     margin-bottom: 24px;
     width: 100%;
@@ -81,22 +70,20 @@ export const LegalContent = styled.section`
   & div.markdown h2 {
     color: ${theme.palette.loginColors?.titleColor};
     text-align: center;
-    font-family: ${theme.typography.h6?.fontFamily || "'Poppins', sans-serif"};
-    font-size: ${theme.typography.h6?.fontSize || '20px'};
+    font-family: ${theme.typography.h5?.fontFamily};
+    font-size: ${theme.typography.body1?.fontSize};
     font-style: normal;
-    font-weight: ${theme.typography.h6?.fontWeight || 400};
-    line-height: ${theme.typography.h6?.lineHeight || '133.4%'};
+    font-weight: ${theme.typography.body2?.fontWeight};
     align-self: stretch;
     margin-bottom: 24px;
     width: 100%;
   }
   & div.markdown h3 {
     color: ${theme.palette.loginColors?.titleColor};
-    font-family: ${theme.typography.h6?.fontFamily || "'Poppins', sans-serif"};
-    font-size: ${theme.typography.h6?.fontSize || '20px'};
+    font-family: ${theme.typography.h5?.fontFamily};
+    font-size: ${theme.typography.body1?.fontSize};
     font-style: normal;
-    font-weight: ${theme.typography.h6?.fontWeight || 400};
-    line-height: ${theme.typography.h6?.lineHeight || '160%'};
+    font-weight: ${theme.typography.body1?.fontWeight};
     margin-top: 24px;
     margin-bottom: 2px;
   }
@@ -111,17 +98,19 @@ export const LegalContent = styled.section`
     }
 
     h2 {
-      font-size: ${theme.typography.sizes.h5Mobile || '20px'};
+      font-size: ${theme.typography.sizes.h5Mobile};
     }
 
     p {
-      font-size: ${theme.typography.sizes.body2 || '14px'};
+      font-size: ${theme.typography.sizes.body2};
       line-height: 22px;
     }
   }
 
   @media (max-width: 480px) {
+  margin: 5px 0;
     & > div {
+    margin: 0;
       padding: 20px 20px 32px;
       gap: 16px;
     }

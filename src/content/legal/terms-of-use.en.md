@@ -4,12 +4,12 @@
 
 ## Acceptance of Terms
 
-By accessing or using **BloodGPT**, you agree to be bound by these Terms of Use.  
+By accessing or using **PlasmAI**, you agree to be bound by these Terms of Use.  
 If you do not agree to these Terms, you may not use the Service.
 
 ## Service Description
 
-**BloodGPT** provides AI-assisted explanations of blood test results and related health information.  
+**PlasmAI** provides AI-assisted explanations of blood test results and related health information.  
 This service does **not** constitute medical advice, diagnosis, or treatment — it is offered solely for informational and educational purposes.
 
 ## User Obligations

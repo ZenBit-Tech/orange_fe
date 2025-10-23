@@ -7,8 +7,6 @@ import { LoginPage } from '@/pages/LoginPage';
 import { VerifyPage } from '@/pages/VerifyPage';
 import { GlobalStyle } from '@/style';
 
-
-
 export const App: React.FC = () => {
   return (
     <>
