@@ -38,6 +38,25 @@ export const palette: PaletteOptions = {
     disabledBg: '#e0e0e0',
     disabledText: '#9e9e9e',
     pageWrapperBg: '#f9f9f9',
+    pageWrapperBgTransparent: 'transparent',
+  },
+
+  stepperColors: {
+    disabledStep: 'rgba(239, 239, 239, 1)',
+    activeStep: 'rgba(217, 240, 232, 1)',
+    errorStep: 'rgba(254, 228, 226, 1)',
+    activeText: 'rgba(26, 94, 58, 1)',
+    nonActiveText: 'rgba(82, 82, 82, 1)',
+    buttonColor: 'rgba(0, 153, 102, 1)',
+  },
+
+  uploadColors: {
+    textClick: 'rgba(8, 11, 8, 1)',
+    textSupport: 'rgba(82, 82, 82, 1)',
+    borderColor: 'rgba(26, 163, 117, 1)',
+    backgroundColorPrimary: 'rgba(255, 255, 255, 1)',
+    borderColorPrimary: 'rgba(220, 220, 220, 1)',
+    backgroundColorSecondary: 'rgba(253, 253, 253, 1)',
   },
 
   backgrounds: {
@@ -70,6 +89,25 @@ declare module '@mui/material/styles' {
       disabledBg: string;
       disabledText: string;
       pageWrapperBg?: string;
+      pageWrapperBgTransparent?: string;
+    };
+
+    stepperColors: {
+      disabledStep: string;
+      activeStep: string;
+      errorStep: string;
+      buttonColor: string;
+      activeText: string;
+      nonActiveText: string;
+    };
+
+    uploadColors: {
+      borderColor: string;
+      backgroundColorPrimary: string;
+      borderColorPrimary: string;
+      backgroundColorSecondary: string;
+      textClick: string;
+      textSupport: string;
     };
 
     backgrounds: {
@@ -100,6 +138,25 @@ declare module '@mui/material/styles' {
       disabledBg?: string;
       disabledText?: string;
       pageWrapperBg?: string;
+      pageWrapperBgTransparent?: string;
+    };
+
+    stepperColors: {
+      disabledStep?: string;
+      activeStep?: string;
+      errorStep?: string;
+      buttonColor?: string;
+      activeText?: string;
+      nonActiveText?: string;
+    };
+
+    uploadColors: {
+      borderColor: string;
+      backgroundColorPrimary: string;
+      borderColorPrimary: string;
+      backgroundColorSecondary: string;
+      textClick: string;
+      textSupport: string;
     };
 
     backgrounds?: {

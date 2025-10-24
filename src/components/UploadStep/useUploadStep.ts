@@ -1,0 +1,116 @@
+import { useState } from 'react';
+
+import { type FileRejection, useDropzone } from 'react-dropzone';
+import { useTranslation } from 'react-i18next';
+
+export const UPLOAD_STATUS = {
+  Idle: 'idle',
+  Uploading: 'uploading',
+  Success: 'success',
+  Error: 'error',
+  Rejected: 'rejected',
+} as const;
+
+export type UploadStatus = (typeof UPLOAD_STATUS)[keyof typeof UPLOAD_STATUS];
+
+export const useUploadStep = () => {
+  const MAX_FILE_SIZE_BYTES = 30 * 1024 * 1024;
+
+  const [files, setFiles] = useState<File[]>([]);
+  const [uploadProgress, setUploadProgress] = useState<Record<string, number>>({});
+  const [uploadStatus, setUploadStatus] = useState<UploadStatus>(UPLOAD_STATUS.Idle);
+  const [errorMessage, setErrorMessage] = useState<string>('');
+
+  const { t } = useTranslation();
+
+  const hasFiles = files.length > 0;
+
+  const isUploading = uploadStatus === UPLOAD_STATUS.Uploading;
+
+  const simulateUpload = (file: File) => {
+    setUploadProgress((prev) => ({ ...prev, [file.name]: 0 }));
+    setUploadStatus(UPLOAD_STATUS.Uploading);
+    setErrorMessage('');
+
+    const interval = setInterval(() => {
+      setUploadProgress((prev) => {
+        const newProgress = (prev[file.name] || 0) + 10;
+        if (newProgress >= 100) {
+          clearInterval(interval);
+          setUploadStatus(UPLOAD_STATUS.Success);
+          return { ...prev, [file.name]: 100 };
+        }
+        return { ...prev, [file.name]: newProgress };
+      });
+    }, 200);
+  };
+
+  const { getRootProps, getInputProps } = useDropzone({
+    onDrop: (acceptedFiles) => {
+      setFiles(acceptedFiles);
+      setUploadProgress({});
+      acceptedFiles.forEach(simulateUpload);
+    },
+    onDropRejected: (fileRejections: FileRejection[]) => {
+      setFiles(fileRejections.map((r) => r.file));
+
+      setUploadProgress({});
+      setUploadStatus(UPLOAD_STATUS.Rejected);
+      if (fileRejections.length > 0 && fileRejections[0].errors.length > 0) {
+        const firstError = fileRejections[0].errors[0];
+
+        if (firstError.code === 'file-too-large') {
+          setErrorMessage(t('Upload.file-too-large'));
+        } else if (firstError.code === 'file-invalid-type') {
+          setErrorMessage(t('Upload.invalid-types'));
+        } else {
+          setErrorMessage(firstError.message);
+        }
+      }
+    },
+    accept: {
+      'application/pdf': ['.pdf'],
+      'image/png': ['.png'],
+      'image/jpeg': ['.jpeg', '.jpg'],
+    },
+    maxFiles: 1,
+    maxSize: MAX_FILE_SIZE_BYTES,
+  });
+
+  const handleRemoveFile = (fileName: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    setFiles([]);
+    setUploadProgress({});
+    setUploadStatus(UPLOAD_STATUS.Idle);
+    setErrorMessage('');
+  };
+
+  const getStatusDisplay = () => {
+    switch (uploadStatus) {
+      case UPLOAD_STATUS.Success:
+        return { text: t('Upload.file-uploaded'), color: 'success.main' };
+      case UPLOAD_STATUS.Error:
+        return { text: errorMessage, color: 'error' };
+      case UPLOAD_STATUS.Rejected:
+        return { text: errorMessage, color: 'error' };
+      default:
+        return { text: '', color: 'textSecondary' };
+    }
+  };
+
+  const statusDisplay = getStatusDisplay();
+
+  return {
+    files,
+    uploadProgress,
+    hasFiles,
+    isUploading,
+    getRootProps,
+    errorMessage,
+    uploadStatus,
+    getInputProps,
+    statusDisplay,
+    handleRemoveFile,
+    t,
+  };
+};
