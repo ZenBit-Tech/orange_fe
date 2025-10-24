@@ -11,6 +11,7 @@ interface WrapperProps extends BoxProps {
 export const Wrapper = styled(Box)<WrapperProps>`
   display: flex;
   align-items: center;
+  box-sizing: border-box;
   justify-content: space-between;
   background: ${({ transparent }) =>
     transparent

@@ -22,13 +22,9 @@ import {
 import { useLoginForm } from './useLoginForm';
 
 export const LoginForm: React.FC = () => {
-  const { register, handleSubmit, watch, errors, t, onSubmit } = useLoginForm();
+  const { register, handleSubmit, watch, errors, t, onSubmit, isSuccess } = useLoginForm();
   const emailValue = watch('email') || '';
   const theme = useTheme();
-
-  const handleFacebookLogin = () => {
-    // Implement Facebook login logic here
-  };
 
   const isEmailValid = emailRegex.test(emailValue);
   return (
@@ -45,9 +41,9 @@ export const LoginForm: React.FC = () => {
       />
 
       <SocialLoginButton
-        onClick={handleFacebookLogin}
         icon={<FaFacebook color={theme.palette.iconColors.facebook} />}
         label={t('Form.login-form.loginWithFacebook')}
+        linkPath={import.meta.env.VITE_FACEBOOK_AUTH}
       />
 
       <SocialLoginButton
@@ -65,7 +61,7 @@ export const LoginForm: React.FC = () => {
       <EmailField register={register} errors={errors} t={t} />
 
       <BtnSubmit type="submit" disabled={!isEmailValid}>
-        {t('Form.login-form.submit')}
+        {isSuccess ? t('Form.login-form.sent') : t('Form.login-form.submit')}
       </BtnSubmit>
 
       <Terms>{t('Form.login-form.terms')}</Terms>
