@@ -46,7 +46,7 @@ export const useUploadStep = () => {
     try {
       const base64Data = await fileToBase64(file);
 
-      const response = await fetch('http://localhost:3000/ocr/extract', {
+      const response = await fetch(import.meta.env.VITE_OCR_EXTRACTION, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
