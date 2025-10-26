@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { type FileRejection, useDropzone } from 'react-dropzone';
 import { useTranslation } from 'react-i18next';
 
+import type { BloodTestData } from '@/constants/blood-test-data';
+
 export const UPLOAD_STATUS = {
   Idle: 'idle',
   Uploading: 'uploading',
@@ -20,12 +22,53 @@ export const useUploadStep = () => {
   const [uploadProgress, setUploadProgress] = useState<Record<string, number>>({});
   const [uploadStatus, setUploadStatus] = useState<UploadStatus>(UPLOAD_STATUS.Idle);
   const [errorMessage, setErrorMessage] = useState<string>('');
+  const [extractedData, setExtractedData] = useState<BloodTestData | null>(null);
 
   const { t } = useTranslation();
 
   const hasFiles = files.length > 0;
 
   const isUploading = uploadStatus === UPLOAD_STATUS.Uploading;
+
+  const fileToBase64 = (file: File): Promise<string> => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result as string);
+      reader.onerror = (error) => reject(error);
+    });
+  };
+
+  const uploadAndExtractData = async (file: File) => {
+    setErrorMessage('');
+    setExtractedData(null);
+
+    try {
+      const base64Data = await fileToBase64(file);
+
+      const response = await fetch('http://localhost:3000/ocr/extract', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ data: base64Data }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Failed to process file');
+      }
+
+      const data: BloodTestData = await response.json();
+
+      setExtractedData(data);
+    } catch (error) {
+      const message = error instanceof Error ? error.message : t('Upload.error-generic');
+
+      setErrorMessage(message);
+      setUploadProgress((prev) => ({ ...prev, [file.name]: 0 }));
+    }
+  };
 
   const simulateUpload = (file: File) => {
     setUploadProgress((prev) => ({ ...prev, [file.name]: 0 }));
@@ -50,6 +93,10 @@ export const useUploadStep = () => {
       setFiles(acceptedFiles);
       setUploadProgress({});
       acceptedFiles.forEach(simulateUpload);
+
+      if (acceptedFiles.length > 0) {
+        uploadAndExtractData(acceptedFiles[0]);
+      }
     },
     onDropRejected: (fileRejections: FileRejection[]) => {
       setFiles(fileRejections.map((r) => r.file));
@@ -111,6 +158,7 @@ export const useUploadStep = () => {
     getInputProps,
     statusDisplay,
     handleRemoveFile,
+    extractedData,
     t,
   };
 };
