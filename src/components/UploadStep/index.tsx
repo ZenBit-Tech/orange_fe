@@ -22,6 +22,13 @@ export const UploadStep: React.FC<UploadStepProps> = ({ onContinue }) => {
     handleRemoveFile,
     t,
   } = useUploadStep();
+
+  const handleContinue = () => {
+    if (uploadStatus === UPLOAD_STATUS.Success && !isUploading) {
+      onContinue();
+    }
+  };
+
   return (
     <WrapperUpload>
       <Typography variant="h5">{t('Upload.title')}</Typography>
@@ -42,7 +49,7 @@ export const UploadStep: React.FC<UploadStepProps> = ({ onContinue }) => {
         <Spacer />
         <StyledButton
           variant="contained"
-          onClick={onContinue}
+          onClick={handleContinue}
           size="large"
           disabled={uploadStatus !== UPLOAD_STATUS.Success}
         >
