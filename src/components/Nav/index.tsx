@@ -7,11 +7,15 @@ import logo from '@/assets/logo.png';
 
 import { Wrapper } from './styles';
 
-export const Nav: React.FC = () => {
+interface NavProps {
+  transparent?: boolean;
+}
+
+export const Nav: React.FC<NavProps> = ({ transparent = false }) => {
   const { t } = useTranslation();
 
   return (
-    <Wrapper>
+    <Wrapper transparent={transparent}>
       <Link to="/">
         <img src={logo} alt={t('Form.nav.logoAlt')} />
       </Link>

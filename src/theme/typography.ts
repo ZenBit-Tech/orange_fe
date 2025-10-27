@@ -21,6 +21,8 @@ export const typography: ThemeOptions['typography'] & {
     body1Mobile: string;
     body2: string;
     body2Mobile: string;
+    body3: string;
+    body3Mobile: string;
     button: string;
     terms: string;
   };
@@ -43,6 +45,11 @@ export const typography: ThemeOptions['typography'] & {
     fontWeight: 500,
     lineHeight: 1.5,
   },
+  body3: {
+    fontSize: '12px',
+    fontWeight: 400,
+    lineHeight: '18px',
+  },
   button: {
     textTransform: 'none',
     fontSize: '16px',
@@ -59,6 +66,8 @@ export const typography: ThemeOptions['typography'] & {
     body1Mobile: '14px',
     body2: '14px',
     body2Mobile: '13px',
+    body3: '12px',
+    body3Mobile: '11px',
     button: '16px',
     terms: '12px',
   },
@@ -77,8 +86,19 @@ declare module '@mui/material/styles' {
       body1Mobile: string;
       body2: string;
       body2Mobile: string;
+      body3: string;
+      body3Mobile: string;
       button: string;
       terms: string;
     };
+  }
+}
+declare module '@mui/material/styles' {
+  interface TypographyVariants {
+    body3: React.CSSProperties;
+  }
+
+  interface TypographyVariantsOptions {
+    body3?: React.CSSProperties;
   }
 }
