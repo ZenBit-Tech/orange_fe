@@ -18,9 +18,6 @@ export const LegalContent = styled.section`
     border: none;
     height: 0;
   }
-  & div.markdown strong {
-    font-weight: 500;
-  }
 
   & > div {
     display: flex;
@@ -46,9 +43,7 @@ export const LegalContent = styled.section`
 
   & div.markdown p,
   li {
-    color: color: ${theme.palette.loginColors?.subtitleColor};
-    font-size: ${theme.typography.body1?.fontSize};
-    font-family: ${theme.typography.h5?.fontFamily};
+    color: ${theme.palette.loginColors?.subtitleColor};
     font-style: normal;
     max-width: 100%;
     text-align: justify;
@@ -58,10 +53,7 @@ export const LegalContent = styled.section`
   & div.markdown h1 {
     color: ${theme.palette.loginColors?.titleColor};
     text-align: center;
-    font-family: ${theme.typography.h5?.fontFamily};
-    font-size: ${theme.typography.h5?.fontSize};
     font-style: normal;
-    font-weight: ${theme.typography.h5?.fontWeight};
     align-self: stretch;
     margin-bottom: 24px;
     width: 100%;
@@ -70,20 +62,14 @@ export const LegalContent = styled.section`
   & div.markdown h2 {
     color: ${theme.palette.loginColors?.titleColor};
     text-align: center;
-    font-family: ${theme.typography.h5?.fontFamily};
-    font-size: ${theme.typography.body1?.fontSize};
     font-style: normal;
-    font-weight: ${theme.typography.body2?.fontWeight};
     align-self: stretch;
     margin-bottom: 24px;
     width: 100%;
   }
   & div.markdown h3 {
     color: ${theme.palette.loginColors?.titleColor};
-    font-family: ${theme.typography.h5?.fontFamily};
-    font-size: ${theme.typography.body1?.fontSize};
     font-style: normal;
-    font-weight: ${theme.typography.body1?.fontWeight};
     margin-top: 24px;
     margin-bottom: 2px;
   }
@@ -108,9 +94,9 @@ export const LegalContent = styled.section`
   }
 
   @media (max-width: 480px) {
-  margin: 5px 0;
+    margin: 5px 0;
     & > div {
-    margin: 0;
+      margin: 0;
       padding: 20px 20px 32px;
       gap: 16px;
     }
