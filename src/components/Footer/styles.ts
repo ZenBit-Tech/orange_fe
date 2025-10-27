@@ -11,7 +11,7 @@ export const Wrapper = styled(Box)<BoxProps>`
   padding: 20px 50px;
   font-family: ${theme.typography.h5?.fontFamily};
   font-size: ${theme.typography.body2?.fontSize};
-  font-weight: ${theme.typography.subtitle1?.fontWeight || 500};
+  font-weight: ${theme.typography.fontWeightLight};
   color: ${theme.palette.loginColors.subtitleColor1};
   a {
     color: ${theme.palette.loginColors.subtitleColor1};
