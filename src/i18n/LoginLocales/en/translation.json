@@ -26,9 +26,9 @@
       "linkExpiredTitle": "Your sign-in link has expired",
       "linkExpiredSubtitle": "For your security, sign-in links are only valid for a short time. Please request a new one to continue.",
       "resendLink": "Request new link",
-      "or": "Or",
       "termsLink": "Terms&Conditions",
       "privacyLink": "Privacy Policy"
+      "or": "Or"
     },
     "nav": {
       "logoAlt": "PlasmaAI logo"
@@ -40,11 +40,28 @@
     "privacy": "Privacy Policy",
     "terms": "Terms & Conditions"
   },
-  "Verify":{
-    "title":"Link confirmation",
-    "loading":"Checking the link...",
-    "error-text":"Error checking link",
-    "success":"✓ The link has been confirmed successfully.",
-    "status":"Preparation..."
+  "Upload": {
+    "steps": {
+      "upload": "Upload File",
+      "review": "Review & Customize",
+      "results": "View results"
+    },
+    "title": "Upload your blood test results",
+    "description": "Upload your blood test report, and we ll turn the complex numbers into simple, personalized health insights for you.",
+    "drag-and-drop": "Click to upload or drag and drop",
+    "supports": "Supports PDF, JPG, PNG files up to 30MB",
+    "button": "Browse file",
+    "button-continue": "Continue",
+    "button-uploading": "Uploading...",
+    "invalid-types": "Invalid file type. Please upload a PDF, JPG, or PNG.",
+    "file-uploaded": "File uploaded successfully.",
+    "file-too-large": "File is too large. The maximum size is 30MB."
+  },
+  "Verify": {
+    "title": "Link confirmation",
+    "loading": "Checking the link...",
+    "error-text": "Error checking link",
+    "success": "✓ The link has been confirmed successfully.",
+    "status": "Preparation..."
   }
 }

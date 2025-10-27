@@ -4,10 +4,21 @@ import type { BoxProps } from '@mui/material';
 import { theme } from '@theme';
 import { styled } from 'styled-components';
 
-export const Wrapper = styled(Box)<BoxProps>`
+interface WrapperProps extends BoxProps {
+  transparent?: boolean;
+}
+
+export const Wrapper = styled(Box)<WrapperProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background: ${({ transparent }) =>
+    transparent
+      ? theme.palette.loginColors.pageWrapperBgTransparent
+      : theme.palette.loginColors.pageWrapperBg};
+  border-top: ${({ transparent }) =>
+    transparent ? 'none' : `1px solid ${theme.palette.loginColors.border}`};
+  box-sizing: border-box;
   padding: 20px 50px;
   font-family: ${theme.typography.h5?.fontFamily};
   font-size: ${theme.typography.body2?.fontSize};
