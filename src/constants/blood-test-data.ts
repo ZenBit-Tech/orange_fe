@@ -56,3 +56,9 @@ export interface KidneyFunction {
   creatinine?: number;
   uricAcid?: number;
 }
+
+export interface BloodTestValidation {
+  isBloodTest: boolean;
+  reason: string;
+  confidence: 'low' | 'medium' | 'high';
+}

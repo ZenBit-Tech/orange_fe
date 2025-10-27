@@ -2,6 +2,7 @@ import { Typography } from '@mui/material';
 
 import { DropzoneFile } from '../DropzoneFile';
 import { ButtonContainer, Spacer, StyledButton, WrapperUpload } from './styles';
+import { useBloodTestValidation } from './useBloodTestValidation';
 import { UPLOAD_STATUS, useUploadStep } from './useUploadStep';
 
 interface UploadStepProps {
@@ -23,8 +24,11 @@ export const UploadStep: React.FC<UploadStepProps> = ({ onContinue }) => {
     t,
   } = useUploadStep();
 
+  const { validateBloodTestData } = useBloodTestValidation();
+
   const handleContinue = () => {
     if (uploadStatus === UPLOAD_STATUS.Success && !isUploading) {
+      validateBloodTestData();
       onContinue();
     }
   };
