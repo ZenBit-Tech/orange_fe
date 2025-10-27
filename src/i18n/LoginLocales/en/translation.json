@@ -46,22 +46,23 @@
   },
     "spinner": {
     "analyzingTitle": "Analyzing your report...",
-    "analyzingDescription": "Our AI is extracting and validating your health data. This may take a few moments."
-  "Upload": {
-    "steps": {
-      "upload": "Upload File",
-      "review": "Review & Customize",
-      "results": "View results"
-    },
-    "title": "Upload your blood test results",
-    "description": "Upload your blood test report, and we ll turn the complex numbers into simple, personalized health insights for you.",
-    "drag-and-drop": "Click to upload or drag and drop",
-    "supports": "Supports PDF, JPG, PNG files up to 30MB",
-    "button": "Browse file",
-    "button-continue": "Continue",
-    "button-uploading": "Uploading...",
-    "invalid-types": "Invalid file type. Please upload a PDF, JPG, or PNG.",
-    "file-uploaded": "File uploaded successfully.",
-    "file-too-large": "File is too large. The maximum size is 30MB."
-  },
+    "analyzingDescription": "Our AI is extracting and validating your health data. This may take a few moments.",
+    "Upload": {
+      "steps": {
+        "upload": "Upload File",
+        "review": "Review & Customize",
+        "results": "View results"
+      },
+      "title": "Upload your blood test results",
+      "description": "Upload your blood test report, and we ll turn the complex numbers into simple, personalized health insights for you.",
+      "drag-and-drop": "Click to upload or drag and drop",
+      "supports": "Supports PDF, JPG, PNG files up to 30MB",
+      "button": "Browse file",
+      "button-continue": "Continue",
+      "button-uploading": "Uploading...",
+      "invalid-types": "Invalid file type. Please upload a PDF, JPG, or PNG.",
+      "file-uploaded": "File uploaded successfully.",
+      "file-too-large": "File is too large. The maximum size is 30MB."
+    }
+  }
 }

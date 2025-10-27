@@ -20,6 +20,9 @@ interface OCRSpinnerProps {
   descriptionKey?: string;
 }
 
+const radius = 30;
+const circumference = 2 * Math.PI * radius;
+
 export const OCRSpinner: React.FC<OCRSpinnerProps> = ({
   progress,
   visible = false,
@@ -28,8 +31,6 @@ export const OCRSpinner: React.FC<OCRSpinnerProps> = ({
 }) => {
   if (!visible) return null;
 
-  const radius = 30;
-  const circumference = 2 * Math.PI * radius;
   const offset = circumference - (progress / 100) * circumference;
   const isCompleted = progress >= 100;
 
