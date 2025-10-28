@@ -49,7 +49,6 @@ export const useUploadStep = () => {
       const base64Data = await fileToBase64(file);
       const extractedResult = await extractData({ data: base64Data }).unwrap();
 
-      console.log(extractedResult);
       dispatch(setExtractedData(extractedResult));
     } catch (error) {
       const message = error instanceof Error ? error.message : t('Upload.error-generic');
