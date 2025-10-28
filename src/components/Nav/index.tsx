@@ -11,7 +11,7 @@ interface NavProps {
   transparent?: boolean;
 }
 
-export const Nav: React.FC<NavProps> = ({ transparent = false }) => {
+export const Nav: React.FC<NavProps> = ({ transparent = true }) => {
   const { t } = useTranslation();
 
   return (

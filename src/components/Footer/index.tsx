@@ -16,6 +16,7 @@ export const Footer: React.FC<FooterProps> = ({ transparent = false }) => {
       <Divider>
         <a href="/help">{t('Footer.help')}</a>
         <a href="/privacy">{t('Footer.privacy')}</a>
+        <a href="/terms">{t('Footer.terms')}</a>
       </Divider>
     </Wrapper>
   );

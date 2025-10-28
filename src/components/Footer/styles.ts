@@ -20,6 +20,9 @@ export const Wrapper = styled(Box)<WrapperProps>`
     transparent ? 'none' : `1px solid ${theme.palette.loginColors.border}`};
   box-sizing: border-box;
   padding: 20px 50px;
+  font-family: ${theme.typography.h5?.fontFamily};
+  font-size: ${theme.typography.body2?.fontSize};
+  font-weight: ${theme.typography.fontWeightLight};
   color: ${theme.palette.loginColors.subtitleColor1};
   a {
     color: ${theme.palette.loginColors.subtitleColor1};

@@ -26,6 +26,8 @@
       "linkExpiredTitle": "Your sign-in link has expired",
       "linkExpiredSubtitle": "For your security, sign-in links are only valid for a short time. Please request a new one to continue.",
       "resendLink": "Request new link",
+      "termsLink": "Terms&Conditions",
+      "privacyLink": "Privacy Policy"
       "or": "Or"
     },
     "nav": {
@@ -35,7 +37,8 @@
   "Footer": {
     "logo": "© 2025 PlasmAI",
     "help": "Help",
-    "privacy": "Privacy Policy and Terms&Conditions"
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions"
   },
   "Upload": {
     "steps": {

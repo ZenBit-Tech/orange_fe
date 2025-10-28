@@ -1,6 +1,11 @@
 import { green, grey } from '@mui/material/colors';
 import type { PaletteOptions } from '@mui/material/styles';
 
+const GRADIENT_GREEN_1 = '#f1faf3';
+const GRADIENT_GREEN_2 = '#edfbe4';
+const GRADIENT_GREEN_3 = '#e3f8d8';
+const GRADIENT_GREEN_4 = '#dbf2d6';
+
 export const palette: PaletteOptions = {
   primary: {
     main: '#1976D2',
@@ -26,6 +31,11 @@ export const palette: PaletteOptions = {
     linkedin: '#4C9BE0',
   },
 
+  gradient1: GRADIENT_GREEN_1,
+  gradient2: GRADIENT_GREEN_2,
+  gradient3: GRADIENT_GREEN_3,
+  gradient4: GRADIENT_GREEN_4,
+
   loginColors: {
     textDisabled: 'rgba(0, 0, 0, 0.38)',
     socialButtonsColor: 'rgba(0, 0, 0, 0.87)',
@@ -41,6 +51,8 @@ export const palette: PaletteOptions = {
     pageWrapperBgTransparent: 'transparent',
   },
 
+  backgrounds: {
+    mainGradient: `linear-gradient(270deg, ${GRADIENT_GREEN_1} 26.68%, ${GRADIENT_GREEN_2} 52.54%, ${GRADIENT_GREEN_3} 74.16%, ${GRADIENT_GREEN_4} 103.78%)`,
   stepperColors: {
     disabledStep: 'rgba(239, 239, 239, 1)',
     activeStep: 'rgba(217, 240, 232, 1)',
@@ -59,11 +71,6 @@ export const palette: PaletteOptions = {
     backgroundColorSecondary: 'rgba(253, 253, 253, 1)',
   },
 
-  backgrounds: {
-    mainGradient:
-      'linear-gradient(270deg, #f1faf3 26.68%, #edfbe4 52.54%, #e3f8d8 74.16%, #dbf2d6 103.78%)',
-  },
-
   globalColors: {
     textGray: grey[500],
     primaryGreen: green[700],
@@ -76,6 +83,11 @@ declare module '@mui/material/styles' {
       facebook: string;
       linkedin: string;
     };
+
+    gradient1?: string;
+    gradient2?: string;
+    gradient3?: string;
+    gradient4?: string;
 
     loginColors: {
       textDisabled: string;
@@ -125,6 +137,11 @@ declare module '@mui/material/styles' {
       facebook?: string;
       linkedin?: string;
     };
+
+    gradient1?: string;
+    gradient2?: string;
+    gradient3?: string;
+    gradient4?: string;
 
     loginColors: {
       textDisabled?: string;

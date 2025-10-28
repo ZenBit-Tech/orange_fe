@@ -1,14 +1,14 @@
 import { LoginForm } from 'components';
-import { PageLayout } from 'components/Layout/PageLayout';
 
-import { ContentWrapper } from '@/pages/LoginPage/styles';
+import { PageLayout } from '@/components/Layout';
+import { PageWrapper } from '@/pages/LoginPage/styles';
 
 export const LoginPage: React.FC = () => {
   return (
     <PageLayout>
-      <ContentWrapper>
+      <PageWrapper>
         <LoginForm />
-      </ContentWrapper>
+      </PageWrapper>
     </PageLayout>
   );
 };
