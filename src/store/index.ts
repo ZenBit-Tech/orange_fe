@@ -11,7 +11,7 @@ export const store = configureStore({
     [authApi.reducerPath]: authApi.reducer,
     [ocrApi.reducerPath]: ocrApi.reducer,
     [bloodTestApi.reducerPath]: bloodTestApi.reducer,
-    bloodTest: bloodTestReducer, // Add this
+    bloodTest: bloodTestReducer,
   },
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware()

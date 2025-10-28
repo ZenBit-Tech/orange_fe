@@ -120,7 +120,7 @@ export const useUploadStep = () => {
     setUploadProgress({});
     setUploadStatus(UPLOAD_STATUS.Idle);
     setErrorMessage('');
-    dispatch(setExtractedData(null)); // Clear global state
+    dispatch(setExtractedData(null));
   };
 
   const getStatusDisplay = () => {
