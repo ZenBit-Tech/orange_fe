@@ -66,7 +66,7 @@ export const useUploadStep = () => {
 
     const interval = setInterval(() => {
       setUploadProgress((prev) => {
-        const newProgress = (prev[file.name] || 0) + 10;
+        const newProgress = (prev[file.name] || 0) + 1;
         if (newProgress >= 100) {
           clearInterval(interval);
           setUploadStatus(UPLOAD_STATUS.Success);

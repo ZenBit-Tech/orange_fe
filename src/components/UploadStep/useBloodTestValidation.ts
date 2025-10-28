@@ -33,7 +33,6 @@ export const useBloodTestValidation = () => {
     try {
       const validationResult = await validateBloodTest(dataToValidate).unwrap();
 
-      console.log(validationResult);
       dispatch(setValidationData(validationResult));
     } catch (error) {
       const message = error instanceof Error ? error.message : t('Upload.error-generic');
