@@ -1,5 +1,9 @@
 import { Typography } from '@mui/material';
 
+import { useSelector } from 'react-redux';
+
+import type { RootState } from '@/store';
+
 import { DropzoneFile } from '../DropzoneFile';
 import { OCRSpinner } from '../ProgressIndicator';
 import { UploadErrorState } from '../UploadErrorState';
@@ -12,6 +16,11 @@ interface UploadStepProps {
 }
 
 export const UploadStep: React.FC<UploadStepProps> = ({ onContinue }) => {
+  const { validateBloodTestData, isValidating, error, clearValidationError } =
+    useBloodTestValidation();
+
+  const extractedData = useSelector((state: RootState) => state.bloodTest.extractedData);
+
   const {
     files,
     isUploading,
@@ -26,11 +35,8 @@ export const UploadStep: React.FC<UploadStepProps> = ({ onContinue }) => {
     t,
   } = useUploadStep();
 
-  const { validateBloodTestData, isValidating, error, clearValidationError } =
-    useBloodTestValidation();
-
   const handleContinue = async () => {
-    if (uploadStatus === UPLOAD_STATUS.Success && !isUploading && !isValidating) {
+    if (uploadStatus === UPLOAD_STATUS.Success && !isUploading && !isValidating && extractedData) {
       const isSuccess = await validateBloodTestData();
 
       if (isSuccess) {
@@ -50,14 +56,7 @@ export const UploadStep: React.FC<UploadStepProps> = ({ onContinue }) => {
   return (
     <WrapperUpload>
       {error && <UploadErrorState onRetry={handleRetryUpload} />}
-      {isValidating && (
-        <OCRSpinner
-          visible={true}
-          progress={0}
-          titleKey="spinner.validatingTitle"
-          descriptionKey="spinner.validatingDescription"
-        />
-      )}
+      {isValidating && <OCRSpinner isLoading={true} />}
       {!error && !isValidating && (
         <>
           <Typography variant="h5">{t('Upload.title')}</Typography>
