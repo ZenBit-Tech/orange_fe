@@ -2,8 +2,11 @@ import { useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
 
+import { useBloodTestValidation } from '../UploadStep/useBloodTestValidation';
+
 export const useHorizontalLinearStepper = () => {
   const { t } = useTranslation();
+  const { isError } = useBloodTestValidation();
   const steps = [t('Upload.steps.upload'), t('Upload.steps.review'), t('Upload.steps.results')];
 
   const [activeStep, setActiveStep] = useState(0);
@@ -16,5 +19,5 @@ export const useHorizontalLinearStepper = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
-  return { steps, activeStep, handleNext, handleBack };
+  return { steps, activeStep, handleNext, handleBack, isError };
 };

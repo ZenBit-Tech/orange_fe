@@ -53,6 +53,8 @@ export const palette: PaletteOptions = {
 
   backgrounds: {
     mainGradient: `linear-gradient(270deg, ${GRADIENT_GREEN_1} 26.68%, ${GRADIENT_GREEN_2} 52.54%, ${GRADIENT_GREEN_3} 74.16%, ${GRADIENT_GREEN_4} 103.78%)`,
+  },
+
   stepperColors: {
     disabledStep: 'rgba(239, 239, 239, 1)',
     activeStep: 'rgba(217, 240, 232, 1)',
@@ -69,6 +71,7 @@ export const palette: PaletteOptions = {
     backgroundColorPrimary: 'rgba(255, 255, 255, 1)',
     borderColorPrimary: 'rgba(220, 220, 220, 1)',
     backgroundColorSecondary: 'rgba(253, 253, 253, 1)',
+    errorWarning: 'rgba(254, 228, 226, 1)',
   },
 
   globalColors: {
@@ -76,7 +79,6 @@ export const palette: PaletteOptions = {
     primaryGreen: green[700],
   },
 };
-
 declare module '@mui/material/styles' {
   interface Palette {
     iconColors: {
@@ -120,6 +122,7 @@ declare module '@mui/material/styles' {
       backgroundColorSecondary: string;
       textClick: string;
       textSupport: string;
+      errorWarning: string;
     };
 
     backgrounds: {
@@ -166,7 +169,6 @@ declare module '@mui/material/styles' {
       activeText?: string;
       nonActiveText?: string;
     };
-
     uploadColors: {
       borderColor: string;
       backgroundColorPrimary: string;
@@ -174,6 +176,7 @@ declare module '@mui/material/styles' {
       backgroundColorSecondary: string;
       textClick: string;
       textSupport: string;
+      errorWarning: string;
     };
 
     backgrounds?: {

@@ -1,17 +1,14 @@
-import Footer from '@/components/Footer';
 import { HorizontalLinearStepper } from '@/components/HorizontalLinearStepper';
-import Nav from '@/components/Nav';
+import { PageLayout } from '@/components/Layout';
 
-import { PageContainer, WrapperContent } from './styles';
+import { WrapperContent } from './styles';
 
 export const UploadPage: React.FC = () => {
   return (
-    <PageContainer>
-      <Nav transparent />
+    <PageLayout>
       <WrapperContent>
         <HorizontalLinearStepper />
       </WrapperContent>
-      <Footer transparent />
-    </PageContainer>
+    </PageLayout>
   );
 };
