@@ -7,7 +7,7 @@ import { Divider, Wrapper } from './styles';
 interface FooterProps {
   transparent?: boolean;
 }
-export const Footer: React.FC<FooterProps> = ({ transparent = false }) => {
+export const Footer: React.FC<FooterProps> = ({ transparent = true }) => {
   const { t } = useTranslation();
 
   return (
