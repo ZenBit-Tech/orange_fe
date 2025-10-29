@@ -71,6 +71,7 @@ export const palette: PaletteOptions = {
     backgroundColorPrimary: 'rgba(255, 255, 255, 1)',
     borderColorPrimary: 'rgba(220, 220, 220, 1)',
     backgroundColorSecondary: 'rgba(253, 253, 253, 1)',
+    errorWarning: 'rgba(254, 228, 226, 1)',
   },
 
   globalColors: {
@@ -121,6 +122,7 @@ declare module '@mui/material/styles' {
       backgroundColorSecondary: string;
       textClick: string;
       textSupport: string;
+      errorWarning: string;
     };
 
     backgrounds: {
@@ -167,7 +169,6 @@ declare module '@mui/material/styles' {
       activeText?: string;
       nonActiveText?: string;
     };
-
     uploadColors: {
       borderColor: string;
       backgroundColorPrimary: string;
@@ -175,6 +176,7 @@ declare module '@mui/material/styles' {
       backgroundColorSecondary: string;
       textClick: string;
       textSupport: string;
+      errorWarning: string;
     };
 
     backgrounds?: {

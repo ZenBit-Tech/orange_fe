@@ -50,18 +50,19 @@ export const useUploadStep = () => {
       const extractedResult = await extractData({ data: base64Data }).unwrap();
 
       dispatch(setExtractedData(extractedResult));
+      return true;
     } catch (error) {
       const message = error instanceof Error ? error.message : t('Upload.error-generic');
 
       setErrorMessage(message);
       setUploadProgress((prev) => ({ ...prev, [file.name]: 0 }));
       setUploadStatus(UPLOAD_STATUS.Error);
+      return false;
     }
   };
 
-  const simulateUpload = (file: File) => {
+  const simulateUpload = (file: File, onComplete: () => void) => {
     setUploadProgress((prev) => ({ ...prev, [file.name]: 0 }));
-    setUploadStatus(UPLOAD_STATUS.Uploading);
     setErrorMessage('');
 
     const interval = setInterval(() => {
@@ -69,7 +70,7 @@ export const useUploadStep = () => {
         const newProgress = (prev[file.name] || 0) + 1;
         if (newProgress >= 100) {
           clearInterval(interval);
-          setUploadStatus(UPLOAD_STATUS.Success);
+          onComplete();
           return { ...prev, [file.name]: 100 };
         }
         return { ...prev, [file.name]: newProgress };
@@ -78,13 +79,23 @@ export const useUploadStep = () => {
   };
 
   const { getRootProps, getInputProps } = useDropzone({
-    onDrop: (acceptedFiles) => {
-      setFiles(acceptedFiles);
-      setUploadProgress({});
-      acceptedFiles.forEach(simulateUpload);
+    onDrop: async (acceptedFiles) => {
+      if (acceptedFiles.length === 0) return;
+      const file = acceptedFiles[0];
 
-      if (acceptedFiles.length > 0) {
-        uploadAndExtractData(acceptedFiles[0]);
+      setFiles([file]);
+      setUploadProgress({});
+      setUploadStatus(UPLOAD_STATUS.Uploading);
+
+      const fakeUploadPromise = new Promise<void>((resolve) => {
+        simulateUpload(file, resolve);
+      });
+
+      const realExtractPromise = uploadAndExtractData(file);
+
+      const [, extractSuccessful] = await Promise.all([fakeUploadPromise, realExtractPromise]);
+      if (extractSuccessful) {
+        setUploadStatus(UPLOAD_STATUS.Success);
       }
     },
     onDropRejected: (fileRejections: FileRejection[]) => {
@@ -113,8 +124,8 @@ export const useUploadStep = () => {
     maxSize: MAX_FILE_SIZE_BYTES,
   });
 
-  const handleRemoveFile = (fileName: string, e: React.MouseEvent) => {
-    e.stopPropagation();
+  const handleRemoveFile = (fileName: string, e?: React.MouseEvent) => {
+    e?.stopPropagation();
     setFiles([]);
     setUploadProgress({});
     setUploadStatus(UPLOAD_STATUS.Idle);

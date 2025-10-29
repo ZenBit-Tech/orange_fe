@@ -1,7 +1,11 @@
-import { Box, Step, Stepper } from '@mui/material';
+import { Box, Stepper } from '@mui/material';
 import StepConnector, { stepConnectorClasses } from '@mui/material/StepConnector';
 import StepLabel, { stepLabelClasses } from '@mui/material/StepLabel';
 import { styled } from '@mui/material/styles';
+
+interface CustomProps {
+  error?: boolean;
+}
 
 export const StepperWrapper = styled(Box)(({ theme }) => ({
   width: '100%',
@@ -24,21 +28,18 @@ export const StyledStepper = styled(Stepper)(({ theme }) => ({
   },
 }));
 
-export const StyledStep = styled(Step)({
-  flex: '0 0 auto',
-  paddingLeft: '8px',
-  paddingRight: '8px',
-});
-
 export const StyledContent = styled(Box)`
   display: flex;
   justify-content: center;
   flex-direction: column;
 `;
 
-export const StyledConnector = styled(StepConnector)(({ theme }) => ({
+export const StyledConnector = styled(StepConnector, {
+  shouldForwardProp: (prop) => prop !== 'error',
+})<CustomProps & { error?: boolean }>(({ theme, error }) => ({
   [`&.${stepConnectorClasses.root}`]: {
-    flex: '0 0 auto',
+    flexGrow: 0,
+    flexShrink: 1,
     width: '24px',
     [theme.breakpoints.up('md')]: {
       width: '48.5px',
@@ -51,13 +52,18 @@ export const StyledConnector = styled(StepConnector)(({ theme }) => ({
   },
   [`&.${stepConnectorClasses.active} .${stepConnectorClasses.line}`]: {
     borderColor: theme.palette.stepperColors.activeStep,
+    ...(error && {
+      borderColor: theme.palette.error.main,
+    }),
   },
   [`&.${stepConnectorClasses.completed} .${stepConnectorClasses.line}`]: {
     borderColor: theme.palette.stepperColors.activeStep,
   },
 }));
 
-export const StyledStepLabel = styled(StepLabel)(({ theme }) => ({
+export const StyledStepLabel = styled(StepLabel, {
+  shouldForwardProp: (prop) => prop !== 'error',
+})<CustomProps>(({ theme, error }) => ({
   [`& .${stepLabelClasses.label}`]: {
     color: theme.palette.stepperColors.nonActiveText,
     whiteSpace: 'normal',
@@ -65,6 +71,9 @@ export const StyledStepLabel = styled(StepLabel)(({ theme }) => ({
   [`& .${stepLabelClasses.label}.${stepLabelClasses.active}`]: {
     color: theme.palette.globalColors.primaryGreen,
     fontWeight: 500,
+    ...(error && {
+      color: theme.palette.error.main,
+    }),
   },
   [`& .${stepLabelClasses.label}.${stepLabelClasses.completed}`]: {
     color: theme.palette.globalColors.primaryGreen,

@@ -8,6 +8,7 @@ import type { RootState } from '@/store';
 
 import { DropzoneFile } from '../DropzoneFile';
 import { OCRSpinner } from '../ProgressIndicator';
+import { UploadErrorState } from '../UploadErrorState';
 import { ButtonContainer, Spacer, StyledButton, WrapperUpload } from './styles';
 import { useBloodTestValidation } from './useBloodTestValidation';
 import { UPLOAD_STATUS, useUploadStep } from './useUploadStep';
@@ -17,8 +18,8 @@ interface UploadStepProps {
 }
 
 export const UploadStep: React.FC<UploadStepProps> = ({ onContinue }) => {
-  const { validateBloodTestData } = useBloodTestValidation();
-  const [validationStep, setValidationStep] = useState<boolean>(false);
+  const { validateBloodTestData, isValidating, error, clearValidationError } =
+    useBloodTestValidation();
 
   const extractedData = useSelector((state: RootState) => state.bloodTest.extractedData);
 
@@ -37,21 +38,32 @@ export const UploadStep: React.FC<UploadStepProps> = ({ onContinue }) => {
   } = useUploadStep();
 
   const handleContinue = async () => {
-    if (uploadStatus === UPLOAD_STATUS.Success && !isUploading && extractedData) {
-      setValidationStep(true);
+    if (uploadStatus === UPLOAD_STATUS.Success && !isUploading && !isValidating && extractedData) {
+      const isSuccess = await validateBloodTestData();
 
-      if (extractedData) {
-        await validateBloodTestData(extractedData);
-        await onContinue();
+      if (isSuccess) {
+        onContinue();
       }
+    }
+  };
+
+  const handleRetryUpload = () => {
+    clearValidationError();
+
+    if (files.length > 0) {
+      handleRemoveFile(files[0].name);
     }
   };
 
   return (
     <WrapperUpload>
-      {validationStep ? (
-        <OCRSpinner isLoading={true} />
-      ) : (
+      {error && <UploadErrorState onRetry={handleRetryUpload} />}
+      {isValidating && (
+        <OCRSpinner
+           isLoading={true}
+        />
+      )}
+      {!error && !isValidating && (
         <>
           <Typography variant="h5">{t('Upload.title')}</Typography>
           <Typography variant="body1">{t('Upload.description')}</Typography>

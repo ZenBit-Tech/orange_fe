@@ -17,15 +17,18 @@ export const StyledStepIconRoot = styled('div')<{
     height: 40,
   },
   ...(ownerState.active && {
-    backgroundColor: theme.palette.stepperColors.activeStep,
-    color: theme.palette.globalColors.primaryGreen,
+    backgroundColor: ownerState.error
+      ? theme.palette.uploadColors.errorWarning
+      : theme.palette.stepperColors.activeStep,
+    color: ownerState.error ? '#fff' : theme.palette.globalColors.primaryGreen,
   }),
-  ...(ownerState.completed && {
-    backgroundColor: theme.palette.stepperColors.activeStep,
-    color: theme.palette.globalColors.primaryGreen,
-  }),
+  ...(ownerState.completed &&
+    !ownerState.error && {
+      backgroundColor: theme.palette.stepperColors.activeStep,
+      color: theme.palette.globalColors.primaryGreen,
+    }),
   ...(ownerState.error && {
-    backgroundColor: theme.palette.stepperColors.errorStep,
+    backgroundColor: theme.palette.uploadColors.errorWarning,
     color: theme.palette.error.main,
   }),
 }));

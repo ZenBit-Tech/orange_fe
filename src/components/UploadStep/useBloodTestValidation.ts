@@ -14,7 +14,7 @@ export const useBloodTestValidation = () => {
   const dispatch = useAppDispatch();
   const [validateBloodTest] = useValidateBloodTestMutation();
 
-  const { extractedData, validationData, isValidating, error } = useAppSelector(
+  const { extractedData, validationData, isValidating, error, isError } = useAppSelector(
     (state) => state.bloodTest,
   );
 
@@ -23,7 +23,7 @@ export const useBloodTestValidation = () => {
 
     if (!dataToValidate) {
       dispatch(setError(t('Upload.error-no-data')));
-      return;
+      return false;
     }
 
     dispatch(setError(null));
@@ -34,12 +34,24 @@ export const useBloodTestValidation = () => {
       const validationResult = await validateBloodTest(dataToValidate).unwrap();
 
       dispatch(setValidationData(validationResult));
+      dispatch(setIsValidating(false));
+      if (validationResult.isBloodTest) {
+        dispatch(setValidationData(validationResult));
+        return true;
+      } else {
+        const message = t('Upload.error-not-blood-test');
+        dispatch(setError(message));
+        return false;
+      }
     } catch (error) {
       const message = error instanceof Error ? error.message : t('Upload.error-generic');
       dispatch(setError(message));
-    } finally {
-      dispatch(setIsValidating(false));
+      return false;
     }
+  };
+
+  const clearValidationError = () => {
+    dispatch(setError(null));
   };
 
   return {
@@ -47,6 +59,8 @@ export const useBloodTestValidation = () => {
     validationData,
     isValidating,
     error,
+    isError,
     validateBloodTestData,
+    clearValidationError,
   };
 };
