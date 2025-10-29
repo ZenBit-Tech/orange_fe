@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import { Typography } from '@mui/material';
 
 import { useSelector } from 'react-redux';
@@ -58,11 +56,7 @@ export const UploadStep: React.FC<UploadStepProps> = ({ onContinue }) => {
   return (
     <WrapperUpload>
       {error && <UploadErrorState onRetry={handleRetryUpload} />}
-      {isValidating && (
-        <OCRSpinner
-           isLoading={true}
-        />
-      )}
+      {isValidating && <OCRSpinner isLoading={true} />}
       {!error && !isValidating && (
         <>
           <Typography variant="h5">{t('Upload.title')}</Typography>
@@ -85,9 +79,9 @@ export const UploadStep: React.FC<UploadStepProps> = ({ onContinue }) => {
               variant="contained"
               onClick={handleContinue}
               size="large"
-              disabled={extractedData ? uploadStatus !== UPLOAD_STATUS.Success : true}
+              disabled={uploadStatus !== UPLOAD_STATUS.Success || isValidating}
             >
-              {extractedData ? t('Upload.button-uploading') : t('Upload.button-continue')}
+              {isUploading ? t('Upload.button-uploading') : t('Upload.button-continue')}
             </StyledButton>
           </ButtonContainer>
         </>
