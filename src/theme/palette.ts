@@ -31,6 +31,17 @@ export const palette: PaletteOptions = {
     linkedin: '#4C9BE0',
   },
 
+  navLinks: {
+    linksColor: 'rgba(82, 82, 82, 1)',
+  },
+
+  button: {
+    primaryGreen: 'rgba(0, 153, 102, 1)',
+    textColor: 'rgba(8, 11, 8, 1)',
+    defaultBorderColor: 'rgba(220, 220, 220, 1)',
+    startedTextColor: 'rgba(252, 252, 252, 1)',
+  },
+
   gradient1: GRADIENT_GREEN_1,
   gradient2: GRADIENT_GREEN_2,
   gradient3: GRADIENT_GREEN_3,
@@ -86,6 +97,17 @@ declare module '@mui/material/styles' {
       linkedin: string;
     };
 
+    navLinks: {
+      linksColor: string;
+    };
+
+    button: {
+      primaryGreen?: string;
+      defaultBorderColor?: string;
+      textColor?: string;
+      startedTextColor?: string;
+    };
+
     gradient1?: string;
     gradient2?: string;
     gradient3?: string;
@@ -139,6 +161,17 @@ declare module '@mui/material/styles' {
       textGray?: string;
       facebook?: string;
       linkedin?: string;
+    };
+
+    navLinks: {
+      linksColor: string;
+    };
+
+    button: {
+      primaryGreen?: string;
+      defaultBorderColor?: string;
+      textColor?: string;
+      startedTextColor?: string;
     };
 
     gradient1?: string;

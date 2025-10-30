@@ -31,7 +31,18 @@
       "or": "Or"
     },
     "nav": {
-      "logoAlt": "PlasmaAI logo"
+      "logoAlt": "PlasmaAI logo",
+      "links": {
+        "about-us": "About us",
+        "our-features": "Our features",
+        "how-it-works": "How it works",
+        "your-privacy": "Your privacy",
+        "faq": "FAQ"
+      },
+      "button": {
+        "log-out": "Log out",
+        "get-started": "Get Started"
+      }
     }
   },
   "Footer": {
@@ -68,6 +79,7 @@
     "file-uploaded": "File uploaded successfully.",
     "file-too-large": "File is too large. The maximum size is 30MB.",
     "upload-error-title": "Our AI couldn't find any valid medical markers in the uploaded file. Please make sure you're uploading the correct document",
-    "button-upload-different": "Upload a different file."
+    "button-upload-different": "Upload a different file.",
+    "error-generic": "Upload failed due to a server error. Please try again in a few minutes."
   }
 }

@@ -7,6 +7,7 @@ import styled from 'styled-components';
 
 interface PageLayoutProps {
   children: React.ReactNode;
+  transparentNav?: boolean;
 }
 
 const PageWrapper = styled.div`
@@ -17,9 +18,9 @@ const PageWrapper = styled.div`
   background: ${theme.palette.backgrounds.mainGradient};
 `;
 
-export const PageLayout: React.FC<PageLayoutProps> = ({ children }) => (
+export const PageLayout: React.FC<PageLayoutProps> = ({ children, transparentNav }) => (
   <PageWrapper>
-    <Nav />
+    <Nav transparent={transparentNav} />
     {children}
     <Footer />
   </PageWrapper>

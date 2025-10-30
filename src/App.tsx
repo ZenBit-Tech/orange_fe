@@ -1,11 +1,15 @@
 import { Route, Routes } from 'react-router-dom';
 
-import { PrivacyPolicyPage } from '@/pages/LegalPages/PrivacyPolicyPage';
-import { TermsPage } from '@/pages/LegalPages/TermsPage';
-import { LinkExpiredPage } from '@/pages/LinkExpiredPage';
-import { LoginPage } from '@/pages/LoginPage';
-import { VerifyPage } from '@/pages/VerifyPage';
-import { UploadPage } from './pages/UploadPage';
+import {
+  HomePage,
+  LinkExpiredPage,
+  LoginPage,
+  PrivacyPolicyPage,
+  TermsPage,
+  UploadPage,
+  VerifyPage,
+} from '@/pages';
+
 import { GlobalStyle } from './style';
 
 export const App: React.FC = () => {
@@ -13,6 +17,7 @@ export const App: React.FC = () => {
     <>
       <GlobalStyle />
       <Routes>
+        <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/privacy" element={<PrivacyPolicyPage />} />
         <Route path="/terms" element={<TermsPage />} />
