@@ -33,7 +33,6 @@ export const useBloodTestValidation = () => {
     try {
       const validationResult = await validateBloodTest(dataToValidate).unwrap();
 
-      console.log(validationResult);
       dispatch(setValidationData(validationResult));
       dispatch(setIsValidating(false));
       if (validationResult.isBloodTest) {
