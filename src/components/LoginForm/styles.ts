@@ -21,7 +21,7 @@ export const CenteredText = styled.div`
     margin: 8px 0 0;
     color: ${theme.palette.loginColors?.subtitleColor ?? theme.palette.text?.secondary};
     font-size: ${theme.typography.body1?.fontSize};
-    font-family: ${theme.typography.fontFamily};
+    font-family: ${theme.typography.general.fontInter};
   }
 
   @media (min-width: 1024px) and (max-height: 860px) {
@@ -124,7 +124,7 @@ export const Button = styled.button<{ disabledBg?: string; disabledColor?: strin
   background-color: ${(props) => props.disabledBg || 'transparent'};
   color: ${(props) => props.disabledColor || theme.palette.common.white};
   cursor: pointer;
-  font-family: ${theme.typography.fontFamily};
+  font-family: ${theme.typography.general.fontInter};
   font-size: ${theme.typography.sizes.body1};
 
   @media (min-width: 1024px) and (max-height: 760px) {
@@ -163,7 +163,7 @@ export const Terms = styled.p`
   margin: 8px 0 0;
   font-size: ${theme.typography.sizes.body2};
   color: ${theme.palette.loginColors?.subtitleColor1 ?? theme.palette.text?.secondary};
-  font-family: ${theme.typography.fontFamily};
+  font-family: ${theme.typography.general.fontInter};
   @media (min-width: 1024px) and (max-height: 760px) {
     font-size: ${theme.typography.sizes.body3Mobile};
   }

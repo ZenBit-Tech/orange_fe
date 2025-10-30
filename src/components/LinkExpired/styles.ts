@@ -39,7 +39,7 @@ export const CenteredText = styled.div`
     margin: 8px 0 0;
     color: ${theme.palette.loginColors?.subtitleColor ?? theme.palette.text?.secondary};
     font-size: ${theme.typography.sizes.body1};
-    font-family: ${theme.typography.fontFamily};
+    font-family: ${theme.typography.general.fontInter};
   }
 
   @media (max-width: 480px) {

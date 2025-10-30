@@ -27,8 +27,6 @@ export const typography: ThemeOptions['typography'] & {
     terms: string;
   };
 } = {
-  fontFamily: "'Inter', Helvetica, Arial, sans-serif",
-
   sizes: {
     h1: '28px',
     h1Mobile: '22px',
@@ -67,6 +65,7 @@ export const typography: ThemeOptions['typography'] & {
   },
 
   general: {
+    fontInter: "'Inter', Helvetica, Arial, sans-serif",
     fontPoppins: "'Poppins', Helvetica, Arial, sans-serif",
   },
 };
@@ -111,6 +110,7 @@ declare module '@mui/material/styles' {
     };
 
     general: {
+      fontInter: string;
       fontPoppins: string;
     };
   }
@@ -154,16 +154,8 @@ declare module '@mui/material/styles' {
     };
 
     general?: {
+      fontInter: string;
       fontPoppins: string;
     };
-  }
-}
-declare module '@mui/material/styles' {
-  interface TypographyVariants {
-    body3: React.CSSProperties;
-  }
-
-  interface TypographyVariantsOptions {
-    body3?: React.CSSProperties;
   }
 }
