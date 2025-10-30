@@ -59,7 +59,7 @@ export const TitleText = styled.h2`
   font-family: ${theme.typography.general.fontPoppins};
   font-size: ${theme.typography.sizes.body1};
   font-weight: ${theme.typography.weights.regular};
-  margin-bottom: 0.5rem;
+  margin-bottom: 8px;
 `;
 
 export const DescriptionText = styled.p`
