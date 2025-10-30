@@ -29,32 +29,6 @@ export const typography: ThemeOptions['typography'] & {
 } = {
   fontFamily: "'Inter', Helvetica, Arial, sans-serif",
 
-  h5: {
-    fontFamily: "'Poppins', Helvetica, Arial, sans-serif",
-    fontSize: '24px',
-    fontWeight: 500,
-    lineHeight: 1.2,
-  },
-  body1: {
-    fontSize: '16px',
-    fontWeight: 400,
-    lineHeight: 1.4,
-  },
-  body2: {
-    fontSize: '14px',
-    fontWeight: 500,
-    lineHeight: 1.5,
-  },
-  body3: {
-    fontSize: '12px',
-    fontWeight: 400,
-    lineHeight: '18px',
-  },
-  button: {
-    textTransform: 'none',
-    fontSize: '16px',
-  },
-
   sizes: {
     h1: '28px',
     h1Mobile: '22px',
@@ -70,6 +44,30 @@ export const typography: ThemeOptions['typography'] & {
     body3Mobile: '11px',
     button: '16px',
     terms: '12px',
+  },
+
+  weights: {
+    light: 400,
+    regular: 500,
+    medium: 600,
+    bold: 700,
+  },
+
+  lineHeight: {
+    h1: 1.17,
+    h2: 1.2,
+    h3: 1.17,
+    h4: 1.24,
+    h5: 1.33,
+    h6: 1.6,
+    subtitle1: 1.75,
+    subtitle2: 1.57,
+    body1: 1.5,
+    body2: 1.43,
+  },
+
+  general: {
+    fontPoppins: "'Poppins', Helvetica, Arial, sans-serif",
   },
 };
 
@@ -90,6 +88,73 @@ declare module '@mui/material/styles' {
       body3Mobile: string;
       button: string;
       terms: string;
+    };
+
+    weights: {
+      light: number;
+      regular: number;
+      medium: number;
+      bold: number;
+    };
+
+    lineHeight: {
+      h1: number;
+      h2: number;
+      h3: number;
+      h4: number;
+      h5: number;
+      h6: number;
+      subtitle1: number;
+      subtitle2: number;
+      body1: number;
+      body2: number;
+    };
+
+    general: {
+      fontPoppins: string;
+    };
+  }
+
+  interface TypographyVariantsOptions {
+    sizes?: {
+      h1: string;
+      h1Mobile: string;
+      h4: string;
+      h4Mobile: string;
+      h5: string;
+      h5Mobile: string;
+      body1: string;
+      body1Mobile: string;
+      body2: string;
+      body2Mobile: string;
+      body3: string;
+      body3Mobile: string;
+      button: string;
+      terms: string;
+    };
+
+    lineHeight: {
+      h1: number;
+      h2: number;
+      h3: number;
+      h4: number;
+      h5: number;
+      h6: number;
+      subtitle1: number;
+      subtitle2: number;
+      body1: number;
+      body2: number;
+    };
+
+    weights?: {
+      light: number;
+      regular: number;
+      medium: number;
+      bold: number;
+    };
+
+    general?: {
+      fontPoppins: string;
     };
   }
 }

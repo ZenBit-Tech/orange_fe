@@ -56,7 +56,7 @@ export const PercentText = styled.div<{ $isCompleted?: boolean }>`
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: ${theme.typography.sizes.terms};
-  font-weight: ${theme.typography.body2.fontSize};
+  font-weight: ${theme.typography.sizes.body2};
   color: ${({ $isCompleted }) =>
     $isCompleted ? theme.palette.success.main : theme.palette.success.main};
   transition: color 0.4s ease;
@@ -64,16 +64,16 @@ export const PercentText = styled.div<{ $isCompleted?: boolean }>`
 
 export const TitleText = styled.h2`
   color: ${theme.palette.text.primary};
-  font-family: ${theme.typography.h5.fontFamily};
-  font-size: ${theme.typography.body1.fontSize};
-  font-weight: ${theme.typography.body1.fontWeight};
+  font-family: ${theme.typography.general.fontPoppins};
+  font-size: ${theme.typography.sizes.body1};
+  font-weight: ${theme.typography.weights.regular};
   margin-bottom: 0.5rem;
 `;
 
 export const DescriptionText = styled.p`
   color: ${theme.palette.text.primary};
-  font-family: ${theme.typography.h5.fontFamily};
-  font-size: ${theme.typography.body2.fontSize};
+  font-family: ${theme.typography.general.fontPoppins};
+  font-size: ${theme.typography.sizes.body2};
   line-height: 1.5;
   opacity: 0.9;
 `;
