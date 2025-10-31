@@ -13,7 +13,7 @@ export const CenteredText = styled.div`
     font-size: ${theme.typography.h5?.fontSize};
     line-height: ${theme.typography.h5?.lineHeight || 1.2};
     font-weight: ${theme.typography.h5?.fontWeight || 500};
-    font-family: ${theme.typography.h5.fontFamily};
+    font-family: ${theme.typography.general.fontPoppins};
     color: ${theme.palette.text?.primary};
   }
 
@@ -21,7 +21,7 @@ export const CenteredText = styled.div`
     margin: 8px 0 0;
     color: ${theme.palette.loginColors?.subtitleColor ?? theme.palette.text?.secondary};
     font-size: ${theme.typography.body1?.fontSize};
-    font-family: ${theme.typography.fontFamily};
+    font-family: ${theme.typography.general.fontInter};
   }
 
   @media (min-width: 1024px) and (max-height: 860px) {
@@ -124,8 +124,8 @@ export const Button = styled.button<{ disabledBg?: string; disabledColor?: strin
   background-color: ${(props) => props.disabledBg || 'transparent'};
   color: ${(props) => props.disabledColor || theme.palette.common.white};
   cursor: pointer;
-  font-family: ${theme.typography.fontFamily};
-  font-size: ${theme.typography.button?.fontSize || '16px'};
+  font-family: ${theme.typography.general.fontInter};
+  font-size: ${theme.typography.sizes.body1};
 
   @media (min-width: 1024px) and (max-height: 760px) {
     ${theme.typography.sizes.body2};
@@ -161,9 +161,9 @@ export const BtnSubmit = styled(Button)`
 export const Terms = styled.p`
   text-align: center;
   margin: 8px 0 0;
-  font-size: ${theme.typography.body2?.fontSize};
+  font-size: ${theme.typography.sizes.body2};
   color: ${theme.palette.loginColors?.subtitleColor1 ?? theme.palette.text?.secondary};
-  font-family: ${theme.typography.fontFamily};
+  font-family: ${theme.typography.general.fontInter};
   @media (min-width: 1024px) and (max-height: 760px) {
     font-size: ${theme.typography.sizes.body3Mobile};
   }

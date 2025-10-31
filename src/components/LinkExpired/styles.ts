@@ -28,18 +28,18 @@ export const CenteredText = styled.div`
 
   h5 {
     margin: 0;
-    font-size: ${theme.typography.h5?.fontSize};
-    line-height: ${theme.typography.h5?.lineHeight || 1.2};
-    font-weight: ${theme.typography.h5?.fontWeight || 500};
-    font-family: ${theme.typography.h5.fontFamily};
+    font-size: ${theme.typography.sizes.h5};
+    line-height: ${theme.typography.lineHeight.h5};
+    font-weight: ${theme.typography.weights.regular};
+    font-family: ${theme.typography.general.fontPoppins};
     color: ${theme.palette.text?.primary};
   }
 
   p {
     margin: 8px 0 0;
     color: ${theme.palette.loginColors?.subtitleColor ?? theme.palette.text?.secondary};
-    font-size: ${theme.typography.body1?.fontSize};
-    font-family: ${theme.typography.fontFamily};
+    font-size: ${theme.typography.sizes.body1};
+    font-family: ${theme.typography.general.fontInter};
   }
 
   @media (max-width: 480px) {
