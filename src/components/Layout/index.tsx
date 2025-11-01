@@ -14,14 +14,18 @@ const PageWrapper = styled.div`
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  justify-content: space-between;
   background: ${theme.palette.backgrounds.mainGradient};
+  position: relative;
+`;
+
+const Main = styled.div`
+  flex-grow: 1;
 `;
 
 export const PageLayout: React.FC<PageLayoutProps> = ({ children, transparentNav }) => (
   <PageWrapper>
     <Nav transparent={transparentNav} />
-    {children}
+    <Main>{children}</Main>
     <Footer />
   </PageWrapper>
 );

@@ -35,6 +35,10 @@ export const palette: PaletteOptions = {
     linksColor: 'rgba(82, 82, 82, 1)',
   },
 
+  mainContent: {
+    bgBody: 'rgba(242, 250, 248, 1)',
+  },
+
   button: {
     primaryGreen: 'rgba(0, 153, 102, 1)',
     textColor: 'rgba(8, 11, 8, 1)',
@@ -98,7 +102,11 @@ declare module '@mui/material/styles' {
     };
 
     navLinks: {
-      linksColor: string;
+      linksColor?: string;
+    };
+
+    mainContent: {
+      bgBody?: string;
     };
 
     button: {
@@ -165,6 +173,10 @@ declare module '@mui/material/styles' {
 
     navLinks: {
       linksColor: string;
+    };
+
+    mainContent: {
+      bgBody?: string;
     };
 
     button: {

@@ -8,6 +8,17 @@
     },
     "button": "Get Started"
   },
+  "Main-Content": {
+    "power-analysis": "AI-powered blood analysis",
+    "understand-your": "Understand your blood tests .",
+    "instantly": "instantly",
+    "description": "Transform complex blood test results into clear, personalized health insights. Understanding your health has never been easier.",
+    "feature-list": {
+      "instant-analysis": "Instant Analysis",
+      "private": "100% private",
+      "available": "24/7 Available"
+    }
+  },
   "Form": {
     "login-form": {
       "email": "Email",

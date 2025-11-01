@@ -1,8 +1,18 @@
 import React from 'react';
 
+import { Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-import { LogoutButton, StartedButton, Wrapper, WrapperButtons, WrapperLinks } from './styles';
+import {
+  LogoutButton,
+  MenuButton,
+  MobileMenuContent,
+  MobileMenuOverlay,
+  StartedButton,
+  Wrapper,
+  WrapperButtons,
+  WrapperLinks,
+} from './styles';
 import { useNav } from './useNav';
 
 interface NavProps {
@@ -10,7 +20,7 @@ interface NavProps {
 }
 
 export const Nav: React.FC<NavProps> = ({ transparent = true }) => {
-  const { t, handleNavigate, links } = useNav();
+  const { t, handleNavigate, links, isMobileMenuOpen, handleToggleMenu } = useNav();
 
   return (
     <Wrapper transparent={transparent}>
@@ -38,6 +48,24 @@ export const Nav: React.FC<NavProps> = ({ transparent = true }) => {
             </StartedButton>
           </WrapperButtons>
         </>
+      )}
+
+      <MenuButton onClick={handleToggleMenu}>{isMobileMenuOpen ? <X /> : <Menu />}</MenuButton>
+      {isMobileMenuOpen && (
+        <MobileMenuOverlay>
+          <MobileMenuContent>
+            {links.map((link, index) => {
+              return (
+                <Link key={index} to={link.path} onClick={handleToggleMenu}>
+                  {link.link}
+                </Link>
+              );
+            })}
+            <StartedButton variant="contained" onClick={handleNavigate}>
+              {t('Form.nav.button.get-started')}
+            </StartedButton>
+          </MobileMenuContent>
+        </MobileMenuOverlay>
       )}
     </Wrapper>
   );

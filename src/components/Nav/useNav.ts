@@ -1,7 +1,15 @@
+import { useState } from 'react';
+
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
 export const useNav = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const handleToggleMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   const navigate = useNavigate();
   const { t } = useTranslation();
 
@@ -16,5 +24,5 @@ export const useNav = () => {
     { link: t('Form.nav.links.your-privacy'), path: '/your-privacy' },
     { link: t('Form.nav.links.faq'), path: '/faq' },
   ];
-  return { t, handleNavigate, links };
+  return { t, handleNavigate, links, isMobileMenuOpen, handleToggleMenu };
 };
