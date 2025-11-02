@@ -11,13 +11,13 @@ export const WrapperUpload = styled(Box)(({ theme }) => ({
   borderStyle: 'solid',
   borderRadius: 20,
   borderWidth: 2,
-  borderColor: theme.palette.uploadColors.borderColorPrimary,
-  backgroundColor: theme.palette.uploadColors.backgroundColorPrimary,
+  borderColor: theme.palette.baseColors.grey[200],
+  backgroundColor: theme.palette.backgrounds.white,
   alignItems: 'center',
   textAlign: 'center',
   boxSizing: 'border-box',
   '& .MuiTypography-body1': {
-    color: theme.palette.text.secondary,
+    color: theme.palette.textIcons?.textSecondary,
     alignItems: 'center',
     marginBottom: 16,
   },
@@ -52,7 +52,8 @@ export const Spacer = styled(Box)(({ theme }) => ({
 }));
 
 export const StyledButton = styled(Button)(({ theme }) => ({
-  backgroundColor: theme.palette.stepperColors.buttonColor,
+  backgroundColor: theme.palette.surface.primary.default,
+  color: theme.palette.textIcons?.contrast,
   width: '192px',
   height: '42px',
   borderRadius: '12px',

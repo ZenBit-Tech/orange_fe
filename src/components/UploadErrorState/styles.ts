@@ -18,7 +18,7 @@ export const StyledIcon = styled(CiCircleAlert)(({ theme }) => ({
 
 export const StyledTypography = styled(Typography)(({ theme }) => ({
   maxWidth: '450px',
-  color: theme.palette.uploadColors.textClick,
+  color: theme.palette.textIcons?.textPrimary,
 }));
 
 export const StyledButton = styled(Button)(({ theme }) => ({

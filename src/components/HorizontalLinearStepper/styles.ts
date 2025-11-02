@@ -46,18 +46,18 @@ export const StyledConnector = styled(StepConnector, {
     },
   },
   [`& .${stepConnectorClasses.line}`]: {
-    borderColor: theme.palette.stepperColors.disabledStep,
+    borderColor: theme.palette.surface.disabled.disabledDark,
     borderTopWidth: 2,
     borderRadius: 1,
   },
   [`&.${stepConnectorClasses.active} .${stepConnectorClasses.line}`]: {
-    borderColor: theme.palette.stepperColors.activeStep,
+    borderColor: theme.palette.surface.primary.light,
     ...(error && {
       borderColor: theme.palette.error.main,
     }),
   },
   [`&.${stepConnectorClasses.completed} .${stepConnectorClasses.line}`]: {
-    borderColor: theme.palette.stepperColors.activeStep,
+    borderColor: theme.palette.surface.primary.light,
   },
 }));
 
@@ -65,20 +65,21 @@ export const StyledStepLabel = styled(StepLabel, {
   shouldForwardProp: (prop) => prop !== 'error',
 })<CustomProps>(({ theme, error }) => ({
   [`& .${stepLabelClasses.label}`]: {
-    color: theme.palette.stepperColors.nonActiveText,
+    color: theme.palette.textIcons?.textTeriartry,
+    fontFamily: theme.typography.general.fontInter,
     whiteSpace: 'normal',
   },
   [`& .${stepLabelClasses.label}.${stepLabelClasses.active}`]: {
-    color: theme.palette.globalColors.primaryGreen,
+    color: theme.palette.textIcons?.primary,
     fontWeight: 500,
     ...(error && {
-      color: theme.palette.error.main,
+      color: theme.palette.textIcons?.errorMainSecondary,
     }),
   },
   [`& .${stepLabelClasses.label}.${stepLabelClasses.completed}`]: {
-    color: theme.palette.globalColors.primaryGreen,
+    color: theme.palette.textIcons?.primary,
   },
   [`& .${stepLabelClasses.label}.${stepLabelClasses.error}`]: {
-    color: theme.palette.error.main,
+    color: theme.palette.textIcons?.errorMainSecondary,
   },
 }));
