@@ -41,6 +41,7 @@ export const Wrapper = styled(Box)<WrapperProps>`
 export const WrapperLinks = styled(Box)`
   display: flex;
   gap: 30px;
+  font-family: ${theme.typography.general.fontInter};
   ${({ theme }) => theme.breakpoints.down('md')} {
     display: none;
   }
@@ -56,9 +57,12 @@ export const WrapperButtons = styled(Box)`
 
 export const LogoutButton = styled(Button)`
   padding: 8px 22px;
-  border-color: ${theme.palette.button.defaultBorderColor};
+  border-color: ${theme.palette.baseColors.grey[200]};
+  text-transform: none;
   border-radius: 12px;
-  color: ${theme.palette.button.textColor};
+  color: ${theme.palette.textIcons?.textPrimary};
+  font-family: ${theme.typography.general.fontInter};
+  box-shadow: none;
   :hover {
     color: ${theme.palette.globalColors.primaryGreen};
   }
@@ -68,7 +72,10 @@ export const StartedButton = styled(Button)`
   text-align: center;
   border-radius: 12px;
   width: 192px;
-  background-color: ${({ theme }) => theme.palette.button.primaryGreen};
+  font-family: ${theme.typography.general.fontInter};
+  background-color: ${({ theme }) => theme.palette.surface.primary.default};
+  text-transform: none;
+  box-shadow: none;
 `;
 
 export const MobileStartedButton = styled(StartedButton)`
@@ -77,7 +84,7 @@ export const MobileStartedButton = styled(StartedButton)`
 
 export const MenuButton = styled(IconButton)`
   display: none;
-  color: ${theme.palette.navLinks.linksColor};
+  color: ${theme.palette.textIcons?.textTeriartry};
   z-index: 1005;
   ${({ theme }) => theme.breakpoints.down('md')} {
     display: inline-flex;
@@ -90,7 +97,8 @@ export const MobileMenuOverlay = styled(Box)`
   align-self: flex-start;
   z-index: 100;
   width: 100%;
-  background: ${theme.palette.loginColors.pageWrapperBg};
+  background: ${theme.palette.backgrounds.bgPrimary};
+  font-family: ${theme.typography.general.fontInter};
   display: none;
   ${({ theme }) => theme.breakpoints.down('md')} {
     display: block;

@@ -57,6 +57,7 @@ export const StyledButton = styled(Button)(({ theme }) => ({
   width: '192px',
   height: '42px',
   borderRadius: '12px',
+  textTransform: 'none',
   [theme.breakpoints.up('md')]: {
     width: '192px',
   },

@@ -44,6 +44,7 @@ export const DescriptionWrapper = styled(Box)`
     p {
       align-items: center;
       height: auto;
+      align-self: center;
     }
   }
 `;
@@ -51,6 +52,7 @@ export const DescriptionWrapper = styled(Box)`
 export const TitleStyled = styled(Typography)`
   max-width: 628px;
   margin: 32px 0;
+  font-family: ${theme.typography.general.fontPoppins};
   ${({ theme }) => theme.breakpoints.down('md')} {
     font-size: 34px;
     max-width: 100%;
@@ -79,6 +81,8 @@ export const StyledInstantly = styled('span')`
 export const DescriptionStyled = styled(Typography)`
   width: 735px;
   margin-bottom: 32px;
+  font-family: ${theme.typography.general.fontPoppins};
+  font-weight: ${theme.typography.weights.light};
   ${({ theme }) => theme.breakpoints.down('md')} {
     width: 100%;
   }
@@ -92,8 +96,10 @@ export const ListsWrapper = styled('ul')`
   justify-content: flex-start;
   gap: 56px;
   margin-top: 160px;
+  font-family: ${theme.typography.general.fontInter};
+  font-weight: ${theme.typography.weights.regular};
   li::marker {
-    color: ${theme.palette.button.primaryGreen};
+    color: ${theme.palette.baseColors.green[900]};
     width: 10px;
     height: 10px;
   }
@@ -108,13 +114,20 @@ export const ListsWrapper = styled('ul')`
 
 export const StyledBody = styled(Typography)`
   align-self: flex-start;
-  background-color: ${theme.palette.mainContent.bgBody};
+  background-color: ${theme.palette.textIcons?.contrast};
   padding: 4px 8px;
   border-radius: 100px;
+  font-family: ${theme.typography.general.fontInter};
 `;
 
 export const ButtonStyled = styled(Button)`
-  background-color: ${theme.palette.button.primaryGreen};
+  background-color: ${theme.palette.surface.primary.default};
+  font-family: ${theme.typography.general.fontInter};
   width: 192px;
   border-radius: 12px;
+  text-transform: none;
+  box-shadow: none;
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    align-self: center;
+  }
 `;

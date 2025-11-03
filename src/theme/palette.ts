@@ -1,6 +1,8 @@
 import { green, grey } from '@mui/material/colors';
 import type { PaletteOptions } from '@mui/material/styles';
 
+import bgPrivacy from '@/assets/privacy-section-bg.png';
+
 const GRADIENT_GREEN_1 = '#f1faf3';
 const GRADIENT_GREEN_2 = '#edfbe4';
 const GRADIENT_GREEN_3 = '#e3f8d8';
@@ -72,6 +74,7 @@ export const palette: PaletteOptions = {
 
   backgrounds: {
     mainGradient: `linear-gradient(270deg, ${GRADIENT_GREEN_1} 26.68%, ${GRADIENT_GREEN_2} 52.54%, ${GRADIENT_GREEN_3} 74.16%, ${GRADIENT_GREEN_4} 103.78%)`,
+    bgPrivacy: bgPrivacy,
     white: baseColors.grey[0],
     bgPrimary: baseColors.grey[50],
     bgSecondary: baseColors.grey.second50,
@@ -123,21 +126,6 @@ export const palette: PaletteOptions = {
   iconColors: {
     facebook: '#1976D2',
     linkedin: '#4C9BE0',
-  },
-
-  navLinks: {
-    linksColor: 'rgba(82, 82, 82, 1)',
-  },
-
-  mainContent: {
-    bgBody: 'rgba(242, 250, 248, 1)',
-  },
-
-  button: {
-    primaryGreen: 'rgba(0, 153, 102, 1)',
-    textColor: 'rgba(8, 11, 8, 1)',
-    defaultBorderColor: 'rgba(220, 220, 220, 1)',
-    startedTextColor: 'rgba(252, 252, 252, 1)',
   },
 
   gradient1: GRADIENT_GREEN_1,
@@ -202,6 +190,7 @@ declare module '@mui/material/styles' {
 
     backgrounds: {
       mainGradient: string;
+      bgPrivacy: string;
       white: string;
       bgPrimary: string;
       bgSecondary: string;
@@ -311,6 +300,7 @@ declare module '@mui/material/styles' {
 
     backgrounds?: {
       mainGradient?: string;
+      bgPrivacy?: string;
       white?: string;
       bgPrimary?: string;
       bgSecondary?: string;

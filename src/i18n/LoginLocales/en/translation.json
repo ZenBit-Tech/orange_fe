@@ -19,6 +19,18 @@
       "available": "24/7 Available"
     }
   },
+  "PrivacySection": {
+    "title": "Your privacy is our foundation",
+    "description": "We never store your medical data. All analysis happens in real-time and your information is immediately discarded after processing. Your health data belongs to you, and only you",
+    "cards": {
+      "zero": "Zero storage",
+      "dontStore": "We don't store your reports. All data is permanently deleted after your session ends.",
+      "processing": "Secure Processing",
+      "ecrypted": "Your data is encrypted both in transit and at rest to keep it secure.",
+      "design": "Privacy-First Design",
+      "minimizing": "Our service is built on the principle of minimizing data collection."
+    }
+  },
   "Form": {
     "login-form": {
       "email": "Email",
