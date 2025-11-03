@@ -13,21 +13,21 @@ export const CenteredText = styled.div`
     font-size: ${theme.typography.h5?.fontSize};
     line-height: ${theme.typography.h5?.lineHeight || 1.2};
     font-weight: ${theme.typography.h5?.fontWeight || 500};
-    font-family: ${theme.typography.h5.fontFamily};
-    color: ${theme.palette.text?.primary};
+    font-family: ${theme.typography.general.fontPoppins};
+    color: ${theme.palette.textIcons?.textPrimary};
   }
 
   p {
     margin: 8px 0 0;
-    color: ${theme.palette.loginColors?.subtitleColor ?? theme.palette.text?.secondary};
+    color: ${theme.palette.textIcons?.textPrimary};
     font-size: ${theme.typography.body1?.fontSize};
-    font-family: ${theme.typography.fontFamily};
+    font-family: ${theme.typography.general.fontInter};
   }
 
   @media (min-width: 1024px) and (max-height: 860px) {
     margin: 20px 0;
     h5 {
-       font-size: ${theme.typography.h5.fontSize};
+      font-size: ${theme.typography.h5.fontSize};
       line-height: 1.2;
     }
     p {
@@ -35,12 +35,13 @@ export const CenteredText = styled.div`
       font-size: ${theme.typography.sizes.body2};
     }
 
-  @media (max-width: 480px) {
-    h5 {
-      font-size: ${theme.typography.sizes.h5Mobile};
-    }
-    p {
-      font-size: ${theme.typography.sizes.body1Mobile};
+    @media (max-width: 480px) {
+      h5 {
+        font-size: ${theme.typography.sizes.h5Mobile};
+      }
+      p {
+        font-size: ${theme.typography.sizes.body1Mobile};
+      }
     }
   }
 `;
@@ -55,9 +56,9 @@ export const WrapperForm = styled(Box)<BoxProps>`
   max-width: 480px;
   box-sizing: border-box;
 
-  background: ${theme.palette.loginColors?.loginBg};
+  background: ${theme.palette.backgrounds.white};
   border-radius: 20px;
-  border: 1px solid ${theme.palette.loginColors?.border ?? theme.palette.divider};
+  border: 1px solid ${theme.palette.baseColors.grey[200]};
   padding: 32px 50px;
   margin: 40px auto;
   box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
@@ -95,14 +96,14 @@ export const DividerContainer = styled(Stack)`
 export const Line = styled.div`
   flex: 1;
   height: 1px;
-  background-color: ${theme.palette.globalColors?.textGray ?? theme.palette.divider};
+  background-color: ${theme.palette.baseColors.grey[500]};
   min-width: 20px;
 `;
 
 export const Text = styled(Typography)`
   padding: 0 12px;
   font-size: ${theme.typography.body2?.fontSize};
-  color: ${theme.palette.common.black};
+  color: ${theme.palette.textIcons?.textTeriartry};
   font-weight: 500;
 
   @media (max-width: 480px) {
@@ -118,14 +119,14 @@ export const Button = styled.button<{ disabledBg?: string; disabledColor?: strin
   justify-content: center;
   align-items: center;
   border-radius: 12px;
-  border: 1px solid ${theme.palette.loginColors?.border ?? theme.palette.divider};
+  border: 1px solid ${theme.palette.baseColors.grey[200]};
   gap: 9px;
   width: 100%;
-  background-color: ${(props) => props.disabledBg || 'transparent'};
-  color: ${(props) => props.disabledColor || theme.palette.common.white};
+  background-color: ${theme.palette.surface.disabled.disabledDark};
+  color: ${theme.palette.textIcons?.textTeriartry};
   cursor: pointer;
-  font-family: ${theme.typography.fontFamily};
-  font-size: ${theme.typography.button?.fontSize || '16px'};
+  font-family: ${theme.typography.general.fontInter};
+  font-size: ${theme.typography.sizes.body1};
 
   @media (min-width: 1024px) and (max-height: 760px) {
     ${theme.typography.sizes.body2};
@@ -145,14 +146,14 @@ export const Button = styled.button<{ disabledBg?: string; disabledColor?: strin
 `;
 
 export const BtnSubmit = styled(Button)`
-  background-color: ${theme.palette.globalColors.primaryGreen ?? theme.palette.primary?.main};
-  color: ${theme.palette.common.white};
+  background-color: ${theme.palette.surface.primary.default};
+  color: ${theme.palette.textIcons?.contrast};
   width: 100%;
 
   &:disabled {
-    background-color: ${theme.palette.loginColors?.disabledBg ?? theme.palette.divider};
-    color: ${theme.palette.loginColors?.disabledText ?? theme.palette.text?.disabled};
-    border-color: ${theme.palette.loginColors?.border ?? theme.palette.divider};
+    background-color: ${theme.palette.surface.disabled.disabledDark};
+    color: ${theme.palette.textIcons?.textGrey};
+    border: 1px solid ${theme.palette.baseColors.grey[200]};
     cursor: not-allowed;
     pointer-events: none;
   }
@@ -161,9 +162,13 @@ export const BtnSubmit = styled(Button)`
 export const Terms = styled.p`
   text-align: center;
   margin: 8px 0 0;
-  font-size: ${theme.typography.body2?.fontSize};
-  color: ${theme.palette.loginColors?.subtitleColor1 ?? theme.palette.text?.secondary};
-  font-family: ${theme.typography.fontFamily};
+  font-size: ${theme.typography.sizes.body2};
+  color: ${theme.palette.textIcons?.textTeriartry};
+  font-family: ${theme.typography.general.fontInter};
+  a {
+    color: ${theme.palette.textIcons?.textTeriartry};
+    text-decoration: underline;
+  }
   @media (min-width: 1024px) and (max-height: 760px) {
     font-size: ${theme.typography.sizes.body3Mobile};
   }

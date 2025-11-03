@@ -56,17 +56,17 @@ export const RotatingSpinnerCircle = styled(SpinnerCircle)`
 
 export const TitleText = styled.h2`
   color: ${theme.palette.text.primary};
-  font-family: ${theme.typography.h5.fontFamily};
-  font-size: ${theme.typography.body1.fontSize};
-  font-weight: ${theme.typography.body1.fontWeight};
-  margin: 0 0 8px 0;
+  font-family: ${theme.typography.general.fontPoppins};
+  font-size: ${theme.typography.sizes.body1};
+  font-weight: ${theme.typography.weights.regular};
+  margin-bottom: 8px;
 `;
 
 export const DescriptionText = styled.p`
   color: ${theme.palette.text.primary};
-  font-family: ${theme.typography.h5.fontFamily};
-  font-size: ${theme.typography.body2.fontSize};
-  font-weight: ${theme.typography.body2.fontWeight};
+  font-family: ${theme.typography.general.fontPoppins};
+  font-size: ${theme.typography.sizes.body2};
+  font-weight: ${theme.typography.weights.light};
   line-height: 1.5;
   opacity: 0.9;
   margin: 0;

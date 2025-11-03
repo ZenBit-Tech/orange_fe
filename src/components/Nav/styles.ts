@@ -13,22 +13,20 @@ export const Wrapper = styled(Box)<WrapperProps>`
   box-sizing: border-box;
   justify-content: space-between;
   background: ${({ transparent }) =>
-    transparent
-      ? theme.palette.loginColors.pageWrapperBgTransparent
-      : theme.palette.loginColors.pageWrapperBg};
+    transparent ? theme.palette.backgrounds.bgTransparent : theme.palette.backgrounds.bgPrimary};
   border-bottom: ${({ transparent }) =>
-    transparent ? 'none' : `1px solid ${theme.palette.loginColors.border}`};
+    transparent ? 'none' : `1px solid ${theme.palette.baseColors.grey[200]}`};
   padding: 5px 50px;
-  color: ${theme.palette.loginColors.subtitleColor1};
+  color: ${theme.palette.textIcons?.textTeriartry};
   position: relative;
   z-index: 101;
   a {
-    color: ${theme.palette.navLinks.linksColor};
+    color: ${theme.palette.textIcons?.textTeriartry};
     text-decoration: none;
     z-index: 1005;
 
     &:hover {
-      color: ${theme.palette.globalColors.primaryGreen};
+      color: ${theme.palette.textIcons?.success};
     }
   }
   img {

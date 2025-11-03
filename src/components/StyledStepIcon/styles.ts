@@ -3,8 +3,8 @@ import { styled } from '@mui/material';
 export const StyledStepIconRoot = styled('div')<{
   ownerState: { active?: boolean; completed?: boolean; error?: boolean };
 }>(({ theme, ownerState }) => ({
-  backgroundColor: theme.palette.stepperColors.disabledStep,
-  color: theme.palette.stepperColors.nonActiveText,
+  backgroundColor: theme.palette.backgrounds.bgTeriarty,
+  color: theme.palette.textIcons?.textSecondary,
   width: 32,
   height: 32,
   display: 'flex',
@@ -18,17 +18,19 @@ export const StyledStepIconRoot = styled('div')<{
   },
   ...(ownerState.active && {
     backgroundColor: ownerState.error
-      ? theme.palette.uploadColors.errorWarning
-      : theme.palette.stepperColors.activeStep,
-    color: ownerState.error ? '#fff' : theme.palette.globalColors.primaryGreen,
+      ? theme.palette.surface.error.light
+      : theme.palette.surface.primary.light,
+    color: ownerState.error
+      ? theme.palette.textIcons?.errorMainSecondary
+      : theme.palette.textIcons?.primary,
   }),
   ...(ownerState.completed &&
     !ownerState.error && {
-      backgroundColor: theme.palette.stepperColors.activeStep,
-      color: theme.palette.globalColors.primaryGreen,
+      backgroundColor: theme.palette.surface.error.light,
+      color: theme.palette.textIcons?.primary,
     }),
   ...(ownerState.error && {
-    backgroundColor: theme.palette.uploadColors.errorWarning,
-    color: theme.palette.error.main,
+    backgroundColor: theme.palette.surface.error.light,
+    color: theme.palette.textIcons?.errorMainSecondary,
   }),
 }));

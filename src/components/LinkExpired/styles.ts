@@ -12,9 +12,9 @@ export const WrapperForm = styled(Box)<BoxProps>`
   gap: 24px;
   max-width: 600px;
   width: 100%;
-  background: ${theme.palette.loginColors.loginBg};
+  background: ${theme.palette.backgrounds.white};
   border-radius: 20px;
-  border: 1px solid ${theme.palette.loginColors.border};
+  border: 1px solid ${theme.palette.baseColors.grey[200]};
   padding: 32px 50px;
   margin: 40px auto;
 
@@ -28,18 +28,18 @@ export const CenteredText = styled.div`
 
   h5 {
     margin: 0;
-    font-size: ${theme.typography.h5?.fontSize};
-    line-height: ${theme.typography.h5?.lineHeight || 1.2};
-    font-weight: ${theme.typography.h5?.fontWeight || 500};
-    font-family: ${theme.typography.h5.fontFamily};
-    color: ${theme.palette.text?.primary};
+    font-size: ${theme.typography.sizes.h5};
+    line-height: ${theme.typography.lineHeight.h5};
+    font-weight: ${theme.typography.weights.regular};
+    font-family: ${theme.typography.general.fontPoppins};
+    color: ${theme.palette.textIcons?.textPrimary};
   }
 
   p {
     margin: 8px 0 0;
-    color: ${theme.palette.loginColors?.subtitleColor ?? theme.palette.text?.secondary};
-    font-size: ${theme.typography.body1?.fontSize};
-    font-family: ${theme.typography.fontFamily};
+    color: ${theme.palette.textIcons?.textPrimary};
+    font-size: ${theme.typography.sizes.body1};
+    font-family: ${theme.typography.general.fontInter};
   }
 
   @media (max-width: 480px) {
