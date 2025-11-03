@@ -13,10 +13,16 @@ export const typography: ThemeOptions['typography'] & {
   sizes: {
     h1: string;
     h1Mobile: string;
+    h2: string;
+    h2Mobile: string;
+    h3: string;
+    h3Mobile: string;
     h4: string;
     h4Mobile: string;
     h5: string;
     h5Mobile: string;
+    h6: string;
+    h6Mobile: string;
     body1: string;
     body1Mobile: string;
     body2: string;
@@ -28,18 +34,24 @@ export const typography: ThemeOptions['typography'] & {
   };
 } = {
   sizes: {
-    h1: '28px',
-    h1Mobile: '22px',
-    h4: '26px',
+    h1: '96px',
+    h1Mobile: '34px',
+    h2: '60px',
+    h2Mobile: '34px',
+    h3: '48px',
+    h3Mobile: '24px',
+    h4: '34px',
     h4Mobile: '20px',
     h5: '24px',
-    h5Mobile: '20px',
+    h5Mobile: '18px',
+    h6: '18px',
+    h6Mobile: '16px',
     body1: '16px',
-    body1Mobile: '14px',
+    body1Mobile: '16px',
     body2: '14px',
-    body2Mobile: '13px',
+    body2Mobile: '14px',
     body3: '12px',
-    body3Mobile: '11px',
+    body3Mobile: '12px',
     button: '16px',
     terms: '12px',
   },
@@ -75,10 +87,16 @@ declare module '@mui/material/styles' {
     sizes: {
       h1: string;
       h1Mobile: string;
+      h2: string;
+      h2Mobile: string;
+      h3: string;
+      h3Mobile: string;
       h4: string;
       h4Mobile: string;
       h5: string;
       h5Mobile: string;
+      h6: string;
+      h6Mobile: string;
       body1: string;
       body1Mobile: string;
       body2: string;
@@ -119,10 +137,16 @@ declare module '@mui/material/styles' {
     sizes?: {
       h1: string;
       h1Mobile: string;
+      h2: string;
+      h2Mobile: string;
+      h3: string;
+      h3Mobile: string;
       h4: string;
       h4Mobile: string;
       h5: string;
       h5Mobile: string;
+      h6: string;
+      h6Mobile: string;
       body1: string;
       body1Mobile: string;
       body2: string;
