@@ -10,9 +10,24 @@ export const MainWrapper = styled(Box)`
   margin: 0 auto;
   position: relative;
   overflow: hidden;
+  background-image: url(${theme.palette.backgrounds.bgLandingSection});
+  padding-bottom: 121px;
   ${({ theme }) => theme.breakpoints.down('md')} {
     flex-direction: column;
     padding: 40px 20px;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      ${({ theme }) => theme.palette.backgrounds.white}
+    );
   }
 `;
 

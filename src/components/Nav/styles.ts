@@ -18,7 +18,9 @@ export const Wrapper = styled(Box)<WrapperProps>`
     transparent ? 'none' : `1px solid ${theme.palette.baseColors.grey[200]}`};
   padding: 5px 50px;
   color: ${theme.palette.textIcons?.textTeriartry};
-  position: relative;
+  position: sticky;
+  top: 0;
+  width: 100%;
   z-index: 101;
   a {
     color: ${theme.palette.textIcons?.textTeriartry};

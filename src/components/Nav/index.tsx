@@ -35,9 +35,9 @@ export const Nav: React.FC<NavProps> = ({ transparent = true }) => {
           <WrapperLinks>
             {links.map((link, index) => {
               return (
-                <Link key={index} to={link.path}>
+                <a key={index} href={link.path}>
                   {link.link}
-                </Link>
+                </a>
               );
             })}
           </WrapperLinks>

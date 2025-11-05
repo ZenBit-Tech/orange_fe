@@ -14,7 +14,7 @@ const PageWrapper = styled.div`
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  background: ${theme.palette.backgrounds.mainGradient};
+  /* background: ${theme.palette.backgrounds.mainGradient}; */
   position: relative;
 `;
 

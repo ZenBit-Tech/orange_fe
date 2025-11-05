@@ -1,6 +1,7 @@
 import { green, grey } from '@mui/material/colors';
 import type { PaletteOptions } from '@mui/material/styles';
 
+import bgLandingSection from '@/assets/landing-herobackground.png';
 import bgPrivacy from '@/assets/privacy-section-bg.png';
 
 const GRADIENT_GREEN_1 = '#f1faf3';
@@ -75,6 +76,7 @@ export const palette: PaletteOptions = {
   backgrounds: {
     mainGradient: `linear-gradient(270deg, ${GRADIENT_GREEN_1} 26.68%, ${GRADIENT_GREEN_2} 52.54%, ${GRADIENT_GREEN_3} 74.16%, ${GRADIENT_GREEN_4} 103.78%)`,
     bgPrivacy: bgPrivacy,
+    bgLandingSection: bgLandingSection,
     white: baseColors.grey[0],
     bgPrimary: baseColors.grey[50],
     bgSecondary: baseColors.grey.second50,
@@ -191,6 +193,7 @@ declare module '@mui/material/styles' {
     backgrounds: {
       mainGradient: string;
       bgPrivacy: string;
+      bgLandingSection: string;
       white: string;
       bgPrimary: string;
       bgSecondary: string;
@@ -301,6 +304,7 @@ declare module '@mui/material/styles' {
     backgrounds?: {
       mainGradient?: string;
       bgPrivacy?: string;
+      bgLandingSection?: string;
       white?: string;
       bgPrimary?: string;
       bgSecondary?: string;

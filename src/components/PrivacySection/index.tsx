@@ -1,7 +1,5 @@
 import { Typography } from '@mui/material';
 
-import { useTranslation } from 'react-i18next';
-
 import {
   StyledCard,
   StyledIcon,
@@ -11,25 +9,12 @@ import {
   WrapperPrivacy,
   WrapperSection,
 } from './styles';
+import { usePrivacySection } from './usePrivacySection';
 
 export const PrivacySection: React.FC = () => {
-  const { t } = useTranslation();
-  const cards = [
-    {
-      title: t('PrivacySection.cards.zero'),
-      description: t('PrivacySection.cards.dontStore'),
-    },
-    {
-      title: t('PrivacySection.cards.processing'),
-      description: t('PrivacySection.cards.ecrypted'),
-    },
-    {
-      title: t('PrivacySection.cards.design'),
-      description: t('PrivacySection.cards.minimizing'),
-    },
-  ];
+  const { t, cards } = usePrivacySection();
   return (
-    <WrapperPrivacy>
+    <WrapperPrivacy id="privacy-section">
       <WrapperSection>
         <StyledIcon />
         <StyledTitle variant="h3">{t('PrivacySection.title')}</StyledTitle>

@@ -10,6 +10,7 @@ export const WrapperPrivacy = styled(Box)`
   justify-content: center;
   z-index: 10;
   padding: 40px 0px;
+  margin-bottom: 100px;
 `;
 
 export const WrapperSection = styled(Box)`
@@ -21,9 +22,10 @@ export const WrapperSection = styled(Box)`
   background-size: cover;
   width: 1282px;
   height: 724px;
-  ${({ theme }) => theme.breakpoints.down('sm')} {
+  ${({ theme }) => theme.breakpoints.down('md')} {
     width: 100%;
-    padding: 50px 0px;
+    height: 100%;
+    padding: 10px 0px;
   }
 `;
 
@@ -36,16 +38,17 @@ export const StyledIcon = styled(Lock)`
   background-color: ${theme.palette.backgrounds.white};
   stroke: ${theme.palette.baseColors.green[500]};
   flex-shrink: 0;
-  ${({ theme }) => theme.breakpoints.down('sm')} {
+  ${({ theme }) => theme.breakpoints.down('md')} {
     width: 20px;
     height: 20px;
-    padding: 4px;
+    padding: 8px;
     margin-bottom: 20px;
+    margin-top: 20px;
   }
 `;
 
 export const StyledTitle = styled(Typography)`
-  ${({ theme }) => theme.breakpoints.down('sm')} {
+  ${({ theme }) => theme.breakpoints.down('md')} {
     font-size: 24px;
     padding: 10px;
     align-self: center;
@@ -58,11 +61,10 @@ export const StyledTypographyDescription = styled(Typography)`
   font-family: ${theme.typography.general.fontInter};
   color: ${theme.palette.textIcons?.textPrimary};
   text-align: center;
-  ${({ theme }) => theme.breakpoints.down('sm')} {
+  ${({ theme }) => theme.breakpoints.down('md')} {
     width: 100%;
     align-self: stretch;
     font-size: ${theme.typography.sizes.body1Mobile};
-    margin: 5px;
   }
 `;
 
@@ -75,10 +77,11 @@ export const WrapperCards = styled(Box)`
   border: 1px solid ${theme.palette.baseColors.grey[200]};
   padding: 40px 24px;
   margin-top: 40px;
-  ${({ theme }) => theme.breakpoints.down('sm')} {
+  ${({ theme }) => theme.breakpoints.down('md')} {
     flex-direction: column;
     background-color: transparent;
     border: none;
+    padding: 40px 0px;
   }
 `;
 
@@ -96,7 +99,7 @@ export const StyledCard = styled(Box)`
   p {
     font-family: ${theme.typography.general.fontInter};
   }
-  ${({ theme }) => theme.breakpoints.down('sm')} {
+  ${({ theme }) => theme.breakpoints.down('md')} {
     background-color: ${theme.palette.backgrounds.white};
     padding: 24px;
     border-radius: 20px;
