@@ -12,9 +12,9 @@ export const WrapperForm = styled(Box)<BoxProps>`
   gap: 24px;
   max-width: 600px;
   width: 100%;
-  background: ${theme.palette.loginColors.loginBg};
+  background: ${theme.palette.backgrounds.white};
   border-radius: 20px;
-  border: 1px solid ${theme.palette.loginColors.border};
+  border: 1px solid ${theme.palette.baseColors.grey[200]};
   padding: 32px 50px;
   margin: 40px auto;
 
@@ -32,12 +32,12 @@ export const CenteredText = styled.div`
     line-height: ${theme.typography.lineHeights.lineHeight133};
     font-weight: ${theme.typography.weights.weight500};
     font-family: ${theme.typography.general.fontPoppins};
-    color: ${theme.palette.text?.primary};
+    color: ${theme.palette.textIcons?.textPrimary};
   }
 
   p {
     margin: 8px 0 0;
-    color: ${theme.palette.loginColors?.subtitleColor ?? theme.palette.text?.secondary};
+    color: ${theme.palette.textIcons?.textPrimary};
     font-size: ${theme.typography.sizes.size16};
     font-family: ${theme.typography.general.fontInter};
   }
