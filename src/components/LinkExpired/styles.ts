@@ -28,9 +28,9 @@ export const CenteredText = styled.div`
 
   h5 {
     margin: 0;
-    font-size: ${theme.typography.sizes.h5};
-    line-height: ${theme.typography.lineHeight.h5};
-    font-weight: ${theme.typography.weights.regular};
+    font-size: ${theme.typography.sizes.size24};
+    line-height: ${theme.typography.lineHeights.lineHeight133};
+    font-weight: ${theme.typography.weights.weight500};
     font-family: ${theme.typography.general.fontPoppins};
     color: ${theme.palette.text?.primary};
   }
@@ -38,16 +38,16 @@ export const CenteredText = styled.div`
   p {
     margin: 8px 0 0;
     color: ${theme.palette.loginColors?.subtitleColor ?? theme.palette.text?.secondary};
-    font-size: ${theme.typography.sizes.body1};
+    font-size: ${theme.typography.sizes.size16};
     font-family: ${theme.typography.general.fontInter};
   }
 
   @media (max-width: 480px) {
     h5 {
-      font-size: ${theme.typography.sizes.h5Mobile};
+      font-size: ${theme.typography.sizes.size18};
     }
     p {
-      font-size: ${theme.typography.sizes.body1Mobile};
+      font-size: ${theme.typography.sizes.size16};
     }
   }
 `;

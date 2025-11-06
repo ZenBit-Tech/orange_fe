@@ -32,15 +32,15 @@ export const CenteredText = styled.div`
     }
     p {
       margin: 5px 0 0;
-      font-size: ${theme.typography.sizes.body2};
+      font-size: ${theme.typography.sizes.size14};
     }
 
   @media (max-width: 480px) {
     h5 {
-      font-size: ${theme.typography.sizes.h5Mobile};
+      font-size: ${theme.typography.sizes.size18};
     }
     p {
-      font-size: ${theme.typography.sizes.body1Mobile};
+      font-size: ${theme.typography.sizes.size16};
     }
   }
 `;
@@ -101,12 +101,12 @@ export const Line = styled.div`
 
 export const Text = styled(Typography)`
   padding: 0 12px;
-  font-size: ${theme.typography.body2?.fontSize};
+  font-size: ${theme.typography.sizes.size14};
   color: ${theme.palette.common.black};
   font-weight: 500;
 
   @media (max-width: 480px) {
-    font-size: ${theme.typography.sizes.body2Mobile};
+    font-size: ${theme.typography.sizes.size14};
     padding: 0 8px;
   }
 `;
@@ -125,10 +125,10 @@ export const Button = styled.button<{ disabledBg?: string; disabledColor?: strin
   color: ${(props) => props.disabledColor || theme.palette.common.white};
   cursor: pointer;
   font-family: ${theme.typography.general.fontInter};
-  font-size: ${theme.typography.sizes.body1};
+  font-size: ${theme.typography.sizes.size16};
 
   @media (min-width: 1024px) and (max-height: 760px) {
-    ${theme.typography.sizes.body2};
+    ${theme.typography.sizes.size14};
     padding: 2px 24px;
     height: 36px;
     border-radius: 10px;
@@ -140,7 +140,7 @@ export const Button = styled.button<{ disabledBg?: string; disabledColor?: strin
   @media (max-width: 480px) {
     height: 40px;
     padding: 6px 10px;
-    font-size: ${theme.typography.sizes.body1Mobile};
+    font-size: ${theme.typography.sizes.size16};
   }
 `;
 
@@ -161,14 +161,14 @@ export const BtnSubmit = styled(Button)`
 export const Terms = styled.p`
   text-align: center;
   margin: 8px 0 0;
-  font-size: ${theme.typography.sizes.body2};
+  font-size: ${theme.typography.sizes.size14};
   color: ${theme.palette.loginColors?.subtitleColor1 ?? theme.palette.text?.secondary};
   font-family: ${theme.typography.general.fontInter};
   @media (min-width: 1024px) and (max-height: 760px) {
-    font-size: ${theme.typography.sizes.body3Mobile};
+    font-size: ${theme.typography.sizes.size12};
   }
 
   @media (max-width: 480px) {
-    font-size: ${theme.typography.sizes.terms};
+    font-size: ${theme.typography.sizes.size12};
   }
 `;
