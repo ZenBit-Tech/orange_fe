@@ -1,12 +1,10 @@
 import styled from 'styled-components';
 
-export const PageContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-`;
+import { theme } from '@/theme';
 
 export const WrapperContent = styled.div`
+  background-image: url(${theme.palette.backgrounds.bgLandingSection});
+  background-position: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
