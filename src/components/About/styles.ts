@@ -9,6 +9,7 @@ export const WrapperAbout = styled(Box)`
   align-items: center;
   text-align: center;
   padding-bottom: 176px;
+  padding-top: 30px;
 `;
 
 export const WrapperDescription = styled(Box)`

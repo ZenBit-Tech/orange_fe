@@ -38,8 +38,8 @@ export const WrapperTitle = styled(Box)`
   gap: 40px;
   svg {
     padding: 8px;
-    width: 72px;
-    height: 72px;
+    width: 60px;
+    height: 60px;
     background-color: ${theme.palette.surface.primary.light};
     color: ${theme.palette.baseColors.green[500]};
     border-radius: 8px;

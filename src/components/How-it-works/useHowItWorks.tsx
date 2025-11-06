@@ -1,7 +1,7 @@
 import { FileText, PenLine, Upload } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
-import step1 from '@/assets/img-block.png';
+import step1 from '@/assets/step1.png';
 import step2 from '@/assets/step2.png';
 import step3 from '@/assets/step3.png';
 

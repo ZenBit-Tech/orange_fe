@@ -5,6 +5,7 @@ import { theme } from '@/theme';
 export const WrapperWork = styled(Box)`
   display: flex;
   justify-content: center;
+  padding-top: 50px;
 `;
 
 export const WrapperTitle = styled(Box)`
@@ -13,6 +14,7 @@ export const WrapperTitle = styled(Box)`
   justify-content: center;
   align-items: center;
   gap: 32px;
+  width: 100%;
 `;
 
 export const StyledTitle = styled(Typography)`
@@ -27,39 +29,52 @@ export const StyledDescription = styled(Typography)`
 
 export const WrapperStep = styled(Box)`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  gap: 30px;
+  padding: 40px 80px 40px 150px;
   &:nth-of-type(2) {
     flex-direction: row-reverse;
-    gap: 110px;
+    padding: 40px 190px 40px 80px;
   }
-  img {
-    width: 810px;
-  }
+
   ${({ theme }) => theme.breakpoints.down('md')} {
     margin-top: 30px;
     flex-direction: column;
+    padding: 0;
     &:nth-of-type(2) {
       flex-direction: column;
-    }
-    img {
-      width: 100%;
+      padding: 0;
     }
   }
 `;
 
 export const WrapperImage = styled(Box)`
-  width: 810px;
-  height: 460px;
+  height: auto;
+  display: block;
+  flex-shrink: 0;
+  img {
+    max-width: 600px;
+    height: auto;
+    display: block;
+  }
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    img {
+      max-width: 100%;
+      width: auto;
+      height: auto;
+    }
+  }
 `;
 
 export const WrapperInfo = styled(Box)`
   display: flex;
   flex-direction: column;
   width: 400px;
+  max-width: 400px;
   svg {
+    width: 28px;
+    height: 28px;
     color: ${theme.palette.textIcons?.success};
     background-color: ${theme.palette.surface.primary.light};
     padding: 8px;
@@ -77,6 +92,8 @@ export const WrapperSteps = styled(Box)`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
+  max-width: 1440px;
 `;
 
 export const StyledInfoTitle = styled(Typography)`
@@ -84,6 +101,8 @@ export const StyledInfoTitle = styled(Typography)`
   font-family: ${theme.typography.general.fontPoppins};
   margin-bottom: 20px;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   ${({ theme }) => theme.breakpoints.down('md')} {
     font-size: ${theme.typography.sizes.h4Mobile};
     font-family: ${theme.typography.general.fontPoppins};

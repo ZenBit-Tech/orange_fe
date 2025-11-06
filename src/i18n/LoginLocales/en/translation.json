@@ -1,4 +1,32 @@
 {
+  "HomePage": {
+    "meta-title": "PlasmAI – Instant Analysis & Insights On Your Data",
+    "meta-description": "Get powerful, instant analysis. Our service helps you understand understand your health metrics privately and instantly. Get started today!"
+  },
+  "UploadPage": {
+    "meta-title": "Upload File for Analysis | PlasmAI",
+    "meta-description": "Start your analysis by uploading a file. Follow our simple stepper process to get instant insights from PlasmAI."
+  },
+  "LoginPage": {
+    "meta-title": "Login – PlasmAI",
+    "meta-description": "Log in to your PlasmAI account to access your dashboard and analysis results."
+  },
+  "VerifyPage": {
+    "meta-title": "Verifying Your Account... | PlasmAI",
+    "meta-description": "Automatically verifying your PlasmAI account. Please wait a moment."
+  },
+  "TermsPage": {
+    "meta-title": "Terms of Use – PlasmaAI",
+    "meta-description": "The official Terms of Use for the PlasmaAI service. Please review our terms and conditions."
+  },
+  "PrivacyPolicyPage": {
+    "meta-title": "Privacy Policy – PlasmaAI",
+    "meta-description": "Learn how PlasmaAI collects, uses, and protects your personal data. Read our official privacy policy."
+  },
+  "LinkExpiredPage": {
+    "meta-title": "Link Expired – PlasmaAI",
+    "meta-description": "This link is no longer valid, possibly because it has already been used or its expiration date has passed."
+  },
   "Header": {
     "title": "PlasmAI",
     "links": {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Menu, X } from 'lucide-react';
+import { LogOut, Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 import {
@@ -42,10 +42,12 @@ export const Nav: React.FC<NavProps> = ({ transparent = true }) => {
             })}
           </WrapperLinks>
           <WrapperButtons>
-            <LogoutButton variant="outlined">{t('Form.nav.button.log-out')}</LogoutButton>
             <StartedButton variant="contained" onClick={handleNavigate}>
               {t('Form.nav.button.get-started')}
             </StartedButton>
+            <LogoutButton>
+              <LogOut /> {t('Form.nav.button.log-out')}
+            </LogoutButton>
           </WrapperButtons>
         </>
       )}
@@ -54,16 +56,19 @@ export const Nav: React.FC<NavProps> = ({ transparent = true }) => {
       {isMobileMenuOpen && (
         <MobileMenuOverlay>
           <MobileMenuContent>
-            {links.map((link, index) => {
-              return (
-                <Link key={index} to={link.path} onClick={handleToggleMenu}>
-                  {link.link}
-                </Link>
-              );
-            })}
             <StartedButton variant="contained" onClick={handleNavigate}>
               {t('Form.nav.button.get-started')}
             </StartedButton>
+            {links.map((link, index) => {
+              return (
+                <a key={index} href={link.path} onClick={handleToggleMenu}>
+                  {link.link}
+                </a>
+              );
+            })}
+            <LogoutButton>
+              <LogOut /> {t('Form.nav.button.log-out')}
+            </LogoutButton>
           </MobileMenuContent>
         </MobileMenuOverlay>
       )}

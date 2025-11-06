@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
@@ -23,5 +23,16 @@ export const useNav = () => {
     { link: t('Form.nav.links.your-privacy'), path: '#privacy-section' },
     { link: t('Form.nav.links.faq'), path: '#faq' },
   ];
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
   return { t, handleNavigate, links, isMobileMenuOpen, handleToggleMenu };
 };

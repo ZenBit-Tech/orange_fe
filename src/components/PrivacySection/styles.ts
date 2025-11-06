@@ -30,13 +30,13 @@ export const WrapperSection = styled(Box)`
 `;
 
 export const StyledIcon = styled(Lock)`
-  width: 24px;
-  height: 24px;
-  padding: 8px;
+  width: 44px;
+  height: 44px;
   margin-bottom: 40px;
   border-radius: 8px;
+  padding: 8px;
   background-color: ${theme.palette.backgrounds.white};
-  stroke: ${theme.palette.baseColors.green[500]};
+  color: ${theme.palette.baseColors.green[500]};
   flex-shrink: 0;
   ${({ theme }) => theme.breakpoints.down('md')} {
     width: 20px;

@@ -51,22 +51,30 @@ export const WrapperLinks = styled(Box)`
 
 export const WrapperButtons = styled(Box)`
   display: flex;
-  gap: 15px;
+  gap: 48px;
+  align-items: center;
   ${({ theme }) => theme.breakpoints.down('md')} {
     display: none;
   }
 `;
 
-export const LogoutButton = styled(Button)`
-  padding: 8px 22px;
-  border-color: ${theme.palette.baseColors.grey[200]};
+export const LogoutButton = styled(Box)`
   text-transform: none;
-  border-radius: 12px;
   color: ${theme.palette.textIcons?.textPrimary};
   font-family: ${theme.typography.general.fontInter};
   box-shadow: none;
+  display: flex;
+  align-content: center;
+  gap: 8px;
+  cursor: pointer;
   :hover {
     color: ${theme.palette.globalColors.primaryGreen};
+  }
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    padding: 8px 22px;
+    border: 1px solid;
+    border-color: ${theme.palette.baseColors.grey[200]};
+    border-radius: 12px;
   }
 `;
 
@@ -78,6 +86,9 @@ export const StartedButton = styled(Button)`
   background-color: ${({ theme }) => theme.palette.surface.primary.default};
   text-transform: none;
   box-shadow: none;
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    width: 100%;
+  }
 `;
 
 export const MobileStartedButton = styled(StartedButton)`

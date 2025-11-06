@@ -21,7 +21,7 @@ export const useVerify = () => {
         .unwrap()
         .then(() => {
           setTimeout(() => {
-            navigate('/', { replace: true });
+            navigate('/upload', { replace: true });
           }, 1500);
         })
         .catch((err) => {
