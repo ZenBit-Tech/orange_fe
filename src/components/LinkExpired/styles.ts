@@ -29,7 +29,7 @@ export const CenteredText = styled.div`
   h5 {
     margin: 0;
     font-size: ${theme.typography.sizes.size24};
-    line-height: ${theme.typography.lineHeights.lineHeight133};
+    line-height: 1.33;
     font-weight: ${theme.typography.weights.weight500};
     font-family: ${theme.typography.general.fontPoppins};
     color: ${theme.palette.text?.primary};
