@@ -44,7 +44,7 @@ const StyledTextField = styled((props: TextFieldProps) => (
 
     .MuiInputLabel-root {
       color: ${theme.palette.text.secondary};
-      transform: translate(14px, 10px) scale(1);
+      transform: translate(14px, 7px) scale(1);
       transition: all 0.2s ease;
     }
 

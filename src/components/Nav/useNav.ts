@@ -3,19 +3,40 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 
+import { useGetMeQuery, useLogoutMutation } from '@/store/authApi';
+
 export const useNav = () => {
+  const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const { data: user, isSuccess } = useGetMeQuery();
+  const [logoutUser] = useLogoutMutation();
 
   const handleToggleMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const navigate = useNavigate();
-  const { t } = useTranslation();
+  const isAuthenticated = isSuccess && !!user;
+
+  const handleLogout = async () => {
+    try {
+      await logoutUser().unwrap();
+
+      navigate('/login');
+    } catch (err) {
+      console.error('Failed to log out:', err);
+    }
+  };
 
   const handleNavigate = () => {
-    navigate('/upload');
+    if (isAuthenticated) {
+      navigate('/upload');
+    } else {
+      navigate('/login');
+    }
   };
+
+  const { t } = useTranslation();
 
   const links = [
     { link: t('Form.nav.links.about-us'), path: '#about-us' },
@@ -23,6 +44,7 @@ export const useNav = () => {
     { link: t('Form.nav.links.your-privacy'), path: '#privacy-section' },
     { link: t('Form.nav.links.faq'), path: '#faq' },
   ];
+
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -34,5 +56,14 @@ export const useNav = () => {
       document.body.style.overflow = '';
     };
   }, [isMobileMenuOpen]);
-  return { t, handleNavigate, links, isMobileMenuOpen, handleToggleMenu };
+  return {
+    t,
+    navigate,
+    links,
+    isMobileMenuOpen,
+    handleToggleMenu,
+    handleLogout,
+    handleNavigate,
+    isAuthenticated,
+  };
 };

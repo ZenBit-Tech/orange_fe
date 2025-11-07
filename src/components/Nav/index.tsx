@@ -20,7 +20,15 @@ interface NavProps {
 }
 
 export const Nav: React.FC<NavProps> = ({ transparent = true }) => {
-  const { t, handleNavigate, links, isMobileMenuOpen, handleToggleMenu } = useNav();
+  const {
+    t,
+    links,
+    isMobileMenuOpen,
+    handleToggleMenu,
+    handleLogout,
+    handleNavigate,
+    isAuthenticated,
+  } = useNav();
 
   return (
     <Wrapper transparent={transparent}>
@@ -45,9 +53,11 @@ export const Nav: React.FC<NavProps> = ({ transparent = true }) => {
             <StartedButton variant="contained" onClick={handleNavigate}>
               {t('Form.nav.button.get-started')}
             </StartedButton>
-            <LogoutButton>
-              <LogOut /> {t('Form.nav.button.log-out')}
-            </LogoutButton>
+            {isAuthenticated && (
+              <LogoutButton onClick={handleLogout}>
+                <LogOut /> {t('Form.nav.button.log-out')}
+              </LogoutButton>
+            )}
           </WrapperButtons>
         </>
       )}
