@@ -10,9 +10,9 @@ export const CenteredText = styled.div`
 
   h5 {
     margin: 0;
-    font-size: ${theme.typography.h5?.fontSize};
-    line-height: ${theme.typography.h5?.lineHeight || 1.2};
-    font-weight: ${theme.typography.h5?.fontWeight || 500};
+    font-size: ${theme.typography.sizes.size24};
+    line-height: 1.2;
+    font-weight: ${theme.typography.weights.weight500};
     font-family: ${theme.typography.general.fontPoppins};
     color: ${theme.palette.textIcons?.textPrimary};
   }
@@ -20,19 +20,19 @@ export const CenteredText = styled.div`
   p {
     margin: 8px 0 0;
     color: ${theme.palette.textIcons?.textPrimary};
-    font-size: ${theme.typography.body1?.fontSize};
+    font-size: ${theme.typography.sizes.size16};
     font-family: ${theme.typography.general.fontInter};
   }
 
   @media (min-width: 1024px) and (max-height: 860px) {
     margin: 20px 0;
     h5 {
-      font-size: ${theme.typography.h5.fontSize};
+      font-size: ${theme.typography.sizes.size24};
       line-height: 1.2;
     }
     p {
       margin: 5px 0 0;
-      font-size: ${theme.typography.sizes.size14};
+      font-size: ${theme.typography.sizes.size16};
     }
 
   @media (max-width: 480px) {
