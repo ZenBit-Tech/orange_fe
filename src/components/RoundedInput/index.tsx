@@ -33,11 +33,11 @@ const StyledTextField = styled((props: TextFieldProps) => (
       }
 
       &:hover fieldset {
-        border-color: ${theme.palette.loginColors.border};
+        border-color: ${theme.palette.baseColors.grey[200]};
       }
 
       &.Mui-focused fieldset {
-        border-color: ${theme.palette.loginColors.border};
+        border-color: ${theme.palette.baseColors.grey[200]};
         border-width: 2px;
       }
     }
@@ -71,7 +71,7 @@ export const EmailField: React.FC<EmailFieldProps> = ({ register, errors, t }) =
       {...register('email', {
         required: t('Form.login-form.email_required') as string,
         pattern: {
-          value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, // Basic email regex
+          value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
           message: t('Form.login-form.email_invalid') as string,
         },
       })}

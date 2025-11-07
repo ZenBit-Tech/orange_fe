@@ -13,9 +13,9 @@ export const StyledButton = styled(Button)`
     padding: 8px 14px;
     height: 42px;
     font-size: ${theme.typography.sizes.size16};
-    border: 1px solid ${theme.palette.loginColors?.border ?? theme.palette.divider};
+    border: 1px solid ${theme.palette.baseColors.grey[200]};
     background: ${theme.palette.common.white};
-    color: ${theme.palette.loginColors?.socialButtonsColor ?? theme.palette.text?.primary};
+    color: ${theme.palette.textIcons?.textPrimary};
     @media (min-width: 1024px) and (max-height: 760px) {
       font-size: ${theme.typography.sizes.size14};
       padding: 2px 24px;

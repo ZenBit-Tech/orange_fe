@@ -1,24 +1,29 @@
 import { Box, Button, LinearProgress, Stack, Typography, styled } from '@mui/material';
 
-import { GrUpload } from 'react-icons/gr';
 import { IoIosCloseCircleOutline } from 'react-icons/io';
 
+import { Upload } from 'lucide-react';
+
 export const TextClick = styled(Typography)(({ theme }) => ({
-  color: theme.palette.uploadColors.textClick,
+  color: theme.palette.textIcons?.textPrimary,
+  fontFamily: theme.typography.general.fontInter,
 }));
 
 export const TextSupport = styled(Typography)(({ theme }) => ({
-  color: theme.palette.uploadColors.textSupport,
+  color: theme.palette.textIcons?.textTeriartry,
+  fontFamily: theme.typography.general.fontInter,
 }));
 
 export const BrowseButton = styled(Button)(({ theme }) => ({
   marginTop: theme.spacing(2),
+  fontFamily: theme.typography.general.fontInter,
   textTransform: 'none',
+  padding: '4px 10px',
   borderRadius: '8px',
 }));
 
-export const StyledUploadIcon = styled(GrUpload)(({ theme }) => ({
-  color: theme.palette.uploadColors.borderColor,
+export const StyledUploadIcon = styled(Upload)(({ theme }) => ({
+  color: theme.palette.baseColors.green[700],
   fontSize: theme.spacing(3),
   marginBottom: theme.spacing(1),
 }));
@@ -53,7 +58,8 @@ export const FileInfoContainer = styled(Box)({
 });
 
 export const FileTextSecondary = styled(Typography)(({ theme }) => ({
-  color: theme.palette.text.secondary,
+  color: theme.palette.textIcons?.textTeriartry,
+  fontFamily: theme.typography.general.fontInter,
 }));
 
 export const RejectedText = styled(Typography)(({ theme }) => ({
@@ -90,9 +96,9 @@ export const DropzoneArea = styled(Box)<{ $isUploading: boolean; $hasFiles: bool
     padding: theme.spacing(3),
     borderWidth: 1,
     borderRadius: 12,
-    borderColor: theme.palette.uploadColors.borderColor,
+    borderColor: theme.palette.baseColors.green[600],
     borderStyle: 'dashed',
-    backgroundColor: theme.palette.uploadColors.backgroundColorSecondary,
+    backgroundColor: theme.palette.backgrounds.bgSecondary,
     color: theme.palette.text.secondary,
     outline: 'none',
     transition: 'border .24s ease-in-out',
@@ -103,11 +109,15 @@ export const DropzoneArea = styled(Box)<{ $isUploading: boolean; $hasFiles: bool
     ...($hasFiles && {
       height: '94px',
       minHeight: '94px',
+      borderColor: theme.palette.baseColors.grey[200],
+      borderStyle: 'solid',
     }),
     ...($isUploading && {
       height: '94px',
       minHeight: '94px',
       cursor: 'progress',
+      borderColor: theme.palette.baseColors.grey[200],
+      borderStyle: 'solid',
     }),
     [theme.breakpoints.up('md')]: {
       width: '846px',
@@ -117,11 +127,15 @@ export const DropzoneArea = styled(Box)<{ $isUploading: boolean; $hasFiles: bool
       ...($hasFiles && {
         height: '94px',
         minHeight: '94px',
+        borderColor: theme.palette.baseColors.grey[200],
+        borderStyle: 'solid',
       }),
       ...($isUploading && {
         height: '94px',
         minHeight: '94px',
         cursor: 'progress',
+        borderColor: theme.palette.baseColors.grey[200],
+        borderStyle: 'solid',
       }),
     },
   }),
