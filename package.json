@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "start": "vite preview --port $PORT --host 0.0.0.0",
+    "start": "serve -s dist -p $PORT",
     "lint": "eslint .",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
     "preview": "vite preview",
@@ -33,6 +33,7 @@
     "react-markdown": "^10.1.0",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.9.2",
+    "serve": "^14.2.5",
     "styled-components": "^6.1.19"
   },
   "devDependencies": {
