@@ -10,7 +10,7 @@ import { LegalContent } from '@/pages/LegalPages/styles';
 export const TermsPage: React.FC = () => {
   const { t } = useTranslation();
   return (
-    <PageLayout>
+    <PageLayout auth={true}>
       <title>{t('TermsPage.meta-title')}</title>
       <meta name="description" content={t('TermsPage.meta-description')} />
       <LegalContent>

@@ -1,5 +1,3 @@
-import { useTranslation } from 'react-i18next';
-
 import tablet from '@/assets/tablet.png';
 
 import {
@@ -13,14 +11,10 @@ import {
   TabletImageWrapper,
   TitleStyled,
 } from './styles';
+import { useMainContent } from './useMainContent';
 
 export const MainContent: React.FC = () => {
-  const { t } = useTranslation();
-  const lists = [
-    t('Main-Content.feature-list.instant-analysis'),
-    t('Main-Content.feature-list.private'),
-    t('Main-Content.feature-list.available'),
-  ];
+  const { lists, t, handleNavigate } = useMainContent();
   return (
     <MainWrapper>
       <DescriptionWrapper>
@@ -30,7 +24,9 @@ export const MainContent: React.FC = () => {
           <StyledInstantly>{t('Main-Content.instantly')}</StyledInstantly>
         </TitleStyled>
         <DescriptionStyled variant="h6">{t('Main-Content.description')}</DescriptionStyled>
-        <ButtonStyled variant="contained">{t('Header.button')}</ButtonStyled>
+        <ButtonStyled variant="contained" onClick={handleNavigate}>
+          {t('Header.button')}
+        </ButtonStyled>
         <ListsWrapper>
           {lists.map((list, index) => (
             <li key={index}>{list}</li>

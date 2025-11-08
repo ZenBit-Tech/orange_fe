@@ -28,8 +28,10 @@ export const Nav: React.FC<NavProps> = ({ transparent = true }) => {
     handleLogout,
     handleNavigate,
     isAuthenticated,
+    showLinks,
+    showAuthButtons,
+    currentPath,
   } = useNav();
-
   return (
     <Wrapper transparent={transparent}>
       <Link to="/">
@@ -40,20 +42,24 @@ export const Nav: React.FC<NavProps> = ({ transparent = true }) => {
       </Link>
       {!transparent && (
         <>
-          <WrapperLinks>
-            {links.map((link, index) => {
-              return (
-                <a key={index} href={link.path}>
-                  {link.link}
-                </a>
-              );
-            })}
-          </WrapperLinks>
+          {showLinks && (
+            <WrapperLinks>
+              {links.map((link, index) => {
+                return (
+                  <a key={index} href={link.path}>
+                    {link.link}
+                  </a>
+                );
+              })}
+            </WrapperLinks>
+          )}
           <WrapperButtons>
-            <StartedButton variant="contained" onClick={handleNavigate}>
-              {t('Form.nav.button.get-started')}
-            </StartedButton>
-            {isAuthenticated && (
+            {showLinks && (
+              <StartedButton variant="contained" onClick={handleNavigate}>
+                {t('Form.nav.button.get-started')}
+              </StartedButton>
+            )}
+            {showAuthButtons && (
               <LogoutButton onClick={handleLogout}>
                 <LogOut /> {t('Form.nav.button.log-out')}
               </LogoutButton>
@@ -61,8 +67,9 @@ export const Nav: React.FC<NavProps> = ({ transparent = true }) => {
           </WrapperButtons>
         </>
       )}
-
-      <MenuButton onClick={handleToggleMenu}>{isMobileMenuOpen ? <X /> : <Menu />}</MenuButton>
+      {currentPath !== '/login' && (
+        <MenuButton onClick={handleToggleMenu}>{isMobileMenuOpen ? <X /> : <Menu />}</MenuButton>
+      )}
       {isMobileMenuOpen && (
         <MobileMenuOverlay>
           <MobileMenuContent>
@@ -76,9 +83,11 @@ export const Nav: React.FC<NavProps> = ({ transparent = true }) => {
                 </a>
               );
             })}
-            <LogoutButton>
-              <LogOut /> {t('Form.nav.button.log-out')}
-            </LogoutButton>
+            {isAuthenticated && (
+              <LogoutButton onClick={handleLogout}>
+                <LogOut /> {t('Form.nav.button.log-out')}
+              </LogoutButton>
+            )}
           </MobileMenuContent>
         </MobileMenuOverlay>
       )}

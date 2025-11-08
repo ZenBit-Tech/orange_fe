@@ -68,7 +68,7 @@ export const WrapperAccordionContainer = styled(Box)`
 `;
 
 export const StyledAccordion = styled(Accordion)`
-  border-radius: 12px !important;
+  border-radius: 20px !important;
   background-color: ${theme.palette.background.paper};
   border: 1px solid ${theme.palette.baseColors.grey[200]};
   padding: 40px 24px;

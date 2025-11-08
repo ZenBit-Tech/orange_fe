@@ -1,4 +1,6 @@
-import { Box, Button, styled } from '@mui/material';
+import { Box, Button, Typography, styled } from '@mui/material';
+
+import { theme } from '@/theme';
 
 export const WrapperUpload = styled(Box)(({ theme }) => ({
   width: '100%',
@@ -10,7 +12,7 @@ export const WrapperUpload = styled(Box)(({ theme }) => ({
   flexDirection: 'column',
   borderStyle: 'solid',
   borderRadius: 20,
-  borderWidth: 2,
+  borderWidth: 1,
   borderColor: theme.palette.baseColors.grey[200],
   backgroundColor: theme.palette.backgrounds.white,
   alignItems: 'center',
@@ -42,6 +44,10 @@ export const ButtonContainer = styled(Box)(({ theme }) => ({
     padding: 0,
   },
 }));
+
+export const StyledTitle = styled(Typography)`
+  font-family: ${theme.typography.general.fontPoppins};
+`;
 
 export const Spacer = styled(Box)(({ theme }) => ({
   display: 'none',

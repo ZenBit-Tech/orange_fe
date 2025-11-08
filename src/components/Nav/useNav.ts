@@ -1,12 +1,15 @@
 import { useEffect, useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { useGetMeQuery, useLogoutMutation } from '@/store/authApi';
 
 export const useNav = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { t } = useTranslation();
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const { data: user, isSuccess } = useGetMeQuery();
@@ -15,8 +18,15 @@ export const useNav = () => {
   const handleToggleMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
-
   const isAuthenticated = isSuccess && !!user;
+
+  const currentPath = location.pathname;
+
+  const hideAuthButtonsOn = ['/login', '/privacy', '/terms'];
+  const hideLinksOn = ['/login', '/privacy', '/terms', '/upload'];
+
+  const showLinks = !hideLinksOn.includes(currentPath);
+  const showAuthButtons = isAuthenticated && !hideAuthButtonsOn.includes(currentPath);
 
   const handleLogout = async () => {
     try {
@@ -35,8 +45,6 @@ export const useNav = () => {
       navigate('/login');
     }
   };
-
-  const { t } = useTranslation();
 
   const links = [
     { link: t('Form.nav.links.about-us'), path: '#about-us' },
@@ -65,5 +73,8 @@ export const useNav = () => {
     handleLogout,
     handleNavigate,
     isAuthenticated,
+    showLinks,
+    showAuthButtons,
+    currentPath,
   };
 };

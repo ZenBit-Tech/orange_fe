@@ -10,7 +10,7 @@ import { LegalContent } from '@/pages/LegalPages/styles';
 export const PrivacyPolicyPage: React.FC = () => {
   const { t } = useTranslation();
   return (
-    <PageLayout>
+    <PageLayout auth={true}>
       <title>{t('PrivacyPolicyPage.meta-title')}</title>
       <meta name="description" content={t('PrivacyPolicyPage.meta-description')} />
       <LegalContent>

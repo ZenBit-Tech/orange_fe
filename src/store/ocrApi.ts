@@ -6,6 +6,7 @@ export const ocrApi = createApi({
   reducerPath: 'ocrApi',
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_OCR_URL,
+    credentials: 'include',
   }),
   endpoints: (builder) => ({
     extractDataFromImage: builder.mutation<BloodTestData, { data: string }>({

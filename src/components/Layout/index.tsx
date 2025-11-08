@@ -36,6 +36,6 @@ export const PageLayout: React.FC<PageLayoutProps> = ({ children, transparentNav
   <PageWrapper auth={auth}>
     <Nav transparent={transparentNav} />
     <Main>{children}</Main>
-    <Footer />
+    <Footer transparent={transparentNav} />
   </PageWrapper>
 );
