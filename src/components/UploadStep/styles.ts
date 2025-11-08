@@ -20,6 +20,7 @@ export const WrapperUpload = styled(Box)(({ theme }) => ({
   boxSizing: 'border-box',
   '& .MuiTypography-body1': {
     color: theme.palette.textIcons?.textSecondary,
+    fontSize: theme.typography.sizes.size16,
     alignItems: 'center',
     marginBottom: 16,
   },
@@ -47,6 +48,10 @@ export const ButtonContainer = styled(Box)(({ theme }) => ({
 
 export const StyledTitle = styled(Typography)`
   font-family: ${theme.typography.general.fontPoppins};
+  font-size: ${theme.typography.sizes.size24};
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    font-size: ${theme.typography.sizes.size18};
+  }
 `;
 
 export const Spacer = styled(Box)(({ theme }) => ({
@@ -59,6 +64,7 @@ export const Spacer = styled(Box)(({ theme }) => ({
 
 export const StyledButton = styled(Button)(({ theme }) => ({
   backgroundColor: theme.palette.surface.primary.default,
+  fontSize: theme.typography.sizes.size16,
   color: theme.palette.textIcons?.contrast,
   width: '192px',
   height: '42px',

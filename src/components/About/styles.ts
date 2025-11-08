@@ -31,15 +31,17 @@ export const WrapperDescription = styled(Box)`
 `;
 
 export const StyledTitle = styled(Typography)`
+  font-size: ${theme.typography.sizes.size48};
   font-family: ${theme.typography.general.fontPoppins};
   margin-bottom: 32px;
   color: ${theme.palette.textIcons?.textPrimary};
   ${({ theme }) => theme.breakpoints.down('md')} {
-    font-size: 24px;
+    font-size: ${theme.typography.sizes.size24};
   }
 `;
 
 export const StyledDescription = styled(Typography)`
+  font-size: ${theme.typography.sizes.size16};
   font-family: ${theme.typography.general.fontInter};
   margin-bottom: 40px;
   ${({ theme }) => theme.breakpoints.down('sm')} {
@@ -97,6 +99,12 @@ export const StyledTitleCard = styled(Box)`
   }
   h5 {
     font-family: ${theme.typography.general.fontPoppins};
+    font-size: ${theme.typography.sizes.size24};
+  }
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    h5 {
+      font-size: ${theme.typography.sizes.size18};
+    }
   }
 `;
 
@@ -105,6 +113,7 @@ export const StyledDescriptionCard = styled(Typography)`
   text-align: justify;
   align-self: stretch;
   font-family: ${theme.typography.general.fontInter};
+  font-size: ${theme.typography.sizes.size16};
   ${({ theme }) => theme.breakpoints.down('md')} {
     width: 100%;
     height: 100%;

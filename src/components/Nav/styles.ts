@@ -44,6 +44,7 @@ export const WrapperLinks = styled(Box)`
   display: flex;
   gap: 30px;
   font-family: ${theme.typography.general.fontInter};
+  font-size: ${theme.typography.sizes.size16};
   ${({ theme }) => theme.breakpoints.down('md')} {
     display: none;
   }
@@ -61,6 +62,7 @@ export const WrapperButtons = styled(Box)`
 export const LogoutButton = styled(Box)`
   text-transform: none;
   color: ${theme.palette.textIcons?.textPrimary};
+  font-size: ${theme.typography.sizes.size16};
   font-family: ${theme.typography.general.fontInter};
   box-shadow: none;
   display: flex;

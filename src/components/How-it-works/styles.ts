@@ -18,11 +18,16 @@ export const WrapperTitle = styled(Box)`
 `;
 
 export const StyledTitle = styled(Typography)`
+  font-size: ${theme.typography.sizes.size48};
   color: ${theme.palette.textIcons?.textPrimary};
   font-family: ${theme.typography.general.fontPoppins};
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    font-size: ${theme.typography.sizes.size24};
+  }
 `;
 
 export const StyledDescription = styled(Typography)`
+  font-size: ${theme.typography.sizes.size16};
   color: ${theme.palette.textIcons?.textPrimary};
   font-family: ${theme.typography.general.fontInter};
 `;
@@ -37,7 +42,6 @@ export const WrapperStep = styled(Box)`
     flex-direction: row-reverse;
     padding: 40px 190px 40px 80px;
   }
-
   ${({ theme }) => theme.breakpoints.down('md')} {
     margin-top: 30px;
     flex-direction: column;
@@ -99,23 +103,25 @@ export const WrapperSteps = styled(Box)`
 export const StyledInfoTitle = styled(Typography)`
   color: ${theme.palette.textIcons?.textPrimary};
   font-family: ${theme.typography.general.fontPoppins};
+  font-size: ${theme.typography.sizes.size34};
   margin-bottom: 20px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   ${({ theme }) => theme.breakpoints.down('md')} {
-    font-size: ${theme.typography.sizes.h4Mobile};
+    font-size: ${theme.typography.sizes.size20};
     font-family: ${theme.typography.general.fontPoppins};
     text-align: center;
   }
 `;
 
 export const StyledInfoDescription = styled(Typography)`
+  font-size: ${theme.typography.sizes.size16};
   font-family: ${theme.typography.general.fontInter};
   color: ${theme.palette.textIcons?.textPrimary};
   ${({ theme }) => theme.breakpoints.down('md')} {
     padding: 0 40px;
-    font-size: ${theme.typography.sizes.body1Mobile};
+    font-size: ${theme.typography.sizes.size16};
     font-family: ${theme.typography.general.fontInter};
   }
 `;

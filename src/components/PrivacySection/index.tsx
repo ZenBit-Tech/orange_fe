@@ -25,7 +25,7 @@ export const PrivacySection: React.FC = () => {
           {cards.map((card, index) => {
             return (
               <StyledCard key={index}>
-                <Typography variant="h6">{card.title}</Typography>
+                <Typography variant="h5">{card.title}</Typography>
                 <Typography variant="body1">{card.description}</Typography>
               </StyledCard>
             );

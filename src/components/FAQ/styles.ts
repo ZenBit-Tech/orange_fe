@@ -51,9 +51,10 @@ export const WrapperTitle = styled(Box)`
 `;
 
 export const StyledTitle = styled(Typography)`
+  font-size: ${theme.typography.sizes.size48};
   font-family: ${theme.typography.general.fontPoppins};
   ${({ theme }) => theme.breakpoints.down('md')} {
-    font-size: 24px;
+    font-size: ${theme.typography.sizes.size24};
   }
 `;
 
@@ -84,14 +85,22 @@ export const StyledAccordionDetails = styled(AccordionDetails)`
 `;
 
 export const StyledQuestion = styled(Typography)`
+  font-size: ${theme.typography.sizes.size18};
   font-family: ${theme.typography.general.fontPoppins};
-  font-weight: ${theme.typography.weights.light};
+  font-weight: ${theme.typography.weights.weight400};
   color: ${theme.palette.textIcons?.textPrimary};
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    font-size: ${theme.typography.sizes.size16};
+  }
 `;
 
 export const StyledAnswer = styled(Typography)`
   font-family: ${theme.typography.general.fontInter};
+  font-size: ${theme.typography.sizes.size18};
   color: ${theme.palette.textIcons?.textSecondary};
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    font-size: ${theme.typography.sizes.size16};
+  }
 `;
 
 export const WrapperHelp = styled(Box)`
@@ -100,6 +109,7 @@ export const WrapperHelp = styled(Box)`
   align-items: center;
   p {
     color: ${theme.palette.textIcons?.textPrimary};
+    font-size: ${theme.typography.sizes.size16};
     font-family: ${theme.typography.general.fontInter};
   }
 `;
@@ -112,5 +122,6 @@ export const WrapperMail = styled(Link)`
   p {
     color: ${theme.palette.textIcons?.success};
     border-bottom: 1px solid ${theme.palette.textIcons?.success};
+    font-size: ${theme.typography.sizes.size16};
   }
 `;

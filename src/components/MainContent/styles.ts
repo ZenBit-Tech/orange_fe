@@ -67,9 +67,10 @@ export const DescriptionWrapper = styled(Box)`
 export const TitleStyled = styled(Typography)`
   max-width: 628px;
   margin: 32px 0;
+  font-size: ${theme.typography.sizes.size60};
   font-family: ${theme.typography.general.fontPoppins};
   ${({ theme }) => theme.breakpoints.down('md')} {
-    font-size: 34px;
+    font-size: ${theme.typography.sizes.size34};
     max-width: 100%;
   }
 `;
@@ -96,9 +97,11 @@ export const StyledInstantly = styled('span')`
 export const DescriptionStyled = styled(Typography)`
   width: 735px;
   margin-bottom: 32px;
+  font-size: ${theme.typography.sizes.size18};
   font-family: ${theme.typography.general.fontPoppins};
-  font-weight: ${theme.typography.weights.light};
+  font-weight: ${theme.typography.weights.weight400};
   ${({ theme }) => theme.breakpoints.down('md')} {
+    font-size: ${theme.typography.sizes.size16};
     width: 100%;
   }
 `;
@@ -112,7 +115,8 @@ export const ListsWrapper = styled('ul')`
   gap: 56px;
   margin-top: 160px;
   font-family: ${theme.typography.general.fontInter};
-  font-weight: ${theme.typography.weights.regular};
+  font-size: ${theme.typography.sizes.size16};
+  font-weight: ${theme.typography.weights.weight500};
   li::marker {
     color: ${theme.palette.baseColors.green[900]};
     width: 10px;
@@ -133,16 +137,19 @@ export const StyledBody = styled(Typography)`
   padding: 4px 8px;
   border-radius: 100px;
   font-family: ${theme.typography.general.fontInter};
+  font-size: ${theme.typography.sizes.size14};
 `;
 
 export const ButtonStyled = styled(Button)`
   background-color: ${theme.palette.surface.primary.default};
+  font-size: ${theme.typography.sizes.size16};
   font-family: ${theme.typography.general.fontInter};
   width: 192px;
   border-radius: 12px;
   text-transform: none;
   box-shadow: none;
   ${({ theme }) => theme.breakpoints.down('md')} {
+    font-size: ${theme.typography.sizes.size14};
     align-self: center;
   }
 `;

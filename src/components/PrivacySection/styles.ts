@@ -48,8 +48,9 @@ export const StyledIcon = styled(Lock)`
 `;
 
 export const StyledTitle = styled(Typography)`
+  font-size: ${theme.typography.sizes.size48};
   ${({ theme }) => theme.breakpoints.down('md')} {
-    font-size: 24px;
+    font-size: ${theme.typography.sizes.size24};
     padding: 10px;
     align-self: center;
   }
@@ -59,12 +60,12 @@ export const StyledTypographyDescription = styled(Typography)`
   width: 846px;
   margin-top: 32px;
   font-family: ${theme.typography.general.fontInter};
+  font-size: ${theme.typography.sizes.size16};
   color: ${theme.palette.textIcons?.textPrimary};
   text-align: center;
   ${({ theme }) => theme.breakpoints.down('md')} {
     width: 100%;
     align-self: stretch;
-    font-size: ${theme.typography.sizes.body1Mobile};
   }
 `;
 
@@ -92,12 +93,14 @@ export const StyledCard = styled(Box)`
   flex-direction: column;
   width: 314px;
   gap: 16px;
-  h6 {
+  h5 {
     font-family: ${theme.typography.general.fontPoppins};
-    font-weight: ${theme.typography.weights.light};
+    font-weight: ${theme.typography.weights.weight400};
+    font-size: ${theme.typography.sizes.size24};
   }
   p {
     font-family: ${theme.typography.general.fontInter};
+    font-size: ${theme.typography.sizes.size16};
   }
   ${({ theme }) => theme.breakpoints.down('md')} {
     background-color: ${theme.palette.backgrounds.white};
@@ -105,5 +108,8 @@ export const StyledCard = styled(Box)`
     border-radius: 20px;
     margin-bottom: 24px;
     border: 1px solid ${theme.palette.baseColors.grey[200]};
+    h5 {
+      font-size: ${theme.typography.sizes.size24};
+    }
   }
 `;

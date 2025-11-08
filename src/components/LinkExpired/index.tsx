@@ -11,10 +11,6 @@ import { CenteredText, WrapperForm } from './styles';
 export const LinkExpired: React.FC = () => {
   const { t } = useTranslation();
 
-  const handleRequestNewLink = () => {
-    //  implement request logic
-  };
-
   return (
     <WrapperForm component="div" aria-labelledby="link-expired-title">
       <CiClock2 />
@@ -23,9 +19,7 @@ export const LinkExpired: React.FC = () => {
         <p>{t('Form.login-form.linkExpiredSubtitle')}</p>
       </CenteredText>
 
-      <BtnSubmit type="button" onClick={handleRequestNewLink}>
-        {t('Form.login-form.resendLink')}
-      </BtnSubmit>
+      <BtnSubmit type="button">{t('Form.login-form.resendLink')}</BtnSubmit>
     </WrapperForm>
   );
 };

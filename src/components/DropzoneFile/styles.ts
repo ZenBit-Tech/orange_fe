@@ -7,16 +7,19 @@ import { Upload } from 'lucide-react';
 export const TextClick = styled(Typography)(({ theme }) => ({
   color: theme.palette.textIcons?.textPrimary,
   fontFamily: theme.typography.general.fontInter,
+  fontSize: theme.typography.sizes.size14,
 }));
 
 export const TextSupport = styled(Typography)(({ theme }) => ({
   color: theme.palette.textIcons?.textTeriartry,
   fontFamily: theme.typography.general.fontInter,
+  fontSize: theme.typography.sizes.size14,
 }));
 
 export const BrowseButton = styled(Button)(({ theme }) => ({
   marginTop: theme.spacing(2),
   fontFamily: theme.typography.general.fontInter,
+  fontSize: theme.typography.sizes.size14,
   textTransform: 'none',
   padding: '4px 10px',
   borderRadius: '8px',
@@ -84,6 +87,7 @@ export const StyledLinearProgress = styled(LinearProgress)({
 
 export const StatusText = styled(Typography)(({ theme }) => ({
   marginTop: theme.spacing(0.5),
+  fontSize: theme.typography.sizes.size14,
 }));
 
 export const DropzoneArea = styled(Box)<{ $isUploading: boolean; $hasFiles: boolean }>(
