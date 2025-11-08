@@ -84,11 +84,11 @@ export const LegalContent = styled.section`
     }
 
     h2 {
-      font-size: ${theme.typography.sizes.h5Mobile};
+      font-size: ${theme.typography.sizes.size18};
     }
 
     p {
-      font-size: ${theme.typography.sizes.body2};
+      font-size: ${theme.typography.sizes.size14};
       line-height: 22px;
     }
   }

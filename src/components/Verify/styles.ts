@@ -13,18 +13,18 @@ export const WrapperContainer = styled(Box)({
 export const CenteredContent = styled(Box)`
   align-items: center;
   h2 {
-    font-size: ${theme.typography.sizes.h1};
+    font-size: ${theme.typography.sizes.size96};
   }
 `;
 
 export const LoadingText = styled(Typography)`
   display: flex;
   justify-content: center;
-  font-size: ${theme.typography.sizes.body1};
+  font-size: ${theme.typography.sizes.size16};
 `;
 
 export const ErrorText = styled(Typography)`
-  font-size: ${theme.typography.sizes.body1};
+  font-size: ${theme.typography.sizes.size16};
   color: ${theme.palette.error.main};
   margin-top: '80px';
   display: flex;
@@ -32,7 +32,7 @@ export const ErrorText = styled(Typography)`
 `;
 
 export const SuccessText = styled(Typography)`
-  font-size: ${theme.typography.sizes.body1};
+  font-size: ${theme.typography.sizes.size16};
   color: ${theme.palette.success.main};
   margin-top: '80px';
   display: flex;
@@ -40,7 +40,7 @@ export const SuccessText = styled(Typography)`
 `;
 
 export const StatusText = styled(Typography)`
-  font-size: ${theme.typography.sizes.body1};
+  font-size: ${theme.typography.sizes.size16};
   margin-top: '80px';
   display: flex;
   justify-content: center;

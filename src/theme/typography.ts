@@ -11,57 +11,36 @@ import '@fontsource/poppins/700.css';
 
 export const typography: ThemeOptions['typography'] & {
   sizes: {
-    h1: string;
-    h1Mobile: string;
-    h4: string;
-    h4Mobile: string;
-    h5: string;
-    h5Mobile: string;
-    body1: string;
-    body1Mobile: string;
-    body2: string;
-    body2Mobile: string;
-    body3: string;
-    body3Mobile: string;
-    button: string;
-    terms: string;
+    size96: string;
+    size60: string;
+    size48: string;
+    size34: string;
+    size24: string;
+    size20: string;
+    size18: string;
+    size16: string;
+    size14: string;
+    size12: string;
   };
 } = {
   sizes: {
-    h1: '28px',
-    h1Mobile: '22px',
-    h4: '26px',
-    h4Mobile: '20px',
-    h5: '24px',
-    h5Mobile: '20px',
-    body1: '16px',
-    body1Mobile: '14px',
-    body2: '14px',
-    body2Mobile: '13px',
-    body3: '12px',
-    body3Mobile: '11px',
-    button: '16px',
-    terms: '12px',
+    size96: '96px',
+    size60: '60px',
+    size48: '48px',
+    size34: '34px',
+    size24: '24px',
+    size20: '20px',
+    size18: '18px',
+    size16: '16px',
+    size14: '14px',
+    size12: '12px',
   },
 
   weights: {
-    light: 400,
-    regular: 500,
-    medium: 600,
-    bold: 700,
-  },
-
-  lineHeight: {
-    h1: 1.17,
-    h2: 1.2,
-    h3: 1.17,
-    h4: 1.24,
-    h5: 1.33,
-    h6: 1.6,
-    subtitle1: 1.75,
-    subtitle2: 1.57,
-    body1: 1.5,
-    body2: 1.43,
+    weight400: 400,
+    weight500: 500,
+    weight600: 600,
+    weight700: 700,
   },
 
   general: {
@@ -73,40 +52,23 @@ export const typography: ThemeOptions['typography'] & {
 declare module '@mui/material/styles' {
   interface TypographyVariants {
     sizes: {
-      h1: string;
-      h1Mobile: string;
-      h4: string;
-      h4Mobile: string;
-      h5: string;
-      h5Mobile: string;
-      body1: string;
-      body1Mobile: string;
-      body2: string;
-      body2Mobile: string;
-      body3: string;
-      body3Mobile: string;
-      button: string;
-      terms: string;
+      size96: string;
+      size60: string;
+      size48: string;
+      size34: string;
+      size24: string;
+      size20: string;
+      size18: string;
+      size16: string;
+      size14: string;
+      size12: string;
     };
 
     weights: {
-      light: number;
-      regular: number;
-      medium: number;
-      bold: number;
-    };
-
-    lineHeight: {
-      h1: number;
-      h2: number;
-      h3: number;
-      h4: number;
-      h5: number;
-      h6: number;
-      subtitle1: number;
-      subtitle2: number;
-      body1: number;
-      body2: number;
+      weight400: number;
+      weight500: number;
+      weight600: number;
+      weight700: number;
     };
 
     general: {
@@ -117,40 +79,23 @@ declare module '@mui/material/styles' {
 
   interface TypographyVariantsOptions {
     sizes?: {
-      h1: string;
-      h1Mobile: string;
-      h4: string;
-      h4Mobile: string;
-      h5: string;
-      h5Mobile: string;
-      body1: string;
-      body1Mobile: string;
-      body2: string;
-      body2Mobile: string;
-      body3: string;
-      body3Mobile: string;
-      button: string;
-      terms: string;
-    };
-
-    lineHeight: {
-      h1: number;
-      h2: number;
-      h3: number;
-      h4: number;
-      h5: number;
-      h6: number;
-      subtitle1: number;
-      subtitle2: number;
-      body1: number;
-      body2: number;
+      size96: string;
+      size60: string;
+      size48: string;
+      size34: string;
+      size24: string;
+      size20: string;
+      size18: string;
+      size16: string;
+      size14: string;
+      size12: string;
     };
 
     weights?: {
-      light: number;
-      regular: number;
-      medium: number;
-      bold: number;
+      weight400: number;
+      weight500: number;
+      weight600: number;
+      weight700: number;
     };
 
     general?: {

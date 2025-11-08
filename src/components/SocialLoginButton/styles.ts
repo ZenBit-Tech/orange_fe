@@ -12,12 +12,12 @@ export const StyledButton = styled(Button)`
     border-radius: 12px;
     padding: 8px 14px;
     height: 42px;
-    font-size: ${theme.typography.sizes.button};
+    font-size: ${theme.typography.sizes.size16};
     border: 1px solid ${theme.palette.baseColors.grey[200]};
     background: ${theme.palette.common.white};
     color: ${theme.palette.textIcons?.textPrimary};
     @media (min-width: 1024px) and (max-height: 760px) {
-      font-size: ${theme.typography.sizes.body2};
+      font-size: ${theme.typography.sizes.size14};
       padding: 2px 24px;
       height: 36px;
       border-radius: 10px;

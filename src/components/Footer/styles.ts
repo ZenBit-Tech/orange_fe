@@ -18,7 +18,7 @@ export const Wrapper = styled(Box)<WrapperProps>`
   box-sizing: border-box;
   padding: 20px 50px;
   font-family: ${theme.typography.general.fontPoppins};
-  font-size: ${theme.typography.sizes.body2};
+  font-size: ${theme.typography.sizes.size14};
   font-weight: ${theme.typography.fontWeightLight};
   color: ${theme.palette.textIcons?.textTeriartry};
   a {
