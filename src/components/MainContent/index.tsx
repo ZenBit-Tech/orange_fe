@@ -1,4 +1,5 @@
 import tablet from '@/assets/tablet.png';
+import tabletWebp from '@/assets/tablet.webp';
 
 import {
   ButtonStyled,
@@ -35,7 +36,10 @@ export const MainContent: React.FC = () => {
       </DescriptionWrapper>
 
       <TabletImageWrapper>
-        <img src={tablet} alt="tablet" />
+        <picture>
+          <source type="image/webp" srcSet={tabletWebp} />
+          <img src={tablet} alt="tablet" fetchPriority="high" />
+        </picture>
       </TabletImageWrapper>
     </MainWrapper>
   );

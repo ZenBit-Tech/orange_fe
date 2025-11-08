@@ -1,8 +1,8 @@
 import { green, grey } from '@mui/material/colors';
 import type { PaletteOptions } from '@mui/material/styles';
 
-import bgLandingSection from '@/assets/landing-herobackground.png';
-import bgPrivacy from '@/assets/privacy-section-bg.png';
+import bgLandingSection from '@/assets/landing-herobackground.webp';
+import bgPrivacy from '@/assets/privacy-section-bg.webp';
 
 const GRADIENT_GREEN_1 = '#f1faf3';
 const GRADIENT_GREEN_2 = '#edfbe4';

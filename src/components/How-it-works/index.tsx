@@ -29,7 +29,10 @@ export const HowItWorks: React.FC = () => {
                   <StyledInfoDescription variant="body1">{step.description}</StyledInfoDescription>
                 </WrapperInfo>
                 <WrapperImage>
-                  <img src={step.image} alt={step.title} />
+                  <picture>
+                    <source type="image/webp" srcSet={step.webp} />
+                    <img src={step.image} alt={step.title} loading="lazy" />
+                  </picture>
                 </WrapperImage>
               </WrapperStep>
             );
