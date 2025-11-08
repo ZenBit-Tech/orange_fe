@@ -17,7 +17,7 @@ export const Wrapper = styled(Box)<WrapperProps>`
     transparent ? 'none' : `1px solid ${theme.palette.baseColors.grey[200]}`};
   box-sizing: border-box;
   padding: 20px 50px;
-  font-family: ${theme.typography.general.fontPoppins};
+  font-family: ${theme.typography.general.fontInter};
   font-size: ${theme.typography.sizes.size16};
   font-weight: ${theme.typography.fontWeightLight};
   color: ${theme.palette.textIcons?.textTeriartry};

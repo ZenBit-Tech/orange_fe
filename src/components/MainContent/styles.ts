@@ -36,6 +36,7 @@ export const TabletImageWrapper = styled(Box)`
   right: -100px;
   bottom: 80px;
   ${({ theme }) => theme.breakpoints.down('md')} {
+    bottom: 140px;
     position: relative;
     width: 100%;
     max-width: 100%;

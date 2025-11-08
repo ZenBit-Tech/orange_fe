@@ -17,6 +17,7 @@ export const Wrapper = styled(Box)<WrapperProps>`
   border-bottom: ${({ transparent }) =>
     transparent ? 'none' : `1px solid ${theme.palette.baseColors.grey[200]}`};
   padding: 5px 50px;
+  font-family: ${theme.typography.general.fontInter};
   color: ${theme.palette.textIcons?.textTeriartry};
   position: sticky;
   top: 0;
@@ -43,7 +44,6 @@ export const Wrapper = styled(Box)<WrapperProps>`
 export const WrapperLinks = styled(Box)`
   display: flex;
   gap: 30px;
-  font-family: ${theme.typography.general.fontInter};
   font-size: ${theme.typography.sizes.size16};
   ${({ theme }) => theme.breakpoints.down('md')} {
     display: none;
@@ -63,7 +63,6 @@ export const LogoutButton = styled(Box)`
   text-transform: none;
   color: ${theme.palette.textIcons?.textPrimary};
   font-size: ${theme.typography.sizes.size16};
-  font-family: ${theme.typography.general.fontInter};
   box-shadow: none;
   display: flex;
   align-content: center;
@@ -100,6 +99,7 @@ export const MobileStartedButton = styled(StartedButton)`
 export const MenuButton = styled(IconButton)`
   display: none;
   color: ${theme.palette.textIcons?.textTeriartry};
+  font-family: ${theme.typography.general.fontInter};
   z-index: 1005;
   ${({ theme }) => theme.breakpoints.down('md')} {
     display: inline-flex;
@@ -113,7 +113,6 @@ export const MobileMenuOverlay = styled(Box)`
   z-index: 100;
   width: 100%;
   background: ${theme.palette.backgrounds.bgPrimary};
-  font-family: ${theme.typography.general.fontInter};
   display: none;
   ${({ theme }) => theme.breakpoints.down('md')} {
     display: block;

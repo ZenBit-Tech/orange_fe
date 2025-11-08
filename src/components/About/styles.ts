@@ -44,7 +44,7 @@ export const StyledDescription = styled(Typography)`
   font-size: ${theme.typography.sizes.size16};
   font-family: ${theme.typography.general.fontInter};
   margin-bottom: 40px;
-  ${({ theme }) => theme.breakpoints.down('sm')} {
+  ${({ theme }) => theme.breakpoints.down('md')} {
     width: 324px;
   }
 `;

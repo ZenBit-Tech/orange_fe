@@ -88,7 +88,6 @@ export const WrapperInfo = styled(Box)`
   ${({ theme }) => theme.breakpoints.down('md')} {
     justify-content: center;
     align-items: center;
-    gap: 24px;
   }
 `;
 

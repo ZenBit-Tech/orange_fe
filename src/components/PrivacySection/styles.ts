@@ -48,6 +48,7 @@ export const StyledIcon = styled(Lock)`
 `;
 
 export const StyledTitle = styled(Typography)`
+  font-family: ${theme.typography.general.fontPoppins};
   font-size: ${theme.typography.sizes.size48};
   ${({ theme }) => theme.breakpoints.down('md')} {
     font-size: ${theme.typography.sizes.size24};
@@ -64,8 +65,8 @@ export const StyledTypographyDescription = styled(Typography)`
   color: ${theme.palette.textIcons?.textPrimary};
   text-align: center;
   ${({ theme }) => theme.breakpoints.down('md')} {
-    width: 100%;
-    align-self: stretch;
+    width: 324px;
+    align-self: center;
   }
 `;
 
@@ -109,7 +110,7 @@ export const StyledCard = styled(Box)`
     margin-bottom: 24px;
     border: 1px solid ${theme.palette.baseColors.grey[200]};
     h5 {
-      font-size: ${theme.typography.sizes.size24};
+      font-size: ${theme.typography.sizes.size18};
     }
   }
 `;
