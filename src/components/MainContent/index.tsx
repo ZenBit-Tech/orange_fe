@@ -1,3 +1,5 @@
+import { useInView } from 'react-intersection-observer';
+
 import tablet from '@/assets/tablet.png';
 import tabletWebp from '@/assets/tablet.webp';
 
@@ -16,9 +18,13 @@ import { useMainContent } from './useMainContent';
 
 export const MainContent: React.FC = () => {
   const { lists, t, handleNavigate } = useMainContent();
+  const { ref, inView } = useInView({
+    threshold: 0.1,
+    triggerOnce: true,
+  });
   return (
-    <MainWrapper>
-      <DescriptionWrapper>
+    <MainWrapper ref={ref}>
+      <DescriptionWrapper isVisible={inView}>
         <StyledBody variant="body2">{t('Main-Content.power-analysis')}</StyledBody>
         <TitleStyled variant="h2">
           {t('Main-Content.understand-your')}
@@ -35,7 +41,7 @@ export const MainContent: React.FC = () => {
         </ListsWrapper>
       </DescriptionWrapper>
 
-      <TabletImageWrapper>
+      <TabletImageWrapper isVisible={inView}>
         <picture>
           <source type="image/webp" srcSet={tabletWebp} />
           <img src={tablet} alt="tablet" fetchPriority="high" />

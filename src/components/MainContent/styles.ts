@@ -12,6 +12,7 @@ export const MainWrapper = styled(Box)`
   overflow: hidden;
   background-image: url(${theme.palette.backgrounds.bgLandingSection});
   padding-bottom: 121px;
+  overflow: hidden;
   ${({ theme }) => theme.breakpoints.down('md')} {
     flex-direction: column;
     padding: 40px 20px;
@@ -31,10 +32,21 @@ export const MainWrapper = styled(Box)`
   }
 `;
 
-export const TabletImageWrapper = styled(Box)`
+export const TabletImageWrapper = styled(Box)<{ isVisible?: boolean }>`
   position: absolute;
   right: -100px;
   bottom: 80px;
+  opacity: 0;
+  transform: translateX(500px);
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out;
+  ${(props) =>
+    props.isVisible &&
+    ` 
+      opacity: 1;
+      transform: translateX(0);
+    `}
   ${({ theme }) => theme.breakpoints.down('md')} {
     bottom: 140px;
     position: relative;
@@ -50,12 +62,23 @@ export const TabletImageWrapper = styled(Box)`
   }
 `;
 
-export const DescriptionWrapper = styled(Box)`
+export const DescriptionWrapper = styled(Box)<{ isVisible?: boolean }>`
   display: flex;
   flex-direction: column;
   text-align: left;
   align-items: flex-start;
   height: 552px;
+  opacity: 0;
+  transform: translateX(-500px);
+  transition:
+    opacity 0.8s ease-out,
+    transform 0.8s ease-out;
+  ${(props) =>
+    props.isVisible &&
+    ` 
+      opacity: 1;
+      transform: translateX(0);
+    `}
   ${({ theme }) => theme.breakpoints.down('md')} {
     p {
       align-items: center;

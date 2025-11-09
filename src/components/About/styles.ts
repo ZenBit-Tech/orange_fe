@@ -30,30 +30,65 @@ export const WrapperDescription = styled(Box)`
   }
 `;
 
-export const StyledTitle = styled(Typography)`
+export const StyledTitle = styled(Typography)<{ isVisible?: boolean }>`
   font-size: ${theme.typography.sizes.size48};
   font-family: ${theme.typography.general.fontPoppins};
   margin-bottom: 32px;
   color: ${theme.palette.textIcons?.textPrimary};
+  opacity: 0;
+  transform: translateY(100px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+  transition-delay: 0.2s;
+  ${(props) =>
+    props.isVisible &&
+    `
+      opacity: 1;
+      transform: translateY(0);
+    `}
   ${({ theme }) => theme.breakpoints.down('md')} {
     font-size: ${theme.typography.sizes.size24};
   }
 `;
 
-export const StyledDescription = styled(Typography)`
+export const StyledDescription = styled(Typography)<{ isVisible?: boolean }>`
   font-size: ${theme.typography.sizes.size16};
   font-family: ${theme.typography.general.fontInter};
   margin-bottom: 40px;
+  opacity: 0;
+  transform: translateY(100px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+  transition-delay: 0.2s;
+  ${(props) =>
+    props.isVisible &&
+    `
+      opacity: 1;
+      transform: translateY(0);
+    `}
   ${({ theme }) => theme.breakpoints.down('md')} {
     width: 324px;
   }
 `;
 
-export const WrapperCards = styled(Box)`
+export const WrapperCards = styled(Box)<{ isVisible?: boolean }>`
   display: flex;
   justify-content: center;
   gap: 24px;
-
+  opacity: 0;
+  transform: translateY(100px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+  transition-delay: 0.2s;
+  ${(props) =>
+    props.isVisible &&
+    `
+      opacity: 1;
+      transform: translateY(0);
+    `}
   & > :nth-of-type(2) {
     margin-top: 40px;
     ${({ theme }) => theme.breakpoints.down('md')} {
