@@ -1,5 +1,3 @@
-import { useInView } from 'react-intersection-observer';
-
 import tablet from '@/assets/tablet.png';
 import tabletWebp from '@/assets/tablet.webp';
 
@@ -17,11 +15,8 @@ import {
 import { useMainContent } from './useMainContent';
 
 export const MainContent: React.FC = () => {
-  const { lists, t, handleNavigate } = useMainContent();
-  const { ref, inView } = useInView({
-    threshold: 0.1,
-    triggerOnce: true,
-  });
+  const { lists, t, handleNavigate, ref, inView } = useMainContent();
+
   return (
     <MainWrapper ref={ref}>
       <DescriptionWrapper isVisible={inView}>

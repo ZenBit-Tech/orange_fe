@@ -17,15 +17,15 @@ import {
 import { useFAQ } from './useFAQ';
 
 export const FAQ: React.FC = () => {
-  const { t, faqData } = useFAQ();
+  const { t, faqData, ref, inView } = useFAQ();
   return (
-    <WrapperFAQ id="faq">
+    <WrapperFAQ id="faq" ref={ref}>
       <WrapperTitle>
         <CircleQuestionMark />
         <StyledTitle variant="h3">{t('FAQ.title')}</StyledTitle>
         <Typography variant="body1">{t('FAQ.description')} </Typography>
       </WrapperTitle>
-      <WrapperAccordionContainer>
+      <WrapperAccordionContainer isVisible={inView}>
         {faqData.map((item) => (
           <StyledAccordion key={item.id} disableGutters elevation={0}>
             <AccordionSummary expandIcon={<ChevronDown size={20} />} id={item.id}>

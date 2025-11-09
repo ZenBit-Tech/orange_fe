@@ -29,7 +29,7 @@ export const WrapperSection = styled(Box)`
   }
 `;
 
-export const StyledIcon = styled(Lock)`
+export const StyledIcon = styled(Lock)<{ isVisible?: boolean }>`
   width: 44px;
   height: 44px;
   margin-bottom: 40px;
@@ -38,6 +38,18 @@ export const StyledIcon = styled(Lock)`
   background-color: ${theme.palette.backgrounds.white};
   color: ${theme.palette.baseColors.green[500]};
   flex-shrink: 0;
+  opacity: 0;
+  transform: translateY(100px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+  transition-delay: 0.2s;
+  ${(props) =>
+    props.isVisible &&
+    `
+      opacity: 1;
+      transform: translateY(0);
+    `}
   ${({ theme }) => theme.breakpoints.down('md')} {
     width: 20px;
     height: 20px;
@@ -47,9 +59,21 @@ export const StyledIcon = styled(Lock)`
   }
 `;
 
-export const StyledTitle = styled(Typography)`
+export const StyledTitle = styled(Typography)<{ isVisible?: boolean }>`
   font-family: ${theme.typography.general.fontPoppins};
   font-size: ${theme.typography.sizes.size48};
+  opacity: 0;
+  transform: translateY(100px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+  transition-delay: 0.2s;
+  ${(props) =>
+    props.isVisible &&
+    `
+      opacity: 1;
+      transform: translateY(0);
+    `}
   ${({ theme }) => theme.breakpoints.down('md')} {
     font-size: ${theme.typography.sizes.size24};
     padding: 10px;
@@ -57,20 +81,32 @@ export const StyledTitle = styled(Typography)`
   }
 `;
 
-export const StyledTypographyDescription = styled(Typography)`
+export const StyledTypographyDescription = styled(Typography)<{ isVisible?: boolean }>`
   width: 846px;
   margin-top: 32px;
   font-family: ${theme.typography.general.fontInter};
   font-size: ${theme.typography.sizes.size16};
   color: ${theme.palette.textIcons?.textPrimary};
   text-align: center;
+  opacity: 0;
+  transform: translateY(100px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+  transition-delay: 0.2s;
+  ${(props) =>
+    props.isVisible &&
+    `
+      opacity: 1;
+      transform: translateY(0);
+    `}
   ${({ theme }) => theme.breakpoints.down('md')} {
     width: 324px;
     align-self: center;
   }
 `;
 
-export const WrapperCards = styled(Box)`
+export const WrapperCards = styled(Box)<{ isVisible?: boolean }>`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -79,6 +115,18 @@ export const WrapperCards = styled(Box)`
   border: 1px solid ${theme.palette.baseColors.grey[200]};
   padding: 40px 24px;
   margin-top: 40px;
+  opacity: 0;
+  transform: translateY(100px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+  transition-delay: 0.2s;
+  ${(props) =>
+    props.isVisible &&
+    `
+      opacity: 1;
+      transform: translateY(0);
+    `}
   ${({ theme }) => theme.breakpoints.down('md')} {
     flex-direction: column;
     background-color: transparent;

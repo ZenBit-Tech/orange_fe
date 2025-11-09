@@ -13,16 +13,16 @@ import {
 import { useHowItWorks } from './useHowItWorks';
 
 export const HowItWorks: React.FC = () => {
-  const { steps, t } = useHowItWorks();
+  const { steps, t, ref, inView } = useHowItWorks();
   return (
-    <WrapperWork id="how-it-works">
+    <WrapperWork id="how-it-works" ref={ref}>
       <WrapperTitle>
         <StyledTitle variant="h3">{t('How-it-works.title')}</StyledTitle>
         <StyledDescription variant="body1">{t('How-it-works.description')}</StyledDescription>
         <WrapperSteps>
           {steps.map((step, index) => {
             return (
-              <WrapperStep key={index}>
+              <WrapperStep key={index} isVisible={inView} itemIndex={index}>
                 <WrapperInfo>
                   {step.icon}
                   <StyledInfoTitle variant="h4">{step.title}</StyledInfoTitle>

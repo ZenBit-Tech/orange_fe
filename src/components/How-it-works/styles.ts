@@ -32,7 +32,7 @@ export const StyledDescription = styled(Typography)`
   font-family: ${theme.typography.general.fontInter};
 `;
 
-export const WrapperStep = styled(Box)`
+export const WrapperStep = styled(Box)<{ isVisible?: boolean; itemIndex: number }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -42,6 +42,18 @@ export const WrapperStep = styled(Box)`
     flex-direction: row-reverse;
     padding: 40px 190px 40px 80px;
   }
+  opacity: 0;
+  transform: translateY(100px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+  ${(props) =>
+    props.isVisible &&
+    `
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: ${props.itemIndex * 0.8}s;
+    `}
   ${({ theme }) => theme.breakpoints.down('md')} {
     margin-top: 30px;
     flex-direction: column;

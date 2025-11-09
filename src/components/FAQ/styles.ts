@@ -58,7 +58,7 @@ export const StyledTitle = styled(Typography)`
   }
 `;
 
-export const WrapperAccordionContainer = styled(Box)`
+export const WrapperAccordionContainer = styled(Box)<{ isVisible?: boolean }>`
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -66,6 +66,18 @@ export const WrapperAccordionContainer = styled(Box)`
   gap: 8px;
   max-width: 800px;
   margin: 40px 0;
+  opacity: 0;
+  transform: translateY(100px);
+  transition:
+    opacity 0.6s ease-out,
+    transform 0.6s ease-out;
+  transition-delay: 0.2s;
+  ${(props) =>
+    props.isVisible &&
+    `
+      opacity: 1;
+      transform: translateY(0);
+    `}
 `;
 
 export const StyledAccordion = styled(Accordion)`

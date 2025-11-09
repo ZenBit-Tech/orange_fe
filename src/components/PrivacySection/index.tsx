@@ -12,16 +12,18 @@ import {
 import { usePrivacySection } from './usePrivacySection';
 
 export const PrivacySection: React.FC = () => {
-  const { t, cards } = usePrivacySection();
+  const { t, cards, ref, inView } = usePrivacySection();
   return (
-    <WrapperPrivacy id="privacy-section">
+    <WrapperPrivacy id="privacy-section" ref={ref}>
       <WrapperSection>
-        <StyledIcon />
-        <StyledTitle variant="h3">{t('PrivacySection.title')}</StyledTitle>
-        <StyledTypographyDescription variant="body1">
+        <StyledIcon isVisible={inView} />
+        <StyledTitle variant="h3" isVisible={inView}>
+          {t('PrivacySection.title')}
+        </StyledTitle>
+        <StyledTypographyDescription variant="body1" isVisible={inView}>
           {t('PrivacySection.description')}
         </StyledTypographyDescription>
-        <WrapperCards>
+        <WrapperCards isVisible={inView}>
           {cards.map((card, index) => {
             return (
               <StyledCard key={index}>

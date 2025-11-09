@@ -1,7 +1,12 @@
 import { useTranslation } from 'react-i18next';
+import { useInView } from 'react-intersection-observer';
 
 export const useFAQ = () => {
   const { t } = useTranslation();
+  const { ref, inView } = useInView({
+    threshold: 0,
+    triggerOnce: true,
+  });
   const faqData = [
     {
       id: 'faq1',
@@ -25,5 +30,5 @@ export const useFAQ = () => {
     },
   ];
 
-  return { t, faqData };
+  return { t, faqData, ref, inView };
 };

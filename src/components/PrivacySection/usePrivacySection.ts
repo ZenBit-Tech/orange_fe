@@ -1,7 +1,12 @@
 import { useTranslation } from 'react-i18next';
+import { useInView } from 'react-intersection-observer';
 
 export const usePrivacySection = () => {
   const { t } = useTranslation();
+  const { ref, inView } = useInView({
+    threshold: 0.3,
+    triggerOnce: true,
+  });
   const cards = [
     {
       title: t('PrivacySection.cards.zero'),
@@ -16,5 +21,5 @@ export const usePrivacySection = () => {
       description: t('PrivacySection.cards.minimizing'),
     },
   ];
-  return { t, cards };
+  return { t, cards, ref, inView };
 };
