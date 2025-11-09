@@ -34,7 +34,7 @@ export const useNav = () => {
 
       navigate('/login');
     } catch (err) {
-      console.error('Failed to log out:', err);
+      throw new Error('Logout failed', { cause: err });
     }
   };
 
