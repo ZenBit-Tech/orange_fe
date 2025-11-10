@@ -1,11 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
-import { About } from '@/components/About';
-import { FAQ } from '@/components/FAQ';
-import { HowItWorks } from '@/components/How-it-works';
+import { About, FAQ, HowItWorks, MainContent, PrivacySection } from '@/components/Landing';
 import { PageLayout } from '@/components/Layout';
-import { MainContent } from '@/components/MainContent';
-import { PrivacySection } from '@/components/PrivacySection';
 
 export const HomePage: React.FC = () => {
   const { t } = useTranslation();
