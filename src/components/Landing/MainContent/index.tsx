@@ -1,4 +1,3 @@
-import tablet from '@/assets/tablet.png';
 import tabletWebp from '@/assets/tablet.webp';
 
 import {
@@ -37,10 +36,7 @@ export const MainContent: React.FC = () => {
       </DescriptionWrapper>
 
       <TabletImageWrapper isVisible={inView}>
-        <picture>
-          <source type="image/webp" srcSet={tabletWebp} />
-          <img src={tablet} alt="tablet" fetchPriority="high" />
-        </picture>
+        <img src={tabletWebp} alt="tablet" />
       </TabletImageWrapper>
     </MainWrapper>
   );

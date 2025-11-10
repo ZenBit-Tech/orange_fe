@@ -30,8 +30,7 @@ export const HowItWorks: React.FC = () => {
                 </WrapperInfo>
                 <WrapperImage>
                   <picture>
-                    <source type="image/webp" srcSet={step.webp} />
-                    <img src={step.image} alt={step.title} loading="lazy" />
+                    <img src={step.webp} alt={step.title} />
                   </picture>
                 </WrapperImage>
               </WrapperStep>
