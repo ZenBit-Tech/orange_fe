@@ -40,7 +40,7 @@ interface DropzoneFileProps {
   uploadStatus: UploadStatus;
   errorMessage: string;
   statusDisplay: StatusDisplay;
-  handleRemoveFile: (fileName: string, e: React.MouseEvent) => void;
+  handleRemoveFile: (fileName?: string, e?: React.MouseEvent) => void;
 }
 
 export const DropzoneFile: React.FC<DropzoneFileProps> = ({
