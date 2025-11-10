@@ -32,8 +32,8 @@ export const GENDER = {
 export const GENDER_OPTIONS = [GENDER.MALE, GENDER.FEMALE] as const;
 
 export const PREGNANCY_STATUS = {
-  YES: 'yes',
-  NO: 'no',
+  YES: 'Yes',
+  NO: 'No',
 } as const;
 
 export const PREGNANCY_OPTIONS = [PREGNANCY_STATUS.YES, PREGNANCY_STATUS.NO] as const;
@@ -43,5 +43,5 @@ export const VALIDATION_PATTERNS = {
 } as const;
 
 export const BREAKPOINTS = {
-  MOBILE: 768,
+  MD: 768,
 } as const;

@@ -8,7 +8,6 @@ export const ModalContent = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.backgrounds.white,
   borderRadius: '20px',
   padding: theme.spacing(4, 8),
-  boxShadow: '0px 20px 60px rgba(0, 0, 0, 0.15)',
   outline: 'none',
   display: 'flex',
   flexDirection: 'column',

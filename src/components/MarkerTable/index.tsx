@@ -1,10 +1,10 @@
-import React, { forwardRef, useCallback, useEffect, useImperativeHandle, useState } from 'react';
+import React, { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
 
 import { t } from 'i18next';
 import { Plus } from 'lucide-react';
 
 import { Marker } from '@/components/Marker';
-import { BREAKPOINTS, MARKER_CONFIG } from '@/constants/marker';
+import { BREAKPOINTS } from '@/constants/marker';
 import { theme } from '@/theme';
 
 import {
@@ -17,6 +17,7 @@ import {
   MarkerTableHeader,
   MarkerTableHeaderCell,
 } from './styles';
+import { useMarkerTable } from './useMarkerTable';
 
 interface MarkerData {
   id: number;
@@ -36,14 +37,14 @@ export interface MarkerTableRef {
   validateAllMarkers: () => void;
 }
 
-const useIsMobile = () => {
+const useIsSmallScreen = () => {
   const [isMobile, setIsMobile] = useState(() =>
-    typeof window !== 'undefined' ? window.innerWidth < BREAKPOINTS.MOBILE : false,
+    typeof window !== 'undefined' ? window.innerWidth < BREAKPOINTS.MD : false,
   );
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth < BREAKPOINTS.MOBILE);
+      setIsMobile(window.innerWidth < BREAKPOINTS.MD);
     };
 
     window.addEventListener('resize', handleResize);
@@ -68,94 +69,22 @@ AddMarkerBtn.displayName = 'AddMarkerBtn';
 
 export const MarkerTable = forwardRef<MarkerTableRef, MarkerTableProps>(
   ({ onValidationChange, initialMarkers }, ref) => {
-    const [markers, setMarkers] = useState<MarkerData[]>(initialMarkers || []);
+    const {
+      markers,
+      validateAllMarkers,
+      handleNameChange,
+      handleValueChange,
+      handleUnitChange,
+      handleDelete,
+      handleAddMarker,
+      validateMarker,
+    } = useMarkerTable({ onValidationChange, initialMarkers });
 
-    const isMobile = useIsMobile();
-
-    useEffect(() => {
-      const hasErrors = markers.some((marker) => marker.hasError);
-      onValidationChange?.(hasErrors);
-    }, [markers, onValidationChange]);
-
-    const validateAllMarkers = useCallback(() => {
-      setMarkers((prevMarkers) =>
-        prevMarkers.map((marker) => ({
-          ...marker,
-          hasError: !marker.name || !marker.value,
-        })),
-      );
-    }, []);
+    const isSmallScreen = useIsSmallScreen();
 
     useImperativeHandle(ref, () => ({
       validateAllMarkers,
     }));
-
-    const handleNameChange = useCallback((id: number, name: string) => {
-      setMarkers((prevMarkers) =>
-        prevMarkers.map((marker) => {
-          if (marker.id === id) {
-            const config = MARKER_CONFIG[name];
-            return {
-              ...marker,
-              name,
-              unit: config?.unit || marker.unit,
-              normalRange: config?.normalRange || '-',
-              hasError: !name || !marker.value,
-            };
-          }
-          return marker;
-        }),
-      );
-    }, []);
-
-    const handleValueChange = useCallback((id: number, value: string) => {
-      setMarkers((prevMarkers) =>
-        prevMarkers.map((marker) =>
-          marker.id === id ? { ...marker, value, hasError: !marker.name || !value } : marker,
-        ),
-      );
-    }, []);
-
-    const handleUnitChange = useCallback((id: number, unit: string) => {
-      setMarkers((prevMarkers) =>
-        prevMarkers.map((marker) => (marker.id === id ? { ...marker, unit } : marker)),
-      );
-    }, []);
-
-    const handleDelete = useCallback((id: number) => {
-      setMarkers((prevMarkers) => prevMarkers.filter((marker) => marker.id !== id));
-    }, []);
-
-    const handleAddMarker = useCallback(() => {
-      setMarkers((prevMarkers) => {
-        const newId = Math.max(...prevMarkers.map((m) => m.id), 0) + 1;
-        return [
-          ...prevMarkers,
-          {
-            id: newId,
-            name: '',
-            value: '',
-            unit: '',
-            normalRange: '-',
-            hasError: false,
-          },
-        ];
-      });
-    }, []);
-
-    const validateMarker = useCallback((id: number) => {
-      setMarkers((prevMarkers) =>
-        prevMarkers.map((marker) => {
-          if (marker.id === id) {
-            return {
-              ...marker,
-              hasError: !marker.name || !marker.value,
-            };
-          }
-          return marker;
-        }),
-      );
-    }, []);
 
     return (
       <>
@@ -184,14 +113,14 @@ export const MarkerTable = forwardRef<MarkerTableRef, MarkerTableProps>(
             </MarkerTableContent>
           </MarkerTableBody>
 
-          {!isMobile && (
+          {!isSmallScreen && (
             <MarkerTableFooter>
               <AddMarkerBtn onClick={handleAddMarker} />
             </MarkerTableFooter>
           )}
         </MarkerTableContainer>
 
-        {isMobile && <AddMarkerBtn onClick={handleAddMarker} />}
+        {isSmallScreen && <AddMarkerBtn onClick={handleAddMarker} />}
       </>
     );
   },

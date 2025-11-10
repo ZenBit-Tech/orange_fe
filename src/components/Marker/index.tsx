@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { t } from 'i18next';
 import { ChevronDown, Trash } from 'lucide-react';
 
 import { DeleteMarkerModal } from '@/components/DeleteMarkerModal';
-import { MARKER_OPTIONS, UNIT_OPTIONS, VALIDATION_PATTERNS } from '@/constants/marker';
+import { MARKER_OPTIONS, UNIT_OPTIONS } from '@/constants/marker';
 
 import {
   DeleteButton,
@@ -16,6 +16,7 @@ import {
   StyledAutocomplete,
   StyledTextField,
 } from './styles';
+import { useMarker } from './useMarker';
 
 interface MarkerProps {
   id: number;
@@ -44,30 +45,28 @@ export const Marker: React.FC<MarkerProps> = ({
   onDelete,
   onValidate,
 }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const handleValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = e.target.value;
-
-    if (inputValue === '' || VALIDATION_PATTERNS.DECIMAL_NUMBER.test(inputValue)) {
-      onValueChange(id, inputValue);
-    }
-  };
-
-  const handleBlur = () => {
-    onValidate(id);
-  };
-
-  const handleDeleteClick = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleConfirmDelete = () => {
-    onDelete(id);
-  };
-
-  const showNameError = hasError && !name;
-  const showValueError = hasError && !value;
+  const {
+    isModalOpen,
+    setIsModalOpen,
+    handleValueChange,
+    handleBlur,
+    handleDeleteClick,
+    handleConfirmDelete,
+    handleNameChange,
+    handleUnitChange,
+    showNameError,
+    showValueError,
+  } = useMarker({
+    id,
+    name,
+    value,
+    hasError,
+    onNameChange,
+    onValueChange,
+    onUnitChange,
+    onDelete,
+    onValidate,
+  });
 
   return (
     <>
@@ -79,11 +78,7 @@ export const Marker: React.FC<MarkerProps> = ({
             disablePortal
             options={[...MARKER_OPTIONS]}
             value={name || null}
-            onChange={(_event: React.SyntheticEvent, newValue: string | null) => {
-              if (newValue) {
-                onNameChange(id, newValue);
-              }
-            }}
+            onChange={handleNameChange}
             onBlur={handleBlur}
             getOptionLabel={(option) => String(option)}
             renderInput={(params) => (
@@ -128,11 +123,7 @@ export const Marker: React.FC<MarkerProps> = ({
             disablePortal
             options={[...UNIT_OPTIONS]}
             value={unit}
-            onChange={(_event: React.SyntheticEvent, newValue: string | null) => {
-              if (newValue) {
-                onUnitChange(id, newValue);
-              }
-            }}
+            onChange={handleUnitChange}
             getOptionLabel={(option) => String(option)}
             renderInput={(params) => <StyledTextField {...params} label={t('review.unit')} />}
             popupIcon={<ChevronDown />}

@@ -1,18 +1,11 @@
-import React, { useRef, useState } from 'react';
+import React from 'react';
 
 import { t } from 'i18next';
 import { ArrowLeft, ChevronDown, Dumbbell, Pill, Salad, Stethoscope } from 'lucide-react';
 
 import { ErrorText } from '@/components/Marker/styles';
 import { MarkerTable } from '@/components/MarkerTable';
-import type { MarkerTableRef } from '@/components/MarkerTable';
-import {
-  BIRTH_YEARS,
-  GENDER,
-  GENDER_OPTIONS,
-  PREGNANCY_OPTIONS,
-  PREGNANCY_STATUS,
-} from '@/constants/marker';
+import { BIRTH_YEARS, GENDER, GENDER_OPTIONS, PREGNANCY_OPTIONS } from '@/constants/marker';
 
 import {
   AdditionalDescriptionText,
@@ -39,9 +32,7 @@ import {
   TitleText,
   WrapperReviewCustomize,
 } from './styles';
-
-type Gender = (typeof GENDER)[keyof typeof GENDER];
-type PregnancyStatus = (typeof PREGNANCY_STATUS)[keyof typeof PREGNANCY_STATUS];
+import { useReviewCustomizeStep } from './useReviewCustomizeStep';
 
 const initialMarkers = [
   {
@@ -77,88 +68,29 @@ interface ReviewCustomizeStepProps {
   onBack?: () => void;
 }
 
-interface ValidationErrors {
-  birthYear: boolean;
-  gender: boolean;
-  pregnancy: boolean;
-}
-
 export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onContinue, onBack }) => {
-  const markerTableRef = useRef<MarkerTableRef>(null);
-
-  const [birthYear, setBirthYear] = useState<number | null>(null);
-  const [gender, setGender] = useState<Gender | null>(null);
-  const [pregnancy, setPregnancy] = useState<PregnancyStatus | null>(null);
-  const [nutritionAdvice, setNutritionAdvice] = useState(false);
-  const [exerciseGuidelines, setExerciseGuidelines] = useState(false);
-  const [supplementRecommendations, setSupplementRecommendations] = useState(false);
-  const [medicationRecommendations, setMedicationRecommendations] = useState(false);
-  const [additionalQuestions, setAdditionalQuestions] = useState('');
-  const [validationErrors, setValidationErrors] = useState<ValidationErrors>({
-    birthYear: false,
-    gender: false,
-    pregnancy: false,
-  });
-  const [hasMarkerErrors, setHasMarkerErrors] = useState(false);
-
-  const handleBirthYear = (_event: React.SyntheticEvent, value: unknown) => {
-    const newValue = value as number | null;
-    if (newValue !== null) {
-      setBirthYear(newValue);
-      setValidationErrors((prev) => ({ ...prev, birthYear: false }));
-    }
-  };
-
-  const handleGender = (_event: React.SyntheticEvent, value: unknown) => {
-    const newValue = value as Gender | null;
-    if (newValue !== null) {
-      setGender(newValue);
-      setValidationErrors((prev) => ({ ...prev, gender: false }));
-
-      if (newValue === 'male') {
-        setPregnancy(null);
-        setValidationErrors((prev) => ({ ...prev, pregnancy: false }));
-      }
-    }
-  };
-
-  const handlePregnancy = (_event: React.SyntheticEvent, value: unknown) => {
-    const newValue = value as PregnancyStatus | null;
-    if (newValue !== null) {
-      setPregnancy(newValue);
-      setValidationErrors((prev) => ({ ...prev, pregnancy: false }));
-    }
-  };
-
-  const validateForm = (): boolean => {
-    const errors: ValidationErrors = {
-      birthYear: birthYear === null,
-      gender: gender === null,
-      pregnancy: gender === GENDER.FEMALE && pregnancy === null,
-    };
-
-    setValidationErrors(errors);
-
-    if (markerTableRef.current) {
-      markerTableRef.current.validateAllMarkers();
-    }
-
-    const hasErrors = errors.birthYear || errors.gender || errors.pregnancy;
-
-    return !hasErrors;
-  };
-
-  const handleContinue = () => {
-    const isValid = validateForm();
-
-    if (isValid && !hasMarkerErrors) {
-      onContinue();
-    } else {
-      if (validationErrors.birthYear || validationErrors.gender || validationErrors.pregnancy) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    }
-  };
+  const {
+    markerTableRef,
+    birthYear,
+    gender,
+    pregnancy,
+    nutritionAdvice,
+    exerciseGuidelines,
+    supplementRecommendations,
+    medicationRecommendations,
+    additionalQuestions,
+    validationErrors,
+    handleBirthYear,
+    handleGender,
+    handlePregnancy,
+    handleContinue,
+    setAdditionalQuestions,
+    setHasMarkerErrors,
+    toggleNutritionAdvice,
+    toggleExerciseGuidelines,
+    toggleSupplementRecommendations,
+    toggleMedicationRecommendations,
+  } = useReviewCustomizeStep({ onContinue });
 
   return (
     <WrapperReviewCustomize>
@@ -273,7 +205,7 @@ export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onCont
 
         <CheckboxGrid>
           <CheckboxCard
-            onClick={() => setNutritionAdvice(!nutritionAdvice)}
+            onClick={toggleNutritionAdvice}
             className={nutritionAdvice ? 'checked-nutrition' : ''}
           >
             <CheckboxIcon className={nutritionAdvice ? 'checked-nutrition' : ''}>
@@ -291,7 +223,7 @@ export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onCont
           </CheckboxCard>
 
           <CheckboxCard
-            onClick={() => setSupplementRecommendations(!supplementRecommendations)}
+            onClick={toggleSupplementRecommendations}
             className={supplementRecommendations ? 'checked-supplement' : ''}
           >
             <CheckboxIcon className={supplementRecommendations ? 'checked-supplement' : ''}>
@@ -309,7 +241,7 @@ export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onCont
           </CheckboxCard>
 
           <CheckboxCard
-            onClick={() => setExerciseGuidelines(!exerciseGuidelines)}
+            onClick={toggleExerciseGuidelines}
             className={exerciseGuidelines ? 'checked-exercise' : ''}
           >
             <CheckboxIcon className={exerciseGuidelines ? 'checked-exercise' : ''}>
@@ -327,7 +259,7 @@ export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onCont
           </CheckboxCard>
 
           <CheckboxCard
-            onClick={() => setMedicationRecommendations(!medicationRecommendations)}
+            onClick={toggleMedicationRecommendations}
             className={medicationRecommendations ? 'checked-medication' : ''}
           >
             <CheckboxIcon className={medicationRecommendations ? 'checked-medication' : ''}>
