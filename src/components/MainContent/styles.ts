@@ -107,7 +107,7 @@ export const StyledInstantly = styled('span')`
     position: absolute;
     bottom: 5px;
     left: 43%;
-    background-color: #009966;
+    background-color: ${theme.palette.baseColors.green[700]};
     height: 5px;
     width: 85%;
     transform: translateX(-50%);

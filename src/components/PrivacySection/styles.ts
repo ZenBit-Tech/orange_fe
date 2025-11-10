@@ -5,7 +5,7 @@ import { Lock } from 'lucide-react';
 import { theme } from '@/theme';
 
 export const WrapperPrivacy = styled(Box)`
-  background: #ffff;
+  background: ${theme.palette.backgrounds.white};
   display: flex;
   justify-content: center;
   z-index: 10;
