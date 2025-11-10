@@ -50,6 +50,27 @@ const baseColors = {
     900: '#80231C',
     second900: '#450E0A',
   },
+
+  pastel: {
+    green: {
+      100: '#F5FAF6',
+      200: '#E2F3E5',
+      300: '#CFEBD5',
+      green: '#00AD4E',
+    },
+    cyan: {
+      100: '#F6FCFC',
+      200: '#E5F7F7',
+      300: '#C4EEEF',
+      cyan: '#29C5CC',
+    },
+    blue: {
+      100: '#F3F8FC',
+      200: '#DCEAF8',
+      300: '#C5DEF5',
+      blue: '#0073D5',
+    },
+  },
 };
 
 export const palette: PaletteOptions = {
@@ -188,6 +209,27 @@ declare module '@mui/material/styles' {
         900: string;
         second900: string;
       };
+
+      pastel: {
+        green: {
+          100: string;
+          200: string;
+          300: string;
+          green: string;
+        };
+        cyan: {
+          100: string;
+          200: string;
+          300: string;
+          cyan: string;
+        };
+        blue: {
+          100: string;
+          200: string;
+          300: string;
+          blue: string;
+        };
+      };
     };
 
     backgrounds: {
@@ -201,25 +243,25 @@ declare module '@mui/material/styles' {
       bgError: string;
       bgTransparent: string;
     };
-    textIcons?: {
-      textPrimary?: string;
-      textSecondary?: string;
-      textTeriartry?: string;
-      textGrey?: string;
-      contrast?: string;
-      errorLight?: string;
-      errorMain?: string;
-      errorMainSecondary?: string;
-      success?: string;
-      primary?: string;
+    textIcons: {
+      textPrimary: string;
+      textSecondary: string;
+      textTeriartry: string;
+      textGrey: string;
+      contrast: string;
+      errorLight: string;
+      errorMain: string;
+      errorMainSecondary: string;
+      success: string;
+      primary: string;
     };
 
-    border?: {
-      default?: string;
-      defaultHover?: string;
-      error?: string;
-      borderPrimary?: string;
-      success?: string;
+    border: {
+      default: string;
+      defaultHover: string;
+      error: string;
+      borderPrimary: string;
+      success: string;
     };
 
     surface: {
@@ -242,10 +284,10 @@ declare module '@mui/material/styles' {
       };
     };
 
-    gradient1?: string;
-    gradient2?: string;
-    gradient3?: string;
-    gradient4?: string;
+    gradient1: string;
+    gradient2: string;
+    gradient3: string;
+    gradient4: string;
 
     globalColors: {
       primaryGreen: string;
@@ -253,7 +295,7 @@ declare module '@mui/material/styles' {
     };
   }
   interface PaletteOptions {
-    iconColors?: {
+    iconColors: {
       textGray?: string;
       facebook?: string;
       linkedin?: string;
@@ -298,6 +340,27 @@ declare module '@mui/material/styles' {
         800?: string;
         900?: string;
         second900?: string;
+      };
+
+      pastel: {
+        green: {
+          100: string;
+          200: string;
+          300: string;
+          green: string;
+        };
+        cyan: {
+          100: string;
+          200: string;
+          300: string;
+          cyan: string;
+        };
+        blue: {
+          100: string;
+          200: string;
+          300: string;
+          blue: string;
+        };
       };
     };
 
