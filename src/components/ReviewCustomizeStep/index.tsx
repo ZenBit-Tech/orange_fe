@@ -267,7 +267,9 @@ export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onCont
 
       <CustomizeSection>
         <SectionTitle>{t('review.customize-analyze-title')}</SectionTitle>
-        <DescriptionText>{t('review.customize-analyze-description')}</DescriptionText>
+        <DescriptionText className="customize-description">
+          {t('review.customize-analyze-description')}
+        </DescriptionText>
 
         <CheckboxGrid>
           <CheckboxCard

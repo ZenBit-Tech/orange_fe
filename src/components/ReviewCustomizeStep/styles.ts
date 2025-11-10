@@ -44,7 +44,12 @@ export const DescriptionText = styled(Typography)(({ theme }) => ({
   fontFamily: theme.typography.general.fontInter,
   textAlign: 'center',
 
+  '&.customize-description': {
+    textAlign: 'left',
+  },
+
   [theme.breakpoints.down('md')]: {
+    textAlign: 'center',
     display: 'flex',
     justifyContent: 'center',
     lineHeight: '24px',
@@ -350,6 +355,7 @@ export const AdditionalDescriptionText = styled(Typography)(({ theme }) => ({
   textAlign: 'left',
 
   [theme.breakpoints.down('md')]: {
+    textAlign: 'center',
     justifyContent: 'center',
     fontSize: theme.typography.sizes.size14,
   },
@@ -358,6 +364,7 @@ export const AdditionalDescriptionText = styled(Typography)(({ theme }) => ({
 export const TextAreaContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
+
   marginTop: theme.spacing(2),
 
   [theme.breakpoints.down('md')]: {

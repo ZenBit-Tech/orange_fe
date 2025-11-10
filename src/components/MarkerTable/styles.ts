@@ -2,7 +2,7 @@ import { Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 export const MarkerTableContainer = styled(Box)(({ theme }) => ({
-  marginTop: theme.spacing(1),
+  marginTop: theme.spacing(2),
   marginBottom: theme.spacing(2),
   display: 'flex',
   flexDirection: 'column',

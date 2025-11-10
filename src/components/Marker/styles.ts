@@ -160,6 +160,6 @@ export const ErrorText = styled(Typography)(({ theme }) => ({
   fontWeight: theme.typography.weights.weight400,
   color: theme.palette.textIcons.errorMain,
   fontFamily: theme.typography.general.fontInter,
-  marginTop: theme.spacing(0.25),
+  marginBottom: theme.spacing(1),
   textAlign: 'left',
 }));
