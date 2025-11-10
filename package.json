@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "start": "serve -s dist -p $PORT",
     "lint": "eslint .",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
     "preview": "vite preview",
@@ -23,7 +24,7 @@
     "@types/react-redux": "^7.1.34",
     "i18next": "^25.5.2",
     "js-cookie": "^3.0.5",
-    "lucide-react": "^0.552.0",
+    "lucide-react": "^0.553.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-dropzone": "^14.3.8",
@@ -34,6 +35,7 @@
     "react-markdown": "^10.1.0",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.9.2",
+    "serve": "^14.2.5",
     "styled-components": "^6.1.19"
   },
   "devDependencies": {
