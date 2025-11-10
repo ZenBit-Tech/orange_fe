@@ -5,19 +5,22 @@ import { authApi } from './authApi';
 import { bloodTestApi } from './bloodTestApi';
 import bloodTestReducer from './bloodTestSlice/bloodTestSlice';
 import { ocrApi } from './ocrApi';
+import { reviewCustomizeApi } from './reviewCustomizeApi';
 
 export const store = configureStore({
   reducer: {
     [authApi.reducerPath]: authApi.reducer,
     [ocrApi.reducerPath]: ocrApi.reducer,
     [bloodTestApi.reducerPath]: bloodTestApi.reducer,
+    [reviewCustomizeApi.reducerPath]: reviewCustomizeApi.reducer,
     bloodTest: bloodTestReducer,
   },
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware()
       .concat(authApi.middleware)
       .concat(ocrApi.middleware)
-      .concat(bloodTestApi.middleware);
+      .concat(bloodTestApi.middleware)
+      .concat(reviewCustomizeApi.middleware);
   },
 });
 

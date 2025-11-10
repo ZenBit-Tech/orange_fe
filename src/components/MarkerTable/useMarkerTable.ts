@@ -2,6 +2,35 @@ import { useCallback, useEffect, useState } from 'react';
 
 import { MARKER_CONFIG } from '@/constants/marker';
 
+const initialMarkers = [
+  {
+    id: 1,
+    name: 'Bilirubin (Total)',
+    value: '4.8',
+    unit: 'mg/dL',
+    normalRange: '0.1 - 1.2 mg/dL',
+    hasError: false,
+  },
+  {
+    id: 2,
+    name: 'Amylase',
+    value: '100',
+    unit: 'U/L',
+    normalRange: '30 - 110 U/L',
+    hasError: false,
+  },
+  { id: 3, name: 'AST', value: '9.8', unit: 'U/L', normalRange: '5 - 40 U/L', hasError: false },
+  {
+    id: 4,
+    name: 'Creatinine',
+    value: '1.8',
+    unit: 'mg/dL',
+    normalRange: '0.6 - 1.2 mg/dL',
+    hasError: false,
+  },
+  { id: 5, name: 'LDH', value: '180', unit: 'U/L', normalRange: '125 - 220 U/L', hasError: false },
+];
+
 interface MarkerData {
   id: number;
   name: string;
@@ -16,8 +45,8 @@ interface UseMarkerTableProps {
   initialMarkers?: MarkerData[];
 }
 
-export const useMarkerTable = ({ onValidationChange, initialMarkers }: UseMarkerTableProps) => {
-  const [markers, setMarkers] = useState<MarkerData[]>(initialMarkers || []);
+export const useMarkerTable = ({ onValidationChange }: UseMarkerTableProps = {}) => {
+  const [markers, setMarkers] = useState<MarkerData[]>(initialMarkers);
 
   useEffect(() => {
     const hasErrors = markers.some((marker) => marker.hasError);

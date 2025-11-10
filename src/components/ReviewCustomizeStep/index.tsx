@@ -34,35 +34,6 @@ import {
 } from './styles';
 import { useReviewCustomizeStep } from './useReviewCustomizeStep';
 
-const initialMarkers = [
-  {
-    id: 1,
-    name: 'Bilirubin (Total)',
-    value: '4.8',
-    unit: 'mg/dL',
-    normalRange: '0.1 - 1.2 mg/dL',
-    hasError: false,
-  },
-  {
-    id: 2,
-    name: 'Amylase',
-    value: '100',
-    unit: 'U/L',
-    normalRange: '30 - 110 U/L',
-    hasError: false,
-  },
-  { id: 3, name: 'AST', value: '9.8', unit: 'U/L', normalRange: '5 - 40 U/L', hasError: false },
-  {
-    id: 4,
-    name: 'Creatinine',
-    value: '1.8',
-    unit: 'mg/dL',
-    normalRange: '0.6 - 1.2 mg/dL',
-    hasError: false,
-  },
-  { id: 5, name: 'LDH', value: '180', unit: 'U/L', normalRange: '125 - 220 U/L', hasError: false },
-];
-
 interface ReviewCustomizeStepProps {
   onContinue: () => void;
   onBack?: () => void;
@@ -71,13 +42,21 @@ interface ReviewCustomizeStepProps {
 export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onContinue, onBack }) => {
   const {
     markerTableRef,
+    markers,
+    handleNameChange,
+    handleValueChange,
+    handleUnitChange,
+    handleDelete,
+    handleAddMarker,
+    validateMarker,
+    validateAllMarkers,
     birthYear,
     gender,
     pregnancy,
     nutritionAdvice,
     exerciseGuidelines,
     supplementRecommendations,
-    medicationRecommendations,
+    medicationGuidance,
     additionalQuestions,
     validationErrors,
     handleBirthYear,
@@ -85,11 +64,10 @@ export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onCont
     handlePregnancy,
     handleContinue,
     setAdditionalQuestions,
-    setHasMarkerErrors,
     toggleNutritionAdvice,
     toggleExerciseGuidelines,
     toggleSupplementRecommendations,
-    toggleMedicationRecommendations,
+    toggleMedicationGuidance,
   } = useReviewCustomizeStep({ onContinue });
 
   return (
@@ -193,8 +171,14 @@ export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onCont
       <SectionTitle>{t('review.review-markers-title')}</SectionTitle>
       <MarkerTable
         ref={markerTableRef}
-        onValidationChange={setHasMarkerErrors}
-        initialMarkers={initialMarkers}
+        markers={markers}
+        onNameChange={handleNameChange}
+        onValueChange={handleValueChange}
+        onUnitChange={handleUnitChange}
+        onDelete={handleDelete}
+        onAddMarker={handleAddMarker}
+        onValidate={validateMarker}
+        onValidateAll={validateAllMarkers}
       />
 
       <CustomizeSection>
@@ -259,10 +243,10 @@ export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onCont
           </CheckboxCard>
 
           <CheckboxCard
-            onClick={toggleMedicationRecommendations}
-            className={medicationRecommendations ? 'checked-medication' : ''}
+            onClick={toggleMedicationGuidance}
+            className={medicationGuidance ? 'checked-medication' : ''}
           >
-            <CheckboxIcon className={medicationRecommendations ? 'checked-medication' : ''}>
+            <CheckboxIcon className={medicationGuidance ? 'checked-medication' : ''}>
               <Stethoscope />
             </CheckboxIcon>
             <CheckboxContent>
@@ -271,8 +255,8 @@ export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onCont
             </CheckboxContent>
             <StyledCheckbox
               size="medium"
-              checked={medicationRecommendations}
-              className={medicationRecommendations ? 'checked-medication' : ''}
+              checked={medicationGuidance}
+              className={medicationGuidance ? 'checked-medication' : ''}
             />
           </CheckboxCard>
         </CheckboxGrid>

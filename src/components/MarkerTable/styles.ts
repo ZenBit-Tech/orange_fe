@@ -60,7 +60,6 @@ export const MarkerTableFooter = styled(Box)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  cursor: 'pointer',
   borderTop: `1px solid ${theme.palette.border.default}`,
   backgroundColor: theme.palette.baseColors.grey.second50,
   transition: 'background-color 0.2s',
