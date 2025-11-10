@@ -124,7 +124,7 @@ export const useUploadStep = () => {
     maxSize: MAX_FILE_SIZE_BYTES,
   });
 
-  const handleRemoveFile = (fileName: string, e?: React.MouseEvent) => {
+  const handleRemoveFile = (_fileName: string, e?: React.MouseEvent) => {
     e?.stopPropagation();
     setFiles([]);
     setUploadProgress({});

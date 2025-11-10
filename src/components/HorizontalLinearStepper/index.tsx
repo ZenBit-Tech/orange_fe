@@ -13,7 +13,7 @@ import {
 import { useHorizontalLinearStepper } from './useHorizontalLinearStepper';
 
 export const HorizontalLinearStepper: React.FC = () => {
-  const { steps, activeStep, handleNext, isError } = useHorizontalLinearStepper();
+  const { steps, activeStep, handleNext, handleBack, isError } = useHorizontalLinearStepper();
   return (
     <StepperWrapper>
       <StyledStepper activeStep={activeStep} connector={<StyledConnector error={isError} />}>
@@ -30,7 +30,7 @@ export const HorizontalLinearStepper: React.FC = () => {
           </Step>
         ))}
       </StyledStepper>
-      <StyledContent>{getStepContent(activeStep, handleNext)}</StyledContent>
+      <StyledContent>{getStepContent(activeStep, handleNext, handleBack)}</StyledContent>
     </StepperWrapper>
   );
 };
