@@ -3,12 +3,14 @@ import React, { useEffect } from 'react';
 
 import { Box, CircularProgress, Typography } from '@mui/material';
 
+import { useTranslation } from 'react-i18next';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { setAuth } from '@/store/authSlice';
 
 export const AuthVerify: React.FC = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -36,7 +38,7 @@ export const AuthVerify: React.FC = () => {
       }}
     >
       <CircularProgress />
-      <Typography sx={{ mt: 2 }}>Verification...</Typography>
+      <Typography sx={{ mt: 2 }}>{t('Verify.title')}</Typography>
     </Box>
   );
 };
