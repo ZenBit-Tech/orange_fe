@@ -4,6 +4,7 @@ export const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_AUTH_URL,
+    credentials: 'include',
   }),
   endpoints: (builder) => ({
     sendMagicLink: builder.mutation<{ message: string }, { email: string }>({
