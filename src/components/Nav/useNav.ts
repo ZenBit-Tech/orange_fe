@@ -3,22 +3,23 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { useGetMeQuery, useLogoutMutation } from '@/store/authApi';
+import { useAppDispatch, useAppSelector } from '@/store';
+import { logout } from '@/store/authSlice';
 
 export const useNav = () => {
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const location = useLocation();
   const { t } = useTranslation();
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  const { data: user, isSuccess } = useGetMeQuery();
-  const [logoutUser] = useLogoutMutation();
+  const token = useAppSelector((state) => state.auth.token);
+  const isAuthenticated = Boolean(token);
 
   const handleToggleMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
-  const isAuthenticated = isSuccess && !!user;
 
   const currentPath = location.pathname;
 
@@ -28,14 +29,9 @@ export const useNav = () => {
   const showLinks = !hideLinksOn.includes(currentPath);
   const showAuthButtons = isAuthenticated && !hideAuthButtonsOn.includes(currentPath);
 
-  const handleLogout = async () => {
-    try {
-      await logoutUser().unwrap();
-
-      navigate('/login');
-    } catch (err) {
-      throw new Error('Logout failed', { cause: err });
-    }
+  const handleLogout = () => {
+    dispatch(logout());
+    navigate('/login');
   };
 
   const handleNavigate = () => {

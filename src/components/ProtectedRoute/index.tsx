@@ -1,13 +1,11 @@
 import { Navigate, Outlet } from 'react-router-dom';
 
-import { useGetMeQuery } from '@/store/authApi';
+import { useAppSelector } from '@/store';
 
 export const ProtectedRoute = () => {
-  const { isLoading, isSuccess, data } = useGetMeQuery();
-  const isAuthenticated = isSuccess && !!data;
-  if (isLoading) {
-    return null;
-  }
+  const token = useAppSelector((state) => state.auth.token);
+  const isAuthenticated = Boolean(token);
+
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
   }

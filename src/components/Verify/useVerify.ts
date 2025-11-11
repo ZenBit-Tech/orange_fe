@@ -3,13 +3,13 @@ import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { useLazyVerifyMagicLinkQuery } from '@/store/authApi';
+import { useVerifyMagicLinkMutation } from '@/store/authApi';
 
 export const useVerify = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const [verifyMagicLink, { isLoading, error, data }] = useLazyVerifyMagicLinkQuery();
+  const [verifyMagicLink, { isLoading, isSuccess, isError }] = useVerifyMagicLinkMutation();
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -33,10 +33,9 @@ export const useVerify = () => {
   return {
     location,
     navigate,
-    useLazyVerifyMagicLinkQuery,
     isLoading,
-    error,
-    data,
+    isSuccess,
+    isError,
     t,
   };
 };

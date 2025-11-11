@@ -1,5 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+import { setAuth } from './authSlice';
+
 export const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
@@ -16,34 +18,25 @@ export const authApi = createApi({
         body,
       }),
     }),
-
-    getMe: builder.query<any, void>({
-      query: () => '/me',
-      providesTags: ['User'],
-    }),
-
-    logout: builder.mutation<void, void>({
-      query: () => ({
-        url: '/logout',
-        method: 'POST',
-      }),
-      invalidatesTags: ['User'],
-    }),
-
-    verifyMagicLink: builder.query<
+    verifyMagicLink: builder.mutation<
       { accessToken: string; email: string },
       { token: string; email: string }
     >({
       query: ({ token, email }) => ({
         url: `/verify?token=${token}&email=${encodeURIComponent(email)}`,
+        method: 'GET',
       }),
+      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+        try {
+          const { data } = await queryFulfilled;
+          localStorage.setItem('accessToken', data.accessToken);
+          dispatch(setAuth({ token: data.accessToken }));
+        } catch (err) {
+          console.error('Magic link verification failed', err);
+        }
+      },
     }),
   }),
 });
 
-export const {
-  useSendMagicLinkMutation,
-  useLazyVerifyMagicLinkQuery,
-  useGetMeQuery,
-  useLogoutMutation,
-} = authApi;
+export const { useSendMagicLinkMutation, useVerifyMagicLinkMutation } = authApi;

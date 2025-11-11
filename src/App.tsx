@@ -10,6 +10,7 @@ import {
   VerifyPage,
 } from '@/pages';
 
+import { AuthVerify } from './components/AuthVerify';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { GlobalStyle } from './style';
 
@@ -20,6 +21,7 @@ export const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/auth-verify" element={<AuthVerify />} />
         <Route path="/privacy" element={<PrivacyPolicyPage />} />
         <Route path="/terms" element={<TermsPage />} />
         <Route path="/link-expired" element={<LinkExpiredPage />} />
