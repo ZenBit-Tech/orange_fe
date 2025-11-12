@@ -9,21 +9,17 @@ import {
 import { useVerify } from './useVerify';
 
 export const Verify: React.FC = () => {
-  const { isLoading, error, data, t } = useVerify();
+  const { t, isLoading, isSuccess, isError } = useVerify();
   const getStatusComponent = () => {
     if (isLoading) {
       return <LoadingText>{t('Verify.loading')}</LoadingText>;
     }
 
-    if (error) {
-      const errorMessage =
-        error && 'data' in error && typeof error.data === 'object'
-          ? (error.data as any).message
-          : t('Verify.error-text');
-      return <ErrorText>{errorMessage}</ErrorText>;
+    if (isError) {
+      return <ErrorText>{t('Verify.error-text')}</ErrorText>;
     }
 
-    if (data) {
+    if (isSuccess) {
       return <SuccessText>{t('Verify.success')}</SuccessText>;
     }
 

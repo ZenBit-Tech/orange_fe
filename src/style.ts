@@ -7,6 +7,9 @@ export const GlobalStyle = createGlobalStyle`
   font-weight: 400;
 
 }
+html {
+  scroll-behavior: smooth;
+}
 
   html, body, #root {
   height: 100%;

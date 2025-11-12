@@ -1,8 +1,7 @@
-import { Box } from '@mui/material';
+import { Box, styled } from '@mui/material';
 import type { BoxProps } from '@mui/material';
 
 import { theme } from '@theme';
-import { styled } from 'styled-components';
 
 interface WrapperProps extends BoxProps {
   transparent?: boolean;
@@ -18,8 +17,8 @@ export const Wrapper = styled(Box)<WrapperProps>`
     transparent ? 'none' : `1px solid ${theme.palette.baseColors.grey[200]}`};
   box-sizing: border-box;
   padding: 20px 50px;
-  font-family: ${theme.typography.general.fontPoppins};
-  font-size: ${theme.typography.sizes.size14};
+  font-family: ${theme.typography.general.fontInter};
+  font-size: ${theme.typography.sizes.size16};
   font-weight: ${theme.typography.fontWeightLight};
   color: ${theme.palette.textIcons?.textTeriartry};
   a {
@@ -30,10 +29,22 @@ export const Wrapper = styled(Box)<WrapperProps>`
       color: ${theme.palette.textIcons?.success};
     }
   }
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    border-top: 1px solid ${theme.palette.baseColors.grey[200]};
+    gap: 24px;
+    flex-direction: column-reverse;
+  }
 `;
 
-export const Divider = styled.div`
+export const Divider = styled(Box)`
   display: flex;
   gap: 40px;
   align-items: center;
+  ${({ theme }) => theme.breakpoints.down('md')} {
+    flex-direction: column;
+    padding: 16px;
+    align-items: flex-start;
+    gap: 5px;
+    width: 100%;
+  }
 `;

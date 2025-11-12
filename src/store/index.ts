@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { authApi } from './authApi';
+import authSlice from './authSlice';
 import { bloodTestApi } from './bloodTestApi';
 import bloodTestReducer from './bloodTestSlice/bloodTestSlice';
 import { ocrApi } from './ocrApi';
@@ -14,6 +15,7 @@ export const store = configureStore({
     [bloodTestApi.reducerPath]: bloodTestApi.reducer,
     [reviewCustomizeApi.reducerPath]: reviewCustomizeApi.reducer,
     bloodTest: bloodTestReducer,
+    auth: authSlice,
   },
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware()
