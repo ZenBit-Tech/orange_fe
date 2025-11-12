@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
+import { forwardRef, memo, useEffect, useImperativeHandle, useState } from 'react';
 
 import { t } from 'i18next';
 import { Plus } from 'lucide-react';
@@ -48,12 +48,20 @@ const useIsSmallScreen = () => {
   );
 
   useEffect(() => {
+    let timeoutId: NodeJS.Timeout;
+
     const handleResize = () => {
-      setIsMobile(window.innerWidth < BREAKPOINTS.MD);
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        setIsMobile(window.innerWidth < BREAKPOINTS.MD);
+      }, 150);
     };
 
     window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   return isMobile;
@@ -63,12 +71,12 @@ interface AddMarkerBtnProps {
   onClick: () => void;
 }
 
-const AddMarkerBtn: React.FC<AddMarkerBtnProps> = ({ onClick }) => (
+const AddMarkerBtn = memo<AddMarkerBtnProps>(({ onClick }) => (
   <AddMarkerButton onClick={onClick}>
     <Plus color={theme.palette.baseColors.green[600]} />
     <AddMarkerButtonText>{t('review.add-marker')}</AddMarkerButtonText>
   </AddMarkerButton>
-);
+));
 
 AddMarkerBtn.displayName = 'AddMarkerBtn';
 
@@ -88,9 +96,13 @@ export const MarkerTable = forwardRef<MarkerTableRef, MarkerTableProps>(
   ) => {
     const isSmallScreen = useIsSmallScreen();
 
-    useImperativeHandle(ref, () => ({
-      validateAllMarkers: onValidateAll,
-    }));
+    useImperativeHandle(
+      ref,
+      () => ({
+        validateAllMarkers: onValidateAll,
+      }),
+      [onValidateAll],
+    );
 
     return (
       <>

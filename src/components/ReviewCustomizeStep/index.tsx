@@ -3,7 +3,6 @@ import React from 'react';
 import { t } from 'i18next';
 import { ArrowLeft, ChevronDown, Dumbbell, Pill, Salad, Stethoscope } from 'lucide-react';
 
-import { ErrorText } from '@/components/Marker/styles';
 import { MarkerTable } from '@/components/MarkerTable';
 import { BIRTH_YEARS, GENDER, GENDER_OPTIONS, PREGNANCY_OPTIONS } from '@/constants/marker';
 
@@ -21,6 +20,7 @@ import {
   ContinueButton,
   CustomizeSection,
   DescriptionText,
+  FormErrorText,
   FormField,
   FormRow,
   SectionTitle,
@@ -104,7 +104,7 @@ export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onCont
               },
             }}
           />
-          {validationErrors.birthYear && <ErrorText>{t('review.fill-field')}</ErrorText>}
+          {validationErrors.birthYear && <FormErrorText>{t('review.fill-field')}</FormErrorText>}
         </FormField>
 
         <FormField>
@@ -134,7 +134,7 @@ export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onCont
             }}
           />
 
-          {validationErrors.gender && <ErrorText>{t('review.fill-field')}</ErrorText>}
+          {validationErrors.gender && <FormErrorText>{t('review.fill-field')}</FormErrorText>}
         </FormField>
         {gender === GENDER.FEMALE && (
           <FormField className="full-width">
@@ -163,7 +163,7 @@ export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onCont
                 },
               }}
             />
-            {validationErrors.pregnancy && <ErrorText>{t('review.fill-field')}</ErrorText>}
+            {validationErrors.pregnancy && <FormErrorText>{t('review.fill-field')}</FormErrorText>}
           </FormField>
         )}
       </FormRow>

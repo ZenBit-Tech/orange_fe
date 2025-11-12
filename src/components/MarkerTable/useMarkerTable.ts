@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { MARKER_CONFIG } from '@/constants/marker';
 
@@ -47,11 +47,16 @@ interface UseMarkerTableProps {
 
 export const useMarkerTable = ({ onValidationChange }: UseMarkerTableProps = {}) => {
   const [markers, setMarkers] = useState<MarkerData[]>(initialMarkers);
+  const onValidationChangeRef = useRef(onValidationChange);
+
+  useEffect(() => {
+    onValidationChangeRef.current = onValidationChange;
+  }, [onValidationChange]);
 
   useEffect(() => {
     const hasErrors = markers.some((marker) => marker.hasError);
-    onValidationChange?.(hasErrors);
-  }, [markers, onValidationChange]);
+    onValidationChangeRef.current?.(hasErrors);
+  }, [markers]);
 
   const validateAllMarkers = useCallback(() => {
     setMarkers((prevMarkers) =>
@@ -63,35 +68,38 @@ export const useMarkerTable = ({ onValidationChange }: UseMarkerTableProps = {})
   }, []);
 
   const handleNameChange = useCallback((id: number, name: string) => {
-    setMarkers((prevMarkers) =>
-      prevMarkers.map((marker) => {
-        if (marker.id === id) {
-          const config = MARKER_CONFIG[name];
-          return {
-            ...marker,
-            name,
-            unit: config?.unit || marker.unit,
-            normalRange: config?.normalRange || '-',
-            hasError: !name || !marker.value,
-          };
-        }
-        return marker;
-      }),
-    );
+    setMarkers((prevMarkers) => {
+      return prevMarkers.map((marker) => {
+        if (marker.id !== id) return marker;
+
+        const config = MARKER_CONFIG[name];
+        return {
+          ...marker,
+          name,
+          unit: config?.unit || marker.unit,
+          normalRange: config?.normalRange || '-',
+          hasError: !name || !marker.value,
+        };
+      });
+    });
   }, []);
 
   const handleValueChange = useCallback((id: number, value: string) => {
-    setMarkers((prevMarkers) =>
-      prevMarkers.map((marker) =>
-        marker.id === id ? { ...marker, value, hasError: !marker.name || !value } : marker,
-      ),
-    );
+    setMarkers((prevMarkers) => {
+      return prevMarkers.map((marker) => {
+        if (marker.id !== id) return marker;
+        return { ...marker, value, hasError: !marker.name || !value };
+      });
+    });
   }, []);
 
   const handleUnitChange = useCallback((id: number, unit: string) => {
-    setMarkers((prevMarkers) =>
-      prevMarkers.map((marker) => (marker.id === id ? { ...marker, unit } : marker)),
-    );
+    setMarkers((prevMarkers) => {
+      return prevMarkers.map((marker) => {
+        if (marker.id !== id) return marker;
+        return { ...marker, unit };
+      });
+    });
   }, []);
 
   const handleDelete = useCallback((id: number) => {
@@ -116,17 +124,15 @@ export const useMarkerTable = ({ onValidationChange }: UseMarkerTableProps = {})
   }, []);
 
   const validateMarker = useCallback((id: number) => {
-    setMarkers((prevMarkers) =>
-      prevMarkers.map((marker) => {
-        if (marker.id === id) {
-          return {
-            ...marker,
-            hasError: !marker.name || !marker.value,
-          };
-        }
-        return marker;
-      }),
-    );
+    setMarkers((prevMarkers) => {
+      return prevMarkers.map((marker) => {
+        if (marker.id !== id) return marker;
+        return {
+          ...marker,
+          hasError: !marker.name || !marker.value,
+        };
+      });
+    });
   }, []);
 
   return {
