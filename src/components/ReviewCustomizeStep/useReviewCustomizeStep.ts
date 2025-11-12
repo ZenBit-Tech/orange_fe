@@ -1,7 +1,9 @@
 import { useRef, useState } from 'react';
 
 import type { MarkerTableRef } from '@/components/MarkerTable';
+import { useMarkerTable } from '@/components/MarkerTable/useMarkerTable';
 import { GENDER } from '@/constants/marker';
+import { useSendDataToBackendMutation } from '@/store/reviewCustomizeApi';
 
 type Gender = (typeof GENDER)[keyof typeof GENDER];
 type PregnancyStatus = 'pregnant' | 'not-pregnant';
@@ -18,6 +20,20 @@ interface UseReviewCustomizeStepProps {
 
 export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepProps) => {
   const markerTableRef = useRef<MarkerTableRef>(null);
+  const [hasMarkerErrors, setHasMarkerErrors] = useState(false);
+
+  const {
+    markers,
+    validateAllMarkers,
+    handleNameChange,
+    handleValueChange,
+    handleUnitChange,
+    handleDelete,
+    handleAddMarker,
+    validateMarker,
+  } = useMarkerTable({
+    onValidationChange: setHasMarkerErrors,
+  });
 
   const [birthYear, setBirthYear] = useState<number | null>(null);
   const [gender, setGender] = useState<Gender | null>(null);
@@ -25,14 +41,15 @@ export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepPro
   const [nutritionAdvice, setNutritionAdvice] = useState(false);
   const [exerciseGuidelines, setExerciseGuidelines] = useState(false);
   const [supplementRecommendations, setSupplementRecommendations] = useState(false);
-  const [medicationRecommendations, setMedicationRecommendations] = useState(false);
+  const [medicationGuidance, setMedicationRecommendations] = useState(false);
   const [additionalQuestions, setAdditionalQuestions] = useState('');
   const [validationErrors, setValidationErrors] = useState<ValidationErrors>({
     birthYear: false,
     gender: false,
     pregnancy: false,
   });
-  const [hasMarkerErrors, setHasMarkerErrors] = useState(false);
+
+  const [sendDataToBackend] = useSendDataToBackendMutation();
 
   const handleBirthYear = (_event: React.SyntheticEvent, value: unknown) => {
     const newValue = value as number | null;
@@ -72,19 +89,29 @@ export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepPro
 
     setValidationErrors(errors);
 
-    if (markerTableRef.current) {
-      markerTableRef.current.validateAllMarkers();
-    }
+    validateAllMarkers();
 
     const hasErrors = errors.birthYear || errors.gender || errors.pregnancy;
 
     return !hasErrors;
   };
 
-  const handleContinue = () => {
+  const handleContinue = async () => {
     const isValid = validateForm();
 
     if (isValid && !hasMarkerErrors) {
+      await sendDataToBackend({
+        birthYear: birthYear,
+        gender: gender,
+        pregnancy: pregnancy,
+        markersData: markers,
+        nutritionAdvice: nutritionAdvice,
+        supplementRecommendations: supplementRecommendations,
+        exerciseGuidelines: exerciseGuidelines,
+        medicationGuidance: medicationGuidance,
+        additionalQuestions: additionalQuestions,
+      });
+
       onContinue();
     } else {
       if (validationErrors.birthYear || validationErrors.gender || validationErrors.pregnancy) {
@@ -97,18 +124,25 @@ export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepPro
   const toggleExerciseGuidelines = () => setExerciseGuidelines(!exerciseGuidelines);
   const toggleSupplementRecommendations = () =>
     setSupplementRecommendations(!supplementRecommendations);
-  const toggleMedicationRecommendations = () =>
-    setMedicationRecommendations(!medicationRecommendations);
+  const toggleMedicationGuidance = () => setMedicationRecommendations(!medicationGuidance);
 
   return {
     markerTableRef,
+    markers,
+    handleNameChange,
+    handleValueChange,
+    handleUnitChange,
+    handleDelete,
+    handleAddMarker,
+    validateMarker,
+    validateAllMarkers,
     birthYear,
     gender,
     pregnancy,
     nutritionAdvice,
     exerciseGuidelines,
     supplementRecommendations,
-    medicationRecommendations,
+    medicationGuidance,
     additionalQuestions,
     validationErrors,
     hasMarkerErrors,
@@ -121,6 +155,6 @@ export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepPro
     toggleNutritionAdvice,
     toggleExerciseGuidelines,
     toggleSupplementRecommendations,
-    toggleMedicationRecommendations,
+    toggleMedicationGuidance,
   };
 };

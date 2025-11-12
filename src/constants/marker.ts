@@ -45,3 +45,24 @@ export const VALIDATION_PATTERNS = {
 export const BREAKPOINTS = {
   MD: 768,
 } as const;
+
+export interface MarkerData {
+  hasError: boolean;
+  id: number;
+  name: string;
+  normalRange: string;
+  unit: string;
+  value: string;
+}
+
+export interface ReviewCustomizeData {
+  birthYear: number | null;
+  gender: string | null;
+  pregnancy: string | null;
+  markersData: MarkerData[];
+  nutritionAdvice: boolean;
+  supplementRecommendations: boolean;
+  medicationGuidance: boolean;
+  exerciseGuidelines: boolean;
+  additionalQuestions: string;
+}

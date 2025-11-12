@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
 import { VALIDATION_PATTERNS } from '@/constants/marker';
 
@@ -27,40 +27,49 @@ export const useMarker = ({
 }: UseMarkerProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = e.target.value;
+  const handleValueChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const inputValue = e.target.value;
 
-    if (inputValue === '' || VALIDATION_PATTERNS.DECIMAL_NUMBER.test(inputValue)) {
-      onValueChange(id, inputValue);
-    }
-  };
+      if (inputValue === '' || VALIDATION_PATTERNS.DECIMAL_NUMBER.test(inputValue)) {
+        onValueChange(id, inputValue);
+      }
+    },
+    [id, onValueChange],
+  );
 
-  const handleBlur = () => {
+  const handleBlur = useCallback(() => {
     onValidate(id);
-  };
+  }, [id, onValidate]);
 
-  const handleDeleteClick = () => {
+  const handleDeleteClick = useCallback(() => {
     setIsModalOpen(true);
-  };
+  }, []);
 
-  const handleConfirmDelete = () => {
+  const handleConfirmDelete = useCallback(() => {
     onDelete(id);
-  };
+  }, [id, onDelete]);
 
-  const handleNameChange = (_event: React.SyntheticEvent, newValue: string | null) => {
-    if (newValue) {
-      onNameChange(id, newValue);
-    }
-  };
+  const handleNameChange = useCallback(
+    (_event: React.SyntheticEvent, newValue: string | null) => {
+      if (newValue) {
+        onNameChange(id, newValue);
+      }
+    },
+    [id, onNameChange],
+  );
 
-  const handleUnitChange = (_event: React.SyntheticEvent, newValue: string | null) => {
-    if (newValue) {
-      onUnitChange(id, newValue);
-    }
-  };
+  const handleUnitChange = useCallback(
+    (_event: React.SyntheticEvent, newValue: string | null) => {
+      if (newValue) {
+        onUnitChange(id, newValue);
+      }
+    },
+    [id, onUnitChange],
+  );
 
-  const showNameError = hasError && !name;
-  const showValueError = hasError && !value;
+  const showNameError = useMemo(() => hasError && !name, [hasError, name]);
+  const showValueError = useMemo(() => hasError && !value, [hasError, value]);
 
   return {
     isModalOpen,

@@ -17,7 +17,6 @@ import {
   MarkerTableHeader,
   MarkerTableHeaderCell,
 } from './styles';
-import { useMarkerTable } from './useMarkerTable';
 
 interface MarkerData {
   id: number;
@@ -29,8 +28,14 @@ interface MarkerData {
 }
 
 interface MarkerTableProps {
-  onValidationChange?: (hasErrors: boolean) => void;
-  initialMarkers?: MarkerData[];
+  markers: MarkerData[];
+  onNameChange: (id: number, name: string) => void;
+  onValueChange: (id: number, value: string) => void;
+  onUnitChange: (id: number, unit: string) => void;
+  onDelete: (id: number) => void;
+  onAddMarker: () => void;
+  onValidate: (id: number) => void;
+  onValidateAll: () => void;
 }
 
 export interface MarkerTableRef {
@@ -68,22 +73,23 @@ const AddMarkerBtn: React.FC<AddMarkerBtnProps> = ({ onClick }) => (
 AddMarkerBtn.displayName = 'AddMarkerBtn';
 
 export const MarkerTable = forwardRef<MarkerTableRef, MarkerTableProps>(
-  ({ onValidationChange, initialMarkers }, ref) => {
-    const {
+  (
+    {
       markers,
-      validateAllMarkers,
-      handleNameChange,
-      handleValueChange,
-      handleUnitChange,
-      handleDelete,
-      handleAddMarker,
-      validateMarker,
-    } = useMarkerTable({ onValidationChange, initialMarkers });
-
+      onNameChange,
+      onValueChange,
+      onUnitChange,
+      onDelete,
+      onAddMarker,
+      onValidate,
+      onValidateAll,
+    },
+    ref,
+  ) => {
     const isSmallScreen = useIsSmallScreen();
 
     useImperativeHandle(ref, () => ({
-      validateAllMarkers,
+      validateAllMarkers: onValidateAll,
     }));
 
     return (
@@ -103,11 +109,11 @@ export const MarkerTable = forwardRef<MarkerTableRef, MarkerTableProps>(
                 <Marker
                   key={marker.id}
                   {...marker}
-                  onNameChange={handleNameChange}
-                  onValueChange={handleValueChange}
-                  onUnitChange={handleUnitChange}
-                  onDelete={handleDelete}
-                  onValidate={validateMarker}
+                  onNameChange={onNameChange}
+                  onValueChange={onValueChange}
+                  onUnitChange={onUnitChange}
+                  onDelete={onDelete}
+                  onValidate={onValidate}
                 />
               ))}
             </MarkerTableContent>
@@ -115,12 +121,12 @@ export const MarkerTable = forwardRef<MarkerTableRef, MarkerTableProps>(
 
           {!isSmallScreen && (
             <MarkerTableFooter>
-              <AddMarkerBtn onClick={handleAddMarker} />
+              <AddMarkerBtn onClick={onAddMarker} />
             </MarkerTableFooter>
           )}
         </MarkerTableContainer>
 
-        {isSmallScreen && <AddMarkerBtn onClick={handleAddMarker} />}
+        {isSmallScreen && <AddMarkerBtn onClick={onAddMarker} />}
       </>
     );
   },
