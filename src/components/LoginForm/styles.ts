@@ -35,12 +35,13 @@ export const CenteredText = styled.div`
       font-size: ${theme.typography.sizes.size16};
     }
 
-  @media (max-width: 480px) {
-    h5 {
-      font-size: ${theme.typography.sizes.size18};
-    }
-    p {
-      font-size: ${theme.typography.sizes.size16};
+    @media (max-width: 480px) {
+      h5 {
+        font-size: ${theme.typography.sizes.size18};
+      }
+      p {
+        font-size: ${theme.typography.sizes.size16};
+      }
     }
   }
 `;

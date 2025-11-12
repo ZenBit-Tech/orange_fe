@@ -1,4 +1,32 @@
 {
+  "HomePage": {
+    "meta-title": "PlasmAI – Instant Analysis & Insights On Your Data",
+    "meta-description": "Get powerful, instant analysis. Our service helps you understand understand your health metrics privately and instantly. Get started today!"
+  },
+  "UploadPage": {
+    "meta-title": "Upload File for Analysis | PlasmAI",
+    "meta-description": "Start your analysis by uploading a file. Follow our simple stepper process to get instant insights from PlasmAI."
+  },
+  "LoginPage": {
+    "meta-title": "Login – PlasmAI",
+    "meta-description": "Log in to your PlasmAI account to access your dashboard and analysis results."
+  },
+  "VerifyPage": {
+    "meta-title": "Verifying Your Account... | PlasmAI",
+    "meta-description": "Automatically verifying your PlasmAI account. Please wait a moment."
+  },
+  "TermsPage": {
+    "meta-title": "Terms of Use – PlasmaAI",
+    "meta-description": "The official Terms of Use for the PlasmaAI service. Please review our terms and conditions."
+  },
+  "PrivacyPolicyPage": {
+    "meta-title": "Privacy Policy – PlasmaAI",
+    "meta-description": "Learn how PlasmaAI collects, uses, and protects your personal data. Read our official privacy policy."
+  },
+  "LinkExpiredPage": {
+    "meta-title": "Link Expired – PlasmaAI",
+    "meta-description": "This link is no longer valid, possibly because it has already been used or its expiration date has passed."
+  },
   "Header": {
     "title": "PlasmAI",
     "links": {
@@ -7,6 +35,63 @@
       "about-us": "About Us"
     },
     "button": "Get Started"
+  },
+  "Main-Content": {
+    "power-analysis": "AI-powered blood analysis",
+    "understand-your": "Understand your blood tests .",
+    "instantly": "instantly",
+    "description": "Transform complex blood test results into clear, personalized health insights. Understanding your health has never been easier.",
+    "feature-list": {
+      "instant-analysis": "Instant Analysis",
+      "private": "100% private",
+      "available": "24/7 Available"
+    }
+  },
+  "About": {
+    "title": "About PlasmAI",
+    "description": "We're on a mission to democratize healthcare by making blood test analysis accessible, understandable, and actionable for everyone",
+    "our-story": "Our story",
+    "story-description": "PlasmAI is a startup founded in 2024 with the mission to bridge the gap between complex data and your personal well-being, giving you the clarity and confidence to take control of your health journey.",
+    "our-mission": "Our mission",
+    "mission-description": "To make healthcare more accessible and understandable by providing AI-powered insights that help people make informed decisions about their health and wellbeing."
+  },
+  "How-it-works": {
+    "title": "How it works",
+    "description": "Three simple steps to understanding your health",
+    "steps": {
+      "upload": "1. Upload File",
+      "upload-description": "Securely upload a PDF or image of your blood test report, and our AI will instantly digitize the data for you.",
+      "review": "2. Review & Customize",
+      "review-description": "Verify the extracted data, select your preferred recommendations, and feel free to ask any specific questions you may have.",
+      "results": "3. View results",
+      "results-description": "Get your personalized, easy-to-understand health report in just a few minutes."
+    }
+  },
+  "PrivacySection": {
+    "title": "Your privacy is our foundation",
+    "description": "We never store your medical data. All analysis happens in real-time and your information is immediately discarded after processing. Your health data belongs to you, and only you",
+    "cards": {
+      "zero": "Zero storage",
+      "dontStore": "We don't store your reports. All data is permanently deleted after your session ends.",
+      "processing": "Secure Processing",
+      "ecrypted": "Your data is encrypted both in transit and at rest to keep it secure.",
+      "design": "Privacy-First Design",
+      "minimizing": "Our service is built on the principle of minimizing data collection."
+    }
+  },
+  "FAQ": {
+    "title": "Frequently Asked Questions",
+    "description": "Find answers to the most common questions about PlasmAI",
+    "data": {
+      "q1": "Is my health data safe with PlasmAI?",
+      "an1": "Absolutely. Your privacy is our number one priority. We do not store your reports. They are processed temporarily and permanently deleted after your session.",
+      "q2": "Is this a medical diagnosis?",
+      "an2": "No. PlasmAI is an informational tool, not a doctor. Think of it as a smart assistant that helps you understand your results so you can have a more informed conversation with your healthcare provider.",
+      "q3": "Where does the information for recommendations come from?",
+      "an3": "All our recommendations (for nutrition, supplements, etc.) are generated based on information from high-quality, evidence-based sources. This includes peer-reviewed scientific journals, clinical guidelines from leading health organizations, and established medical research.",
+      "q4": "Can the AI handle different lab formats and languages?",
+      "an4": "Yes. Our Optical Character Recognition (OCR) technology is designed to be robust and can handle a wide variety of common lab report layouts. Additionally, our system supports analysis in multiple languages, and we are constantly expanding this capability."
+    }
   },
   "Form": {
     "login-form": {
@@ -31,7 +116,18 @@
       "or": "Or"
     },
     "nav": {
-      "logoAlt": "PlasmaAI logo"
+      "logoAlt": "PlasmaAI logo",
+      "links": {
+        "about-us": "About us",
+        "our-features": "Our features",
+        "how-it-works": "How it works",
+        "your-privacy": "Your privacy",
+        "faq": "FAQ"
+      },
+      "button": {
+        "log-out": "Log out",
+        "get-started": "Get Started"
+      }
     }
   },
   "Footer": {
@@ -68,8 +164,8 @@
     "file-uploaded": "File uploaded successfully.",
     "file-too-large": "File is too large. The maximum size is 30MB.",
     "upload-error-title": "Our AI couldn't find any valid medical markers in the uploaded file. Please make sure you're uploading the correct document",
-    "button-upload-different": "Upload a different file."
-    
+    "button-upload-different": "Upload a different file.",
+    "error-generic": "Upload failed due to a server error. Please try again in a few minutes."    
   },
  "review": {
     "title": "Review & Customize your analysis",

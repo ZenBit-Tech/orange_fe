@@ -7,7 +7,7 @@ import type { RootState } from '@/store';
 import { DropzoneFile } from '../DropzoneFile';
 import { OCRSpinner } from '../ProgressIndicator';
 import { UploadErrorState } from '../UploadErrorState';
-import { ButtonContainer, Spacer, StyledButton, WrapperUpload } from './styles';
+import { ButtonContainer, Spacer, StyledButton, StyledTitle, WrapperUpload } from './styles';
 import { useBloodTestValidation } from './useBloodTestValidation';
 import { UPLOAD_STATUS, useUploadStep } from './useUploadStep';
 
@@ -59,7 +59,7 @@ export const UploadStep: React.FC<UploadStepProps> = ({ onContinue }) => {
       {isValidating && <OCRSpinner isLoading={true} />}
       {!error && !isValidating && (
         <>
-          <Typography variant="h5">{t('Upload.title')}</Typography>
+          <StyledTitle variant="h5">{t('Upload.title')}</StyledTitle>
           <Typography variant="body1">{t('Upload.description')}</Typography>
           <DropzoneFile
             files={files}

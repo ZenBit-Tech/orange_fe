@@ -71,7 +71,7 @@ export const StyledStepLabel = styled(StepLabel, {
   },
   [`& .${stepLabelClasses.label}.${stepLabelClasses.active}`]: {
     color: theme.palette.textIcons?.primary,
-    fontWeight: 500,
+    fontWeight: theme.typography.weights.weight500,
     ...(error && {
       color: theme.palette.textIcons?.errorMainSecondary,
     }),
