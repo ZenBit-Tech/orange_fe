@@ -6,7 +6,14 @@ export const bloodTestApi = createApi({
   reducerPath: 'bloodTestApi',
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_BLOOD_TEST_URL,
-    credentials: 'include',
+    prepareHeaders: (headers) => {
+      const token = localStorage.getItem('accessToken');
+      if (token) {
+        headers.set('authorization', `Bearer ${token}`);
+      }
+
+      return headers;
+    },
   }),
   endpoints: (builder) => ({
     validateBloodTest: builder.mutation<BloodTestValidation, BloodTestData>({
