@@ -1,4 +1,3 @@
-// src/pages/AuthSuccess.tsx
 import React, { useEffect } from 'react';
 
 import { Box, CircularProgress, Typography } from '@mui/material';
