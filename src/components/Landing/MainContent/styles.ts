@@ -12,10 +12,11 @@ export const MainWrapper = styled(Box)`
   overflow: hidden;
   background-image: url(${theme.palette.backgrounds.bgLandingSection});
   padding-bottom: 121px;
-  overflow: hidden;
-  ${({ theme }) => theme.breakpoints.down('md')} {
+  max-width: 1440px;
+  ${({ theme }) => theme.breakpoints.down('lg')} {
     flex-direction: column;
     padding: 40px 20px;
+    max-width: 100%;
   }
   &::after {
     content: '';
