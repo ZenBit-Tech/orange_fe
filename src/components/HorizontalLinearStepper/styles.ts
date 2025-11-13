@@ -45,6 +45,7 @@ export const StyledConnector = styled(StepConnector, {
       width: '48.5px',
     },
   },
+
   [`& .${stepConnectorClasses.line}`]: {
     borderColor: theme.palette.surface.disabled.disabledDark,
     borderTopWidth: 2,
