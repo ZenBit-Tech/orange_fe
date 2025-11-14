@@ -23,7 +23,8 @@ interface MarkerProps {
   name: string;
   value: string;
   unit: string;
-  normalRange: string;
+  referenceMin: string;
+  referenceMax: string;
   hasError: boolean;
   onNameChange: (id: number, name: string) => void;
   onValueChange: (id: number, value: string) => void;
@@ -38,7 +39,8 @@ export const Marker = memo<MarkerProps>(
     name,
     value,
     unit,
-    normalRange,
+    referenceMin,
+    referenceMax,
     hasError,
     onNameChange,
     onValueChange,
@@ -146,7 +148,9 @@ export const Marker = memo<MarkerProps>(
 
           <MarkerCell>
             <MobileLabel>{t('review.normal-range')}</MobileLabel>
-            <NormalRangeText>{normalRange}</NormalRangeText>
+            <NormalRangeText>
+              {referenceMin} - {referenceMax} {unit}
+            </NormalRangeText>
           </MarkerCell>
 
           <MarkerCell>
@@ -171,7 +175,8 @@ export const Marker = memo<MarkerProps>(
       prevProps.name === nextProps.name &&
       prevProps.value === nextProps.value &&
       prevProps.unit === nextProps.unit &&
-      prevProps.normalRange === nextProps.normalRange &&
+      prevProps.referenceMin === nextProps.referenceMin &&
+      prevProps.referenceMax === nextProps.referenceMax &&
       prevProps.hasError === nextProps.hasError
     );
   },

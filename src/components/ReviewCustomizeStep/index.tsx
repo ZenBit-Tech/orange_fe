@@ -4,7 +4,7 @@ import { t } from 'i18next';
 import { ArrowLeft, ChevronDown, Dumbbell, Pill, Salad, Stethoscope } from 'lucide-react';
 
 import { MarkerTable } from '@/components/MarkerTable';
-import { BIRTH_YEARS, GENDER, GENDER_OPTIONS, PREGNANCY_OPTIONS } from '@/constants/marker';
+import { BIRTH_YEARS, GENDER, PREGNANCY_OPTIONS } from '@/constants/marker';
 
 import {
   AdditionalDescriptionText,
@@ -111,7 +111,7 @@ export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onCont
           <StyledAutocomplete
             size="small"
             disablePortal
-            options={[...GENDER_OPTIONS]}
+            options={[GENDER.MALE, GENDER.FEMALE]}
             value={gender}
             onChange={handleGender}
             getOptionLabel={(option) => String(option)}

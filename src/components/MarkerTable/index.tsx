@@ -5,6 +5,7 @@ import { Plus } from 'lucide-react';
 
 import { Marker } from '@/components/Marker';
 import { BREAKPOINTS } from '@/constants/marker';
+import type { MarkerData } from '@/constants/marker';
 import { theme } from '@/theme';
 
 import {
@@ -17,15 +18,6 @@ import {
   MarkerTableHeader,
   MarkerTableHeaderCell,
 } from './styles';
-
-interface MarkerData {
-  id: number;
-  name: string;
-  value: string;
-  unit: string;
-  normalRange: string;
-  hasError: boolean;
-}
 
 interface MarkerTableProps {
   markers: MarkerData[];

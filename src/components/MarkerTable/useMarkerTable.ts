@@ -1,44 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { MARKER_CONFIG } from '@/constants/marker';
+import { useSelector } from 'react-redux';
 
-const initialMarkers = [
-  {
-    id: 1,
-    name: 'Bilirubin (Total)',
-    value: '4.8',
-    unit: 'mg/dL',
-    normalRange: '0.1 - 1.2 mg/dL',
-    hasError: false,
-  },
-  {
-    id: 2,
-    name: 'Amylase',
-    value: '100',
-    unit: 'U/L',
-    normalRange: '30 - 110 U/L',
-    hasError: false,
-  },
-  { id: 3, name: 'AST', value: '9.8', unit: 'U/L', normalRange: '5 - 40 U/L', hasError: false },
-  {
-    id: 4,
-    name: 'Creatinine',
-    value: '1.8',
-    unit: 'mg/dL',
-    normalRange: '0.6 - 1.2 mg/dL',
-    hasError: false,
-  },
-  { id: 5, name: 'LDH', value: '180', unit: 'U/L', normalRange: '125 - 220 U/L', hasError: false },
-];
-
-interface MarkerData {
-  id: number;
-  name: string;
-  value: string;
-  unit: string;
-  normalRange: string;
-  hasError: boolean;
-}
+import type { MarkerData } from '@/constants/marker';
+import type { RootState } from '@/store';
 
 interface UseMarkerTableProps {
   onValidationChange?: (hasErrors: boolean) => void;
@@ -46,7 +11,21 @@ interface UseMarkerTableProps {
 }
 
 export const useMarkerTable = ({ onValidationChange }: UseMarkerTableProps = {}) => {
-  const [markers, setMarkers] = useState<MarkerData[]>(initialMarkers);
+  const extractedData = useSelector((state: RootState) => state.bloodTest.extractedData);
+  const [markers, setMarkers] = useState<MarkerData[]>(() => {
+    if (!extractedData || !Array.isArray(extractedData)) return [];
+
+    return extractedData.map((marker) => ({
+      id: marker.id,
+      name: marker.name,
+      value: String(marker.value),
+      unit: marker.unit,
+      referenceMin: marker.referenceMin,
+      referenceMax: marker.referenceMax,
+      hasError: false,
+    }));
+  });
+
   const onValidationChangeRef = useRef(onValidationChange);
 
   useEffect(() => {
@@ -72,12 +51,11 @@ export const useMarkerTable = ({ onValidationChange }: UseMarkerTableProps = {})
       return prevMarkers.map((marker) => {
         if (marker.id !== id) return marker;
 
-        const config = MARKER_CONFIG[name];
         return {
           ...marker,
           name,
-          unit: config?.unit || marker.unit,
-          normalRange: config?.normalRange || '-',
+          unit: marker.unit,
+          normalRange: `${`${marker.referenceMin} - ${marker.referenceMax}`}`,
           hasError: !name || !marker.value,
         };
       });
@@ -116,7 +94,8 @@ export const useMarkerTable = ({ onValidationChange }: UseMarkerTableProps = {})
           name: '',
           value: '',
           unit: '',
-          normalRange: '-',
+          referenceMin: '',
+          referenceMax: '',
           hasError: false,
         },
       ];
