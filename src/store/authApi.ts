@@ -26,7 +26,7 @@ export const authApi = createApi({
         url: `/verify?token=${token}&email=${encodeURIComponent(email)}`,
         method: 'GET',
       }),
-      async onQueryStarted(arg, { dispatch, queryFulfilled }) {
+      async onQueryStarted(_, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
           localStorage.setItem('accessToken', data.accessToken);

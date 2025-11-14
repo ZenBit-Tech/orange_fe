@@ -26,7 +26,7 @@ export const StyledStepIconRoot = styled('div')<{
   }),
   ...(ownerState.completed &&
     !ownerState.error && {
-      backgroundColor: theme.palette.surface.error.light,
+      backgroundColor: theme.palette.surface.primary.light,
       color: theme.palette.textIcons?.primary,
     }),
   ...(ownerState.error && {
