@@ -113,6 +113,7 @@
       "resendLink": "Request new link",
       "termsLink": "Terms&Conditions",
       "privacyLink": "Privacy Policy",
+      "sent": "Send to your email",
       "or": "Or"
     },
     "nav": {
@@ -165,9 +166,9 @@
     "file-too-large": "File is too large. The maximum size is 30MB.",
     "upload-error-title": "Our AI couldn't find any valid medical markers in the uploaded file. Please make sure you're uploading the correct document",
     "button-upload-different": "Upload a different file.",
-    "error-generic": "Upload failed due to a server error. Please try again in a few minutes."    
+    "error-generic": "Upload failed due to a server error. Please try again in a few minutes."
   },
- "review": {
+  "review": {
     "title": "Review & Customize your analysis",
     "description": "Verify patient information and medical markers before generating AI-powered insights.",
     "birthYear": "Birth year",
@@ -197,12 +198,12 @@
     "example-questions": "e.g., Why is my cholesterol high? What should I do?",
     "back": "Back",
     "continue": "Continue",
-    "delete-marker-title-firstPart":"Delete",
-    "delete-marker-title-secondPart":"marker?",
-    "delete-marker-description":"Are you sure you want to delete the marker? You can add it back manually later if you change your mind.",
-    "delete-marker-cancel":"Cancel",
-    "delete-marker-confirm":"Yes, delete",
-    "value-required":"Value is required",
-    "fill-field":"Fill this field to continue"
+    "delete-marker-title-firstPart": "Delete",
+    "delete-marker-title-secondPart": "marker?",
+    "delete-marker-description": "Are you sure you want to delete the marker? You can add it back manually later if you change your mind.",
+    "delete-marker-cancel": "Cancel",
+    "delete-marker-confirm": "Yes, delete",
+    "value-required": "Value is required",
+    "fill-field": "Fill this field to continue"
   }
 }
