@@ -11,6 +11,8 @@ export const WrapperFAQ = styled(Box)`
   align-items: center;
   text-align: center;
   background-image: url(${theme.palette.backgrounds.bgLandingSection});
+  background-position: center;
+  background-repeat: no-repeat;
   height: 100%;
   padding: 50px 20px;
   position: relative;
