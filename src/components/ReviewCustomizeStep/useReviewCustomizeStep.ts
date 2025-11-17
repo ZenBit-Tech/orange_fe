@@ -65,7 +65,7 @@ export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepPro
       setGender(newValue);
       setValidationErrors((prev) => ({ ...prev, gender: false }));
 
-      if (newValue === 'male') {
+      if (newValue === GENDER.MALE) {
         setPregnancy(null);
         setValidationErrors((prev) => ({ ...prev, pregnancy: false }));
       }

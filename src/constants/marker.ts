@@ -1,42 +1,23 @@
-export const MARKER_OPTIONS = [
-  'Bilirubin (Total)',
-  'Amylase',
-  'AST',
-  'Creatinine',
-  'LDH',
-  'ALT',
-  'Glucose',
-  'Cholesterol',
-] as const;
-
-export const UNIT_OPTIONS = ['mg/dL', 'U/L', 'mmol/L', 'g/dL'] as const;
-
-export const MARKER_CONFIG: Record<string, { unit: string; normalRange: string }> = {
-  'Bilirubin (Total)': { unit: 'mg/dL', normalRange: '0.1 - 1.2 mg/dL' },
-  Amylase: { unit: 'U/L', normalRange: '30 - 110 U/L' },
-  AST: { unit: 'U/L', normalRange: '5 - 40 U/L' },
-  Creatinine: { unit: 'mg/dL', normalRange: '0.6 - 1.2 mg/dL' },
-  LDH: { unit: 'U/L', normalRange: '125 - 220 U/L' },
-  ALT: { unit: 'U/L', normalRange: '7 - 56 U/L' },
-  Glucose: { unit: 'mg/dL', normalRange: '70 - 100 mg/dL' },
-  Cholesterol: { unit: 'mg/dL', normalRange: '<200 mg/dL' },
-};
-
 export const BIRTH_YEARS = Array.from({ length: 2025 - 1925 + 1 }, (_, i) => 2025 - i);
 
 export const GENDER = {
-  MALE: 'male',
-  FEMALE: 'female',
-} as const;
-
-export const GENDER_OPTIONS = [GENDER.MALE, GENDER.FEMALE] as const;
+  MALE: 'Male',
+  FEMALE: 'Female',
+};
 
 export const PREGNANCY_STATUS = {
-  YES: 'Yes',
   NO: 'No',
+  YES1stTrimester: 'Yes, 1st trimester',
+  YES2ndTrimester: 'Yes, 2nd trimester',
+  YES3rdTrimester: 'Yes, 3rd trimester',
 } as const;
 
-export const PREGNANCY_OPTIONS = [PREGNANCY_STATUS.YES, PREGNANCY_STATUS.NO] as const;
+export const PREGNANCY_OPTIONS = [
+  PREGNANCY_STATUS.NO,
+  PREGNANCY_STATUS.YES1stTrimester,
+  PREGNANCY_STATUS.YES2ndTrimester,
+  PREGNANCY_STATUS.YES3rdTrimester,
+] as const;
 
 export const VALIDATION_PATTERNS = {
   DECIMAL_NUMBER: /^\d*\.?\d*$/,
@@ -47,12 +28,13 @@ export const BREAKPOINTS = {
 } as const;
 
 export interface MarkerData {
-  hasError: boolean;
   id: number;
   name: string;
-  normalRange: string;
-  unit: string;
   value: string;
+  unit: string;
+  referenceMin: string;
+  referenceMax: string;
+  hasError: boolean;
 }
 
 export interface ReviewCustomizeData {
@@ -66,3 +48,57 @@ export interface ReviewCustomizeData {
   exerciseGuidelines: boolean;
   additionalQuestions: string;
 }
+
+export const MARKER_OPTIONS = [
+  'White Blood Cells',
+  'Red Blood Cells',
+  'Hemoglobin',
+  'Hematocrit',
+  'Mean Corpuscular Volume',
+  'Mean Corpuscular Hemoglobin',
+  'Mean Corpuscular Hemoglobin Concentration',
+  'Platelets',
+  'Red Cell Distribution Width SD',
+  'Red Cell Distribution Width CV',
+  'Platelet Distribution Width',
+  'Mean Platelet Volume',
+  'Platelet Large Cell Ratio',
+  'Neutrophils Absolute',
+  'Lymphocytes Absolute',
+  'Monocytes Absolute',
+  'Eosinophils Absolute',
+  'Basophils Absolute',
+  'Erythrocyte Sedimentation Rate',
+  'Triglycerides',
+  'Total Cholesterol',
+  'HDL Cholesterol',
+  'LDL Cholesterol',
+  'VLDL Cholesterol',
+  'Atherogenic Coefficient',
+  'Urea',
+  'Uric Acid',
+  'Creatinine',
+  'Creatinine Block',
+  'Total Bilirubin',
+  'Direct Bilirubin',
+  'Indirect Bilirubin',
+  'Alanine Aminotransferase',
+  'Aspartate Aminotransferase',
+  'Gamma-Glutamyl Transferase',
+  'Alkaline Phosphatase',
+  'Albumin',
+  'Glucose',
+] as const;
+
+export const UNIT_OPTIONS = [
+  '10^9/L',
+  '10^12/L',
+  'g/L',
+  'fL',
+  'pg',
+  '%',
+  'mm/h',
+  'mmol/L',
+  'μmol/L',
+  'U/L',
+] as const;

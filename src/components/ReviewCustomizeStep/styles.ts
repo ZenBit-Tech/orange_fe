@@ -77,18 +77,20 @@ export const FormRow = styled(Box)(({ theme }) => ({
   justifyContent: 'flex-start',
   gap: theme.spacing(3),
   marginTop: theme.spacing(2),
-  marginBottom: theme.spacing(6),
+  marginBottom: theme.spacing(3),
   flexWrap: 'wrap',
 
   [theme.breakpoints.down('md')]: {
     gap: theme.spacing(2),
-    marginBottom: theme.spacing(4),
+    marginBottom: theme.spacing(2),
   },
 }));
 
 export const FormField = styled(Box)(({ theme }) => ({
   flex: 1,
   maxWidth: '200px',
+  position: 'relative',
+  paddingBottom: theme.spacing(2.5),
 
   [theme.breakpoints.down('md')]: {
     flex: '1 1 calc(50% - 8px)',
@@ -100,6 +102,17 @@ export const FormField = styled(Box)(({ theme }) => ({
       maxWidth: '100%',
     },
   },
+}));
+
+export const FormErrorText = styled(Typography)(({ theme }) => ({
+  fontSize: theme.typography.sizes.size12,
+  fontWeight: theme.typography.weights.weight400,
+  color: theme.palette.textIcons.errorMain,
+  fontFamily: theme.typography.general.fontInter,
+  marginTop: theme.spacing(0.5),
+  position: 'absolute',
+  bottom: 0,
+  left: 0,
 }));
 
 export const StyledAutocomplete = styled(Autocomplete)(({ theme }) => ({
@@ -118,11 +131,17 @@ export const StyledAutocomplete = styled(Autocomplete)(({ theme }) => ({
     '&.Mui-focused fieldset': {
       borderColor: theme.palette.surface.primary.default,
     },
+    '&.Mui-error fieldset': {
+      borderColor: theme.palette.textIcons.errorMain,
+    },
   },
   '& .MuiInputLabel-root': {
     fontFamily: theme.typography.general.fontInter,
     fontSize: theme.typography.sizes.size14,
     color: theme.palette.textIcons.textTeriartry,
+  },
+  '& .MuiInputLabel-root.Mui-error': {
+    color: theme.palette.textIcons.errorMain,
   },
 
   [theme.breakpoints.down('md')]: {

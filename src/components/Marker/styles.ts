@@ -5,8 +5,8 @@ export const MarkerRow = styled(Box)(({ theme }) => ({
   display: 'grid',
   gridTemplateColumns: '2.5fr 1fr 1.5fr 1.2fr 60px',
   gap: theme.spacing(2),
-  padding: theme.spacing(2, 3),
-  alignItems: 'center',
+  padding: theme.spacing(2, 2, 1, 2),
+  alignItems: 'flex-start',
   minWidth: '900px',
 
   '&:last-child': {
@@ -129,6 +129,7 @@ export const DeleteButton = styled(IconButton)(({ theme }) => ({
   height: '40px',
   borderRadius: '50%',
   transition: 'all 0.2s',
+  marginTop: '0',
 
   '&:hover': {
     backgroundColor: theme.palette.surface.error.hoverOutlinedButton,
@@ -160,6 +161,9 @@ export const ErrorText = styled(Typography)(({ theme }) => ({
   fontWeight: theme.typography.weights.weight400,
   color: theme.palette.textIcons.errorMain,
   fontFamily: theme.typography.general.fontInter,
-  marginBottom: theme.spacing(1),
   textAlign: 'left',
+  position: 'relative',
+  top: '100%',
+  left: 0,
+  whiteSpace: 'nowrap',
 }));
