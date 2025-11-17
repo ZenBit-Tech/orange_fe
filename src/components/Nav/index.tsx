@@ -31,10 +31,11 @@ export const Nav: React.FC<NavProps> = ({ transparent = true }) => {
     showLinks,
     showAuthButtons,
     currentPath,
+    handleTop,
   } = useNav();
   return (
     <Wrapper transparent={transparent}>
-      <Link to="/">
+      <Link to="/" onClick={handleTop}>
         <img
           src={'https://res.cloudinary.com/dhixqnug0/image/upload/v1761741378/logo_tnioc1.png'}
           alt={t('Form.nav.logoAlt')}
