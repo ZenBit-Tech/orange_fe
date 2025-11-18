@@ -29,6 +29,13 @@ export const useNav = () => {
   const showLinks = !hideLinksOn.includes(currentPath);
   const showAuthButtons = isAuthenticated && !hideAuthButtonsOn.includes(currentPath);
 
+  const handleTop = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (location.pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   const handleLogout = () => {
     dispatch(logout());
     navigate('/login');
@@ -72,5 +79,6 @@ export const useNav = () => {
     showLinks,
     showAuthButtons,
     currentPath,
+    handleTop,
   };
 };
