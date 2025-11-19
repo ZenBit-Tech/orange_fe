@@ -4,8 +4,6 @@ import type { PaletteOptions } from '@mui/material/styles';
 import bgLandingSection from '@/assets/landing-herobackground.webp';
 import bgPrivacy from '@/assets/privacy-section-bg.webp';
 
-import { theme } from '.';
-
 const GRADIENT_GREEN_1 = '#f1faf3';
 const GRADIENT_GREEN_2 = '#edfbe4';
 const GRADIENT_GREEN_3 = '#e3f8d8';
@@ -55,7 +53,6 @@ const baseColors = {
 
   yellow: {
     50: '#FFF7E8',
-    100: theme.palette.baseColors.red[50],
     200: '#ffde99',
     300: '#FFCD66',
     400: '#FFBD33',
@@ -255,7 +252,6 @@ declare module '@mui/material/styles' {
 
       yellow: {
         50: string;
-        100: string;
         200: string;
         300: string;
         400: string;
@@ -427,7 +423,6 @@ declare module '@mui/material/styles' {
 
       yellow?: {
         50?: string;
-        100?: string;
         200?: string;
         300?: string;
         400?: string;
