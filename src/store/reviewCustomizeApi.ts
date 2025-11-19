@@ -6,11 +6,19 @@ export const reviewCustomizeApi = createApi({
   reducerPath: 'reviewCustomizeApi',
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_MARKERS_URL,
+    prepareHeaders: (headers) => {
+      const token = localStorage.getItem('accessToken');
+      if (token) {
+        headers.set('authorization', `Bearer ${token}`);
+      }
+
+      return headers;
+    },
   }),
   endpoints: (builder) => ({
     sendDataToBackend: builder.mutation<ReviewCustomizeData, ReviewCustomizeData>({
       query: (body) => ({
-        url: '/receive-data',
+        url: '/analyze',
         method: 'POST',
         body,
       }),
