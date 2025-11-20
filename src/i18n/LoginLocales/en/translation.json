@@ -205,5 +205,26 @@
     "delete-marker-confirm": "Yes, delete",
     "value-required": "Value is required",
     "fill-field": "Fill this field to continue"
+  },
+  "Personalized": {
+    "title": "Personalized recommendations",
+    "description": "Based on your selected preferences and blood test results",
+    "recommendations": [
+      "Nutrition Advice",
+      "Exercise Guidelines",
+      "Supplement Recommendations",
+      "Medical Guidance"
+    ]
+  },
+  "ResultButtons": {
+    "back": "Back",
+    "start": "Start new analysis",
+    "print": "Print report",
+    "download": "Download PDF"
+  },
+  "AnswerForUserQuestion": {
+    "title": "Answer to your question",
+    "ur-question": "Your question:",
+    "ai-rec": "AI recommendations:"
   }
 }

@@ -500,6 +500,12 @@ export const ContinueButton = styled('button')(({ theme }) => ({
     backgroundColor: theme.palette.surface.primary.press,
   },
 
+  '&:disabled': {
+    opacity: 0.6,
+    cursor: 'not-allowed',
+    pointerEvents: 'none',
+  },
+
   [theme.breakpoints.down('md')]: {
     flex: '0 0 60%',
     width: '100%',

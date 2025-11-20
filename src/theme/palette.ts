@@ -56,7 +56,7 @@ const baseColors = {
       100: '#F5FAF6',
       200: '#E2F3E5',
       300: '#CFEBD5',
-      green: '#00AD4E',
+      green: '#00ad4eff',
     },
     cyan: {
       100: '#F6FCFC',

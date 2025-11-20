@@ -3,6 +3,8 @@ import { useRef, useState } from 'react';
 import type { MarkerTableRef } from '@/components/MarkerTable';
 import { useMarkerTable } from '@/components/MarkerTable/useMarkerTable';
 import { GENDER } from '@/constants/marker';
+import { useAppDispatch } from '@/store';
+import { setAnalysisResult } from '@/store/analysisSlice';
 import { useSendDataToBackendMutation } from '@/store/reviewCustomizeApi';
 
 type Gender = (typeof GENDER)[keyof typeof GENDER];
@@ -15,10 +17,11 @@ interface ValidationErrors {
 }
 
 interface UseReviewCustomizeStepProps {
-  onContinue: () => void;
+  onContinue?: () => void;
 }
 
-export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepProps) => {
+export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepProps = {}) => {
+  const dispatch = useAppDispatch();
   const markerTableRef = useRef<MarkerTableRef>(null);
   const [hasMarkerErrors, setHasMarkerErrors] = useState(false);
 
@@ -49,7 +52,7 @@ export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepPro
     pregnancy: false,
   });
 
-  const [sendDataToBackend] = useSendDataToBackendMutation();
+  const [sendDataToBackend, { isLoading }] = useSendDataToBackendMutation();
 
   const handleBirthYear = (_event: React.SyntheticEvent, value: unknown) => {
     const newValue = value as number | null;
@@ -100,7 +103,7 @@ export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepPro
     const isValid = validateForm();
 
     if (isValid && !hasMarkerErrors) {
-      await sendDataToBackend({
+      const result = await sendDataToBackend({
         birthYear: birthYear,
         gender: gender,
         pregnancy: pregnancy,
@@ -110,9 +113,11 @@ export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepPro
         exerciseGuidelines: exerciseGuidelines,
         medicationGuidance: medicationGuidance,
         additionalQuestions: additionalQuestions,
-      });
+      }).unwrap();
 
-      onContinue();
+      dispatch(setAnalysisResult(result));
+
+      onContinue?.();
     } else {
       if (validationErrors.birthYear || validationErrors.gender || validationErrors.pregnancy) {
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -156,5 +161,6 @@ export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepPro
     toggleExerciseGuidelines,
     toggleSupplementRecommendations,
     toggleMedicationGuidance,
+    isLoading,
   };
 };
