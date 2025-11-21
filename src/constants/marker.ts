@@ -109,7 +109,7 @@ export const MARKER_STATUS = {
   NORMAL: 'Normal',
   SLIGHTLY_HIGH: 'Slightly High',
   HIGH: 'High',
-  SLIGHTLY_LOW: 'Slightly low',
+  SLIGHTLY_LOW: 'Slightly Low',
   LOW: 'Low',
 } as const;
 
