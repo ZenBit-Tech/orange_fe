@@ -179,6 +179,7 @@
     "value": "Value",
     "unit": "Unit",
     "normal-range": "Normal Range",
+    "interpretation":"Interpretation",
     "blood-marker": "Blood marker",
     "pregnancy": "Pregnancy status",
     "add-marker": "Add marker",
@@ -205,5 +206,14 @@
     "delete-marker-confirm": "Yes, delete",
     "value-required": "Value is required",
     "fill-field": "Fill this field to continue"
+  },
+  "results":{
+    "title":"Your blood test analysis results",
+    "description":"Here is complete analysis with personalized recommendations",
+    "disclaimer":"Disclaimer:Not a medical diagnosis. AI analysis only.",
+    "summary-title":"Your blood test summary",
+    "wellness-score":"Overall wellness score",
+    "about":"About",
+    "importance":"Why it's important:"
   }
 }

@@ -5,23 +5,46 @@ import { useSelector } from 'react-redux';
 import type { MarkerData } from '@/constants/marker';
 import type { RootState } from '@/store';
 
+import type { MarkerDataInterpretation } from '../AnalysisResultStep/types';
+
 interface UseMarkerTableProps {
   onValidationChange?: (hasErrors: boolean) => void;
   initialMarkers?: MarkerData[];
+  isFinalStep?: boolean;
+  markersInterpretations?: MarkerDataInterpretation[];
 }
 
-export const useMarkerTable = ({ onValidationChange }: UseMarkerTableProps = {}) => {
+export const useMarkerTable = ({
+  onValidationChange,
+  isFinalStep,
+  markersInterpretations,
+}: UseMarkerTableProps = {}) => {
   const extractedData = useSelector((state: RootState) => state.bloodTest.extractedData);
-  const [markers, setMarkers] = useState<MarkerData[]>(() => {
-    if (!extractedData || !Array.isArray(extractedData)) return [];
 
-    return extractedData.map((marker) => ({
-      id: marker.id,
-      name: marker.name,
+  const [markers, setMarkers] = useState<MarkerData[]>(() => {
+    if (!isFinalStep) {
+      if (!extractedData || !Array.isArray(extractedData)) return [];
+      return extractedData.map((marker) => ({
+        id: marker.id,
+        name: marker.name,
+        value: String(marker.value),
+        unit: marker.unit,
+        referenceMin: String(marker.referenceMin),
+        referenceMax: String(marker.referenceMax),
+        hasError: false,
+      }));
+    }
+
+    if (!markersInterpretations || !Array.isArray(markersInterpretations)) return [];
+    return markersInterpretations.map((marker) => ({
+      id: marker.markerId,
+      name: marker.markerName,
       value: String(marker.value),
       unit: marker.unit,
-      referenceMin: marker.referenceMin,
-      referenceMax: marker.referenceMax,
+      referenceMin: String(marker.referenceMin),
+      referenceMax: String(marker.referenceMax),
+      status: marker.status,
+      interpretation: marker.interpretation,
       hasError: false,
     }));
   });

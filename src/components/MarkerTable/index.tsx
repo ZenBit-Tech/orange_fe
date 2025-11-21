@@ -28,10 +28,15 @@ interface MarkerTableProps {
   onAddMarker: () => void;
   onValidate: (id: number) => void;
   onValidateAll: () => void;
+  isFinalStep: boolean;
 }
 
 export interface MarkerTableRef {
   validateAllMarkers: () => void;
+}
+
+export interface isFinalStep {
+  isFinalStep: boolean;
 }
 
 const useIsSmallScreen = () => {
@@ -83,6 +88,7 @@ export const MarkerTable = forwardRef<MarkerTableRef, MarkerTableProps>(
       onAddMarker,
       onValidate,
       onValidateAll,
+      isFinalStep,
     },
     ref,
   ) => {
@@ -101,12 +107,14 @@ export const MarkerTable = forwardRef<MarkerTableRef, MarkerTableProps>(
         <MarkerTableContainer>
           <MarkerTableBody>
             <MarkerTableContent>
-              <MarkerTableHeader>
+              <MarkerTableHeader className={`${isFinalStep ? 'final-step' : ''}`}>
                 <MarkerTableHeaderCell>{t('review.marker')}</MarkerTableHeaderCell>
                 <MarkerTableHeaderCell>{t('review.value')}</MarkerTableHeaderCell>
-                <MarkerTableHeaderCell>{t('review.unit')}</MarkerTableHeaderCell>
+                {!isFinalStep && <MarkerTableHeaderCell>{t('review.unit')}</MarkerTableHeaderCell>}
                 <MarkerTableHeaderCell>{t('review.normal-range')}</MarkerTableHeaderCell>
-                <MarkerTableHeaderCell></MarkerTableHeaderCell>
+                {isFinalStep && (
+                  <MarkerTableHeaderCell>{t('review.interpretation')}</MarkerTableHeaderCell>
+                )}
               </MarkerTableHeader>
 
               {markers.map((marker) => (
@@ -118,19 +126,22 @@ export const MarkerTable = forwardRef<MarkerTableRef, MarkerTableProps>(
                   onUnitChange={onUnitChange}
                   onDelete={onDelete}
                   onValidate={onValidate}
+                  isFinalStep={isFinalStep}
                 />
               ))}
             </MarkerTableContent>
           </MarkerTableBody>
 
-          {!isSmallScreen && (
+          {isFinalStep && !isSmallScreen ? <MarkerTableFooter></MarkerTableFooter> : ''}
+
+          {!isSmallScreen && !isFinalStep && (
             <MarkerTableFooter>
               <AddMarkerBtn onClick={onAddMarker} />
             </MarkerTableFooter>
           )}
         </MarkerTableContainer>
 
-        {isSmallScreen && <AddMarkerBtn onClick={onAddMarker} />}
+        {isSmallScreen && !isFinalStep && <AddMarkerBtn onClick={onAddMarker} />}
       </>
     );
   },
