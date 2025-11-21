@@ -101,17 +101,9 @@ export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepPro
     return !hasErrors;
   };
   const handleContinue = async () => {
-    console.log('handleContinue called');
-
     const isValid = validateForm();
-    console.log('Form is valid?', isValid);
-    console.log('Has marker errors?', hasMarkerErrors);
-    console.log('Validation errors:', validationErrors);
-
     if (isValid && !hasMarkerErrors) {
       try {
-        console.log('Sending data to backend...');
-
         const result = await sendDataToBackend({
           birthYear: birthYear,
           gender: gender,
@@ -127,10 +119,7 @@ export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepPro
           additionalQuestions: additionalQuestions,
         }).unwrap();
 
-        console.log('Received result from backend:', result);
-
         dispatch(setAnalysisResult(result));
-        console.log('Result saved to Redux!');
 
         onContinue();
       } catch (err) {

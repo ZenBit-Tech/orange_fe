@@ -12,7 +12,6 @@ import { Disclaimer, WrapperAnalysisResult } from './styles';
 export const AnalysisResultStep = () => {
   const props = useSelector((state: RootState) => state.analysis.result);
 
-  console.log(props);
   if (!props) return null;
 
   return (
