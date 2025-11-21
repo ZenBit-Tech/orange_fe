@@ -273,7 +273,7 @@ export const TooltipContent = styled(Box)(({ theme }) => ({
   padding: '16px',
   borderRadius: '12px',
   border: `1px solid ${theme.palette.border.borderPrimary}`,
-  fontSize: '14px',
+  fontSize: theme.typography.sizes.size14,
   lineHeight: '1.6',
   width: '320px',
   overflow: 'visible',
