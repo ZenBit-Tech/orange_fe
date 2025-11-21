@@ -42,7 +42,7 @@ export const PositionIndicator = styled(Box)<{ positionValue: number }>(
     '&.High': {
       color: theme.palette.markerIndicatorColors.pointer.red,
     },
-    '&.Slightly-low': {
+    '&.Slightly-Low': {
       color: theme.palette.markerIndicatorColors.pointer.yellow,
     },
     '&.Low': {
