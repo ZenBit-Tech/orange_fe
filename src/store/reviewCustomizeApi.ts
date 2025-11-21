@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+import type { FullBloodTestAnalysisResult } from '@/components/AnalysisResultStep/types';
 import type { ReviewCustomizeData } from '@/constants/marker';
 
 export const reviewCustomizeApi = createApi({
@@ -16,7 +17,7 @@ export const reviewCustomizeApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    sendDataToBackend: builder.mutation<ReviewCustomizeData, ReviewCustomizeData>({
+    sendDataToBackend: builder.mutation<FullBloodTestAnalysisResult, ReviewCustomizeData>({
       query: (body) => ({
         url: '/analyze',
         method: 'POST',

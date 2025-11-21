@@ -1,10 +1,14 @@
 import type { PayloadAction } from '@reduxjs/toolkit';
 import { createSlice } from '@reduxjs/toolkit';
 
-import type { BloodTestData, BloodTestValidation } from '@/constants/blood-test-data';
+import type {
+  BloodTestData,
+  BloodTestSummaryData,
+  BloodTestValidation,
+} from '@/constants/blood-test-data';
 
 interface BloodTestState {
-  extractedData: BloodTestData | null;
+  extractedData: BloodTestData | BloodTestSummaryData | null;
   validationData: BloodTestValidation | null;
   isValidating: boolean;
   isError: boolean;
@@ -23,7 +27,10 @@ export const bloodTestSlice = createSlice({
   name: 'bloodTest',
   initialState,
   reducers: {
-    setExtractedData: (state, action: PayloadAction<BloodTestData | null>) => {
+    setExtractedData: (
+      state,
+      action: PayloadAction<BloodTestData | BloodTestSummaryData | null>,
+    ) => {
       state.extractedData = action.payload;
     },
     setValidationData: (state, action: PayloadAction<BloodTestValidation | null>) => {

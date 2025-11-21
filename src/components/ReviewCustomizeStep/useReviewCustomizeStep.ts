@@ -3,6 +3,8 @@ import { useRef, useState } from 'react';
 import type { MarkerTableRef } from '@/components/MarkerTable';
 import { useMarkerTable } from '@/components/MarkerTable/useMarkerTable';
 import { GENDER } from '@/constants/marker';
+import { useAppDispatch } from '@/store';
+import { setAnalysisResult } from '@/store/analysisSlice';
 import { useSendDataToBackendMutation } from '@/store/reviewCustomizeApi';
 
 type Gender = (typeof GENDER)[keyof typeof GENDER];
@@ -16,9 +18,11 @@ interface ValidationErrors {
 
 interface UseReviewCustomizeStepProps {
   onContinue: () => void;
+  onBack?: () => void;
 }
 
 export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepProps) => {
+  const dispatch = useAppDispatch();
   const markerTableRef = useRef<MarkerTableRef>(null);
   const [hasMarkerErrors, setHasMarkerErrors] = useState(false);
 
@@ -32,6 +36,7 @@ export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepPro
     handleAddMarker,
     validateMarker,
   } = useMarkerTable({
+    isFinalStep: false,
     onValidationChange: setHasMarkerErrors,
   });
 
@@ -95,27 +100,44 @@ export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepPro
 
     return !hasErrors;
   };
-
   const handleContinue = async () => {
+    console.log('handleContinue called');
+
     const isValid = validateForm();
+    console.log('Form is valid?', isValid);
+    console.log('Has marker errors?', hasMarkerErrors);
+    console.log('Validation errors:', validationErrors);
 
     if (isValid && !hasMarkerErrors) {
-      await sendDataToBackend({
-        birthYear: birthYear,
-        gender: gender,
-        pregnancy: pregnancy,
-        markersData: markers,
-        nutritionAdvice: nutritionAdvice,
-        supplementRecommendations: supplementRecommendations,
-        exerciseGuidelines: exerciseGuidelines,
-        medicationGuidance: medicationGuidance,
-        additionalQuestions: additionalQuestions,
-      });
+      try {
+        console.log('Sending data to backend...');
 
-      onContinue();
-    } else {
-      if (validationErrors.birthYear || validationErrors.gender || validationErrors.pregnancy) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        const result = await sendDataToBackend({
+          birthYear: birthYear,
+          gender: gender,
+          pregnancy: pregnancy,
+          markersData: markers.map((m) => ({
+            ...m,
+            normalRange: `${m.referenceMin} - ${m.referenceMax} ${m.unit}`,
+          })),
+          nutritionAdvice: nutritionAdvice,
+          supplementRecommendations: supplementRecommendations,
+          exerciseGuidelines: exerciseGuidelines,
+          medicationGuidance: medicationGuidance,
+          additionalQuestions: additionalQuestions,
+        }).unwrap();
+
+        console.log('Received result from backend:', result);
+
+        dispatch(setAnalysisResult(result));
+        console.log('Result saved to Redux!');
+
+        onContinue();
+      } catch (err) {
+        if (validationErrors.birthYear || validationErrors.gender || validationErrors.pregnancy) {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        throw new Error(`Error ${err}!`);
       }
     }
   };
