@@ -5,52 +5,40 @@ interface ReferenceRange {
 
 export function calculateMarkerPosition(value: number, referenceRange: ReferenceRange): number {
   const { referenceMin, referenceMax } = referenceRange;
-  const range = referenceMax - referenceMin;
 
-  const redLowStart = referenceMin - 2 * range;
-  const redLowEnd = referenceMin - 0.5 * range;
-  const yellowLowStart = redLowEnd;
+  const redLowEnd = referenceMin * 0.5;
   const yellowLowEnd = referenceMin;
-  const greenStart = referenceMin;
-  const greenEnd = referenceMax;
+
   const yellowHighStart = referenceMax;
-  const yellowHighEnd = referenceMax + 0.5 * range;
-  const redHighStart = yellowHighEnd;
-  const redHighEnd = referenceMax + 2 * range;
+  const yellowHighEnd = referenceMax * 1.5;
+  const redHighEnd = referenceMax * 3;
 
   let position: number;
 
-  if (value <= redLowEnd) {
-    if (value <= redLowStart) {
-      position = 0;
-    } else {
-      const zoneRange = redLowEnd - redLowStart;
-      const valueInZone = value - redLowStart;
-      position = (valueInZone / zoneRange) * 20;
-    }
-  } else if (value < greenStart) {
-    const zoneRange = yellowLowEnd - yellowLowStart;
-    const valueInZone = value - yellowLowStart;
+  if (value <= 0) {
+    position = 0;
+  } else if (value < redLowEnd) {
+    position = (value / redLowEnd) * 20;
+    position = Math.max(0, position);
+  } else if (value < referenceMin) {
+    const zoneRange = yellowLowEnd - redLowEnd;
+    const valueInZone = value - redLowEnd;
     position = 20 + (valueInZone / zoneRange) * 10;
-  } else if (value <= greenEnd) {
-    const zoneRange = greenEnd - greenStart;
-    const valueInZone = value - greenStart;
+  } else if (value <= referenceMax) {
+    const zoneRange = referenceMax - referenceMin;
+    const valueInZone = value - referenceMin;
     position = 30 + (valueInZone / zoneRange) * 40;
-  } else if (value <= yellowHighEnd) {
+  } else if (value < yellowHighEnd) {
     const zoneRange = yellowHighEnd - yellowHighStart;
     const valueInZone = value - yellowHighStart;
     position = 70 + (valueInZone / zoneRange) * 10;
+  } else if (value < redHighEnd) {
+    const zoneRange = redHighEnd - yellowHighEnd;
+    const valueInZone = value - yellowHighEnd;
+    position = 80 + (valueInZone / zoneRange) * 20;
   } else {
-    if (value >= redHighEnd) {
-      position = 100;
-    } else {
-      const zoneRange = redHighEnd - redHighStart;
-      const valueInZone = value - redHighStart;
-      position = 80 + (valueInZone / zoneRange) * 20;
-    }
+    position = 100;
   }
 
-  position = Math.max(0, Math.min(100, position));
-
-  return position;
+  return Math.max(0, Math.min(100, position));
 }
