@@ -7,16 +7,16 @@ import { theme } from '@/theme';
 
 import { RecommendationSection } from '../RecommendationSection';
 import type { RecommendationDescriptions } from '../types';
-import { PersonalizedDescription, PersonalizedInfo, RecommendationWrapper } from './styles';
+import { RecommendationDescription, RecommendationInfo, RecommendationWrapper } from './styles';
 
-interface PersonalizedRecommendationsProps {
-  supplementsRecommendations: RecommendationDescriptions;
-  nutritionRecommendations: RecommendationDescriptions;
-  drugsRecommendations: RecommendationDescriptions;
-  exerciseRecommendations: RecommendationDescriptions;
+interface RecommendationsProps {
+  supplementsRecommendations?: RecommendationDescriptions;
+  nutritionRecommendations?: RecommendationDescriptions;
+  drugsRecommendations?: RecommendationDescriptions;
+  exerciseRecommendations?: RecommendationDescriptions;
 }
 
-export const PersonalizedRecommendations: React.FC<PersonalizedRecommendationsProps> = ({
+export const Recommendations: React.FC<RecommendationsProps> = ({
   supplementsRecommendations,
   nutritionRecommendations,
   drugsRecommendations,
@@ -25,12 +25,12 @@ export const PersonalizedRecommendations: React.FC<PersonalizedRecommendationsPr
   const { t } = useTranslation();
   return (
     <Box>
-      <PersonalizedInfo>
+      <RecommendationInfo>
         <Typography variant="h6">{t('Personalized.title')}</Typography>
-        <PersonalizedDescription variant="body1">
+        <RecommendationDescription variant="body1">
           {t('Personalized.description')}
-        </PersonalizedDescription>
-      </PersonalizedInfo>
+        </RecommendationDescription>
+      </RecommendationInfo>
 
       <RecommendationWrapper>
         {nutritionRecommendations && (

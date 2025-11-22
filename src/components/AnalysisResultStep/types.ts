@@ -13,7 +13,8 @@ export interface MarkerDataInterpretation {
   markerName: string;
   value: string;
   unit: string;
-  normalRange: string;
+  referenceMin: string;
+  referenceMax: string;
   status: string;
   interpretation: MarkerInterpretation;
 }
@@ -33,9 +34,9 @@ export interface UserQuestionResponse {
 export interface FullBloodTestAnalysisResult {
   bloodTestSummary: BloodTestSummary;
   markersInterpretations: MarkerDataInterpretation[];
-  supplementsRecommendations: RecommendationDescriptions;
-  nutritionRecommendations: RecommendationDescriptions;
-  drugsRecommendations: RecommendationDescriptions;
-  exerciseRecommendations: RecommendationDescriptions;
-  userQuestionResponse: UserQuestionResponse;
+  supplementsRecommendations?: RecommendationDescriptions;
+  nutritionRecommendations?: RecommendationDescriptions;
+  drugsRecommendations?: RecommendationDescriptions;
+  exerciseRecommendations?: RecommendationDescriptions;
+  userQuestionResponse?: UserQuestionResponse;
 }

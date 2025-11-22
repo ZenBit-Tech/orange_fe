@@ -1,8 +1,8 @@
 import { Box, Typography, styled } from '@mui/material';
 
-export const PersonalizedInfo = styled(Box)``;
+export const RecommendationInfo = styled(Box)``;
 
-export const PersonalizedDescription = styled(Typography)`
+export const RecommendationDescription = styled(Typography)`
   margin-bottom: 24px;
 `;
 

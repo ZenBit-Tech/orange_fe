@@ -1,7 +1,7 @@
 import { useAppSelector } from '@/store';
 
 import { AnswerForUserQuestion } from './AnswerForUserQuestion';
-import { PersonalizedRecommendations } from './PersonalizedRecommendations';
+import { Recommendations } from './Recommendations';
 import { ResultButton } from './ResultButtons';
 import { WrapperAnalysisResult } from './styles';
 
@@ -17,7 +17,7 @@ export const AnalysisResultStep = () => {
     return (
       <WrapperAnalysisResult>
         {hasAnyRecommendations && (
-          <PersonalizedRecommendations
+          <Recommendations
             supplementsRecommendations={result.supplementsRecommendations}
             nutritionRecommendations={result.nutritionRecommendations}
             drugsRecommendations={result.drugsRecommendations}
