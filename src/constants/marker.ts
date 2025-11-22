@@ -1,3 +1,5 @@
+import type { MarkerInterpretation } from '@/components/AnalysisResultStep/types';
+
 export const BIRTH_YEARS = Array.from({ length: 2025 - 1925 + 1 }, (_, i) => 2025 - i);
 
 export const GENDER = {
@@ -26,7 +28,6 @@ export const VALIDATION_PATTERNS = {
 export const BREAKPOINTS = {
   MD: 768,
 } as const;
-
 export interface MarkerData {
   id: number;
   name: string;
@@ -34,9 +35,10 @@ export interface MarkerData {
   unit: string;
   referenceMin: string;
   referenceMax: string;
+  status?: string;
+  interpretation?: MarkerInterpretation;
   hasError: boolean;
 }
-
 export interface ReviewCustomizeData {
   birthYear: number | null;
   gender: string | null;
@@ -102,3 +104,19 @@ export const UNIT_OPTIONS = [
   'μmol/L',
   'U/L',
 ] as const;
+
+export const MARKER_STATUS = {
+  NORMAL: 'Normal',
+  SLIGHTLY_HIGH: 'Slightly High',
+  HIGH: 'High',
+  SLIGHTLY_LOW: 'Slightly Low',
+  LOW: 'Low',
+} as const;
+
+export const MARKER_STATUS_CLASSES = {
+  [MARKER_STATUS.NORMAL]: 'Normal',
+  [MARKER_STATUS.SLIGHTLY_HIGH]: 'Slightly-High',
+  [MARKER_STATUS.HIGH]: 'High',
+  [MARKER_STATUS.SLIGHTLY_LOW]: 'Slightly-Low',
+  [MARKER_STATUS.LOW]: 'Low',
+} as const;

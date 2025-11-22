@@ -180,6 +180,7 @@ export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onCont
         onAddMarker={handleAddMarker}
         onValidate={validateMarker}
         onValidateAll={validateAllMarkers}
+        isFinalStep={false}
       />
 
       <CustomizeSection>

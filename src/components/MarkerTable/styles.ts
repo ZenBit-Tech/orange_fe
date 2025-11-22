@@ -2,11 +2,13 @@ import { Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 export const MarkerTableContainer = styled(Box)(({ theme }) => ({
+  position: 'relative',
+  zIndex: '5',
   marginTop: theme.spacing(2),
   marginBottom: theme.spacing(2),
   display: 'flex',
   flexDirection: 'column',
-  border: `2px solid ${theme.palette.border.default}`,
+  border: `1px solid ${theme.palette.border.default}`,
   borderRadius: '12px',
   overflow: 'hidden',
   backgroundColor: theme.palette.backgrounds.white,
@@ -14,8 +16,8 @@ export const MarkerTableContainer = styled(Box)(({ theme }) => ({
 }));
 
 export const MarkerTableBody = styled(Box)(({ theme }) => ({
-  overflowX: 'auto',
-  overflowY: 'visible',
+  overflow: 'hidden',
+  zIndex: '3',
   WebkitOverflowScrolling: 'touch',
   scrollbarWidth: 'thin',
   scrollbarColor: `${theme.palette.baseColors.grey[300]} transparent`,
@@ -46,6 +48,10 @@ export const MarkerTableHeader = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.baseColors.grey.second50,
   borderBottom: `1px solid ${theme.palette.border.default}`,
   alignItems: 'center',
+
+  '&.final-step': {
+    gridTemplateColumns: '2.78fr 0.9fr 3.5fr 1.4fr 30px',
+  },
 }));
 
 export const MarkerTableHeaderCell = styled(Box)(({ theme }) => ({

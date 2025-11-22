@@ -51,6 +51,18 @@ const baseColors = {
     second900: '#450E0A',
   },
 
+  yellow: {
+    50: '#FFF7E8',
+    200: '#ffde99',
+    300: '#FFCD66',
+    400: '#FFBD33',
+    500: '#FFAD00',
+    600: '#DF9700',
+    700: '#996700',
+    800: '#664500',
+    900: '#3f2b00',
+  },
+
   pastel: {
     green: {
       100: '#F5FAF6',
@@ -94,6 +106,39 @@ export const palette: PaletteOptions = {
     main: '#2E7D32',
   },
 
+  donutGradients: {
+    moreThan85: {
+      startColor: '#32AC84',
+      endColor: '#047E56',
+    },
+    moreThan65: {
+      startColor: '#9BC74B',
+      endColor: '#FE9901',
+    },
+    moreThan0: {
+      startColor: '#FF9509',
+      endColor: '#FF3B01',
+    },
+  },
+
+  markerIndicatorColors: {
+    marker: {
+      red: '#EC647A',
+      yellow: '#F8DA53',
+      green: '#6DCC9B',
+    },
+    pointer: {
+      red: baseColors.red[700],
+      yellow: baseColors.yellow[500],
+      green: baseColors.green[700],
+    },
+    text: {
+      red: baseColors.red[700],
+      yellow: baseColors.yellow[700],
+      green: baseColors.green[800],
+    },
+  },
+
   backgrounds: {
     mainGradient: `linear-gradient(270deg, ${GRADIENT_GREEN_1} 26.68%, ${GRADIENT_GREEN_2} 52.54%, ${GRADIENT_GREEN_3} 74.16%, ${GRADIENT_GREEN_4} 103.78%)`,
     bgPrivacy: bgPrivacy,
@@ -124,6 +169,11 @@ export const palette: PaletteOptions = {
     error: baseColors.red[600],
     borderPrimary: baseColors.green[600],
     success: baseColors.green[600],
+    markerInterpretation: {
+      borderRed: baseColors.red[200],
+      borderYellow: '#FFDE99',
+      borderGreen: baseColors.green[100],
+    },
   },
 
   surface: {
@@ -143,6 +193,11 @@ export const palette: PaletteOptions = {
       light: baseColors.green[100],
       hover: baseColors.green[800],
       press: baseColors.green[900],
+    },
+    cardBackground: {
+      cardBgPastelRed: baseColors.red[100],
+      cardBgPastelYellow: baseColors.yellow[50],
+      cardBgPastelGreen: baseColors.pastel.green[100],
     },
   },
 
@@ -210,6 +265,18 @@ declare module '@mui/material/styles' {
         second900: string;
       };
 
+      yellow: {
+        50: string;
+        200: string;
+        300: string;
+        400: string;
+        500: string;
+        600: string;
+        700: string;
+        800: string;
+        900: string;
+      };
+
       pastel: {
         green: {
           100: string;
@@ -229,6 +296,39 @@ declare module '@mui/material/styles' {
           300: string;
           blue: string;
         };
+      };
+    };
+
+    donutGradients: {
+      moreThan85: {
+        startColor: string;
+        endColor: string;
+      };
+      moreThan65: {
+        startColor: string;
+        endColor: string;
+      };
+      moreThan0: {
+        startColor: string;
+        endColor: string;
+      };
+    };
+
+    markerIndicatorColors: {
+      marker: {
+        red: string;
+        yellow: string;
+        green: string;
+      };
+      pointer: {
+        red: string;
+        yellow: string;
+        green: string;
+      };
+      text: {
+        red: string;
+        yellow: string;
+        green: string;
       };
     };
 
@@ -262,6 +362,11 @@ declare module '@mui/material/styles' {
       error: string;
       borderPrimary: string;
       success: string;
+      markerInterpretation: {
+        borderRed: string;
+        borderYellow: string;
+        borderGreen: string;
+      };
     };
 
     surface: {
@@ -281,6 +386,11 @@ declare module '@mui/material/styles' {
         light: string;
         hover: string;
         press: string;
+      };
+      cardBackground: {
+        cardBgPastelRed: string;
+        cardBgPastelYellow: string;
+        cardBgPastelGreen: string;
       };
     };
 
@@ -342,6 +452,18 @@ declare module '@mui/material/styles' {
         second900?: string;
       };
 
+      yellow?: {
+        50?: string;
+        200?: string;
+        300?: string;
+        400?: string;
+        500?: string;
+        600?: string;
+        700?: string;
+        800?: string;
+        900?: string;
+      };
+
       pastel: {
         green: {
           100: string;
@@ -361,6 +483,39 @@ declare module '@mui/material/styles' {
           300: string;
           blue: string;
         };
+      };
+    };
+
+    donutGradients: {
+      moreThan85: {
+        startColor?: string;
+        endColor?: string;
+      };
+      moreThan65: {
+        startColor?: string;
+        endColor?: string;
+      };
+      moreThan0: {
+        startColor?: string;
+        endColor?: string;
+      };
+    };
+
+    markerIndicatorColors?: {
+      marker?: {
+        red?: string;
+        yellow?: string;
+        green?: string;
+      };
+      pointer?: {
+        red?: string;
+        yellow?: string;
+        green?: string;
+      };
+      text?: {
+        red?: string;
+        yellow?: string;
+        green?: string;
       };
     };
 
@@ -395,6 +550,11 @@ declare module '@mui/material/styles' {
       error?: string;
       borderPrimary?: string;
       success?: string;
+      markerInterpretation?: {
+        borderRed?: string;
+        borderYellow?: string;
+        borderGreen?: string;
+      };
     };
 
     surface?: {
@@ -414,6 +574,11 @@ declare module '@mui/material/styles' {
         light?: string;
         hover?: string;
         press?: string;
+      };
+      cardBackground?: {
+        cardBgPastelRed?: string;
+        cardBgPastelYellow?: string;
+        cardBgPastelGreen?: string;
       };
     };
 

@@ -13,7 +13,6 @@ export const useBloodTestValidation = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const [validateBloodTest] = useValidateBloodTestMutation();
-
   const { extractedData, validationData, isValidating, error, isError } = useAppSelector(
     (state) => state.bloodTest,
   );
@@ -26,15 +25,20 @@ export const useBloodTestValidation = () => {
       return false;
     }
 
+    if (!Array.isArray(dataToValidate)) {
+      dispatch(setError(t('Upload.error-invalid-data-format')));
+      return false;
+    }
+
     dispatch(setError(null));
     dispatch(setValidationData(null));
     dispatch(setIsValidating(true));
 
     try {
       const validationResult = await validateBloodTest(dataToValidate).unwrap();
-
       dispatch(setValidationData(validationResult));
       dispatch(setIsValidating(false));
+
       if (validationResult.isBloodTest) {
         dispatch(setValidationData(validationResult));
         return true;
@@ -46,6 +50,7 @@ export const useBloodTestValidation = () => {
     } catch (error) {
       const message = error instanceof Error ? error.message : t('Upload.error-generic');
       dispatch(setError(message));
+      dispatch(setIsValidating(false));
       return false;
     }
   };

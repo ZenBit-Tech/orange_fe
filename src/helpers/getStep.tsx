@@ -8,6 +8,8 @@ export function getStepContent(step: number, handleNext: () => void, onBack: () 
       return <UploadStep onContinue={handleNext} />;
     case 1:
       return <ReviewCustomizeStep onContinue={handleNext} onBack={onBack} />;
+    case 2:
+      return <AnalysisResultStep />;
 
     case 2:
       return <AnalysisResultStep />;
