@@ -7,7 +7,7 @@ export const ButtonWrapper = styled(Box)`
   justify-content: space-between;
   align-items: center;
   gap: 24px;
-  margin-bottom: 48px;
+  margin: 48px 0 48px 0;
   ${({ theme }) => theme.breakpoints.down('md')} {
     flex-direction: column-reverse;
   }

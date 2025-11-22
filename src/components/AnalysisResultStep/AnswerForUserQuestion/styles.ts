@@ -7,13 +7,9 @@ export const Wrapper = styled(Box)`
   flex-direction: column;
   justify-content: center;
   margin-top: 56px;
-  margin-bottom: 48px;
 `;
 
 export const Title = styled(Typography)`
-  color: ${theme.palette.textIcons.textPrimary};
-  font-family: ${theme.typography.general.fontPoppins};
-  font-size: ${theme.typography.sizes.size18};
   font-weight: ${theme.typography.weights.weight400};
   margin-bottom: 16px;
 `;
@@ -41,14 +37,9 @@ export const QuestionBlock = styled(Box)`
 
 export const QuestionBlockTitle = styled(Typography)`
   color: ${theme.palette.textIcons.textTeriartry};
-  font-family: ${theme.typography.general.fontInter};
-  font-size: ${theme.typography.sizes.size16};
-  font-weight: ${theme.typography.weights.weight400};
 `;
 export const QuestionBlockDescription = styled(Typography)`
   color: ${theme.palette.textIcons.textSecondary};
-  font-family: ${theme.typography.general.fontPoppins};
-  font-size: ${theme.typography.sizes.size18};
   font-style: italic;
   ${({ theme }) => theme.breakpoints.down('md')} {
     font-size: ${theme.typography.sizes.size16};
@@ -57,7 +48,4 @@ export const QuestionBlockDescription = styled(Typography)`
 
 export const QuestionBlockRecommendation = styled(Typography)`
   color: ${theme.palette.textIcons.textSecondary};
-  font-family: ${theme.typography.general.fontInter};
-  font-size: ${theme.typography.sizes.size16};
-  font-weight: ${theme.typography.weights.weight400};
 `;

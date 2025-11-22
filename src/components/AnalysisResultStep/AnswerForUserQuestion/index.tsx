@@ -26,7 +26,7 @@ export const AnswerForUserQuestion: React.FC<AnswerForUserQuestionProps> = ({
           <QuestionBlockTitle variant="body1">
             {t('AnswerForUserQuestion.ur-question')}
           </QuestionBlockTitle>
-          <QuestionBlockDescription variant="body1">
+          <QuestionBlockDescription variant="h6">
             {questionResponse.question}
           </QuestionBlockDescription>
         </QuestionBlock>

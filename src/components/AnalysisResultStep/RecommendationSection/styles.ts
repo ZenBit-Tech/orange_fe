@@ -26,14 +26,9 @@ export const RecommendationHeader = styled(Box)<{ bgIcon?: string }>`
 
 export const RecommendationTitle = styled(Typography)`
   color: ${theme.palette.text.primary};
-  font-family: ${theme.typography.general.fontInter};
-  font-size: ${theme.typography.sizes.size16};
   font-weight: ${theme.typography.weights.weight500};
 `;
 
-export const RecommentionDescription = styled('ul')`
-  font-family: ${theme.typography.general.fontInter};
-  font-size: ${theme.typography.sizes.size16};
-  font-weight: ${theme.typography.weights.weight400};
-  color: ${theme.palette.text.secondary};
+export const RecommendationDescription = styled('li')`
+  color: ${theme.palette.textIcons.textSecondary};
 `;

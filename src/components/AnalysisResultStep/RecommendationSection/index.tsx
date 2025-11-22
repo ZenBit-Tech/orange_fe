@@ -1,4 +1,9 @@
-import { RecommendationHeader, RecommendationTitle, RecommendationWrapper } from './styles';
+import {
+  RecommendationDescription,
+  RecommendationHeader,
+  RecommendationTitle,
+  RecommendationWrapper,
+} from './styles';
 
 interface RecommendationSectionProps {
   title: string;
@@ -26,7 +31,7 @@ export const RecommendationSection: React.FC<RecommendationSectionProps> = ({
 
       <ul>
         {items.map((rec, index) => (
-          <li key={index}>{rec}</li>
+          <RecommendationDescription key={index}>{rec}</RecommendationDescription>
         ))}
       </ul>
     </RecommendationWrapper>

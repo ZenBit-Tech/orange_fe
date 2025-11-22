@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 import { Dumbbell, Pill, Salad, Stethoscope } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -7,12 +7,7 @@ import { theme } from '@/theme';
 
 import { RecommendationSection } from '../RecommendationSection';
 import type { RecommendationDescriptions } from '../types';
-import {
-  PersonalizedDescription,
-  PersonalizedInfo,
-  PersonalizedTitle,
-  RecommendationWrapper,
-} from './styles';
+import { PersonalizedDescription, PersonalizedInfo, RecommendationWrapper } from './styles';
 
 interface PersonalizedRecommendationsProps {
   supplementsRecommendations: RecommendationDescriptions;
@@ -31,7 +26,7 @@ export const PersonalizedRecommendations: React.FC<PersonalizedRecommendationsPr
   return (
     <Box>
       <PersonalizedInfo>
-        <PersonalizedTitle variant="h6">{t('Personalized.title')}</PersonalizedTitle>
+        <Typography variant="h6">{t('Personalized.title')}</Typography>
         <PersonalizedDescription variant="body1">
           {t('Personalized.description')}
         </PersonalizedDescription>
