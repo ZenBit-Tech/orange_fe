@@ -16,6 +16,7 @@ export const store = configureStore({
     [bloodTestApi.reducerPath]: bloodTestApi.reducer,
     [reviewCustomizeApi.reducerPath]: reviewCustomizeApi.reducer,
     bloodTest: bloodTestReducer,
+    analysis: analysisSlice,
     auth: authSlice,
     analysis: analysisSlice,
   },

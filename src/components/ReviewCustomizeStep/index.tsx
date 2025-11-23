@@ -68,6 +68,7 @@ export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onCont
     toggleExerciseGuidelines,
     toggleSupplementRecommendations,
     toggleMedicationGuidance,
+    isLoading,
   } = useReviewCustomizeStep({ onContinue });
 
   return (
@@ -290,7 +291,9 @@ export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onCont
             {t('review.back')}
           </BackButton>
         )}
-        <ContinueButton onClick={handleContinue}>{t('review.continue')}</ContinueButton>
+        <ContinueButton onClick={handleContinue} disabled={isLoading}>
+          {t('review.continue')}
+        </ContinueButton>
       </ButtonContainer>
     </WrapperReviewCustomize>
   );

@@ -1,3 +1,5 @@
+import { GlobalStyles } from '@mui/material';
+
 import { Route, Routes } from 'react-router-dom';
 
 import {
@@ -12,12 +14,12 @@ import {
 
 import { AuthVerify } from './components/AuthVerify';
 import { ProtectedRoute } from './components/ProtectedRoute';
-import { GlobalStyle } from './style';
+import { globalStyle } from './style';
 
 export const App: React.FC = () => {
   return (
     <>
-      <GlobalStyle />
+      <GlobalStyles styles={globalStyle} />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />

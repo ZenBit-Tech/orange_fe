@@ -54,7 +54,7 @@ export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepPro
     pregnancy: false,
   });
 
-  const [sendDataToBackend] = useSendDataToBackendMutation();
+  const [sendDataToBackend, { isLoading }] = useSendDataToBackendMutation();
 
   const handleBirthYear = (_event: React.SyntheticEvent, value: unknown) => {
     const newValue = value as number | null;
@@ -167,5 +167,6 @@ export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepPro
     toggleExerciseGuidelines,
     toggleSupplementRecommendations,
     toggleMedicationGuidance,
+    isLoading,
   };
 };
