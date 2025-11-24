@@ -11,9 +11,6 @@ export function getStepContent(step: number, handleNext: () => void, onBack: () 
     case 2:
       return <AnalysisResultStep />;
 
-    case 2:
-      return <AnalysisResultStep />;
-
     default:
       return 'Unknown step';
   }

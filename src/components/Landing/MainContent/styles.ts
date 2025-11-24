@@ -6,13 +6,15 @@ export const MainWrapper = styled(Box)`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-sizing: border-box;
   padding: 80px;
-  margin: 0 auto;
+  margin: auto;
   position: relative;
   overflow: hidden;
   background-image: url(${theme.palette.backgrounds.bgLandingSection});
   padding-bottom: 121px;
-  max-width: 1440px;
+  width: 100%;
+  max-width: 1520px;
   ${({ theme }) => theme.breakpoints.down('lg')} {
     flex-direction: column;
     padding: 40px 20px;
@@ -49,7 +51,7 @@ export const TabletImageWrapper = styled(Box)<{ isVisible?: boolean }>`
       transform: translateX(0);
     `}
   ${({ theme }) => theme.breakpoints.down('md')} {
-    bottom: 140px;
+    bottom: 10px;
     position: relative;
     width: 100%;
     max-width: 100%;
