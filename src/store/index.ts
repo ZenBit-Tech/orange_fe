@@ -18,7 +18,6 @@ export const store = configureStore({
     bloodTest: bloodTestReducer,
     analysis: analysisSlice,
     auth: authSlice,
-    analysis: analysisSlice,
   },
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware()
