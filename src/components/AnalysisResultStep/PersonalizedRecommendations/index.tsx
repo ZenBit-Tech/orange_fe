@@ -29,14 +29,14 @@ export const PersonalizedRecommendations = ({
   return (
     <WrapperBloodTestSummary>
       <Diagram>
-        <BloodTestSummaryTitle>{t('results.wellness-score')}</BloodTestSummaryTitle>
+        <BloodTestSummaryTitle variant="h6">{t('results.wellness-score')}</BloodTestSummaryTitle>
         <DonutChart valueInsideChart={bloodTestSummary.overallWellnessScore} />
       </Diagram>
 
       <StyledBloodTestSummary>
-        <BloodTestSummaryTitle>{t('results.summary-title')}</BloodTestSummaryTitle>
+        <BloodTestSummaryTitle variant="h6">{t('results.summary-title')}</BloodTestSummaryTitle>
 
-        <SummaryText>{bloodTestSummary.overallSummary}</SummaryText>
+        <SummaryText variant="body1">{bloodTestSummary.overallSummary}</SummaryText>
 
         <MarkersList>
           {bloodTestSummary.detailedFindings.map((finding, index) => (
@@ -44,7 +44,7 @@ export const PersonalizedRecommendations = ({
           ))}
         </MarkersList>
 
-        <ConclusionText>{bloodTestSummary.conclusionStatement}</ConclusionText>
+        <ConclusionText variant="body1">{bloodTestSummary.conclusionStatement}</ConclusionText>
       </StyledBloodTestSummary>
     </WrapperBloodTestSummary>
   );

@@ -11,7 +11,6 @@ export const WrapperReviewCustomize = styled(Box)(({ theme }) => ({
   borderStyle: 'solid',
   borderRadius: 20,
   borderWidth: 2,
-  fontFamily: theme.typography.general.fontInter,
   borderColor: theme.palette.baseColors.grey[200],
   backgroundColor: theme.palette.backgrounds.white,
   boxSizing: 'border-box',
@@ -25,23 +24,20 @@ export const WrapperReviewCustomize = styled(Box)(({ theme }) => ({
 
 export const TitleText = styled(Typography)(({ theme }) => ({
   fontSize: theme.typography.sizes.size24,
+  fontFamily: theme.typography.general.fontPoppins,
   fontWeight: theme.typography.weights.weight400,
   color: theme.palette.textIcons.textPrimary,
   lineHeight: '1.17',
-  fontFamily: theme.typography.general.fontPoppins,
   textAlign: 'center',
 
   [theme.breakpoints.down('md')]: {
-    fontSize: theme.typography.sizes.size18,
+    marginBottom: theme.spacing(1),
   },
 }));
 
 export const DescriptionText = styled(Typography)(({ theme }) => ({
-  fontSize: theme.typography.sizes.size16,
-  fontWeight: theme.typography.weights.weight400,
   color: theme.palette.textIcons.textSecondary,
   lineHeight: '1.5',
-  fontFamily: theme.typography.general.fontInter,
   textAlign: 'center',
 
   '&.customize-description': {
@@ -53,22 +49,17 @@ export const DescriptionText = styled(Typography)(({ theme }) => ({
     display: 'flex',
     justifyContent: 'center',
     lineHeight: '24px',
-    fontSize: theme.typography.sizes.size16,
   },
 }));
 
 export const SectionTitle = styled(Typography)(({ theme }) => ({
-  fontSize: theme.typography.sizes.size18,
-  fontWeight: theme.typography.weights.weight400,
   color: theme.palette.textIcons.textPrimary,
   lineHeight: '1.33',
-  fontFamily: theme.typography.general.fontPoppins,
   marginTop: theme.spacing(6),
 
   [theme.breakpoints.down('md')]: {
     display: 'flex',
     justifyContent: 'center',
-    fontSize: theme.typography.sizes.size16,
   },
 }));
 
@@ -105,10 +96,7 @@ export const FormField = styled(Box)(({ theme }) => ({
 }));
 
 export const FormErrorText = styled(Typography)(({ theme }) => ({
-  fontSize: theme.typography.sizes.size12,
-  fontWeight: theme.typography.weights.weight400,
   color: theme.palette.textIcons.errorMain,
-  fontFamily: theme.typography.general.fontInter,
   marginTop: theme.spacing(0.5),
   position: 'absolute',
   bottom: 0,
@@ -118,8 +106,6 @@ export const FormErrorText = styled(Typography)(({ theme }) => ({
 export const StyledAutocomplete = styled(Autocomplete)(({ theme }) => ({
   '& .MuiOutlinedInput-root': {
     borderRadius: '12px',
-    fontFamily: theme.typography.general.fontInter,
-    fontSize: theme.typography.sizes.size16,
     color: theme.palette.textIcons.textPrimary,
 
     '& fieldset': {
@@ -136,37 +122,19 @@ export const StyledAutocomplete = styled(Autocomplete)(({ theme }) => ({
     },
   },
   '& .MuiInputLabel-root': {
-    fontFamily: theme.typography.general.fontInter,
-    fontSize: theme.typography.sizes.size14,
     color: theme.palette.textIcons.textTeriartry,
   },
   '& .MuiInputLabel-root.Mui-error': {
     color: theme.palette.textIcons.errorMain,
   },
-
-  [theme.breakpoints.down('md')]: {
-    '& .MuiOutlinedInput-root': {
-      fontSize: theme.typography.sizes.size14,
-    },
-  },
 }));
 
 export const StyledTextField = styled(TextField)(({ theme }) => ({
   '& .MuiOutlinedInput-root': {
-    fontFamily: theme.typography.general.fontInter,
-    fontSize: theme.typography.sizes.size16,
     color: theme.palette.textIcons.textPrimary,
   },
   '& .MuiInputLabel-root': {
-    fontFamily: theme.typography.general.fontInter,
-    fontSize: theme.typography.sizes.size14,
     color: theme.palette.textIcons.textTeriartry,
-  },
-
-  [theme.breakpoints.down('md')]: {
-    '& .MuiOutlinedInput-root': {
-      fontSize: theme.typography.sizes.size14,
-    },
   },
 }));
 
@@ -282,26 +250,15 @@ export const CheckboxContent = styled(Box)({
 });
 
 export const CheckboxTitle = styled(Typography)(({ theme }) => ({
-  fontSize: theme.typography.sizes.size18,
-  fontWeight: theme.typography.weights.weight400,
   color: theme.palette.textIcons.textPrimary,
-  fontFamily: theme.typography.general.fontInter,
 
   [theme.breakpoints.down('md')]: {
     maxWidth: '200px',
-    fontSize: theme.typography.sizes.size16,
   },
 }));
 
 export const CheckboxDescription = styled(Typography)(({ theme }) => ({
-  fontSize: theme.typography.sizes.size14,
-  fontWeight: theme.typography.weights.weight400,
   color: theme.palette.textIcons.textTeriartry,
-  fontFamily: theme.typography.general.fontInter,
-
-  [theme.breakpoints.down('md')]: {
-    fontSize: theme.typography.sizes.size12,
-  },
 }));
 
 export const StyledCheckbox = styled(Checkbox)(({ theme }) => ({
@@ -349,41 +306,32 @@ export const StyledCheckbox = styled(Checkbox)(({ theme }) => ({
 
 export const AdditionalTitle = styled(Typography)(({ theme }) => ({
   marginTop: theme.spacing(6),
-  fontSize: theme.typography.sizes.size18,
-  fontWeight: theme.typography.weights.weight400,
   color: theme.palette.textIcons.textPrimary,
   lineHeight: '1.33',
-  fontFamily: theme.typography.general.fontPoppins,
 
   [theme.breakpoints.down('md')]: {
     display: 'flex',
     justifyContent: 'center',
     marginTop: theme.spacing(4),
-    fontSize: theme.typography.sizes.size16,
   },
 }));
 
 export const AdditionalDescriptionText = styled(Typography)(({ theme }) => ({
   display: 'flex',
   justifyContent: 'flex-start',
-  fontSize: theme.typography.sizes.size16,
-  fontWeight: theme.typography.weights.weight400,
   color: theme.palette.textIcons.textSecondary,
   lineHeight: '1.5',
-  fontFamily: theme.typography.general.fontInter,
   textAlign: 'left',
 
   [theme.breakpoints.down('md')]: {
     textAlign: 'center',
     justifyContent: 'center',
-    fontSize: theme.typography.sizes.size14,
   },
 }));
 
 export const TextAreaContainer = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
-
   marginTop: theme.spacing(2),
 
   [theme.breakpoints.down('md')]: {
@@ -396,9 +344,6 @@ export const StyledTextAreaField = styled(TextField)(({ theme }) => ({
   marginTop: theme.spacing(3),
   '& .MuiOutlinedInput-root': {
     borderRadius: '12px',
-    fontFamily: theme.typography.general.fontInter,
-    fontSize: theme.typography.sizes.size16,
-    fontWeight: theme.typography.weights.weight400,
     color: theme.palette.textIcons.textPrimary,
     alignItems: 'flex-start',
 
@@ -414,8 +359,6 @@ export const StyledTextAreaField = styled(TextField)(({ theme }) => ({
   },
 
   '& .MuiInputLabel-root': {
-    fontFamily: theme.typography.general.fontInter,
-    fontSize: theme.typography.sizes.size14,
     color: theme.palette.textIcons.textTeriartry,
   },
 
@@ -428,12 +371,6 @@ export const StyledTextAreaField = styled(TextField)(({ theme }) => ({
 
   [theme.breakpoints.down('md')]: {
     marginTop: theme.spacing(2),
-    '& .MuiOutlinedInput-root': {
-      fontSize: theme.typography.sizes.size16,
-    },
-    '& .MuiInputLabel-root': {
-      fontSize: theme.typography.sizes.size14,
-    },
   },
 }));
 
@@ -452,9 +389,6 @@ export const ButtonContainer = styled(Box)(({ theme }) => ({
 
 export const BackButton = styled('button')(({ theme }) => ({
   padding: theme.spacing(1.5, 3),
-  fontSize: theme.typography.sizes.size16,
-  fontWeight: theme.typography.weights.weight600,
-  fontFamily: theme.typography.general.fontInter,
   color: theme.palette.textIcons.textPrimary,
   backgroundColor: theme.palette.backgrounds.white,
   border: `1px solid ${theme.palette.border.default}`,
@@ -472,19 +406,14 @@ export const BackButton = styled('button')(({ theme }) => ({
 
   [theme.breakpoints.down('md')]: {
     flex: '0 0 40%',
-
     width: '100%',
     justifyContent: 'center',
-    fontSize: theme.typography.sizes.size14,
   },
 }));
 
 export const ContinueButton = styled('button')(({ theme }) => ({
   width: '194px',
   padding: theme.spacing(1, 2.75),
-  fontSize: theme.typography.sizes.size16,
-  fontWeight: theme.typography.weights.weight500,
-  fontFamily: theme.typography.general.fontInter,
   color: theme.palette.backgrounds.white,
   backgroundColor: theme.palette.surface.primary.default,
   border: 'none',
@@ -509,6 +438,5 @@ export const ContinueButton = styled('button')(({ theme }) => ({
   [theme.breakpoints.down('md')]: {
     flex: '0 0 60%',
     width: '100%',
-    fontSize: theme.typography.sizes.size14,
   },
 }));
