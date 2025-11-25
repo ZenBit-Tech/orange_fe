@@ -3,27 +3,24 @@ import { LucideOctagonAlert } from 'lucide-react';
 import { useSelector } from 'react-redux';
 
 import { DescriptionText, TitleText } from '@/components/ReviewCustomizeStep/styles';
-  
 import type { RootState } from '@/store';
 
+import { AnswerForUserQuestion } from './AnswerForUserQuestion';
 import { BloodTestSummary } from './BloodTestSummary';
 import { PersonalizedRecommendations } from './PersonalizedRecommendations';
-import { AnswerForUserQuestion } from './AnswerForUserQuestion';
 import { Recommendations } from './Recommendations';
-import { ResultButton } from './ResultButtons';
-  
 import { Disclaimer, WrapperAnalysisResult } from './styles';
 
 export const AnalysisResultStep = () => {
-  const props = useSelector((state: RootState) => state.analysis.result);
+  const result = useSelector((state: RootState) => state.analysis.result);
 
-  if (!props) return null;
-  
+  if (!result) return null;
+
   const hasAnyRecommendations =
-      props.drugsRecommendations ||
-      props.exerciseRecommendations ||
-      props.nutritionRecommendations ||
-      props.supplementsRecommendations;
+    result.drugsRecommendations ||
+    result.exerciseRecommendations ||
+    result.nutritionRecommendations ||
+    result.supplementsRecommendations;
 
   return (
     <WrapperAnalysisResult>
@@ -32,24 +29,24 @@ export const AnalysisResultStep = () => {
       <Disclaimer>
         <LucideOctagonAlert className="octagon-alert" />
         {t('results.disclaimer')}
+        {t('results.disclaimer-text')}
       </Disclaimer>
 
-      <PersonalizedRecommendations bloodTestSummary={props.bloodTestSummary} />
-      <BloodTestSummary data={props} />
-      
-      {hasAnyRecommendations && (
-          <Recommendations
-            supplementsRecommendations={result.supplementsRecommendations}
-            nutritionRecommendations={result.nutritionRecommendations}
-            drugsRecommendations={result.drugsRecommendations}
-            exerciseRecommendations={result.exerciseRecommendations}
-          />
-        )}
+      <PersonalizedRecommendations bloodTestSummary={result.bloodTestSummary} />
+      <BloodTestSummary data={result} />
 
-        {result.userQuestionResponse && (
-          <AnswerForUserQuestion questionResponse={result.userQuestionResponse} />
-        )}
-      
+      {hasAnyRecommendations && (
+        <Recommendations
+          supplementsRecommendations={result.supplementsRecommendations}
+          nutritionRecommendations={result.nutritionRecommendations}
+          drugsRecommendations={result.drugsRecommendations}
+          exerciseRecommendations={result.exerciseRecommendations}
+        />
+      )}
+
+      {result.userQuestionResponse && (
+        <AnswerForUserQuestion questionResponse={result.userQuestionResponse} />
+      )}
     </WrapperAnalysisResult>
   );
 };

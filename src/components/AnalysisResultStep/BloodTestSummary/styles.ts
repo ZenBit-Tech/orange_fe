@@ -23,6 +23,10 @@ export const ProgressBar = styled(Box)(({ theme }) => ({
   )`,
   borderRadius: '12px',
   marginRight: '16px',
+
+  '&.small': {
+    maxWidth: 'unset',
+  },
 }));
 
 export const PositionIndicator = styled(Box)<{ positionValue: number }>(

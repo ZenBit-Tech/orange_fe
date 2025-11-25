@@ -14,6 +14,13 @@ export const WrapperBloodTestSummary = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.baseColors.grey.second50,
   boxSizing: 'border-box',
   alignItems: 'center',
+
+  [theme.breakpoints.down('sm')]: {
+    flexDirection: 'column',
+    padding: theme.spacing(2, 2),
+    border: 'none',
+    backgroundColor: 'none',
+  },
 }));
 
 export const Diagram = styled(Box)(({ theme }) => ({
@@ -27,6 +34,11 @@ export const Diagram = styled(Box)(({ theme }) => ({
   borderRadius: 20,
   backgroundColor: theme.palette.baseColors.grey[0],
   boxSizing: 'border-box',
+
+  [theme.breakpoints.down('sm')]: {
+    maxWidth: 'unset',
+    marginBottom: theme.spacing(3),
+  },
 }));
 
 export const StyledBloodTestSummary = styled(Box)(({ theme }) => ({
@@ -36,19 +48,22 @@ export const StyledBloodTestSummary = styled(Box)(({ theme }) => ({
   flexDirection: 'column',
   borderRadius: 20,
   boxSizing: 'border-box',
+
+  [theme.breakpoints.down('sm')]: {
+    padding: 0,
+  },
 }));
 
-export const BloodTestSummaryTitle = styled(Box)(({ theme }) => ({
-  fontSize: theme.typography.sizes.size18,
-  fontWeight: theme.typography.weights.weight400,
+export const BloodTestSummaryTitle = styled(Typography)(({ theme }) => ({
   color: theme.palette.textIcons.textPrimary,
   lineHeight: '1.60',
-  fontFamily: theme.typography.general.fontPoppins,
+
+  [theme.breakpoints.down('sm')]: {
+    textAlign: 'center',
+  },
 }));
 
 export const SummaryText = styled(Typography)(({ theme }) => ({
-  fontSize: theme.typography.sizes.size16,
-  fontWeight: theme.typography.weights.weight400,
   color: theme.palette.textIcons.textSecondary,
   lineHeight: '1.6',
   marginBottom: '24px',
@@ -96,16 +111,15 @@ export const DoughnutWrapper = styled(Box)(({ theme }) => ({
 }));
 
 export const CenteredText = styled(Box)(({ theme }) => ({
+  fontSize: theme.typography.sizes.size24,
   position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%,-50%)',
-  fontSize: theme.typography.sizes.size24,
   color: theme.palette.textIcons.textPrimary,
 }));
 
-export const ConclusionText = styled(Box)(({ theme }) => ({
-  fontSize: theme.typography.sizes.size16,
+export const ConclusionText = styled(Typography)(({ theme }) => ({
   lineHeight: '1.6',
   color: theme.palette.textIcons.textPrimary,
   marginTop: '24px',

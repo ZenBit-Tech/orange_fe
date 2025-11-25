@@ -226,6 +226,7 @@ export const Marker = memo<MarkerProps>(
                   referenceMax: Number(referenceMax),
                 })}
                 status={status ?? ''}
+                isSmallScreen={false}
               />
               <MarkerText className="normal-range">
                 {referenceMin} - {referenceMax} {unit}
