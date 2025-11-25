@@ -1,11 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
 import type { RootState } from '@/store';
-
-import { PDF_POLL_INTERVAL, PDF_STATUS, type PdfJobStatus } from '../types';
 
 const API_BASE_URL = import.meta.env.VITE_MARKERS_URL;
 
@@ -19,8 +17,6 @@ interface UseResultButtonsReturn {
   handlePrint: () => Promise<void>;
   isDownloading: boolean;
   isPrinting: boolean;
-  isPdfReady: boolean;
-  isPdfPending: boolean;
   t: (key: string) => string;
 }
 
@@ -28,46 +24,10 @@ export const useResultButtons = ({ onBack }: UseResultButtonsProps): UseResultBu
   const { t } = useTranslation();
   const [isDownloading, setIsDownloading] = useState<boolean>(false);
   const [isPrinting, setIsPrinting] = useState<boolean>(false);
-  const [pdfStatus, setPdfStatus] = useState<PdfJobStatus | null>(null);
-  const pollIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  const pdfJobId = useSelector((state: RootState) => state.analysis.result?.pdfJobId);
-
-  useEffect(() => {
-    if (!pdfJobId) return;
-
-    const checkStatus = async (): Promise<void> => {
-      try {
-        const response = await fetch(`${API_BASE_URL}/pdf-status/${pdfJobId}`, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-          },
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          setPdfStatus(data.status);
-
-          if (data.status !== PDF_STATUS.PENDING && pollIntervalRef.current) {
-            clearInterval(pollIntervalRef.current);
-            pollIntervalRef.current = null;
-          }
-        }
-      } catch (error) {
-        const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-        throw new Error(`PDF status check failed: ${errorMessage}`);
-      }
-    };
-
-    checkStatus();
-    pollIntervalRef.current = setInterval(checkStatus, PDF_POLL_INTERVAL);
-
-    return () => {
-      if (pollIntervalRef.current) {
-        clearInterval(pollIntervalRef.current);
-      }
-    };
-  }, [pdfJobId]);
+  // Get both analysis result and original form data from Redux
+  const analysisResult = useSelector((state: RootState) => state.analysis.result);
+  const testResults = useSelector((state: RootState) => state.bloodTest.extractedData);
 
   const handleNewAnalyze = (): void => {
     if (onBack) {
@@ -76,22 +36,32 @@ export const useResultButtons = ({ onBack }: UseResultButtonsProps): UseResultBu
     }
   };
 
+  const generatePdf = async (): Promise<Blob> => {
+    const response = await fetch(`${API_BASE_URL}/generate-pdf`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+      },
+      body: JSON.stringify({
+        testResults,
+        analysisResult,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error('PDF generation failed');
+    }
+
+    return await response.blob();
+  };
+
   const handleDownloadPdf = async (): Promise<void> => {
-    if (!pdfJobId || pdfStatus !== PDF_STATUS.COMPLETED) return;
+    if (!analysisResult || !testResults) return;
 
     setIsDownloading(true);
     try {
-      const response = await fetch(`${API_BASE_URL}/download-pdf/${pdfJobId}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error('Download failed');
-      }
-
-      const blob = await response.blob();
+      const blob = await generatePdf();
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
@@ -102,28 +72,18 @@ export const useResultButtons = ({ onBack }: UseResultButtonsProps): UseResultBu
       window.URL.revokeObjectURL(url);
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-      throw new Error(`Download failed: ${errorMessage}`);
+      console.error('Download failed:', errorMessage);
     } finally {
       setIsDownloading(false);
     }
   };
 
   const handlePrint = async (): Promise<void> => {
-    if (!pdfJobId || pdfStatus !== PDF_STATUS.COMPLETED) return;
+    if (!analysisResult || !testResults) return;
 
     setIsPrinting(true);
     try {
-      const response = await fetch(`${API_BASE_URL}/download-pdf/${pdfJobId}`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-        },
-      });
-
-      if (!response.ok) {
-        throw new Error('Print failed');
-      }
-
-      const blob = await response.blob();
+      const blob = await generatePdf();
       const url = window.URL.createObjectURL(blob);
       const iframe = document.createElement('iframe');
       iframe.style.display = 'none';
@@ -135,11 +95,11 @@ export const useResultButtons = ({ onBack }: UseResultButtonsProps): UseResultBu
         setTimeout(() => {
           document.body.removeChild(iframe);
           window.URL.revokeObjectURL(url);
-        }, PDF_POLL_INTERVAL / 2);
+        }, 1000);
       };
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Unknown error';
-      throw new Error(`Print failed: ${errorMessage}`);
+      console.error('Print failed:', errorMessage);
     } finally {
       setIsPrinting(false);
     }
@@ -151,8 +111,6 @@ export const useResultButtons = ({ onBack }: UseResultButtonsProps): UseResultBu
     handlePrint,
     isDownloading,
     isPrinting,
-    isPdfReady: pdfStatus === PDF_STATUS.COMPLETED,
-    isPdfPending: pdfStatus === PDF_STATUS.PENDING,
     t,
   };
 };

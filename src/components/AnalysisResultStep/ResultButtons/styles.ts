@@ -11,6 +11,20 @@ export const ButtonWrapper = styled(Box)`
   ${({ theme }) => theme.breakpoints.down('md')} {
     flex-direction: column-reverse;
   }
+
+    @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+  }
 `;
 
 export const LinkSection = styled(Box)`

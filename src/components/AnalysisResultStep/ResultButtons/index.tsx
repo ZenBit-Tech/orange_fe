@@ -1,4 +1,4 @@
-import { ArrowLeft, Clock, Download, Printer, RotateCcw } from 'lucide-react';
+import { ArrowLeft, Download, Loader2, Printer, RotateCcw } from 'lucide-react';
 
 import { ICON_SIZE_SMALL } from '../types';
 import {
@@ -17,18 +17,8 @@ interface ResultButtonProps {
 }
 
 export const ResultButton: React.FC<ResultButtonProps> = ({ onBack }) => {
-  const {
-    handleNewAnalyze,
-    handlePrint,
-    handleDownloadPdf,
-    isDownloading,
-    isPrinting,
-    isPdfReady,
-    isPdfPending,
-    t,
-  } = useResultButtons({ onBack });
-
-  const isButtonDisabled = !isPdfReady || isDownloading || isPrinting;
+  const { handleNewAnalyze, handlePrint, handleDownloadPdf, isDownloading, isPrinting, t } =
+    useResultButtons({ onBack });
 
   return (
     <ButtonWrapper>
@@ -42,11 +32,11 @@ export const ResultButton: React.FC<ResultButtonProps> = ({ onBack }) => {
         </StartButton>
       </LinkSection>
       <ButtonSection>
-        <PrintButton onClick={handlePrint} disabled={isButtonDisabled}>
-          {isPdfPending ? (
+        <PrintButton onClick={handlePrint} disabled={isPrinting || isDownloading}>
+          {isPrinting ? (
             <>
-              <Clock size={ICON_SIZE_SMALL} />
-              {t('ResultButtons.preparing')}
+              <Loader2 size={ICON_SIZE_SMALL} className="animate-spin" />
+              {t('ResultButtons.printing')}
             </>
           ) : (
             <>
@@ -55,11 +45,15 @@ export const ResultButton: React.FC<ResultButtonProps> = ({ onBack }) => {
             </>
           )}
         </PrintButton>
-        <DownloadButton variant="contained" onClick={handleDownloadPdf} disabled={isButtonDisabled}>
-          {isPdfPending ? (
+        <DownloadButton
+          variant="contained"
+          onClick={handleDownloadPdf}
+          disabled={isDownloading || isPrinting}
+        >
+          {isDownloading ? (
             <>
-              <Clock size={ICON_SIZE_SMALL} />
-              {t('ResultButtons.preparing')}
+              <Loader2 size={ICON_SIZE_SMALL} className="animate-spin" />
+              {t('ResultButtons.downloading')}
             </>
           ) : (
             <>
