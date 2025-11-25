@@ -179,7 +179,7 @@
     "value": "Value",
     "unit": "Unit",
     "normal-range": "Normal Range",
-    "interpretation":"Interpretation",
+    "interpretation": "Interpretation",
     "blood-marker": "Blood marker",
     "pregnancy": "Pregnancy status",
     "add-marker": "Add marker",
@@ -224,7 +224,12 @@
     "download": "Download PDF",
     "preparing":"PDF is Preparing"
   },
-  "results":{
+  "AnswerForUserQuestion": {
+    "title": "Answer to your question",
+    "ur-question": "Your question:",
+    "ai-rec": "AI recommendations:"
+  },
+  "results": {
     "title":"Your blood test analysis results",
     "description":"Here is complete analysis with personalized recommendations",
     "disclaimer":"Disclaimer:",
@@ -235,12 +240,5 @@
     "importance":"Why it's important:",
     "value":"Value:",
     "normalRange":"Normal Range:"
-    
-  },
-  "AnswerForUserQuestion": {
-    "title": "Answer to your question",
-    "ur-question": "Your question:",
-    "ai-rec": "AI recommendations:"
-  
   }
 }

@@ -5,11 +5,12 @@ import { theme } from '@/theme';
 export const WrapperContent = styled(Box)`
   background-image: url(${theme.palette.backgrounds.bgLandingSection});
   background-position: center;
+  box-sizing: border-box;
   background-size: cover;
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
   justify-content: center;
-  flex-grow: 1;
   align-items: flex-start;
   padding: 24px 0;
   ${({ theme }) => theme.breakpoints.down('md')} {
