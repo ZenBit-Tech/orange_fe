@@ -9,6 +9,7 @@ import { AnswerForUserQuestion } from './AnswerForUserQuestion';
 import { BloodTestSummary } from './BloodTestSummary';
 import { PersonalizedRecommendations } from './PersonalizedRecommendations';
 import { Recommendations } from './Recommendations';
+import { ResultButton } from './ResultButtons';
 import { Disclaimer, WrapperAnalysisResult } from './styles';
 
 export const AnalysisResultStep = () => {
@@ -47,6 +48,7 @@ export const AnalysisResultStep = () => {
       {result.userQuestionResponse && (
         <AnswerForUserQuestion questionResponse={result.userQuestionResponse} />
       )}
+      <ResultButton />
     </WrapperAnalysisResult>
   );
 };

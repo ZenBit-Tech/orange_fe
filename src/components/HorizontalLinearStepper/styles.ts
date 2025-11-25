@@ -8,6 +8,9 @@ interface CustomProps {
 }
 
 export const StepperWrapper = styled(Box)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
   width: '100%',
   maxWidth: '1062px',
   height: '100%',
@@ -20,6 +23,7 @@ export const StepperWrapper = styled(Box)(({ theme }) => ({
 }));
 
 export const StyledStepper = styled(Stepper)(({ theme }) => ({
+  fontFamily: theme.typography.general.fontInter,
   justifyContent: 'center',
   padding: theme.spacing(0, 1),
   marginBottom: theme.spacing(3),
