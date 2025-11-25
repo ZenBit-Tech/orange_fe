@@ -39,4 +39,16 @@ export interface FullBloodTestAnalysisResult {
   drugsRecommendations?: RecommendationDescriptions;
   exerciseRecommendations?: RecommendationDescriptions;
   userQuestionResponse?: UserQuestionResponse;
+  pdfJobId: string;
 }
+
+export const PDF_POLL_INTERVAL = 2000;
+export const ICON_SIZE_SMALL = 20;
+
+export const PDF_STATUS = {
+  PENDING: 'pending',
+  COMPLETED: 'completed',
+  FAILED: 'failed',
+} as const;
+
+export type PdfJobStatus = (typeof PDF_STATUS)[keyof typeof PDF_STATUS];
