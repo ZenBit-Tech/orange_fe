@@ -221,7 +221,8 @@
     "back": "Back",
     "start": "Start new analysis",
     "print": "Print report",
-    "download": "Download PDF"
+    "download": "Download PDF",
+    "preparing":"PDF is Preparing"
   },
   "AnswerForUserQuestion": {
     "title": "Answer to your question",

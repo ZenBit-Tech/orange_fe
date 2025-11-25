@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 import { t } from 'i18next';
 import { LucideOctagonAlert } from 'lucide-react';
 import { useSelector } from 'react-redux';
@@ -12,7 +14,15 @@ import { Recommendations } from './Recommendations';
 import { ResultButton } from './ResultButtons';
 import { Disclaimer, WrapperAnalysisResult } from './styles';
 
-export const AnalysisResultStep = () => {
+interface AnalysisResultStepProps {
+  onBack: () => void;
+}
+
+export const AnalysisResultStep: React.FC<AnalysisResultStepProps> = ({ onBack }) => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
   const result = useSelector((state: RootState) => state.analysis.result);
 
   if (!result) return null;
@@ -48,7 +58,7 @@ export const AnalysisResultStep = () => {
       {result.userQuestionResponse && (
         <AnswerForUserQuestion questionResponse={result.userQuestionResponse} />
       )}
-      <ResultButton />
+      <ResultButton onBack={onBack} />
     </WrapperAnalysisResult>
   );
 };
