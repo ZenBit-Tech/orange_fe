@@ -67,6 +67,10 @@ export const MarkerCircle = styled(Box)(({ theme }) => ({
     backgroundColor: theme.palette?.baseColors?.red?.[400],
     border: `1px solid ${theme.palette?.baseColors?.red?.[50]}`,
   },
+  '&.Critical': {
+    color: theme.palette?.baseColors?.red?.[500],
+    border: `1px solid ${theme.palette?.baseColors?.red?.[50]}`,
+  },
 }));
 
 export const MarkerName = styled(Typography)(({ theme }) => ({
@@ -107,6 +111,11 @@ export const StatusBadge = styled(Typography)(({ theme }) => ({
     color: theme.palette.markerIndicatorColors.text.red,
     backgroundColor: theme.palette.surface.cardBackground.cardBgPastelRed,
     border: `1px solid ${theme.palette.border.markerInterpretation.borderRed}`,
+  },
+  '&.Critical': {
+    color: theme.palette.baseColors.red[800],
+    backgroundColor: theme.palette.baseColors.red[200],
+    border: `1px solid ${theme.palette.baseColors.red[300]}`,
   },
 }));
 

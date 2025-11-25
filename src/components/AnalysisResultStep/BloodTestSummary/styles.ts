@@ -52,5 +52,8 @@ export const PositionIndicator = styled(Box)<{ positionValue: number }>(
     '&.Low': {
       color: theme.palette.markerIndicatorColors.pointer.red,
     },
+    '&.Critical': {
+      color: theme.palette.baseColors.red[800],
+    },
   }),
 );
