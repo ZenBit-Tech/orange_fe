@@ -8,6 +8,8 @@ import { BREAKPOINTS } from '@/constants/marker';
 import type { MarkerData } from '@/constants/marker';
 import { theme } from '@/theme';
 
+import { MobileMarkerCard } from '../AnalysisResultStep/MarkerCardsTable';
+import { MobileMarkerCardWrapper } from '../AnalysisResultStep/MarkerCardsTable/styles';
 import {
   AddMarkerButton,
   AddMarkerButtonText,
@@ -33,10 +35,6 @@ interface MarkerTableProps {
 
 export interface MarkerTableRef {
   validateAllMarkers: () => void;
-}
-
-export interface isFinalStep {
-  isFinalStep: boolean;
 }
 
 const useIsSmallScreen = () => {
@@ -102,10 +100,30 @@ export const MarkerTable = forwardRef<MarkerTableRef, MarkerTableProps>(
       [onValidateAll],
     );
 
+    if (isFinalStep && isSmallScreen) {
+      return (
+        <MobileMarkerCardWrapper>
+          {markers.map((marker) => (
+            <MobileMarkerCard
+              key={marker.id}
+              id={marker.id}
+              name={marker.name}
+              value={marker.value}
+              unit={marker.unit}
+              referenceMin={marker.referenceMin}
+              referenceMax={marker.referenceMax}
+              status={marker.status}
+              interpretation={marker.interpretation}
+            />
+          ))}
+        </MobileMarkerCardWrapper>
+      );
+    }
+
     return (
       <>
         <MarkerTableContainer>
-          <MarkerTableBody>
+          <MarkerTableBody className={`${isFinalStep ? 'final-step' : ''}`}>
             <MarkerTableContent>
               <MarkerTableHeader className={`${isFinalStep ? 'final-step' : ''}`}>
                 <MarkerTableHeaderCell>{t('review.marker')}</MarkerTableHeaderCell>

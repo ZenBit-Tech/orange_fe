@@ -5,7 +5,7 @@ export const WrapperAnalysisResult = styled(Box)(({ theme }) => ({
   width: '100%',
   maxWidth: '1200px',
   margin: '0 auto',
-  padding: '0 48px 0 48px',
+  padding: '48px 48px',
   display: 'flex',
   flexDirection: 'column',
   borderStyle: 'solid',

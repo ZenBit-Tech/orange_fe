@@ -30,6 +30,7 @@ export const AnalysisResultStep = () => {
       <Disclaimer>
         <LucideOctagonAlert className="octagon-alert" />
         {t('results.disclaimer')}
+        {t('results.disclaimer-text')}
       </Disclaimer>
 
       <PersonalizedRecommendations bloodTestSummary={result.bloodTestSummary} />
