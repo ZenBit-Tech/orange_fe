@@ -26,7 +26,6 @@ interface PersonalizedRecommendationsProps {
 export const PersonalizedRecommendations = ({
   bloodTestSummary,
 }: PersonalizedRecommendationsProps) => {
-  console.log(bloodTestSummary);
   return (
     <WrapperBloodTestSummary>
       <Diagram>

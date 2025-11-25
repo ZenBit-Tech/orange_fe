@@ -25,7 +25,6 @@ export const AnalysisResultStep: React.FC<AnalysisResultStepProps> = ({ onBack }
 
   const result = useSelector((state: RootState) => state.analysis.result);
 
-  console.log(result);
   if (!result) return null;
 
   const hasAnyRecommendations =
