@@ -37,7 +37,7 @@ export const useResultButtons = ({ onBack }: UseResultButtonsProps): UseResultBu
   };
 
   const generatePdf = async (): Promise<Blob> => {
-    const response = await fetch(`${API_BASE_URL}/generate-pdf`, {
+    const response = await fetch(`${API_BASE_URL}/download-pdf`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
