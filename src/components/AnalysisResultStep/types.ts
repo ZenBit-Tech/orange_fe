@@ -42,7 +42,7 @@ export interface FullBloodTestAnalysisResult {
   pdfJobId: string;
 }
 
-export const PDF_POLL_INTERVAL = 2000;
+export const PDF_POLL_INTERVAL = 10000;
 export const ICON_SIZE_SMALL = 20;
 
 export const PDF_STATUS = {
