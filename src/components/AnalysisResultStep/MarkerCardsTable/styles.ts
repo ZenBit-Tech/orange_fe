@@ -68,7 +68,7 @@ export const MarkerCircle = styled(Box)(({ theme }) => ({
     border: `1px solid ${theme.palette?.baseColors?.red?.[50]}`,
   },
   '&.Critical': {
-    color: theme.palette?.baseColors?.red?.[500],
+    backgroundColor: theme.palette?.baseColors?.red?.[500],
     border: `1px solid ${theme.palette?.baseColors?.red?.[50]}`,
   },
 }));
