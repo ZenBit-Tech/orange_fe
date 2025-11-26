@@ -111,6 +111,7 @@ export const MARKER_STATUS = {
   HIGH: 'High',
   SLIGHTLY_LOW: 'Slightly Low',
   LOW: 'Low',
+  CRITICAL: 'Critical',
 } as const;
 
 export const MARKER_STATUS_CLASSES = {
@@ -119,4 +120,5 @@ export const MARKER_STATUS_CLASSES = {
   [MARKER_STATUS.HIGH]: 'High',
   [MARKER_STATUS.SLIGHTLY_LOW]: 'Slightly-Low',
   [MARKER_STATUS.LOW]: 'Low',
+  [MARKER_STATUS.CRITICAL]: 'Critical',
 } as const;

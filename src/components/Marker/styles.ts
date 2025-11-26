@@ -206,6 +206,10 @@ export const MarkerCircle = styled(Box)(({ theme }) => ({
     backgroundColor: theme.palette?.baseColors?.red?.[400],
     border: `1px solid ${theme.palette?.baseColors?.green?.[50]}`,
   },
+  '&.Critical': {
+    backgroundColor: theme.palette?.baseColors?.red?.[500],
+    border: `1px solid ${theme.palette?.baseColors?.green?.[50]}`,
+  },
 }));
 
 export const MarkerText = styled(Typography)(({ theme }) => ({
@@ -254,6 +258,11 @@ export const MarkerInterpretation = styled(Box)(({ theme }) => ({
     color: theme.palette.markerIndicatorColors.text.red,
     backgroundColor: theme.palette.surface.cardBackground.cardBgPastelRed,
     border: `1px solid ${theme.palette.border.markerInterpretation.borderRed}`,
+  },
+  '&.Critical': {
+    color: theme.palette.baseColors.red[800],
+    backgroundColor: theme.palette.baseColors.red[200],
+    border: `1px solid ${theme.palette.baseColors.red[300]}`,
   },
 }));
 
