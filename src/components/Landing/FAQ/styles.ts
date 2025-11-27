@@ -87,7 +87,9 @@ export const StyledAccordion = styled(Accordion)`
   background-color: ${theme.palette.background.paper};
   border: 1px solid ${theme.palette.baseColors.grey[200]};
   padding: 40px 24px;
-
+  &:hover {
+    border-color: ${theme.palette.baseColors.grey[300]};
+  }
   &::before {
     display: none;
   }

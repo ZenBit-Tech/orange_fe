@@ -1,14 +1,30 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { setAuth } from './authSlice';
+import type { RootState } from '.';
+import { logout, setAuth } from './authSlice';
+
+const baseQuery = fetchBaseQuery({
+  baseUrl: import.meta.env.VITE_AUTH_URL,
+  prepareHeaders: (headers, { getState }) => {
+    const token = (getState() as RootState).auth.token;
+    if (token) headers.set('authorization', `Bearer ${token}`);
+    return headers;
+  },
+});
 
 export const authApi = createApi({
   reducerPath: 'authApi',
-  baseQuery: fetchBaseQuery({
-    baseUrl: import.meta.env.VITE_AUTH_URL,
-    credentials: 'include',
-  }),
   tagTypes: ['User'],
+  baseQuery: async (args, api, extraOptions) => {
+    const result = await baseQuery(args, api, extraOptions);
+
+    if (result.error?.status === 401) {
+      api.dispatch(logout());
+      window.location.href = '/link-expired';
+    }
+
+    return result;
+  },
 
   endpoints: (builder) => ({
     sendMagicLink: builder.mutation<{ message: string }, { email: string }>({

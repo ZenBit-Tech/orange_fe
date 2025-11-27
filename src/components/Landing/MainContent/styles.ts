@@ -174,7 +174,10 @@ export const ButtonStyled = styled(Button)`
   width: 192px;
   border-radius: 12px;
   text-transform: none;
-  box-shadow: none;
+  &:hover {
+    box-shadow: none;
+    background-color: ${theme.palette.surface.primary.hover};
+  }
   ${({ theme }) => theme.breakpoints.down('md')} {
     font-size: ${theme.typography.sizes.size14};
     align-self: center;

@@ -80,10 +80,13 @@ export const BoxProgress = styled(Box)(({ theme }) => ({
   marginRight: theme.spacing(1),
 }));
 
-export const StyledLinearProgress = styled(LinearProgress)({
+export const StyledLinearProgress = styled(LinearProgress)(({ theme }) => ({
   height: 6,
   borderRadius: 5,
-});
+  '& .MuiLinearProgress-bar': {
+    backgroundColor: theme.palette.baseColors.green[700],
+  },
+}));
 
 export const StatusText = styled(Typography)(({ theme }) => ({
   marginTop: theme.spacing(0.5),

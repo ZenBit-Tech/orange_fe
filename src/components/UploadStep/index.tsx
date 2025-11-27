@@ -7,7 +7,7 @@ import type { RootState } from '@/store';
 import { DropzoneFile } from '../DropzoneFile';
 import { OCRSpinner } from '../ProgressIndicator';
 import { UploadErrorState } from '../UploadErrorState';
-import { ButtonContainer, Spacer, StyledButton, StyledTitle, WrapperUpload } from './styles';
+import { ButtonContainer, StyledButton, StyledTitle, WrapperUpload } from './styles';
 import { useBloodTestValidation } from './useBloodTestValidation';
 import { UPLOAD_STATUS, useUploadStep } from './useUploadStep';
 
@@ -74,7 +74,6 @@ export const UploadStep: React.FC<UploadStepProps> = ({ onContinue }) => {
             handleRemoveFile={handleRemoveFile}
           />
           <ButtonContainer>
-            <Spacer />
             <StyledButton
               variant="contained"
               onClick={handleContinue}

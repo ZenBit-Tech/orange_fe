@@ -14,9 +14,11 @@ import {
 
 import { AuthVerify } from './components/AuthVerify';
 import { ProtectedRoute } from './components/ProtectedRoute';
+import { useAuth } from './hooks/useAuth';
 import { globalStyle } from './style';
 
 export const App: React.FC = () => {
+  useAuth();
   return (
     <>
       <GlobalStyles styles={globalStyle} />
