@@ -6,6 +6,7 @@ import { authApi } from './authApi';
 import authSlice from './authSlice';
 import { bloodTestApi } from './bloodTestApi';
 import bloodTestReducer from './bloodTestSlice/bloodTestSlice';
+import darkThemeReducer from './darkThemeSlice';
 import { ocrApi } from './ocrApi';
 import { reviewCustomizeApi } from './reviewCustomizeApi';
 
@@ -18,6 +19,7 @@ export const store = configureStore({
     bloodTest: bloodTestReducer,
     analysis: analysisSlice,
     auth: authSlice,
+    darkTheme: darkThemeReducer,
   },
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware()
