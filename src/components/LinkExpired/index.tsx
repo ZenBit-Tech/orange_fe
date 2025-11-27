@@ -1,15 +1,14 @@
-import React from 'react';
-
 import { CiClock2 } from 'react-icons/ci';
 
-import { useTranslation } from 'react-i18next';
+import { t } from 'i18next';
 
 import { BtnSubmit } from '@/components/LoginForm/styles';
 
 import { CenteredText, WrapperForm } from './styles';
+import { useLinkExpired } from './useLinkExpired';
 
 export const LinkExpired: React.FC = () => {
-  const { t } = useTranslation();
+  const { handleNavigate } = useLinkExpired();
 
   return (
     <WrapperForm component="div" aria-labelledby="link-expired-title">
@@ -19,7 +18,9 @@ export const LinkExpired: React.FC = () => {
         <p>{t('Form.login-form.linkExpiredSubtitle')}</p>
       </CenteredText>
 
-      <BtnSubmit type="button">{t('Form.login-form.resendLink')}</BtnSubmit>
+      <BtnSubmit type="button" onClick={handleNavigate}>
+        {t('Form.login-form.resendLink')}
+      </BtnSubmit>
     </WrapperForm>
   );
 };

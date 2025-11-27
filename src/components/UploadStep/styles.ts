@@ -39,9 +39,10 @@ export const ButtonContainer = styled(Box)(({ theme }) => ({
   boxSizing: 'border-box',
   [theme.breakpoints.up('md')]: {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'column',
+    alignItems: 'flex-end',
     margin: '15px',
-    padding: '0 50px 0 20px',
+    padding: '0 55px 0 20px',
   },
 }));
 
@@ -69,6 +70,10 @@ export const StyledButton = styled(Button)(({ theme }) => ({
   height: '42px',
   borderRadius: '12px',
   textTransform: 'none',
+  ':hover': {
+    boxShadow: 'none',
+    backgroundColor: theme.palette.surface.primary.hover,
+  },
   [theme.breakpoints.up('md')]: {
     width: '192px',
   },

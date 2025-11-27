@@ -4,6 +4,8 @@ import { MdOutlineInsertDriveFile as FileIcon } from 'react-icons/md';
 
 import type { DropzoneInputProps, DropzoneRootProps } from 'react-dropzone';
 
+import { theme } from '@/theme';
+
 import { UPLOAD_STATUS, type UploadStatus } from '../UploadStep/useUploadStep';
 import {
   BoxProgress,
@@ -106,7 +108,7 @@ export const DropzoneFile: React.FC<DropzoneFileProps> = ({
                       )}
                       <StatusText
                         variant="caption"
-                        color={isUploading ? 'textSecondary' : statusDisplay.color}
+                        color={isUploading ? 'textSecondary' : theme.palette.baseColors.green[700]}
                       >
                         {isUploading
                           ? `${t('Upload.button-uploading')} ${progress}%`

@@ -35,6 +35,7 @@ export const Wrapper = styled(Box)<WrapperProps>`
   img {
     width: 125px;
     height: 40px;
+    object-fit: contain;
   }
   ${({ theme }) => theme.breakpoints.down('md')} {
     padding: 5px 0;
@@ -86,7 +87,10 @@ export const StartedButton = styled(Button)`
   font-family: ${theme.typography.general.fontInter};
   background-color: ${({ theme }) => theme.palette.surface.primary.default};
   text-transform: none;
-  box-shadow: none;
+  &:hover {
+    box-shadow: none;
+    background-color: ${theme.palette.surface.primary.hover};
+  }
   ${({ theme }) => theme.breakpoints.down('md')} {
     width: 100%;
   }
