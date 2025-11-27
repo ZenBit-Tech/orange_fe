@@ -298,6 +298,23 @@ declare module '@mui/material/styles' {
         };
       };
     };
+    markerIndicatorColors: {
+      marker: {
+        red: string;
+        yellow: string;
+        green: string;
+      };
+      pointer: {
+        red: string;
+        yellow: string;
+        green: string;
+      };
+      text: {
+        red: string;
+        yellow: string;
+        green: string;
+      };
+    };
 
     donutGradients: {
       moreThan85: {
