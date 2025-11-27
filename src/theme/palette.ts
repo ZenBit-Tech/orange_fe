@@ -21,6 +21,7 @@ const baseColors = {
     700: '#009966',
     800: '#007A52',
     900: '#1A5E3A',
+    1001: '#4E6D56',
   },
   grey: {
     0: '#FFFFFF',
@@ -136,6 +137,11 @@ export const palette: PaletteOptions = {
       red: baseColors.red[700],
       yellow: baseColors.yellow[700],
       green: baseColors.green[800],
+      darkMode: {
+        red: baseColors.red[50],
+        yellow: baseColors.yellow[50],
+        green: baseColors.green[50],
+      },
     },
   },
 
@@ -149,7 +155,15 @@ export const palette: PaletteOptions = {
     bgTeriarty: baseColors.grey[100],
     bgError: baseColors.red[100],
     bgTransparent: 'transparent',
+    darkMode: {
+      white: baseColors.grey[900],
+      bgPrimary: baseColors.grey[950],
+      bgSecondary: baseColors.grey[800],
+      bgTeriarty: baseColors.grey[700],
+      bgError: '#554545',
+    },
   },
+
   textIcons: {
     textPrimary: baseColors.grey[950],
     textSecondary: baseColors.grey[800],
@@ -158,9 +172,21 @@ export const palette: PaletteOptions = {
     contrast: baseColors.grey[50],
     errorLight: baseColors.red[300],
     errorMain: baseColors.red[600],
-    errorMainSecondary: baseColors.red[700],
+    errorDark: baseColors.red[700],
     success: baseColors.green[600],
     primary: baseColors.green[900],
+    darkMode: {
+      textPrimary: baseColors.grey[100],
+      textSecondary: baseColors.grey[200],
+      textTeriartry: baseColors.grey[300],
+      textGrey: baseColors.grey[400],
+      contrast: baseColors.grey[50],
+      errorLight: baseColors.red[700],
+      errorMain: baseColors.red[500],
+      errorDark: baseColors.red[50],
+      success: baseColors.green[400],
+      primary: baseColors.green[100],
+    },
   },
 
   border: {
@@ -169,10 +195,22 @@ export const palette: PaletteOptions = {
     error: baseColors.red[600],
     borderPrimary: baseColors.green[600],
     success: baseColors.green[600],
+    darkMode: {
+      default: baseColors.grey[700],
+      defaultHover: baseColors.grey[600],
+      error: baseColors.red[500],
+      borderPrimary: baseColors.green[800],
+      success: baseColors.green[600],
+    },
     markerInterpretation: {
       borderRed: baseColors.red[200],
       borderYellow: '#FFDE99',
       borderGreen: baseColors.green[100],
+      darkMode: {
+        borderRed: baseColors.red.second900,
+        borderYellow: baseColors.yellow[900],
+        borderGreen: baseColors.green[900],
+      },
     },
   },
 
@@ -180,12 +218,20 @@ export const palette: PaletteOptions = {
     disabled: {
       disabledLight: baseColors.grey[100],
       disabledDark: baseColors.grey[200],
+      darkMode: {
+        disabledLight: baseColors.grey[700],
+        disabledDark: baseColors.grey[600],
+      },
     },
     error: {
       hoverOutlinedButton: baseColors.red[50],
       light: baseColors.red[100],
       default: baseColors.red[600],
       hover: baseColors.red[700],
+      darkMode: {
+        light: baseColors.red.second900,
+        hover: baseColors.red.second900,
+      },
     },
     primary: {
       default: baseColors.green[700],
@@ -193,11 +239,51 @@ export const palette: PaletteOptions = {
       light: baseColors.green[100],
       hover: baseColors.green[800],
       press: baseColors.green[900],
+      darkMode: {
+        hoverLight: baseColors.green[800],
+        light: baseColors.green[800],
+        hover: baseColors.green[500],
+      },
     },
     cardBackground: {
       cardBgPastelRed: baseColors.red[100],
       cardBgPastelYellow: baseColors.yellow[50],
       cardBgPastelGreen: baseColors.pastel.green[100],
+      cardBgPastelBlue: baseColors.pastel.blue[100],
+      cardBgPastelCyan: baseColors.pastel.cyan[100],
+      cardBgPastelTeal: baseColors.green[50],
+      darkMode: {
+        cardBgPastelRed: '#7F4D4D',
+        cardBgPastelYellow: '#655336',
+        cardBgPastelGreen: baseColors.green[1001],
+        cardBgPastelBlue: '#344654',
+        cardBgPastelCyan: '#365256',
+        cardBgPastelTeal: '#3D5645',
+      },
+    },
+    cardBorder: {
+      cardBorderPastelBlue: baseColors.pastel.blue[300],
+      cardBorderPastelTeal: baseColors.green[200],
+      cardBorderPastelGreen: baseColors.pastel.green[300],
+      cardBorderPastelCyan: baseColors.pastel.cyan[300],
+      darkMode: {
+        cardBorderPastelBlue: '#5487AE',
+        cardBorderPastelTeal: '#5C8C6B',
+        cardBorderPastelGreen: '#6D9175',
+        cardBorderPastelCyan: '#548289',
+      },
+    },
+    cardIcon: {
+      cardIconGreen: baseColors.pastel.green[200],
+      cardIconBlue: baseColors.pastel.blue[200],
+      cardIconCyan: baseColors.pastel.cyan[200],
+      cardIconTeal: baseColors.green[100],
+      darkMode: {
+        cardIconGreen: baseColors.green[1001],
+        cardIconBlue: '#85A6BF',
+        cardIconCyan: '#59848A',
+        cardIconTeal: '#74A682',
+      },
     },
   },
 
@@ -313,6 +399,11 @@ declare module '@mui/material/styles' {
         red: string;
         yellow: string;
         green: string;
+        darkMode: {
+          red: string;
+          yellow: string;
+          green: string;
+        };
       };
     };
 
@@ -341,6 +432,25 @@ declare module '@mui/material/styles' {
       bgTeriarty: string;
       bgError: string;
       bgTransparent: string;
+      darkMode: {
+        white: string;
+        bgPrimary: string;
+        bgSecondary: string;
+        bgTeriarty: string;
+        bgError: string;
+        darkMode: {
+          textPrimary: string;
+          textSecondary: string;
+          textTeriartry: string;
+          textGrey: string;
+          contrast: string;
+          errorLight: string;
+          errorMain: string;
+          errorDark: string;
+          success: string;
+          primary: string;
+        };
+      };
     };
     textIcons: {
       textPrimary: string;
@@ -350,9 +460,21 @@ declare module '@mui/material/styles' {
       contrast: string;
       errorLight: string;
       errorMain: string;
-      errorMainSecondary: string;
+      errorDark: string;
       success: string;
       primary: string;
+      darkMode: {
+        textPrimary: string;
+        textSecondary: string;
+        textTeriartry: string;
+        textGrey: string;
+        contrast: string;
+        errorLight: string;
+        errorMain: string;
+        errorDark: string;
+        success: string;
+        primary: string;
+      };
     };
 
     border: {
@@ -361,10 +483,22 @@ declare module '@mui/material/styles' {
       error: string;
       borderPrimary: string;
       success: string;
+      darkMode: {
+        default: string;
+        defaultHover: string;
+        error: string;
+        borderPrimary: string;
+        success: string;
+      };
       markerInterpretation: {
         borderRed: string;
         borderYellow: string;
         borderGreen: string;
+        darkMode: {
+          borderRed: string;
+          borderYellow: string;
+          borderGreen: string;
+        };
       };
     };
 
@@ -372,12 +506,20 @@ declare module '@mui/material/styles' {
       disabled: {
         disabledLight: string;
         disabledDark: string;
+        darkMode: {
+          disabledLight: string;
+          disabledDark: string;
+        };
       };
       error: {
         hoverOutlinedButton: string;
         light: string;
         default: string;
         hover: string;
+        darkMode: {
+          light: string;
+          hover: string;
+        };
       };
       primary: {
         default: string;
@@ -385,11 +527,53 @@ declare module '@mui/material/styles' {
         light: string;
         hover: string;
         press: string;
+        darkMode: {
+          hoverLight: string;
+          light: string;
+          hover: string;
+        };
       };
       cardBackground: {
         cardBgPastelRed: string;
         cardBgPastelYellow: string;
         cardBgPastelGreen: string;
+        cardBgPastelBlue: string;
+        cardBgPastelCyan: string;
+        cardBgPastelTeal: string;
+        darkMode: {
+          cardBgPastelRed: string;
+          cardBgPastelYellow: string;
+          cardBgPastelGreen: string;
+          cardBgPastelBlue: string;
+          cardBgPastelCyan: string;
+          cardBgPastelTeal: string;
+        };
+      };
+
+      cardBorder: {
+        cardBorderPastelBlue: string;
+        cardBorderPastelTeal: string;
+        cardBorderPastelGreen: string;
+        cardBorderPastelCyan: string;
+        darkMode: {
+          cardBorderPastelBlue: string;
+          cardBorderPastelTeal: string;
+          cardBorderPastelGreen: string;
+          cardBorderPastelCyan: string;
+        };
+      };
+
+      cardIcon: {
+        cardIconGreen: string;
+        cardIconBlue: string;
+        cardIconCyan: string;
+        cardIconTeal: string;
+        darkMode: {
+          cardIconGreen: string;
+          cardIconBlue: string;
+          cardIconCyan: string;
+          cardIconTeal: string;
+        };
       };
     };
 
@@ -515,6 +699,11 @@ declare module '@mui/material/styles' {
         red?: string;
         yellow?: string;
         green?: string;
+        darkMode: {
+          red?: string;
+          yellow?: string;
+          green?: string;
+        };
       };
     };
 
@@ -528,6 +717,13 @@ declare module '@mui/material/styles' {
       bgTeriarty?: string;
       bgError?: string;
       bgTransparent?: string;
+      darkMode: {
+        white?: string;
+        bgPrimary?: string;
+        bgSecondary?: string;
+        bgTeriarty?: string;
+        bgError?: string;
+      };
     };
 
     textIcons?: {
@@ -538,9 +734,21 @@ declare module '@mui/material/styles' {
       contrast?: string;
       errorLight?: string;
       errorMain?: string;
-      errorMainSecondary?: string;
+      errorDark?: string;
       success?: string;
       primary?: string;
+      darkMode: {
+        textPrimary?: string;
+        textSecondary?: string;
+        textTeriartry?: string;
+        textGrey?: string;
+        contrast?: string;
+        errorLight?: string;
+        errorMain?: string;
+        errorDark?: string;
+        success?: string;
+        primary?: string;
+      };
     };
 
     border?: {
@@ -549,10 +757,22 @@ declare module '@mui/material/styles' {
       error?: string;
       borderPrimary?: string;
       success?: string;
+      darkMode: {
+        default?: string;
+        defaultHover?: string;
+        error?: string;
+        borderPrimary?: string;
+        success?: string;
+      };
       markerInterpretation?: {
         borderRed?: string;
         borderYellow?: string;
         borderGreen?: string;
+        darkMode: {
+          borderRed?: string;
+          borderYellow?: string;
+          borderGreen?: string;
+        };
       };
     };
 
@@ -560,12 +780,20 @@ declare module '@mui/material/styles' {
       disabled?: {
         disabledLight?: string;
         disabledDark?: string;
+        darkMode?: {
+          disabledLight?: string;
+          disabledDark?: string;
+        };
       };
       error?: {
         hoverOutlinedButton?: string;
         light?: string;
         default?: string;
         hover?: string;
+        darkMode?: {
+          light?: string;
+          hover?: string;
+        };
       };
       primary?: {
         default?: string;
@@ -573,11 +801,53 @@ declare module '@mui/material/styles' {
         light?: string;
         hover?: string;
         press?: string;
+        darkMode?: {
+          hoverLight?: string;
+          light?: string;
+          hover?: string;
+        };
       };
       cardBackground?: {
         cardBgPastelRed?: string;
         cardBgPastelYellow?: string;
         cardBgPastelGreen?: string;
+        cardBgPastelBlue?: string;
+        cardBgPastelCyan?: string;
+        cardBgPastelTeal?: string;
+        darkMode?: {
+          cardBgPastelRed?: string;
+          cardBgPastelYellow?: string;
+          cardBgPastelGreen?: string;
+          cardBgPastelBlue?: string;
+          cardBgPastelCyan?: string;
+          cardBgPastelTeal?: string;
+        };
+      };
+
+      cardBorder?: {
+        cardBorderPastelBlue?: string;
+        cardBorderPastelTeal?: string;
+        cardBorderPastelGreen?: string;
+        cardBorderPastelCyan?: string;
+        darkMode?: {
+          cardBorderPastelBlue?: string;
+          cardBorderPastelTeal?: string;
+          cardBorderPastelGreen?: string;
+          cardBorderPastelCyan?: string;
+        };
+      };
+
+      cardIcon?: {
+        cardIconGreen?: string;
+        cardIconBlue?: string;
+        cardIconCyan?: string;
+        cardIconTeal?: string;
+        darkMode?: {
+          cardIconGreen?: string;
+          cardIconBlue?: string;
+          cardIconCyan?: string;
+          cardIconTeal?: string;
+        };
       };
     };
 

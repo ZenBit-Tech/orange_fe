@@ -48,3 +48,7 @@ export const Divider = styled(Box)`
     width: 100%;
   }
 `;
+
+export const FlipButton = styled(Box)`
+  cursor: pointer;
+`;

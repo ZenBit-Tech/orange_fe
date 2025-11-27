@@ -78,13 +78,13 @@ export const StyledStepLabel = styled(StepLabel, {
     color: theme.palette.textIcons?.primary,
     fontWeight: theme.typography.weights.weight500,
     ...(error && {
-      color: theme.palette.textIcons?.errorMainSecondary,
+      color: theme.palette.textIcons?.errorDark,
     }),
   },
   [`& .${stepLabelClasses.label}.${stepLabelClasses.completed}`]: {
     color: theme.palette.textIcons?.primary,
   },
   [`& .${stepLabelClasses.label}.${stepLabelClasses.error}`]: {
-    color: theme.palette.textIcons?.errorMainSecondary,
+    color: theme.palette.textIcons?.errorDark,
   },
 }));

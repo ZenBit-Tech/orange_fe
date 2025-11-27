@@ -20,9 +20,7 @@ export const StyledStepIconRoot = styled('div')<{
     backgroundColor: ownerState.error
       ? theme.palette.surface.error.light
       : theme.palette.surface.primary.light,
-    color: ownerState.error
-      ? theme.palette.textIcons?.errorMainSecondary
-      : theme.palette.textIcons?.primary,
+    color: ownerState.error ? theme.palette.textIcons?.errorDark : theme.palette.textIcons?.primary,
   }),
   ...(ownerState.completed &&
     !ownerState.error && {
@@ -31,6 +29,6 @@ export const StyledStepIconRoot = styled('div')<{
     }),
   ...(ownerState.error && {
     backgroundColor: theme.palette.surface.error.light,
-    color: theme.palette.textIcons?.errorMainSecondary,
+    color: theme.palette.textIcons?.errorDark,
   }),
 }));
