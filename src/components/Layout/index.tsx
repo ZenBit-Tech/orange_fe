@@ -18,7 +18,7 @@ interface PageWrapperProps {
 
 const PageWrapper = styled(Box)<PageWrapperProps>`
   display: flex;
-  min-height: 100vh;
+  min-height: 100%;
   flex-direction: column;
   position: relative;
   ${({ auth }) =>
@@ -29,7 +29,10 @@ const PageWrapper = styled(Box)<PageWrapperProps>`
 `;
 
 const Main = styled.div`
-  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
 `;
 
 export const PageLayout: React.FC<PageLayoutProps> = ({ children, transparentNav, auth }) => (

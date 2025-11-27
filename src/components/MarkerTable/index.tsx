@@ -8,6 +8,8 @@ import { BREAKPOINTS } from '@/constants/marker';
 import type { MarkerData } from '@/constants/marker';
 import { theme } from '@/theme';
 
+import { MobileMarkerCard } from '../AnalysisResultStep/MarkerCardsTable';
+import { MobileMarkerCardWrapper } from '../AnalysisResultStep/MarkerCardsTable/styles';
 import {
   AddMarkerButton,
   AddMarkerButtonText,
@@ -28,6 +30,7 @@ interface MarkerTableProps {
   onAddMarker: () => void;
   onValidate: (id: number) => void;
   onValidateAll: () => void;
+  isFinalStep: boolean;
 }
 
 export interface MarkerTableRef {
@@ -83,6 +86,7 @@ export const MarkerTable = forwardRef<MarkerTableRef, MarkerTableProps>(
       onAddMarker,
       onValidate,
       onValidateAll,
+      isFinalStep,
     },
     ref,
   ) => {
@@ -96,17 +100,39 @@ export const MarkerTable = forwardRef<MarkerTableRef, MarkerTableProps>(
       [onValidateAll],
     );
 
+    if (isFinalStep && isSmallScreen) {
+      return (
+        <MobileMarkerCardWrapper>
+          {markers.map((marker) => (
+            <MobileMarkerCard
+              key={marker.id}
+              id={marker.id}
+              name={marker.name}
+              value={marker.value}
+              unit={marker.unit}
+              referenceMin={marker.referenceMin}
+              referenceMax={marker.referenceMax}
+              status={marker.status}
+              interpretation={marker.interpretation}
+            />
+          ))}
+        </MobileMarkerCardWrapper>
+      );
+    }
+
     return (
       <>
         <MarkerTableContainer>
-          <MarkerTableBody>
+          <MarkerTableBody className={`${isFinalStep ? 'final-step' : ''}`}>
             <MarkerTableContent>
-              <MarkerTableHeader>
+              <MarkerTableHeader className={`${isFinalStep ? 'final-step' : ''}`}>
                 <MarkerTableHeaderCell>{t('review.marker')}</MarkerTableHeaderCell>
                 <MarkerTableHeaderCell>{t('review.value')}</MarkerTableHeaderCell>
-                <MarkerTableHeaderCell>{t('review.unit')}</MarkerTableHeaderCell>
+                {!isFinalStep && <MarkerTableHeaderCell>{t('review.unit')}</MarkerTableHeaderCell>}
                 <MarkerTableHeaderCell>{t('review.normal-range')}</MarkerTableHeaderCell>
-                <MarkerTableHeaderCell></MarkerTableHeaderCell>
+                {isFinalStep && (
+                  <MarkerTableHeaderCell>{t('review.interpretation')}</MarkerTableHeaderCell>
+                )}
               </MarkerTableHeader>
 
               {markers.map((marker) => (
@@ -118,19 +144,22 @@ export const MarkerTable = forwardRef<MarkerTableRef, MarkerTableProps>(
                   onUnitChange={onUnitChange}
                   onDelete={onDelete}
                   onValidate={onValidate}
+                  isFinalStep={isFinalStep}
                 />
               ))}
             </MarkerTableContent>
           </MarkerTableBody>
 
-          {!isSmallScreen && (
+          {isFinalStep && !isSmallScreen ? <MarkerTableFooter></MarkerTableFooter> : ''}
+
+          {!isSmallScreen && !isFinalStep && (
             <MarkerTableFooter>
               <AddMarkerBtn onClick={onAddMarker} />
             </MarkerTableFooter>
           )}
         </MarkerTableContainer>
 
-        {isSmallScreen && <AddMarkerBtn onClick={onAddMarker} />}
+        {isSmallScreen && !isFinalStep && <AddMarkerBtn onClick={onAddMarker} />}
       </>
     );
   },

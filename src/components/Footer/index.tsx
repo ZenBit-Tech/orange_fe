@@ -16,8 +16,12 @@ export const Footer: React.FC<FooterProps> = ({ transparent = true }) => {
       <div>{t('Footer.logo')}</div>
       <Divider>
         <a href="mailto:plasma.ai.project@gmail.com">{t('Footer.help')}</a>
-        <Link to="/privacy">{t('Footer.privacy')}</Link>
-        <Link to="/terms">{t('Footer.terms')}</Link>
+        <Link to="/privacy" onClick={() => window.scrollTo(0, 0)}>
+          {t('Footer.privacy')}
+        </Link>
+        <Link to="/terms" onClick={() => window.scrollTo(0, 0)}>
+          {t('Footer.terms')}
+        </Link>
       </Divider>
     </Wrapper>
   );

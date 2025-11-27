@@ -68,14 +68,15 @@ export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onCont
     toggleExerciseGuidelines,
     toggleSupplementRecommendations,
     toggleMedicationGuidance,
+    isLoading,
   } = useReviewCustomizeStep({ onContinue });
 
   return (
     <WrapperReviewCustomize>
-      <TitleText>{t('review.title')}</TitleText>
-      <DescriptionText>{t('review.description')}</DescriptionText>
+      <TitleText variant="h5">{t('review.title')}</TitleText>
+      <DescriptionText variant="body1">{t('review.description')}</DescriptionText>
 
-      <SectionTitle>{t('review.patient-info-title')}</SectionTitle>
+      <SectionTitle variant="subtitle1">{t('review.patient-info-title')}</SectionTitle>
 
       <FormRow>
         <FormField>
@@ -104,7 +105,9 @@ export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onCont
               },
             }}
           />
-          {validationErrors.birthYear && <FormErrorText>{t('review.fill-field')}</FormErrorText>}
+          {validationErrors.birthYear && (
+            <FormErrorText variant="body2">{t('review.fill-field')}</FormErrorText>
+          )}
         </FormField>
 
         <FormField>
@@ -134,7 +137,9 @@ export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onCont
             }}
           />
 
-          {validationErrors.gender && <FormErrorText>{t('review.fill-field')}</FormErrorText>}
+          {validationErrors.gender && (
+            <FormErrorText variant="body2">{t('review.fill-field')}</FormErrorText>
+          )}
         </FormField>
         {gender === GENDER.FEMALE && (
           <FormField className="full-width">
@@ -163,12 +168,14 @@ export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onCont
                 },
               }}
             />
-            {validationErrors.pregnancy && <FormErrorText>{t('review.fill-field')}</FormErrorText>}
+            {validationErrors.pregnancy && (
+              <FormErrorText variant="body2">{t('review.fill-field')}</FormErrorText>
+            )}
           </FormField>
         )}
       </FormRow>
 
-      <SectionTitle>{t('review.review-markers-title')}</SectionTitle>
+      <SectionTitle variant="subtitle1">{t('review.review-markers-title')}</SectionTitle>
       <MarkerTable
         ref={markerTableRef}
         markers={markers}
@@ -179,11 +186,12 @@ export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onCont
         onAddMarker={handleAddMarker}
         onValidate={validateMarker}
         onValidateAll={validateAllMarkers}
+        isFinalStep={false}
       />
 
       <CustomizeSection>
-        <SectionTitle>{t('review.customize-analyze-title')}</SectionTitle>
-        <DescriptionText className="customize-description">
+        <SectionTitle variant="subtitle1">{t('review.customize-analyze-title')}</SectionTitle>
+        <DescriptionText variant="body1" className="customize-description">
           {t('review.customize-analyze-description')}
         </DescriptionText>
 
@@ -196,8 +204,10 @@ export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onCont
               <Salad />
             </CheckboxIcon>
             <CheckboxContent>
-              <CheckboxTitle>{t('review.advice-title')}</CheckboxTitle>
-              <CheckboxDescription>{t('review.advice-description')}</CheckboxDescription>
+              <CheckboxTitle variant="subtitle1">{t('review.advice-title')}</CheckboxTitle>
+              <CheckboxDescription variant="body2">
+                {t('review.advice-description')}
+              </CheckboxDescription>
             </CheckboxContent>
             <StyledCheckbox
               size="medium"
@@ -214,8 +224,10 @@ export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onCont
               <Pill />
             </CheckboxIcon>
             <CheckboxContent>
-              <CheckboxTitle>{t('review.recommendations-title')}</CheckboxTitle>
-              <CheckboxDescription>{t('review.recommendations-description')}</CheckboxDescription>
+              <CheckboxTitle variant="subtitle1">{t('review.recommendations-title')}</CheckboxTitle>
+              <CheckboxDescription variant="body2">
+                {t('review.recommendations-description')}
+              </CheckboxDescription>
             </CheckboxContent>
             <StyledCheckbox
               size="medium"
@@ -232,8 +244,10 @@ export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onCont
               <Dumbbell />
             </CheckboxIcon>
             <CheckboxContent>
-              <CheckboxTitle>{t('review.guidelines-title')}</CheckboxTitle>
-              <CheckboxDescription>{t('review.guidelines-description')}</CheckboxDescription>
+              <CheckboxTitle variant="subtitle1">{t('review.guidelines-title')}</CheckboxTitle>
+              <CheckboxDescription variant="body2">
+                {t('review.guidelines-description')}
+              </CheckboxDescription>
             </CheckboxContent>
             <StyledCheckbox
               size="medium"
@@ -250,8 +264,10 @@ export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onCont
               <Stethoscope />
             </CheckboxIcon>
             <CheckboxContent>
-              <CheckboxTitle>{t('review.insights-title')}</CheckboxTitle>
-              <CheckboxDescription>{t('review.insights-description')}</CheckboxDescription>
+              <CheckboxTitle variant="subtitle1">{t('review.insights-title')}</CheckboxTitle>
+              <CheckboxDescription variant="body2">
+                {t('review.insights-description')}
+              </CheckboxDescription>
             </CheckboxContent>
             <StyledCheckbox
               size="medium"
@@ -263,8 +279,10 @@ export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onCont
       </CustomizeSection>
 
       <TextAreaContainer>
-        <AdditionalTitle>{t('review.additional-questions-title')}</AdditionalTitle>
-        <AdditionalDescriptionText>
+        <AdditionalTitle variant="subtitle1">
+          {t('review.additional-questions-title')}
+        </AdditionalTitle>
+        <AdditionalDescriptionText variant="body1">
           {t('review.additional-questions-description')}
         </AdditionalDescriptionText>
         <StyledTextAreaField
@@ -289,7 +307,9 @@ export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onCont
             {t('review.back')}
           </BackButton>
         )}
-        <ContinueButton onClick={handleContinue}>{t('review.continue')}</ContinueButton>
+        <ContinueButton onClick={handleContinue} disabled={isLoading}>
+          {t('review.continue')}
+        </ContinueButton>
       </ButtonContainer>
     </WrapperReviewCustomize>
   );

@@ -1,0 +1,45 @@
+import { useRef } from 'react';
+
+import { MarkerTable } from '@/components/MarkerTable';
+import type { MarkerTableRef } from '@/components/MarkerTable';
+import { useMarkerTable } from '@/components/MarkerTable/useMarkerTable';
+
+import type { FullBloodTestAnalysisResult } from '../types';
+
+interface BloodTestSummaryProps {
+  data?: FullBloodTestAnalysisResult;
+}
+
+export const BloodTestSummary = ({ data }: BloodTestSummaryProps) => {
+  const markerTableRef = useRef<MarkerTableRef>(null);
+  const {
+    markers,
+    validateAllMarkers,
+    handleNameChange,
+    handleValueChange,
+    handleUnitChange,
+    handleDelete,
+    handleAddMarker,
+    validateMarker,
+  } = useMarkerTable({
+    isFinalStep: true,
+    markersInterpretations: data?.markersInterpretations,
+  });
+
+  return (
+    <>
+      <MarkerTable
+        ref={markerTableRef}
+        markers={markers}
+        onNameChange={handleNameChange}
+        onValueChange={handleValueChange}
+        onUnitChange={handleUnitChange}
+        onDelete={handleDelete}
+        onAddMarker={handleAddMarker}
+        onValidate={validateMarker}
+        onValidateAll={validateAllMarkers}
+        isFinalStep={true}
+      />
+    </>
+  );
+};

@@ -14,3 +14,39 @@ export interface BloodTestValidation {
   reason: string;
   confidence: 'low' | 'medium' | 'high';
 }
+
+export interface BloodTestSummaryData {
+  bloodTestSummary: {
+    overallWellnessScore: number;
+    summary: string;
+  };
+  markersInterpretations: Array<{
+    id: number;
+    name: string;
+    value: string;
+    unit: string;
+    referenceMin: number;
+    referenceMax: number;
+    status: string;
+    interpretation: {
+      about: string;
+      whyImportant: string;
+      contextualNote: string;
+    };
+  }>;
+}
+
+export interface MarkersInterpretations {
+  id: number;
+  name: string;
+  value: string;
+  unit: string;
+  referenceMin: number;
+  referenceMax: number;
+  status: string;
+  interpretation: {
+    about: string;
+    whyImportant: string;
+    contextualNote: string;
+  };
+}

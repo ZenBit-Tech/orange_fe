@@ -40,9 +40,8 @@ export const ButtonContainer = styled(Box)(({ theme }) => ({
   [theme.breakpoints.up('md')]: {
     display: 'flex',
     flexDirection: 'row',
-    width: '85%',
     margin: '15px',
-    padding: 0,
+    padding: '0 50px 0 20px',
   },
 }));
 

@@ -3,14 +3,21 @@ import { styled } from '@mui/material/styles';
 
 export const MarkerRow = styled(Box)(({ theme }) => ({
   display: 'grid',
-  gridTemplateColumns: '2.5fr 1fr 1.5fr 1.2fr 60px',
+  alignItems: 'center',
+  gridTemplateColumns: '2.5fr 1fr 1fr 1.2fr 60px',
   gap: theme.spacing(2),
   padding: theme.spacing(2, 2, 1, 2),
-  alignItems: 'flex-start',
   minWidth: '900px',
+  overflow: 'visible',
+  position: 'relative',
 
   '&:last-child': {
     borderBottom: 'none',
+  },
+
+  '&.last-step': {
+    gridTemplateColumns: '2fr 0.7fr 2.5fr 0fr 0px',
+    gap: 0,
   },
 }));
 
@@ -18,6 +25,11 @@ export const MarkerCell = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   gap: theme.spacing(0.5),
+
+  '&.cell-markers': {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
 }));
 
 export const MobileLabel = styled(Typography)(({ theme }) => ({
@@ -166,4 +178,185 @@ export const ErrorText = styled(Typography)(({ theme }) => ({
   top: '100%',
   left: 0,
   whiteSpace: 'nowrap',
+}));
+
+export const MarkerCircle = styled(Box)(({ theme }) => ({
+  width: '12px',
+  height: '12px',
+  borderRadius: '50%',
+  border: '1px solid',
+  marginRight: theme.spacing(1),
+  '&.Normal': {
+    backgroundColor: theme.palette?.baseColors?.green?.[500],
+    border: `1px solid ${theme.palette?.baseColors?.green?.[50]}`,
+  },
+  '&.Slightly-High': {
+    backgroundColor: theme.palette?.baseColors?.yellow?.[300],
+    border: `1px solid ${theme.palette?.baseColors?.green?.[50]}`,
+  },
+  '&.High': {
+    backgroundColor: theme.palette?.baseColors?.red?.[400],
+    border: `1px solid ${theme.palette?.baseColors?.green?.[50]}`,
+  },
+  '&.Slightly-Low': {
+    backgroundColor: theme.palette?.baseColors?.yellow?.[300],
+    border: `1px solid ${theme.palette?.baseColors?.green?.[50]}`,
+  },
+  '&.Low': {
+    backgroundColor: theme.palette?.baseColors?.red?.[400],
+    border: `1px solid ${theme.palette?.baseColors?.green?.[50]}`,
+  },
+  '&.Critical': {
+    backgroundColor: theme.palette?.baseColors?.red?.[500],
+    border: `1px solid ${theme.palette?.baseColors?.green?.[50]}`,
+  },
+}));
+
+export const MarkerText = styled(Typography)(({ theme }) => ({
+  fontFamily: theme.typography.general.fontInter,
+  fontSize: theme.typography.sizes.size16,
+  color: theme.palette.textIcons.textPrimary,
+  fontWeight: theme.typography.weights.weight400,
+
+  '&.normal-range': {
+    fontSize: theme.typography.sizes.size14,
+  },
+}));
+
+export const MarkerInterpretation = styled(Box)(({ theme }) => ({
+  width: '106px',
+  fontFamily: theme.typography.general.fontInter,
+  fontSize: theme.typography.sizes.size14,
+  color: theme.palette.textIcons.textPrimary,
+  fontWeight: theme.typography.weights.weight400,
+  padding: theme.spacing(0.5),
+  marginRight: theme.spacing(4),
+  borderRadius: '8px',
+  textAlign: 'center',
+
+  '&.Normal': {
+    color: theme.palette.markerIndicatorColors.text.green,
+    backgroundColor: theme.palette.surface.cardBackground.cardBgPastelGreen,
+    border: `1px solid ${theme.palette.border.markerInterpretation.borderGreen}`,
+  },
+  '&.Slightly-High': {
+    color: theme.palette.markerIndicatorColors.text.yellow,
+    backgroundColor: theme.palette.surface.cardBackground.cardBgPastelYellow,
+    border: `1px solid ${theme.palette.border.markerInterpretation.borderYellow}`,
+  },
+  '&.High': {
+    color: theme.palette.markerIndicatorColors.text.red,
+    backgroundColor: theme.palette.surface.cardBackground.cardBgPastelRed,
+    border: `1px solid ${theme.palette.border.markerInterpretation.borderRed}`,
+  },
+  '&.Slightly-Low': {
+    color: theme.palette.markerIndicatorColors.text.yellow,
+    backgroundColor: theme.palette.surface.cardBackground.cardBgPastelYellow,
+    border: `1px solid ${theme.palette.border.markerInterpretation.borderYellow}`,
+  },
+  '&.Low': {
+    color: theme.palette.markerIndicatorColors.text.red,
+    backgroundColor: theme.palette.surface.cardBackground.cardBgPastelRed,
+    border: `1px solid ${theme.palette.border.markerInterpretation.borderRed}`,
+  },
+  '&.Critical': {
+    color: theme.palette.baseColors.red[800],
+    backgroundColor: theme.palette.baseColors.red[200],
+    border: `1px solid ${theme.palette.baseColors.red[300]}`,
+  },
+}));
+
+export const TooltipContainer = styled(Box)(() => ({
+  position: 'relative',
+  display: 'inline-flex',
+
+  '&:hover .tooltip-content': {
+    opacity: 1,
+    visibility: 'visible',
+  },
+}));
+
+export const TooltipContent = styled(Box)(({ theme }) => ({
+  position: 'fixed',
+  backgroundColor: theme.palette.baseColors.green[50],
+  padding: '16px',
+  borderRadius: '12px',
+  border: `1px solid ${theme.palette.border.borderPrimary}`,
+  fontSize: theme.typography.sizes.size14,
+  lineHeight: '1.6',
+  width: '320px',
+  overflow: 'visible',
+  textAlign: 'left',
+  whiteSpace: 'pre-wrap',
+  wordWrap: 'break-word',
+  opacity: 0,
+  visibility: 'hidden',
+  transition: 'opacity 0.2s ease, visibility 0.2s ease',
+  pointerEvents: 'none',
+  zIndex: 99999,
+
+  '&::after': {
+    content: '""',
+    position: 'absolute',
+    right: '-10px',
+    top: '50%',
+    transform: 'translateY(-50%)',
+    width: 0,
+    height: 0,
+    borderTop: '8px solid transparent',
+    borderBottom: '8px solid transparent',
+    borderLeft: `10px solid ${theme.palette.border.borderPrimary}`,
+  },
+
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    right: '-7px',
+    top: '50%',
+    transform: 'translateY(-50%)',
+    width: 0,
+    height: 0,
+    borderTop: '7px solid transparent',
+    borderBottom: '7px solid transparent',
+    borderLeft: '9px solid white',
+    zIndex: 1,
+  },
+}));
+
+export const QuestionIconButton = styled(IconButton)(({ theme }) => ({
+  width: '40px',
+  height: '40px',
+  color: theme.palette.textIcons.textGrey[400],
+}));
+
+export const TooltipTitle = styled(Typography)(({ theme }) => ({
+  fontSize: theme.typography.sizes.size18,
+  fontWeight: theme.typography.weights.weight400,
+  color: theme.palette.textIcons.textPrimary,
+  fontFamily: theme.typography.general.fontInter,
+  marginBottom: theme.spacing(1),
+  lineHeight: '1.5',
+}));
+
+export const TooltipDescription = styled(Typography)(({ theme }) => ({
+  fontSize: theme.typography.sizes.size14,
+  fontWeight: theme.typography.weights.weight400,
+  color: theme.palette.textIcons.textSecondary,
+  fontFamily: theme.typography.general.fontInter,
+  marginBottom: theme.spacing(1),
+  lineHeight: '1.6',
+}));
+
+export const TooltipImportance = styled(Typography)(({ theme }) => ({
+  fontSize: theme.typography.sizes.size14,
+  fontWeight: theme.typography.weights.weight400,
+  color: theme.palette.textIcons.textSecondary,
+  fontFamily: theme.typography.general.fontInter,
+  margin: '0',
+  lineHeight: '1.6',
+
+  '& strong': {
+    fontWeight: theme.typography.weights.weight600,
+    color: theme.palette.textIcons.textPrimary,
+  },
 }));

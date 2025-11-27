@@ -68,7 +68,7 @@ const baseColors = {
       100: '#F5FAF6',
       200: '#E2F3E5',
       300: '#CFEBD5',
-      green: '#00AD4E',
+      green: '#00ad4eff',
     },
     cyan: {
       100: '#F6FCFC',
@@ -104,6 +104,21 @@ export const palette: PaletteOptions = {
   },
   success: {
     main: '#2E7D32',
+  },
+
+  donutGradients: {
+    moreThan85: {
+      startColor: '#32AC84',
+      endColor: '#047E56',
+    },
+    moreThan65: {
+      startColor: '#9BC74B',
+      endColor: '#FE9901',
+    },
+    moreThan0: {
+      startColor: '#FF9509',
+      endColor: '#FF3B01',
+    },
   },
 
   markerIndicatorColors: {
@@ -301,6 +316,39 @@ declare module '@mui/material/styles' {
       };
     };
 
+    donutGradients: {
+      moreThan85: {
+        startColor: string;
+        endColor: string;
+      };
+      moreThan65: {
+        startColor: string;
+        endColor: string;
+      };
+      moreThan0: {
+        startColor: string;
+        endColor: string;
+      };
+    };
+
+    markerIndicatorColors: {
+      marker: {
+        red: string;
+        yellow: string;
+        green: string;
+      };
+      pointer: {
+        red: string;
+        yellow: string;
+        green: string;
+      };
+      text: {
+        red: string;
+        yellow: string;
+        green: string;
+      };
+    };
+
     backgrounds: {
       mainGradient: string;
       bgPrivacy: string;
@@ -452,6 +500,21 @@ declare module '@mui/material/styles' {
           300: string;
           blue: string;
         };
+      };
+    };
+
+    donutGradients: {
+      moreThan85: {
+        startColor?: string;
+        endColor?: string;
+      };
+      moreThan65: {
+        startColor?: string;
+        endColor?: string;
+      };
+      moreThan0: {
+        startColor?: string;
+        endColor?: string;
       };
     };
 

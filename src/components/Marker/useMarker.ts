@@ -6,6 +6,7 @@ interface UseMarkerProps {
   id: number;
   name: string;
   value: string;
+  status?: string;
   hasError: boolean;
   onNameChange: (id: number, name: string) => void;
   onValueChange: (id: number, value: string) => void;
