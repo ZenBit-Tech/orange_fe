@@ -5,7 +5,9 @@ import { useAppSelector } from '@/store';
 import { isTokenExpired } from '@/utils/auth';
 
 export const ProtectedRoute = () => {
-  const token = useAppSelector((state) => state.auth.token);
+  const reduxToken = useAppSelector((state) => state.auth.token);
+
+  const token = reduxToken || localStorage.getItem('accessToken');
   useAuth();
 
   if (!token) {

@@ -25,10 +25,10 @@ export const RecommendationHeader = styled(Box)<{ bgIcon?: string }>`
 `;
 
 export const RecommendationTitle = styled(Typography)`
-  color: ${theme.palette.text.primary};
+  color: ${({ theme }) => theme.palette.text.primary};
   font-weight: ${theme.typography.weights.weight500};
 `;
 
 export const RecommendationDescription = styled('li')`
-  color: ${theme.palette.textIcons.textSecondary};
+  color: ${({ theme }) => theme.palette.textIcons.textSecondary};
 `;

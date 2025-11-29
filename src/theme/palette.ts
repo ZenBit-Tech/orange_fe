@@ -1,6 +1,8 @@
 import { green, grey } from '@mui/material/colors';
 import type { PaletteOptions } from '@mui/material/styles';
 
+import bgLandingSectionDark from '@/assets/bgLandingSectionDark.png';
+import bgPrivacyDark from '@/assets/bgPrivacyDark.png';
 import bgLandingSection from '@/assets/landing-herobackground.webp';
 import bgPrivacy from '@/assets/privacy-section-bg.webp';
 
@@ -148,7 +150,9 @@ export const palette: PaletteOptions = {
   backgrounds: {
     mainGradient: `linear-gradient(270deg, ${GRADIENT_GREEN_1} 26.68%, ${GRADIENT_GREEN_2} 52.54%, ${GRADIENT_GREEN_3} 74.16%, ${GRADIENT_GREEN_4} 103.78%)`,
     bgPrivacy: bgPrivacy,
+    bgPrivacyDark: bgPrivacyDark,
     bgLandingSection: bgLandingSection,
+    bgLandingSectionDark: bgLandingSectionDark,
     white: baseColors.grey[0],
     bgPrimary: baseColors.grey[50],
     bgSecondary: baseColors.grey.second50,
@@ -171,7 +175,7 @@ export const palette: PaletteOptions = {
     textGrey: baseColors.grey[400],
     contrast: baseColors.grey[50],
     errorLight: baseColors.red[300],
-    errorMain: baseColors.red[600],
+    errorMain: baseColors.red[500],
     errorDark: baseColors.red[700],
     success: baseColors.green[600],
     primary: baseColors.green[900],
@@ -180,11 +184,11 @@ export const palette: PaletteOptions = {
       textSecondary: baseColors.grey[200],
       textTeriartry: baseColors.grey[300],
       textGrey: baseColors.grey[400],
-      contrast: baseColors.grey[50],
+      contrast: baseColors.green[800],
       errorLight: baseColors.red[700],
-      errorMain: baseColors.red[500],
+      errorMain: baseColors.red[50],
       errorDark: baseColors.red[50],
-      success: baseColors.green[400],
+      success: baseColors.grey[50],
       primary: baseColors.green[100],
     },
   },
@@ -255,7 +259,7 @@ export const palette: PaletteOptions = {
       darkMode: {
         cardBgPastelRed: '#7F4D4D',
         cardBgPastelYellow: '#655336',
-        cardBgPastelGreen: baseColors.green[1001],
+        cardBgPastelGreen: '#37493B',
         cardBgPastelBlue: '#344654',
         cardBgPastelCyan: '#365256',
         cardBgPastelTeal: '#3D5645',
@@ -425,7 +429,9 @@ declare module '@mui/material/styles' {
     backgrounds: {
       mainGradient: string;
       bgPrivacy: string;
+      bgPrivacyDark: string;
       bgLandingSection: string;
+      bgLandingSectionDark: string;
       white: string;
       bgPrimary: string;
       bgSecondary: string;
@@ -710,7 +716,9 @@ declare module '@mui/material/styles' {
     backgrounds?: {
       mainGradient?: string;
       bgPrivacy?: string;
+      bgPrivacyDark?: string;
       bgLandingSection?: string;
+      bgLandingSectionDark?: string;
       white?: string;
       bgPrimary?: string;
       bgSecondary?: string;

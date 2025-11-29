@@ -3,6 +3,8 @@ import React from 'react';
 import { LogOut, Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+import { useAppSelector } from '@/store';
+
 import {
   LogoutButton,
   MenuButton,
@@ -33,11 +35,16 @@ export const Nav: React.FC<NavProps> = ({ transparent = true }) => {
     currentPath,
     handleTop,
   } = useNav();
+  const isTheme = useAppSelector((state) => state.darkTheme.isBlackTheme);
   return (
     <Wrapper transparent={transparent}>
       <Link to="/" onClick={handleTop}>
         <img
-          src={'https://res.cloudinary.com/dhixqnug0/image/upload/v1761741378/logo_tnioc1.png'}
+          src={
+            isTheme
+              ? 'https://res.cloudinary.com/dhixqnug0/image/upload/v1764334113/logo-dark_p4pnfz.png'
+              : 'https://res.cloudinary.com/dhixqnug0/image/upload/v1761741378/logo_tnioc1.png'
+          }
           alt={t('Form.nav.logoAlt')}
         />
       </Link>

@@ -5,7 +5,7 @@ import { Lock } from 'lucide-react';
 import { theme } from '@/theme';
 
 export const WrapperPrivacy = styled(Box)`
-  background: ${theme.palette.backgrounds.white};
+  background: ${({ theme }) => theme.palette.backgrounds.white};
   display: flex;
   justify-content: center;
   z-index: 10;
@@ -18,7 +18,8 @@ export const WrapperSection = styled(Box)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-image: url(${theme.palette.backgrounds.bgPrivacy});
+  background-image: url(${({ theme }) => theme.palette.backgrounds.bgPrivacy});
+  border-radius: 20px;
   background-size: cover;
   width: 1282px;
   height: 724px;
@@ -35,8 +36,11 @@ export const StyledIcon = styled(Lock)<{ isVisible?: boolean }>`
   margin-bottom: 40px;
   border-radius: 8px;
   padding: 8px;
-  background-color: ${theme.palette.backgrounds.white};
-  color: ${theme.palette.baseColors.green[500]};
+  background-color: ${({ theme }) => theme.palette.backgrounds.bgPrimary};
+  color: ${({ theme }) =>
+    theme.palette.mode === 'dark'
+      ? theme.palette.baseColors.grey[50]
+      : theme.palette.baseColors.green[500]};
   flex-shrink: 0;
   opacity: 0;
   transform: translateY(100px);
@@ -86,7 +90,7 @@ export const StyledTypographyDescription = styled(Typography)<{ isVisible?: bool
   margin-top: 32px;
   font-family: ${theme.typography.general.fontInter};
   font-size: ${theme.typography.sizes.size16};
-  color: ${theme.palette.textIcons?.textPrimary};
+  color: ${({ theme }) => theme.palette.textIcons?.textPrimary};
   text-align: center;
   opacity: 0;
   transform: translateY(100px);
@@ -111,8 +115,12 @@ export const WrapperCards = styled(Box)<{ isVisible?: boolean }>`
   flex-direction: row;
   justify-content: center;
   border-radius: 20px;
-  background-color: ${theme.palette.backgrounds.white};
-  border: 1px solid ${theme.palette.baseColors.grey[200]};
+  background-color: ${({ theme }) => theme.palette.backgrounds.white};
+  border: 1px solid
+    ${({ theme }) =>
+      theme.palette.mode === 'dark'
+        ? theme.palette.backgrounds.white
+        : theme.palette.baseColors.grey[200]};
   padding: 40px 24px;
   margin-top: 40px;
   opacity: 0;

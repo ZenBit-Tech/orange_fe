@@ -1,9 +1,7 @@
 import { Box, styled } from '@mui/material';
 
-import { theme } from '@/theme';
-
 export const WrapperContent = styled(Box)`
-  background-image: url(${theme.palette.backgrounds.bgLandingSection});
+  background-image: url(${({ theme }) => theme.palette.backgrounds.bgLandingSection});
   background-position: center;
   box-sizing: border-box;
   background-size: cover;
