@@ -6,6 +6,7 @@ export const WrapperWork = styled(Box)`
   display: flex;
   justify-content: center;
   padding-top: 50px;
+  background: ${({ theme }) => theme.palette.backgrounds.white};
 `;
 
 export const WrapperTitle = styled(Box)`

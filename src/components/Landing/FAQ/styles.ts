@@ -10,7 +10,8 @@ export const WrapperFAQ = styled(Box)`
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-image: url(${({ theme }) => theme.palette.backgrounds.bgLandingSection});
+  background-image: ${({ theme }) =>
+    theme.palette.mode === 'dark' ? 'none' : `url(${theme.palette.backgrounds.bgLandingSection})`};
   background-position: center;
   background-repeat: no-repeat;
   height: 100%;

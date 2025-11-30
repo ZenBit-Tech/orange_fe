@@ -10,6 +10,7 @@ export const WrapperAbout = styled(Box)`
   text-align: center;
   padding-bottom: 176px;
   padding-top: 30px;
+  background: ${({ theme }) => theme.palette.backgrounds.white};
 `;
 
 export const WrapperDescription = styled(Box)`
