@@ -160,11 +160,12 @@ export const StyledCard = styled(Box)`
     font-size: ${theme.typography.sizes.size16};
   }
   ${({ theme }) => theme.breakpoints.down('md')} {
-    background-color: ${theme.palette.backgrounds.white};
+    background-color: ${({ theme }) => theme.palette.backgrounds.white};
     padding: 24px;
     border-radius: 20px;
     margin-bottom: 24px;
-    border: 1px solid ${theme.palette.baseColors.grey[200]};
+    border: ${({ theme }) =>
+      theme.palette.mode === 'dark' ? 'none' : `1px solid ${theme.palette.baseColors.grey[200]}`};
     h5 {
       font-size: ${theme.typography.sizes.size18};
     }

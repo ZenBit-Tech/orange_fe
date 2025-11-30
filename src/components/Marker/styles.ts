@@ -278,7 +278,10 @@ export const TooltipContainer = styled(Box)(() => ({
 
 export const TooltipContent = styled(Box)(({ theme }) => ({
   position: 'fixed',
-  backgroundColor: theme.palette.baseColors.green[50],
+  backgroundColor:
+    theme.palette.mode === 'dark'
+      ? theme.palette.backgrounds.bgPrimary
+      : theme.palette.baseColors.green[50],
   padding: '16px',
   borderRadius: '12px',
   border: `1px solid ${theme.palette.border.borderPrimary}`,
@@ -318,7 +321,7 @@ export const TooltipContent = styled(Box)(({ theme }) => ({
     height: 0,
     borderTop: '7px solid transparent',
     borderBottom: '7px solid transparent',
-    borderLeft: '9px solid white',
+    borderLeft: `9px solid ${theme.palette.mode === 'dark' ? 'black' : 'white'}`,
     zIndex: 1,
   },
 }));

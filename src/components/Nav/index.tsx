@@ -84,13 +84,14 @@ export const Nav: React.FC<NavProps> = ({ transparent = true }) => {
             <StartedButton variant="contained" onClick={handleNavigate}>
               {t('Form.nav.button.get-started')}
             </StartedButton>
-            {links.map((link, index) => {
-              return (
-                <a key={index} href={link.path} onClick={handleToggleMenu}>
-                  {link.link}
-                </a>
-              );
-            })}
+            {showLinks &&
+              links.map((link, index) => {
+                return (
+                  <a key={index} href={link.path} onClick={handleToggleMenu}>
+                    {link.link}
+                  </a>
+                );
+              })}
             {isAuthenticated && (
               <LogoutButton onClick={handleLogout}>
                 <LogOut /> {t('Form.nav.button.log-out')}

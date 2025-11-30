@@ -186,7 +186,7 @@ export const palette: PaletteOptions = {
       textGrey: baseColors.grey[400],
       contrast: baseColors.green[800],
       errorLight: baseColors.red[700],
-      errorMain: baseColors.red[50],
+      errorMain: baseColors.red[500],
       errorDark: baseColors.red[50],
       success: baseColors.grey[50],
       primary: baseColors.green[100],

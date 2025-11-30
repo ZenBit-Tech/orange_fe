@@ -21,7 +21,10 @@ const PageWrapper = styled(Box, {
   minHeight: '100%',
   flexDirection: 'column',
   position: 'relative',
-  backgroundImage: auth ? `url(${theme.palette.backgrounds.bgLandingSection})` : 'none',
+  backgroundImage:
+    auth || theme.palette.mode === 'dark'
+      ? `url(${theme.palette.backgrounds.bgLandingSection})`
+      : 'none',
   backgroundRepeat: 'no-repeat',
   backgroundSize: 'cover',
   backgroundPosition: 'center center',
