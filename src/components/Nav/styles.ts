@@ -11,7 +11,7 @@ export const Wrapper = styled(Box)<WrapperProps>`
   box-sizing: border-box;
   justify-content: space-between;
   background: ${({ transparent, theme }) =>
-    transparent ? 'transparent' : theme.palette.backgrounds.bgPrimary};
+    transparent ? theme.palette.backgrounds.bgTransparent : theme.palette.backgrounds.bgPrimary};
   border-bottom: ${({ transparent, theme }) =>
     transparent ? 'none' : `1px solid ${theme.palette.border.default}`};
   padding: 5px 50px;

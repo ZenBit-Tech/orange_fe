@@ -12,7 +12,7 @@ export const Wrapper = styled(Box)<WrapperProps>`
   align-items: center;
   justify-content: space-between;
   background: ${({ transparent, theme }) =>
-    transparent ? 'transparent' : theme.palette.backgrounds.bgPrimary};
+    transparent ? theme.palette.backgrounds.bgTransparent : theme.palette.backgrounds.bgPrimary};
   border-top: ${({ transparent, theme }) =>
     transparent || theme.palette.mode === 'dark'
       ? 'none'
