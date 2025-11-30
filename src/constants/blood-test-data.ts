@@ -1,3 +1,5 @@
+import { Marker } from '@/components/Marker';
+
 export interface MarkerValue {
   id: number;
   name: string;
@@ -50,3 +52,19 @@ export interface MarkersInterpretations {
     contextualNote: string;
   };
 }
+export interface Marker {
+  id: string;
+  name: string;
+  language: string;
+  pattern: string;
+  category: string;
+  alternativeNames: string;
+  unit: string;
+  referenceMin: string;
+  referenceMax: string;
+  isActive: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export type MarkersArr = Marker[];

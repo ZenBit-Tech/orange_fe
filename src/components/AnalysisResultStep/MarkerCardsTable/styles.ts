@@ -4,22 +4,17 @@ import { styled } from '@mui/material/styles';
 export const MobileMarkerCardWrapper = styled(Box)(({ theme }) => ({
   border: `1px solid ${theme.palette.border.default}`,
   borderRadius: '12px',
-  marginBottom: theme.spacing(8),
+  margin: theme.spacing(2, 0),
   backgroundColor: theme.palette.backgrounds.white,
   overflow: 'hidden',
 }));
 
 export const CardContainer = styled(Box)(({ theme }) => ({
-  borderBottom: `1px solid ${theme.palette.border.default}`,
+  borderTop: `1px solid ${theme.palette.border.default}`,
   backgroundColor: theme.palette.backgrounds.white,
   overflow: 'hidden',
-
-  '&.last-child': {
-    borderBottom: 'unset',
-  },
-
-  '&.expanded': {
-    borderBottom: 'unset',
+  '&:nth-child(1)': {
+    borderTop: 'unset',
   },
 }));
 

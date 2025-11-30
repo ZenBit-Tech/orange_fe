@@ -26,7 +26,7 @@ export const VALIDATION_PATTERNS = {
 } as const;
 
 export const BREAKPOINTS = {
-  MD: 768,
+  LG: 1000,
 } as const;
 export interface MarkerData {
   id: number;

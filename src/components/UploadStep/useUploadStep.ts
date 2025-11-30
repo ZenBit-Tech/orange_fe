@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 import { useAppDispatch } from '@/store';
 import { setExtractedData } from '@/store/bloodTestSlice/bloodTestSlice';
+import { useLazyGetMarkersQuery } from '@/store/markersApi';
 import { useExtractDataFromImageMutation } from '@/store/ocrApi';
 
 export const UPLOAD_STATUS = {
@@ -28,6 +29,7 @@ export const useUploadStep = () => {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const [extractData] = useExtractDataFromImageMutation();
+  const [triggerGetMarkers] = useLazyGetMarkersQuery();
 
   const hasFiles = files.length > 0;
   const isUploading = uploadStatus === UPLOAD_STATUS.Uploading;
@@ -48,6 +50,7 @@ export const useUploadStep = () => {
     try {
       const base64Data = await fileToBase64(file);
       const extractedResult = await extractData({ data: base64Data }).unwrap();
+      await triggerGetMarkers().unwrap();
 
       dispatch(setExtractedData(extractedResult));
       return true;

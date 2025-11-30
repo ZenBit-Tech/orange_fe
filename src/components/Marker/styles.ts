@@ -19,12 +19,35 @@ export const MarkerRow = styled(Box)(({ theme }) => ({
     gridTemplateColumns: '2fr 0.7fr 2.5fr 0fr 0px',
     gap: 0,
   },
+
+  '&.step-2': {
+    minWidth: 'unset',
+    gridTemplateColumns: '1fr 1fr',
+    padding: 0,
+    marginBottom: theme.spacing(3),
+  },
+
+  '&.step-2-buttons': {
+    display: 'flex',
+    justifyContent: 'space-between',
+    minWidth: 'unset',
+    gridTemplateColumns: 'unset',
+    padding: 0,
+  },
 }));
 
 export const MarkerCell = styled(Box)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   gap: theme.spacing(0.5),
+
+  '&.top': {
+    marginTop: theme.spacing(3),
+  },
+
+  '&.bottom': {
+    marginBottom: theme.spacing(3),
+  },
 
   '&.cell-markers': {
     flexDirection: 'row',
@@ -62,14 +85,20 @@ export const StyledAutocomplete = styled(Autocomplete)(({ theme }) => ({
       borderColor: theme.palette.textIcons.errorMain,
     },
   },
+
   '& .MuiInputLabel-root': {
     fontFamily: theme.typography.general.fontInter,
     fontSize: theme.typography.sizes.size12,
     color: theme.palette.textIcons.textTeriartry,
+
+    '&.Mui-focused': {
+      color: `${theme.palette.baseColors.green[700]} !important`,
+    },
+    '&.Mui-error': {
+      color: `${theme.palette.textIcons.errorMain} !important`,
+    },
   },
-  '& .MuiInputLabel-root.Mui-error': {
-    color: theme.palette.textIcons.errorMain,
-  },
+
   [theme.breakpoints.down('md')]: {
     '& .MuiOutlinedInput-root': {
       fontSize: theme.typography.sizes.size16,
@@ -117,6 +146,10 @@ export const StyledTextField = styled(TextField)(({ theme }) => ({
     '& .MuiInputLabel-root': {
       fontSize: theme.typography.sizes.size14,
     },
+  },
+
+  '& .MuiInputLabel-root.Mui-focused': {
+    color: theme.palette.baseColors.green[700],
   },
 }));
 

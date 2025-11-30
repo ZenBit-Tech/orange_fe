@@ -33,6 +33,7 @@ export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepPro
     handleValueChange,
     handleUnitChange,
     handleDelete,
+    handleReferenceChange,
     handleAddMarker,
     validateMarker,
   } = useMarkerTable({
@@ -61,6 +62,8 @@ export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepPro
     if (newValue !== null) {
       setBirthYear(newValue);
       setValidationErrors((prev) => ({ ...prev, birthYear: false }));
+    } else {
+      setBirthYear(null);
     }
   };
 
@@ -74,6 +77,8 @@ export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepPro
         setPregnancy(null);
         setValidationErrors((prev) => ({ ...prev, pregnancy: false }));
       }
+    } else {
+      setGender(null);
     }
   };
 
@@ -82,6 +87,8 @@ export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepPro
     if (newValue !== null) {
       setPregnancy(newValue);
       setValidationErrors((prev) => ({ ...prev, pregnancy: false }));
+    } else {
+      setPregnancy(null);
     }
   };
 
@@ -100,8 +107,12 @@ export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepPro
 
     return !hasErrors;
   };
+
   const handleContinue = async () => {
     const isValid = validateForm();
+
+    const hasTopErrors = !birthYear || !gender || (gender === 'female' && pregnancy === null);
+
     if (isValid && !hasMarkerErrors) {
       try {
         const result = await sendDataToBackend({
@@ -123,11 +134,10 @@ export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepPro
 
         onContinue();
       } catch (err) {
-        if (validationErrors.birthYear || validationErrors.gender || validationErrors.pregnancy) {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
         throw new Error(`Error ${err}!`);
       }
+    } else if (hasTopErrors) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
@@ -168,5 +178,6 @@ export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepPro
     toggleSupplementRecommendations,
     toggleMedicationGuidance,
     isLoading,
+    handleReferenceChange,
   };
 };

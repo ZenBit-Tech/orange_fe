@@ -204,6 +204,7 @@
     "delete-marker-description": "Are you sure you want to delete the marker? You can add it back manually later if you change your mind.",
     "delete-marker-cancel": "Cancel",
     "delete-marker-confirm": "Yes, delete",
+    "save": "Save",
     "value-required": "Value is required",
     "fill-field": "Fill this field to continue"
   },

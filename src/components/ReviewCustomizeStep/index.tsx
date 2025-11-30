@@ -41,7 +41,6 @@ interface ReviewCustomizeStepProps {
 
 export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onContinue, onBack }) => {
   const {
-    markerTableRef,
     markers,
     handleNameChange,
     handleValueChange,
@@ -68,12 +67,13 @@ export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onCont
     toggleExerciseGuidelines,
     toggleSupplementRecommendations,
     toggleMedicationGuidance,
+    handleReferenceChange,
     isLoading,
   } = useReviewCustomizeStep({ onContinue });
 
   return (
     <WrapperReviewCustomize>
-      <TitleText variant="h5">{t('review.title')}</TitleText>
+      <TitleText>{t('review.title')}</TitleText>
       <DescriptionText variant="body1">{t('review.description')}</DescriptionText>
 
       <SectionTitle variant="subtitle1">{t('review.patient-info-title')}</SectionTitle>
@@ -101,6 +101,9 @@ export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onCont
                   borderRadius: '12px',
                   border: `1px solid ${theme.palette.border.default}`,
                   marginTop: theme.spacing(0.5),
+                  '& .MuiAutocomplete-option[aria-selected="true"]': {
+                    backgroundColor: `${theme.palette.surface.primary.default} !important`,
+                  },
                 }),
               },
             }}
@@ -132,6 +135,9 @@ export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onCont
                   borderRadius: '12px',
                   border: `1px solid ${theme.palette.border.default}`,
                   marginTop: theme.spacing(0.5),
+                  '& .MuiAutocomplete-option[aria-selected="true"]': {
+                    backgroundColor: `${theme.palette.surface.primary.default} !important`,
+                  },
                 }),
               },
             }}
@@ -164,6 +170,9 @@ export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onCont
                     borderRadius: '12px',
                     border: `1px solid ${theme.palette.border.default}`,
                     marginTop: theme.spacing(0.5),
+                    '& .MuiAutocomplete-option[aria-selected="true"]': {
+                      backgroundColor: `${theme.palette.surface.primary.default} !important`,
+                    },
                   }),
                 },
               }}
@@ -177,11 +186,11 @@ export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onCont
 
       <SectionTitle variant="subtitle1">{t('review.review-markers-title')}</SectionTitle>
       <MarkerTable
-        ref={markerTableRef}
         markers={markers}
         onNameChange={handleNameChange}
         onValueChange={handleValueChange}
         onUnitChange={handleUnitChange}
+        onReferenceChange={handleReferenceChange}
         onDelete={handleDelete}
         onAddMarker={handleAddMarker}
         onValidate={validateMarker}

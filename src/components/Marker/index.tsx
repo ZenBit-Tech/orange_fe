@@ -36,7 +36,7 @@ const getStatusClassName = (statusValue: string | undefined): string => {
   return MARKER_STATUS_CLASSES[statusValue as keyof typeof MARKER_STATUS_CLASSES] || '';
 };
 
-interface MarkerProps {
+export interface MarkerProps {
   id: number;
   name: string;
   value: string;
@@ -49,6 +49,7 @@ interface MarkerProps {
   onNameChange: (id: number, name: string) => void;
   onValueChange: (id: number, value: string) => void;
   onUnitChange: (id: number, unit: string) => void;
+  onReferenceChange: (id: number, refMin: string, refMax: string) => void;
   onDelete: (id: number) => void;
   onValidate: (id: number) => void;
   isFinalStep: boolean;
@@ -68,6 +69,7 @@ export const Marker = memo<MarkerProps>(
     onNameChange,
     onValueChange,
     onUnitChange,
+    onReferenceChange,
     onDelete,
     onValidate,
     isFinalStep,
@@ -83,15 +85,20 @@ export const Marker = memo<MarkerProps>(
       handleUnitChange,
       showNameError,
       showValueError,
+      refMin,
+      refMax,
     } = useMarker({
       id,
       name,
       value,
       status,
       hasError,
+      refMin: referenceMin,
+      refMax: referenceMax,
       onNameChange,
       onValueChange,
       onUnitChange,
+      onReferenceChange,
       onDelete,
       onValidate,
     });
@@ -111,6 +118,9 @@ export const Marker = memo<MarkerProps>(
     };
 
     const statusClassName = getStatusClassName(status);
+
+    const displayRefMin = referenceMin || refMin;
+    const displayRefMax = referenceMax || refMax;
 
     return (
       <>
@@ -140,6 +150,9 @@ export const Marker = memo<MarkerProps>(
                       borderRadius: '12px',
                       border: `1px solid ${theme.palette.border.default}`,
                       marginTop: theme.spacing(0.5),
+                      '& .MuiAutocomplete-option[aria-selected="true"]': {
+                        backgroundColor: `${theme.palette.surface.primary.default} !important`,
+                      },
                     }),
                   },
                 }}
@@ -182,6 +195,9 @@ export const Marker = memo<MarkerProps>(
                       borderRadius: '12px',
                       border: `1px solid ${theme.palette.border.default}`,
                       marginTop: theme.spacing(0.5),
+                      '& .MuiAutocomplete-option[aria-selected="true"]': {
+                        backgroundColor: `${theme.palette.surface.primary.default} !important`,
+                      },
                     }),
                   },
                 }}
@@ -191,7 +207,7 @@ export const Marker = memo<MarkerProps>(
             <MarkerCell>
               <MobileLabel>{t('review.normal-range')}</MobileLabel>
               <NormalRangeText>
-                {referenceMin} - {referenceMax} {unit}
+                {displayRefMin} - {displayRefMax} {unit}
               </NormalRangeText>
             </MarkerCell>
 
@@ -222,14 +238,14 @@ export const Marker = memo<MarkerProps>(
             <MarkerCell className="cell-markers">
               <HealthBar
                 position={calculateMarkerPosition(+value, {
-                  referenceMin: Number(referenceMin),
-                  referenceMax: Number(referenceMax),
+                  referenceMin: Number(displayRefMin),
+                  referenceMax: Number(displayRefMax),
                 })}
                 status={status ?? ''}
                 isSmallScreen={false}
               />
               <MarkerText className="normal-range">
-                {referenceMin} - {referenceMax} {unit}
+                {displayRefMin} - {displayRefMax} {unit}
               </MarkerText>
             </MarkerCell>
 

@@ -26,6 +26,7 @@ interface MarkerTableProps {
   onNameChange: (id: number, name: string) => void;
   onValueChange: (id: number, value: string) => void;
   onUnitChange: (id: number, unit: string) => void;
+  onReferenceChange: (id: number, refMin: string, refMax: string) => void;
   onDelete: (id: number) => void;
   onAddMarker: () => void;
   onValidate: (id: number) => void;
@@ -39,7 +40,7 @@ export interface MarkerTableRef {
 
 const useIsSmallScreen = () => {
   const [isMobile, setIsMobile] = useState(() =>
-    typeof window !== 'undefined' ? window.innerWidth < BREAKPOINTS.MD : false,
+    typeof window !== 'undefined' ? window.innerWidth < BREAKPOINTS.LG : false,
   );
 
   useEffect(() => {
@@ -48,7 +49,7 @@ const useIsSmallScreen = () => {
     const handleResize = () => {
       clearTimeout(timeoutId);
       timeoutId = setTimeout(() => {
-        setIsMobile(window.innerWidth < BREAKPOINTS.MD);
+        setIsMobile(window.innerWidth < BREAKPOINTS.LG);
       }, 150);
     };
 
@@ -82,6 +83,7 @@ export const MarkerTable = forwardRef<MarkerTableRef, MarkerTableProps>(
       onNameChange,
       onValueChange,
       onUnitChange,
+      onReferenceChange,
       onDelete,
       onAddMarker,
       onValidate,
@@ -114,6 +116,14 @@ export const MarkerTable = forwardRef<MarkerTableRef, MarkerTableProps>(
               referenceMax={marker.referenceMax}
               status={marker.status}
               interpretation={marker.interpretation}
+              hasError={marker.hasError}
+              onNameChange={onNameChange}
+              onValueChange={onValueChange}
+              onUnitChange={onUnitChange}
+              onReferenceChange={onReferenceChange}
+              onDelete={onDelete}
+              onValidate={onValidate}
+              isFinalStep={isFinalStep}
             />
           ))}
         </MobileMarkerCardWrapper>
@@ -122,44 +132,84 @@ export const MarkerTable = forwardRef<MarkerTableRef, MarkerTableProps>(
 
     return (
       <>
-        <MarkerTableContainer>
-          <MarkerTableBody className={`${isFinalStep ? 'final-step' : ''}`}>
-            <MarkerTableContent>
-              <MarkerTableHeader className={`${isFinalStep ? 'final-step' : ''}`}>
-                <MarkerTableHeaderCell>{t('review.marker')}</MarkerTableHeaderCell>
-                <MarkerTableHeaderCell>{t('review.value')}</MarkerTableHeaderCell>
-                {!isFinalStep && <MarkerTableHeaderCell>{t('review.unit')}</MarkerTableHeaderCell>}
-                <MarkerTableHeaderCell>{t('review.normal-range')}</MarkerTableHeaderCell>
-                {isFinalStep && (
-                  <MarkerTableHeaderCell>{t('review.interpretation')}</MarkerTableHeaderCell>
-                )}
-              </MarkerTableHeader>
-
+        {isSmallScreen && !isFinalStep ? (
+          <>
+            <MobileMarkerCardWrapper>
               {markers.map((marker) => (
-                <Marker
+                <MobileMarkerCard
                   key={marker.id}
-                  {...marker}
+                  id={marker.id}
+                  name={marker.name}
+                  value={marker.value}
+                  unit={marker.unit}
+                  referenceMin={marker.referenceMin}
+                  referenceMax={marker.referenceMax}
+                  status={marker.status}
+                  interpretation={marker.interpretation}
+                  hasError={marker.hasError}
                   onNameChange={onNameChange}
                   onValueChange={onValueChange}
                   onUnitChange={onUnitChange}
+                  onReferenceChange={onReferenceChange}
                   onDelete={onDelete}
                   onValidate={onValidate}
                   isFinalStep={isFinalStep}
                 />
               ))}
-            </MarkerTableContent>
-          </MarkerTableBody>
+            </MobileMarkerCardWrapper>
+            <AddMarkerBtn onClick={onAddMarker} />
+          </>
+        ) : (
+          <>
+            <MarkerTableContainer>
+              <MarkerTableBody className={`${isFinalStep ? 'final-step' : ''}`}>
+                <MarkerTableContent>
+                  <MarkerTableHeader className={`${isFinalStep ? 'final-step' : ''}`}>
+                    <MarkerTableHeaderCell>{t('review.marker')}</MarkerTableHeaderCell>
+                    <MarkerTableHeaderCell>{t('review.value')}</MarkerTableHeaderCell>
+                    {!isFinalStep && (
+                      <MarkerTableHeaderCell>{t('review.unit')}</MarkerTableHeaderCell>
+                    )}
+                    <MarkerTableHeaderCell>{t('review.normal-range')}</MarkerTableHeaderCell>
+                    {isFinalStep && (
+                      <MarkerTableHeaderCell>{t('review.interpretation')}</MarkerTableHeaderCell>
+                    )}
+                  </MarkerTableHeader>
 
-          {isFinalStep && !isSmallScreen ? <MarkerTableFooter></MarkerTableFooter> : ''}
+                  {markers.map((marker) => (
+                    <Marker
+                      key={marker.id}
+                      id={marker.id}
+                      name={marker.name}
+                      value={marker.value}
+                      unit={marker.unit}
+                      referenceMin={marker.referenceMin}
+                      referenceMax={marker.referenceMax}
+                      status={marker.status}
+                      interpretation={marker.interpretation}
+                      hasError={marker.hasError}
+                      onNameChange={onNameChange}
+                      onValueChange={onValueChange}
+                      onUnitChange={onUnitChange}
+                      onReferenceChange={onReferenceChange}
+                      onDelete={onDelete}
+                      onValidate={onValidate}
+                      isFinalStep={isFinalStep}
+                    />
+                  ))}
+                </MarkerTableContent>
+              </MarkerTableBody>
 
-          {!isSmallScreen && !isFinalStep && (
-            <MarkerTableFooter>
-              <AddMarkerBtn onClick={onAddMarker} />
-            </MarkerTableFooter>
-          )}
-        </MarkerTableContainer>
+              {isFinalStep && !isSmallScreen ? <MarkerTableFooter></MarkerTableFooter> : ''}
 
-        {isSmallScreen && !isFinalStep && <AddMarkerBtn onClick={onAddMarker} />}
+              {!isSmallScreen && !isFinalStep && (
+                <MarkerTableFooter>
+                  <AddMarkerBtn onClick={onAddMarker} />
+                </MarkerTableFooter>
+              )}
+            </MarkerTableContainer>
+          </>
+        )}
       </>
     );
   },

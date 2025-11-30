@@ -74,10 +74,6 @@ export const MarkerTableFooter = styled(Box)(({ theme }) => ({
   borderTop: `1px solid ${theme.palette.border.default}`,
   backgroundColor: theme.palette.baseColors.grey.second50,
   transition: 'background-color 0.2s',
-
-  [theme.breakpoints.down('sm')]: {
-    display: 'none',
-  },
 }));
 
 export const AddMarkerButton = styled(Box)(({ theme }) => ({
@@ -92,10 +88,6 @@ export const AddMarkerButton = styled(Box)(({ theme }) => ({
 
   '&:hover': {
     backgroundColor: theme.palette.surface.primary.hoverLight,
-  },
-  [theme.breakpoints.down('sm')]: {
-    padding: theme.spacing(0.8, 2),
-    margin: theme.spacing(0, 0.5),
   },
 }));
 
