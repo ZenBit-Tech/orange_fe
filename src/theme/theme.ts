@@ -11,6 +11,10 @@ export const getThemeColors = (isDarkMode: boolean) => {
       bgPrimary: isDarkMode
         ? palette.backgrounds?.darkMode?.bgPrimary
         : palette.backgrounds?.bgPrimary,
+      bgPrivacy: isDarkMode ? palette.backgrounds?.bgPrivacyDark : palette.backgrounds?.bgPrivacy,
+      bgLandingSection: isDarkMode
+        ? palette.backgrounds?.bgLandingSectionDark
+        : palette.backgrounds?.bgLandingSection,
       bgSecondary: isDarkMode
         ? palette.backgrounds?.darkMode?.bgSecondary
         : palette.backgrounds?.bgSecondary,
@@ -38,7 +42,9 @@ export const getThemeColors = (isDarkMode: boolean) => {
         ? palette.textIcons?.darkMode?.textTeriartry
         : palette.textIcons?.textTeriartry,
       textGrey: isDarkMode ? palette.textIcons?.darkMode?.textGrey : palette.textIcons?.textGrey,
-      contrast: isDarkMode ? palette.textIcons?.darkMode?.contrast : palette.textIcons?.contrast,
+      contrast: isDarkMode
+        ? palette.textIcons?.darkMode?.contrast
+        : palette.surface?.primary?.hoverLight,
       errorLight: isDarkMode
         ? palette.textIcons?.darkMode?.errorLight
         : palette.textIcons?.errorLight,

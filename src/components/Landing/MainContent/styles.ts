@@ -11,7 +11,7 @@ export const MainWrapper = styled(Box)`
   margin: auto;
   position: relative;
   overflow: hidden;
-  background-image: url(${theme.palette.backgrounds.bgLandingSection});
+  background-image: url(${({ theme }) => theme.palette.backgrounds.bgLandingSection});
   padding-bottom: 121px;
   width: 100%;
   max-width: 1520px;
@@ -160,7 +160,7 @@ export const ListsWrapper = styled('ul')`
 
 export const StyledBody = styled(Typography)`
   align-self: flex-start;
-  background-color: ${theme.palette.textIcons?.contrast};
+  background-color: ${({ theme }) => theme.palette.textIcons?.contrast};
   padding: 4px 8px;
   border-radius: 100px;
   font-family: ${theme.typography.general.fontInter};

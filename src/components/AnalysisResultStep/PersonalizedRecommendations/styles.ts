@@ -11,7 +11,7 @@ export const WrapperBloodTestSummary = styled(Box)(({ theme }) => ({
   display: 'flex',
   borderRadius: 20,
   border: `1px solid ${theme.palette.border.default}`,
-  backgroundColor: theme.palette.baseColors.grey.second50,
+  backgroundColor: theme.palette.backgrounds.bgSecondary,
   boxSizing: 'border-box',
   alignItems: 'center',
 
@@ -32,7 +32,7 @@ export const Diagram = styled(Box)(({ theme }) => ({
   alignItems: 'center',
   border: `1px solid ${theme.palette.border.default}`,
   borderRadius: 20,
-  backgroundColor: theme.palette.baseColors.grey[0],
+  backgroundColor: theme.palette.backgrounds.white,
   boxSizing: 'border-box',
 
   [theme.breakpoints.down('sm')]: {

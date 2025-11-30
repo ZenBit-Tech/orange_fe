@@ -14,15 +14,23 @@ export const AuthVerify: React.FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const token = params.get('token');
+    const searchParams = new URLSearchParams(window.location.search);
+    let token = searchParams.get('token');
+
+    if (!token && window.location.hash) {
+      const hashParams = new URLSearchParams(window.location.hash.substring(1));
+      token = hashParams.get('token');
+    }
 
     if (token) {
       localStorage.setItem('accessToken', token);
       dispatch(setAuth({ token }));
-      navigate('/upload');
+
+      setTimeout(() => {
+        navigate('/upload', { replace: true });
+      }, 50);
     } else {
-      navigate('/login');
+      navigate('/login', { replace: true });
     }
   }, [dispatch, navigate]);
 

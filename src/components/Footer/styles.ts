@@ -11,10 +11,12 @@ export const Wrapper = styled(Box)<WrapperProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: ${({ transparent }) =>
+  background: ${({ transparent, theme }) =>
     transparent ? theme.palette.backgrounds.bgTransparent : theme.palette.backgrounds.bgPrimary};
-  border-top: ${({ transparent }) =>
-    transparent ? 'none' : `1px solid ${theme.palette.baseColors.grey[200]}`};
+  border-top: ${({ transparent, theme }) =>
+    transparent || theme.palette.mode === 'dark'
+      ? 'none'
+      : `1px solid ${theme.palette.border.default}`};
   box-sizing: border-box;
   padding: 20px 50px;
   font-family: ${theme.typography.general.fontInter};
@@ -30,7 +32,10 @@ export const Wrapper = styled(Box)<WrapperProps>`
     }
   }
   ${({ theme }) => theme.breakpoints.down('md')} {
-    border-top: 1px solid ${theme.palette.baseColors.grey[200]};
+    border-top: ${({ transparent, theme }) =>
+      transparent || theme.palette.mode === 'dark'
+        ? 'none'
+        : `1px solid ${theme.palette.baseColors.grey[200]}`};
     gap: 24px;
     flex-direction: column-reverse;
   }

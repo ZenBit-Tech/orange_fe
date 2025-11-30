@@ -8,7 +8,7 @@ import { WrapperContent } from './styles';
 export const UploadPage: React.FC = () => {
   const { t } = useTranslation();
   return (
-    <PageLayout transparentNav={false}>
+    <PageLayout transparentNav={true} auth={true}>
       <title>{t('UploadPage.meta-title')}</title>
       <meta name="description" content={t('UploadPage.meta-description')} />
       <WrapperContent>

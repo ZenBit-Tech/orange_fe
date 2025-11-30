@@ -13,7 +13,7 @@ export const WrapperUpload = styled(Box)(({ theme }) => ({
   borderStyle: 'solid',
   borderRadius: 20,
   borderWidth: 1,
-  borderColor: theme.palette.baseColors.grey[200],
+  borderColor: theme.palette.border.default,
   backgroundColor: theme.palette.backgrounds.white,
   alignItems: 'center',
   textAlign: 'center',
@@ -65,7 +65,10 @@ export const Spacer = styled(Box)(({ theme }) => ({
 export const StyledButton = styled(Button)(({ theme }) => ({
   backgroundColor: theme.palette.surface.primary.default,
   fontSize: theme.typography.sizes.size16,
-  color: theme.palette.textIcons?.contrast,
+  color:
+    theme.palette.mode === 'dark'
+      ? theme.palette.baseColors.grey[0]
+      : theme.palette.baseColors.grey[50],
   width: '192px',
   height: '42px',
   borderRadius: '12px',

@@ -1,11 +1,9 @@
 import React from 'react';
 
-import type { TextFieldProps } from '@mui/material';
+import { type TextFieldProps, styled } from '@mui/material';
 import TextField from '@mui/material/TextField';
 
-import { theme } from '@theme';
 import type { FieldErrors, UseFormRegister } from 'react-hook-form';
-import { styled } from 'styled-components';
 
 import type { LoginFormInputs } from '@/components/LoginForm/useLoginForm';
 
@@ -33,24 +31,24 @@ const StyledTextField = styled((props: TextFieldProps) => (
       }
 
       &:hover fieldset {
-        border-color: ${theme.palette.baseColors.grey[200]};
+        border-color: ${({ theme }) => theme.palette.border.default};
       }
 
       &.Mui-focused fieldset {
-        border-color: ${theme.palette.baseColors.grey[200]};
+        border-color: ${({ theme }) => theme.palette.border.default};
         border-width: 2px;
       }
     }
 
     .MuiInputLabel-root {
-      color: ${theme.palette.text.secondary};
+      color: ${({ theme }) => theme.palette.textIcons.textPrimary};
       transform: translate(14px, 7px) scale(1);
       transition: all 0.2s ease;
     }
 
     .MuiInputLabel-root.Mui-focused,
     .MuiInputLabel-root.MuiFormLabel-filled {
-      color: ${theme.palette.common.black};
+      color: ${({ theme }) => theme.palette.textIcons.textPrimary};
       transform: translate(8px, -8px) scale(0.85);
       padding: 0 4px;
     }

@@ -1,9 +1,7 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, useTheme } from '@mui/material';
 
 import { Dumbbell, Pill, Salad, Stethoscope } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-
-import { theme } from '@/theme';
 
 import { RecommendationSection } from '../RecommendationSection';
 import type { RecommendationDescriptions } from '../types';
@@ -23,6 +21,7 @@ export const Recommendations: React.FC<RecommendationsProps> = ({
   exerciseRecommendations,
 }) => {
   const { t } = useTranslation();
+  const theme = useTheme();
   return (
     <Box>
       <RecommendationInfo>
@@ -38,9 +37,13 @@ export const Recommendations: React.FC<RecommendationsProps> = ({
             icon={Salad}
             title={t('Personalized.recommendations.0')}
             items={nutritionRecommendations.descriptions}
-            bgColor={theme.palette.baseColors.pastel.green[100]}
-            iconColor={theme.palette.baseColors.pastel.green.green}
-            bgIconColor={theme.palette.baseColors.pastel.green[200]}
+            bgColor={theme.palette.surface.cardBackground.cardBgPastelGreen}
+            iconColor={
+              theme.palette.mode === 'dark'
+                ? theme.palette.baseColors.green[100]
+                : theme.palette.baseColors.pastel.green.green
+            }
+            bgIconColor={theme.palette.surface.cardIcon.cardIconGreen}
           />
         )}
         {exerciseRecommendations && (
@@ -48,9 +51,13 @@ export const Recommendations: React.FC<RecommendationsProps> = ({
             icon={Dumbbell}
             title={t('Personalized.recommendations.1')}
             items={exerciseRecommendations.descriptions}
-            bgColor={theme.palette.baseColors.pastel.blue[100]}
-            iconColor={theme.palette.baseColors.pastel.blue.blue}
-            bgIconColor={theme.palette.baseColors.pastel.blue[200]}
+            bgColor={theme.palette.surface.cardBackground.cardBgPastelBlue}
+            iconColor={
+              theme.palette.mode === 'dark'
+                ? theme.palette.baseColors.pastel.blue[100]
+                : theme.palette.baseColors.pastel.blue.blue
+            }
+            bgIconColor={theme.palette.surface.cardIcon.cardIconBlue}
           />
         )}
         {supplementsRecommendations && (
@@ -58,9 +65,13 @@ export const Recommendations: React.FC<RecommendationsProps> = ({
             icon={Pill}
             title={t('Personalized.recommendations.2')}
             items={supplementsRecommendations.descriptions}
-            bgColor={theme.palette.baseColors.pastel.cyan[100]}
-            iconColor={theme.palette.baseColors.pastel.cyan.cyan}
-            bgIconColor={theme.palette.baseColors.pastel.cyan[200]}
+            bgColor={theme.palette.surface.cardBackground.cardBgPastelCyan}
+            iconColor={
+              theme.palette.mode === 'dark'
+                ? theme.palette.baseColors.pastel.cyan[100]
+                : theme.palette.baseColors.pastel.cyan.cyan
+            }
+            bgIconColor={theme.palette.surface.cardIcon.cardIconCyan}
           />
         )}
         {drugsRecommendations && (
@@ -68,9 +79,13 @@ export const Recommendations: React.FC<RecommendationsProps> = ({
             icon={Stethoscope}
             title={t('Personalized.recommendations.3')}
             items={drugsRecommendations.descriptions}
-            bgColor={theme.palette.baseColors.green[50]}
-            iconColor={theme.palette.baseColors.green[500]}
-            bgIconColor={theme.palette.baseColors.green[100]}
+            bgColor={theme.palette.surface.cardBackground.cardBgPastelTeal}
+            iconColor={
+              theme.palette.mode === 'dark'
+                ? theme.palette.baseColors.green[100]
+                : theme.palette.surface.primary.default
+            }
+            bgIconColor={theme.palette.surface.cardIcon.cardIconTeal}
           />
         )}
       </RecommendationWrapper>

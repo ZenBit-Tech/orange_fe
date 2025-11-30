@@ -19,7 +19,7 @@ export const WrapperTitle = styled(Box)`
 
 export const StyledTitle = styled(Typography)`
   font-size: ${theme.typography.sizes.size48};
-  color: ${theme.palette.textIcons?.textPrimary};
+  color: ${({ theme }) => theme.palette.textIcons?.textPrimary};
   font-family: ${theme.typography.general.fontPoppins};
   ${({ theme }) => theme.breakpoints.down('md')} {
     font-size: ${theme.typography.sizes.size24};
@@ -28,7 +28,7 @@ export const StyledTitle = styled(Typography)`
 
 export const StyledDescription = styled(Typography)`
   font-size: ${theme.typography.sizes.size16};
-  color: ${theme.palette.textIcons?.textPrimary};
+  color: ${({ theme }) => theme.palette.textIcons?.textPrimary};
   font-family: ${theme.typography.general.fontInter};
 `;
 
@@ -91,8 +91,8 @@ export const WrapperInfo = styled(Box)`
   svg {
     width: 28px;
     height: 28px;
-    color: ${theme.palette.textIcons?.success};
-    background-color: ${theme.palette.surface.primary.light};
+    color: ${({ theme }) => theme.palette.textIcons?.success};
+    background-color: ${({ theme }) => theme.palette.surface.primary.light};
     padding: 8px;
     border-radius: 8px;
     margin-bottom: 31px;
@@ -112,7 +112,7 @@ export const WrapperSteps = styled(Box)`
 `;
 
 export const StyledInfoTitle = styled(Typography)`
-  color: ${theme.palette.textIcons?.textPrimary};
+  color: ${({ theme }) => theme.palette.textIcons?.textPrimary};
   font-family: ${theme.typography.general.fontPoppins};
   font-size: ${theme.typography.sizes.size34};
   margin-bottom: 20px;
@@ -129,7 +129,7 @@ export const StyledInfoTitle = styled(Typography)`
 export const StyledInfoDescription = styled(Typography)`
   font-size: ${theme.typography.sizes.size16};
   font-family: ${theme.typography.general.fontInter};
-  color: ${theme.palette.textIcons?.textPrimary};
+  color: ${({ theme }) => theme.palette.textIcons?.textPrimary};
   ${({ theme }) => theme.breakpoints.down('md')} {
     padding: 0 40px;
     font-size: ${theme.typography.sizes.size16};

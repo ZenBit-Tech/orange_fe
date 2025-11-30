@@ -49,8 +49,8 @@ export const OCRSpinner: React.FC<HealthReportAnalyzerProps> = ({
       </SpinnerWrapper>
 
       <TextBlock>
-        <TitleText>{t(titleKey)}</TitleText>
-        <DescriptionText>{t(descriptionKey)}</DescriptionText>
+        <TitleText variant="h5">{t(titleKey)}</TitleText>
+        <DescriptionText variant="body1">{t(descriptionKey)}</DescriptionText>
       </TextBlock>
     </SpinnerContainer>
   );

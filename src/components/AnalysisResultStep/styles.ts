@@ -12,7 +12,7 @@ export const WrapperAnalysisResult = styled(Box)(({ theme }) => ({
   borderRadius: 20,
   borderWidth: 2,
   fontFamily: theme.typography.general.fontInter,
-  borderColor: theme.palette.baseColors.grey[200],
+  borderColor: theme.palette.border.default,
   backgroundColor: theme.palette.backgrounds.white,
   boxSizing: 'border-box',
 
@@ -29,7 +29,11 @@ export const Disclaimer = styled(Box)(({ theme }) => ({
   padding: theme.spacing(1, 3),
   marginTop: theme.spacing(3),
   backgroundColor: theme.palette.surface.cardBackground.cardBgPastelYellow,
-  border: `1px solid ${theme.palette.baseColors.yellow[500]}`,
+  border: `1px solid ${
+    theme.palette.mode === 'dark'
+      ? theme.palette.baseColors.yellow[700]
+      : theme.palette.baseColors.yellow[500]
+  }`,
   borderRadius: '12px',
   color: theme.palette.textIcons.textPrimary,
 
