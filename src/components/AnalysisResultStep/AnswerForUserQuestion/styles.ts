@@ -20,11 +20,11 @@ export const QuestionCard = styled(Box)`
   align-items: flex-start;
   padding: 24px;
   border-radius: 4px 12px 12px 4px;
-  border-top: 1px solid ${theme.palette.baseColors.grey[200]};
-  border-right: 1px solid ${theme.palette.baseColors.grey[200]};
-  border-bottom: 1px solid ${theme.palette.baseColors.grey[200]};
+  border-top: 1px solid ${({ theme }) => theme.palette.border.default};
+  border-right: 1px solid ${({ theme }) => theme.palette.border.default};
+  border-bottom: 1px solid ${({ theme }) => theme.palette.border.default};
   border-left: 4px solid ${theme.palette.baseColors.green[700]};
-  background-color: ${theme.palette.backgrounds.bgSecondary};
+  background-color: ${({ theme }) => theme.palette.backgrounds.bgSecondary};
   gap: 24px;
 `;
 
@@ -36,10 +36,10 @@ export const QuestionBlock = styled(Box)`
 `;
 
 export const QuestionBlockTitle = styled(Typography)`
-  color: ${theme.palette.textIcons.textTeriartry};
+  color: ${({ theme }) => theme.palette.textIcons.textTeriartry};
 `;
 export const QuestionBlockDescription = styled(Typography)`
-  color: ${theme.palette.textIcons.textSecondary};
+  color: ${({ theme }) => theme.palette.textIcons.textSecondary};
   font-style: italic;
   ${({ theme }) => theme.breakpoints.down('md')} {
     font-size: ${theme.typography.sizes.size16};
@@ -47,5 +47,5 @@ export const QuestionBlockDescription = styled(Typography)`
 `;
 
 export const QuestionBlockRecommendation = styled(Typography)`
-  color: ${theme.palette.textIcons.textSecondary};
+  color: ${({ theme }) => theme.palette.textIcons.textSecondary};
 `;

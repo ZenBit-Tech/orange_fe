@@ -50,7 +50,7 @@ export const MarkerTableHeader = styled(Box)(({ theme }) => ({
   gridTemplateColumns: '6fr 2.2fr 3fr 2.2fr 60px',
   gap: theme.spacing(2),
   padding: theme.spacing(1.25, 2),
-  backgroundColor: theme.palette.baseColors.grey.second50,
+  backgroundColor: theme.palette.backgrounds.bgSecondary,
   borderBottom: `1px solid ${theme.palette.border.default}`,
   alignItems: 'center',
 
@@ -72,7 +72,7 @@ export const MarkerTableFooter = styled(Box)(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   borderTop: `1px solid ${theme.palette.border.default}`,
-  backgroundColor: theme.palette.baseColors.grey.second50,
+  backgroundColor: theme.palette.backgrounds.bgSecondary,
   transition: 'background-color 0.2s',
 }));
 
@@ -97,7 +97,7 @@ export const AddMarkerButtonText = styled('p')(({ theme }) => ({
   justifyContent: 'center',
   fontSize: theme.typography.sizes.size16,
   fontWeight: theme.typography.weights.weight500,
-  color: theme.palette.baseColors.grey[950],
+  color: theme.palette.textIcons.textPrimary,
   fontFamily: theme.typography.general.fontInter,
   margin: '0',
 }));

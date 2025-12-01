@@ -1,7 +1,5 @@
 import { Box, Button, styled } from '@mui/material';
 
-import { theme } from '@/theme';
-
 export const ButtonWrapper = styled(Box)`
   display: flex;
   justify-content: space-between;
@@ -15,7 +13,7 @@ export const ButtonWrapper = styled(Box)`
 
 export const LinkSection = styled(Box)`
   display: flex;
-  gap: 72px;
+  gap: 160px;
   ${({ theme }) => theme.breakpoints.down('md')} {
     gap: 16px;
   }
@@ -35,14 +33,14 @@ export const BackButton = styled(Button)`
   padding: 8px 22px;
   border-radius: 12px;
   height: 44px;
-  border: 1px solid ${theme.palette.baseColors.grey[200]};
-  color: ${theme.palette.textIcons.textPrimary};
+  border: 1px solid ${({ theme }) => theme.palette.border.default};
+  color: ${({ theme }) => theme.palette.textIcons.textPrimary};
   text-transform: none;
   :hover {
-    background: ${theme.palette.surface.primary.hoverLight};
+    background: ${({ theme }) => theme.palette.surface.primary.hoverLight};
   }
   svg {
-    color: ${theme.palette.textIcons.textSecondary};
+    color: ${({ theme }) => theme.palette.textIcons.textSecondary};
     margin-right: 8px;
   }
 
@@ -58,14 +56,14 @@ export const StartButton = styled(Button)`
   padding: 8px 22px;
   height: 44px;
   border-radius: 12px;
-  border: 1px solid ${theme.palette.baseColors.grey[200]};
-  color: ${theme.palette.textIcons.textPrimary};
+  border: 1px solid ${({ theme }) => theme.palette.border.default};
+  color: ${({ theme }) => theme.palette.textIcons.textPrimary};
   text-transform: none;
   :hover {
-    background: ${theme.palette.surface.primary.hoverLight};
+    background: ${({ theme }) => theme.palette.surface.primary.hoverLight};
   }
   svg {
-    color: ${theme.palette.textIcons.textSecondary};
+    color: ${({ theme }) => theme.palette.textIcons.textSecondary};
     margin-right: 8px;
   }
   ${({ theme }) => theme.breakpoints.down('md')} {
@@ -79,14 +77,14 @@ export const PrintButton = styled(Button)`
   padding: 8px 22px;
   height: 44px;
   border-radius: 12px;
-  color: ${theme.palette.textIcons.textPrimary};
-  border: 1px solid ${theme.palette.baseColors.grey[200]};
+  color: ${({ theme }) => theme.palette.textIcons.textPrimary};
+  border: 1px solid ${({ theme }) => theme.palette.border.default};
   text-transform: none;
   :hover {
-    background: ${theme.palette.surface.primary.hoverLight};
+    background: ${({ theme }) => theme.palette.surface.primary.hoverLight};
   }
   svg {
-    color: ${theme.palette.textIcons.textSecondary};
+    color: ${({ theme }) => theme.palette.textIcons.textSecondary};
     margin-right: 8px;
   }
   ${({ theme }) => theme.breakpoints.down('md')} {
@@ -99,8 +97,8 @@ export const DownloadButton = styled(Button)`
   padding: 8px 22px;
   height: 44px;
   border-radius: 12px;
-  color: ${theme.palette.textIcons.contrast};
-  background-color: ${theme.palette.surface.primary.default};
+  color: ${({ theme }) => theme.palette.baseColors.grey[50]};
+  background-color: ${({ theme }) => theme.palette.surface.primary.default};
   text-transform: none;
   box-shadow: none;
   :hover {

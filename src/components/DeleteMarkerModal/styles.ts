@@ -122,7 +122,7 @@ export const DeleteButton = styled('button')(({ theme }) => ({
   transition: 'all 0.2s',
 
   '&:hover': {
-    backgroundColor: theme.palette.surface.error.hoverOutlinedButton,
+    backgroundColor: theme.palette.surface.error.hover,
   },
 
   '&:active': {

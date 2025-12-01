@@ -15,7 +15,7 @@ export const WrapperAbout = styled(Box)`
 export const WrapperDescription = styled(Box)`
   width: 1282px;
   height: 718px;
-  background-image: url(${theme.palette.backgrounds.bgPrivacy});
+  background-image: url(${({ theme }) => theme.palette.backgrounds.bgPrivacy});
   background-size: cover;
   border-radius: 20px;
   display: flex;
@@ -34,7 +34,7 @@ export const StyledTitle = styled(Typography)<{ isVisible?: boolean }>`
   font-size: ${theme.typography.sizes.size48};
   font-family: ${theme.typography.general.fontPoppins};
   margin-bottom: 32px;
-  color: ${theme.palette.textIcons?.textPrimary};
+  color: ${({ theme }) => theme.palette.textIcons?.textPrimary};
   opacity: 0;
   transform: translateY(100px);
   transition:
@@ -104,7 +104,7 @@ export const WrapperCards = styled(Box)<{ isVisible?: boolean }>`
 
 export const StyledCard = styled(Box)`
   height: 144px;
-  background-color: ${theme.palette.backgrounds.white};
+  background-color: ${({ theme }) => theme.palette.backgrounds.white};
   padding: 40px 36px;
   align-items: flex-start;
   border-radius: 20px;
@@ -127,8 +127,8 @@ export const StyledTitleCard = styled(Box)`
   align-items: center;
   gap: 8px;
   svg {
-    color: ${theme.palette.textIcons?.success};
-    background-color: ${theme.palette.surface.primary.light};
+    color: ${({ theme }) => theme.palette.textIcons?.success};
+    background-color: ${({ theme }) => theme.palette.surface.primary.light};
     padding: 8px;
     border-radius: 8px;
   }

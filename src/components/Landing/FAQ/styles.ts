@@ -10,7 +10,7 @@ export const WrapperFAQ = styled(Box)`
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-image: url(${theme.palette.backgrounds.bgLandingSection});
+  background-image: url(${({ theme }) => theme.palette.backgrounds.bgLandingSection});
   background-position: center;
   background-repeat: no-repeat;
   height: 100%;
@@ -42,8 +42,11 @@ export const WrapperTitle = styled(Box)`
     padding: 8px;
     width: 60px;
     height: 60px;
-    background-color: ${theme.palette.surface.primary.light};
-    color: ${theme.palette.baseColors.green[500]};
+    background-color: ${({ theme }) => theme.palette.surface.primary.light};
+    color: ${({ theme }) =>
+      theme.palette.mode === 'dark'
+        ? theme.palette.baseColors.grey[50]
+        : theme.palette.baseColors.green[500]};
     border-radius: 8px;
     ${({ theme }) => theme.breakpoints.down('md')} {
       width: 24px;
@@ -84,8 +87,8 @@ export const WrapperAccordionContainer = styled(Box)<{ isVisible?: boolean }>`
 
 export const StyledAccordion = styled(Accordion)`
   border-radius: 20px !important;
-  background-color: ${theme.palette.background.paper};
-  border: 1px solid ${theme.palette.baseColors.grey[200]};
+  background-color: ${({ theme }) => theme.palette.background.paper};
+  border: 1px solid ${({ theme }) => theme.palette.border.default};
   padding: 40px 24px;
   &:hover {
     border-color: ${theme.palette.baseColors.grey[300]};
@@ -104,7 +107,7 @@ export const StyledQuestion = styled(Typography)`
   font-size: ${theme.typography.sizes.size18};
   font-family: ${theme.typography.general.fontPoppins};
   font-weight: ${theme.typography.weights.weight400};
-  color: ${theme.palette.textIcons?.textPrimary};
+  color: ${({ theme }) => theme.palette.textIcons?.textPrimary};
   ${({ theme }) => theme.breakpoints.down('md')} {
     font-size: ${theme.typography.sizes.size16};
   }
@@ -113,7 +116,7 @@ export const StyledQuestion = styled(Typography)`
 export const StyledAnswer = styled(Typography)`
   font-family: ${theme.typography.general.fontInter};
   font-size: ${theme.typography.sizes.size18};
-  color: ${theme.palette.textIcons?.textSecondary};
+  color: ${({ theme }) => theme.palette.textIcons?.textSecondary};
   ${({ theme }) => theme.breakpoints.down('md')} {
     font-size: ${theme.typography.sizes.size16};
   }
@@ -124,7 +127,7 @@ export const WrapperHelp = styled(Box)`
   flex-direction: column;
   align-items: center;
   p {
-    color: ${theme.palette.textIcons?.textPrimary};
+    color: ${({ theme }) => theme.palette.textIcons?.textPrimary};
     font-size: ${theme.typography.sizes.size16};
     font-family: ${theme.typography.general.fontInter};
   }
@@ -136,7 +139,7 @@ export const WrapperMail = styled(Link)`
   gap: 10px;
   cursor: 'pointer';
   p {
-    color: ${theme.palette.textIcons?.success};
+    color: ${theme.palette.textIcons?.success} !important;
     border-bottom: 1px solid ${theme.palette.textIcons?.success};
     font-size: ${theme.typography.sizes.size16};
   }

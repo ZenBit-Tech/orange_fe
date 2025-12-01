@@ -1,8 +1,8 @@
+import { styled } from '@mui/material';
 import Button from '@mui/material/Button';
 
 import { theme } from '@theme';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 
 export const StyledButton = styled(Button)`
   && {
@@ -13,9 +13,9 @@ export const StyledButton = styled(Button)`
     padding: 8px 14px;
     height: 42px;
     font-size: ${theme.typography.sizes.size16};
-    border: 1px solid ${theme.palette.baseColors.grey[200]};
-    background: ${theme.palette.common.white};
-    color: ${theme.palette.textIcons?.textPrimary};
+    border: 1px solid ${({ theme }) => theme.palette.border.default};
+    background: ${({ theme }) => theme.palette.backgrounds.white};
+    color: ${({ theme }) => theme.palette.textIcons?.textPrimary};
     @media (min-width: 1024px) and (max-height: 760px) {
       font-size: ${theme.typography.sizes.size14};
       padding: 2px 24px;
@@ -25,7 +25,7 @@ export const StyledButton = styled(Button)`
   }
 `;
 
-export const Emoji = styled.span`
+export const Emoji = styled('span')`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -33,12 +33,10 @@ export const Emoji = styled.span`
   height: 28px;
   margin-right: 12px;
   border-radius: 6px;
-
   & > svg {
     width: 20px;
     height: 20px;
   }
-
   @media (max-width: 480px) {
     width: 24px;
     height: 24px;
@@ -51,7 +49,7 @@ export const Emoji = styled.span`
   }
 `;
 
-export const StyledLink = styled.div`
+export const StyledLink = styled('div')`
   display: flex;
   width: 100%;
 `;

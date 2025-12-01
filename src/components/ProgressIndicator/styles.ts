@@ -1,73 +1,71 @@
-import styled from 'styled-components';
+import { Typography } from '@mui/material';
+import { keyframes, styled } from '@mui/material/styles';
 
-import { theme } from '@/theme';
-
-export const SpinnerContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 20px;
-`;
-
-export const SpinnerWrapper = styled.div`
-  position: relative;
-  width: 60px;
-  height: 60px;
-`;
-
-export const SpinnerSvg = styled.svg`
-  width: 60px;
-  height: 60px;
-  transform: rotate(-90deg);
-`;
-
-export const TextBlock = styled.div`
-  text-align: center;
-  margin-top: 24px;
-  max-width: 480px;
-`;
-
-export const SpinnerCircle = styled.circle.withConfig({
-  shouldForwardProp: (prop) => !prop.startsWith('$'),
-})<{
-  $isProgress?: boolean;
-}>`
-  transition: stroke 0.4s ease;
-  transform-origin: 50% 50%;
-  stroke: ${({ $isProgress }) =>
-    $isProgress ? theme.palette.success.main : theme.palette.grey[300]};
-  fill: transparent;
-  stroke-width: 4;
-  stroke-linecap: ${({ $isProgress }) => ($isProgress ? 'round' : 'butt')};
-`;
-
-export const RotatingSpinnerCircle = styled(SpinnerCircle)`
-  @keyframes spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
+const spin = keyframes`
+  from {
+    transform: rotate(0deg);
   }
-  animation: spin 1.5s linear infinite;
+  to {
+    transform: rotate(360deg);
+  }
 `;
 
-export const TitleText = styled.h2`
-  color: ${theme.palette.text.primary};
-  font-family: ${theme.typography.general.fontPoppins};
-  font-size: ${theme.typography.sizes.size16};
-  font-weight: ${theme.typography.weights.weight500};
-  margin-bottom: 8px;
-`;
+export const SpinnerContainer = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  padding: '40px 20px',
+});
 
-export const DescriptionText = styled.p`
-  color: ${theme.palette.text.primary};
-  font-family: ${theme.typography.general.fontPoppins};
-  font-size: ${theme.typography.sizes.size14};
-  font-weight: ${theme.typography.weights.weight400};
-  line-height: 1.5;
-  opacity: 0.9;
-  margin: 0;
-`;
+export const SpinnerWrapper = styled('div')({
+  position: 'relative',
+  width: 60,
+  height: 60,
+});
+
+export const SpinnerSvg = styled('svg')({
+  width: 60,
+  height: 60,
+  transform: 'rotate(-90deg)',
+});
+
+export const TextBlock = styled('div')({
+  textAlign: 'center',
+  marginTop: '24px',
+  maxWidth: 480,
+});
+
+interface SpinnerCircleProps {
+  $isProgress?: boolean;
+}
+
+export const SpinnerCircle = styled('circle', {
+  shouldForwardProp: (prop) => prop !== '$isProgress',
+})<SpinnerCircleProps>(({ theme, $isProgress }) => ({
+  transition: 'stroke 0.4s ease',
+  transformOrigin: '50% 50%',
+  stroke: $isProgress ? theme.palette.success.main : theme.palette.backgrounds.bgTeriarty,
+  fill: 'transparent',
+  strokeWidth: 4,
+  strokeLinecap: $isProgress ? 'round' : 'butt',
+}));
+
+export const RotatingSpinnerCircle = styled(SpinnerCircle)(() => ({
+  animation: `${spin} 1.5s linear infinite`,
+}));
+
+export const TitleText = styled(Typography)(({ theme }) => ({
+  color: theme.palette.textIcons?.textPrimary,
+  fontFamily: theme.typography.general.fontPoppins,
+  fontSize: theme.typography.sizes.size16,
+  fontWeight: theme.typography.weights.weight500,
+  marginBottom: '8px',
+}));
+
+export const DescriptionText = styled(Typography)(({ theme }) => ({
+  fontWeight: theme.typography.weights.weight400,
+  lineHeight: 1.5,
+  opacity: 0.9,
+  margin: 0,
+}));

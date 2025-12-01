@@ -1,10 +1,9 @@
 import type { BoxProps } from '@mui/material';
-import { Box, Stack, Typography } from '@mui/material';
+import { Box, Stack, Typography, styled } from '@mui/material';
 
 import { theme } from '@theme';
-import styled from 'styled-components';
 
-export const CenteredText = styled.div`
+export const CenteredText = styled('div')`
   text-align: center;
   margin: 15px 0 40px;
 
@@ -14,12 +13,12 @@ export const CenteredText = styled.div`
     line-height: 1.2;
     font-weight: ${theme.typography.weights.weight500};
     font-family: ${theme.typography.general.fontPoppins};
-    color: ${theme.palette.textIcons?.textPrimary};
+    color: ${({ theme }) => theme.palette.textIcons?.textPrimary};
   }
 
   p {
     margin: 8px 0 0;
-    color: ${theme.palette.textIcons?.textPrimary};
+    color: ${({ theme }) => theme.palette.textIcons?.textPrimary};
     font-size: ${theme.typography.sizes.size16};
     font-family: ${theme.typography.general.fontInter};
   }
@@ -56,9 +55,9 @@ export const WrapperForm = styled(Box)<BoxProps>`
   max-width: 480px;
   box-sizing: border-box;
 
-  background: ${theme.palette.backgrounds.white};
+  background: ${({ theme }) => theme.palette.backgrounds.white};
   border-radius: 20px;
-  border: 1px solid ${theme.palette.baseColors.grey[200]};
+  border: 1px solid ${({ theme }) => theme.palette.border.default};
   padding: 32px 50px;
   margin: 40px auto;
   box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
@@ -93,17 +92,17 @@ export const DividerContainer = styled(Stack)`
   margin: 4px 0 8px;
 `;
 
-export const Line = styled.div`
+export const Line = styled('div')`
   flex: 1;
   height: 1px;
-  background-color: ${theme.palette.baseColors.grey[500]};
+  background-color: ${({ theme }) => theme.palette.border.default};
   min-width: 20px;
 `;
 
 export const Text = styled(Typography)`
   padding: 0 12px;
   font-size: ${theme.typography.sizes.size14};
-  color: ${theme.palette.textIcons?.textTeriartry};
+  color: ${({ theme }) => theme.palette.textIcons?.textTeriartry};
   font-weight: 500;
 
   @media (max-width: 480px) {
@@ -112,18 +111,18 @@ export const Text = styled(Typography)`
   }
 `;
 
-export const Button = styled.button<{ disabledBg?: string; disabledColor?: string }>`
+export const Button = styled('button')<{ disabledBg?: string; disabledColor?: string }>`
   display: flex;
   padding: 8px 22px;
   height: 42px;
   justify-content: center;
   align-items: center;
   border-radius: 12px;
-  border: 1px solid ${theme.palette.baseColors.grey[200]};
+  border: 1px solid ${({ theme }) => theme.palette.border.default};
   gap: 9px;
   width: 100%;
   background-color: ${theme.palette.surface.disabled.disabledDark};
-  color: ${theme.palette.textIcons?.textTeriartry};
+  color: ${({ theme }) => theme.palette.textIcons?.textTeriartry};
   cursor: pointer;
   font-family: ${theme.typography.general.fontInter};
   font-size: ${theme.typography.sizes.size16};
@@ -146,27 +145,26 @@ export const Button = styled.button<{ disabledBg?: string; disabledColor?: strin
 `;
 
 export const BtnSubmit = styled(Button)`
-  background-color: ${theme.palette.surface.primary.default};
-  color: ${theme.palette.textIcons?.contrast};
+  background-color: ${({ theme }) => theme.palette.surface.primary.default};
+  color: ${({ theme }) => theme.palette.baseColors.grey[0]};
   width: 100%;
-
+  border: none;
   &:disabled {
-    background-color: ${theme.palette.surface.disabled.disabledDark};
-    color: ${theme.palette.textIcons?.textGrey};
-    border: 1px solid ${theme.palette.baseColors.grey[200]};
+    background-color: ${({ theme }) => theme.palette.surface.disabled.disabledDark};
+    color: ${({ theme }) => theme.palette.textIcons?.textGrey};
     cursor: not-allowed;
     pointer-events: none;
   }
 `;
 
-export const Terms = styled.p`
+export const Terms = styled('p')`
   text-align: center;
   margin: 8px 0 0;
   font-size: ${theme.typography.sizes.size14};
-  color: ${theme.palette.textIcons?.textTeriartry};
+  color: ${({ theme }) => theme.palette.textIcons?.textTeriartry};
   font-family: ${theme.typography.general.fontInter};
   a {
-    color: ${theme.palette.textIcons?.textTeriartry};
+    color: ${({ theme }) => theme.palette.textIcons?.textTeriartry};
     text-decoration: underline;
   }
   @media (min-width: 1024px) and (max-height: 760px) {

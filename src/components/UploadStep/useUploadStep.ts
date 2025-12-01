@@ -7,6 +7,7 @@ import { useAppDispatch } from '@/store';
 import { setExtractedData } from '@/store/bloodTestSlice/bloodTestSlice';
 import { useLazyGetMarkersQuery } from '@/store/markersApi';
 import { useExtractDataFromImageMutation } from '@/store/ocrApi';
+import { theme } from '@/theme';
 
 export const UPLOAD_STATUS = {
   Idle: 'idle',
@@ -139,11 +140,11 @@ export const useUploadStep = () => {
   const getStatusDisplay = () => {
     switch (uploadStatus) {
       case UPLOAD_STATUS.Success:
-        return { text: t('Upload.file-uploaded'), color: 'success.main' };
+        return { text: t('Upload.file-uploaded'), color: theme.palette.baseColors.green[700] };
       case UPLOAD_STATUS.Error:
-        return { text: errorMessage, color: 'error' };
+        return { text: errorMessage, color: theme.palette.textIcons.errorMain };
       case UPLOAD_STATUS.Rejected:
-        return { text: errorMessage, color: 'error' };
+        return { text: errorMessage, color: theme.palette.textIcons.errorMain };
       default:
         return { text: '', color: 'textSecondary' };
     }

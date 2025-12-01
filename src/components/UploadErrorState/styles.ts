@@ -3,9 +3,9 @@ import { Button, Typography, styled } from '@mui/material';
 import { CiCircleAlert } from 'react-icons/ci';
 
 export const StyledIcon = styled(CiCircleAlert)(({ theme }) => ({
-  color: theme.palette.error.main,
+  color: theme.palette.textIcons.errorMain,
   fontSize: '48px',
-  backgroundColor: 'rgba(254, 228, 226, 1)',
+  backgroundColor: theme.palette.surface.error.light,
   borderRadius: '50%',
   padding: '8px',
   marginBottom: '16px',

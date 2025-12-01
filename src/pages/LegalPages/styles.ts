@@ -1,14 +1,15 @@
-import { theme } from '@theme';
-import styled from 'styled-components';
+import { styled } from '@mui/material';
 
-export const LegalContent = styled.section`
+import { theme } from '@theme';
+
+export const LegalContent = styled('section')`
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   margin: 30px 40px;
   padding: 50px 80px;
-  color: ${theme.palette.textIcons?.textPrimary};
+  color: ${({ theme }) => theme.palette.textIcons?.textPrimary};
   line-height: 1.6;
 
   hr {
@@ -26,9 +27,9 @@ export const LegalContent = styled.section`
     width: 100%;
     max-width: 1062px;
     padding: 32px 64px 64px 64px;
-    background: ${theme.palette.backgrounds.white};
+    background: ${({ theme }) => theme.palette.backgrounds.white};
     border-radius: 20px;
-    border: 1px solid ${theme.palette.grey[200]};
+    border: 1px solid ${({ theme }) => theme.palette.border.default};
     box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
     gap: 24px;
   }
@@ -43,7 +44,7 @@ export const LegalContent = styled.section`
 
   & div.markdown p,
   li {
-    color: ${theme.palette.textIcons?.textSecondary};
+    color: ${({ theme }) => theme.palette.textIcons?.textSecondary};
     font-style: normal;
     max-width: 100%;
     text-align: justify;
@@ -51,7 +52,7 @@ export const LegalContent = styled.section`
   }
 
   & div.markdown h1 {
-    color: ${theme.palette.textIcons?.textPrimary};
+    color: ${({ theme }) => theme.palette.textIcons?.textPrimary};
     text-align: center;
     font-style: normal;
     align-self: stretch;
@@ -60,7 +61,7 @@ export const LegalContent = styled.section`
   }
 
   & div.markdown h2 {
-    color: ${theme.palette.textIcons?.textPrimary};
+    color: ${({ theme }) => theme.palette.textIcons?.textPrimary};
     text-align: center;
     font-style: normal;
     align-self: stretch;
@@ -68,7 +69,7 @@ export const LegalContent = styled.section`
     width: 100%;
   }
   & div.markdown h3 {
-    color: ${theme.palette.textIcons?.textPrimary};
+    color: ${({ theme }) => theme.palette.textIcons?.textPrimary};
     font-style: normal;
     margin-top: 24px;
     margin-bottom: 2px;

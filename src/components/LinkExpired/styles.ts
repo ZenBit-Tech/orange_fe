@@ -1,8 +1,7 @@
-import { Box } from '@mui/material';
+import { Box, styled } from '@mui/material';
 import type { BoxProps } from '@mui/material';
 
 import { theme } from '@theme';
-import { styled } from 'styled-components';
 
 export const WrapperForm = styled(Box)<BoxProps>`
   display: flex;
@@ -20,10 +19,11 @@ export const WrapperForm = styled(Box)<BoxProps>`
 
   svg {
     font-size: 48px;
+    color: ${theme.palette.textIcons.textPrimary};
   }
 `;
 
-export const CenteredText = styled.div`
+export const CenteredText = styled('div')`
   text-align: center;
 
   h5 {

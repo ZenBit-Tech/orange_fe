@@ -70,7 +70,6 @@ export const FormRow = styled(Box)(({ theme }) => ({
   marginTop: theme.spacing(2),
   marginBottom: theme.spacing(3),
   flexWrap: 'wrap',
-
   [theme.breakpoints.down('md')]: {
     gap: theme.spacing(2),
     marginBottom: theme.spacing(2),
@@ -82,12 +81,10 @@ export const FormField = styled(Box)(({ theme }) => ({
   maxWidth: '200px',
   position: 'relative',
   paddingBottom: theme.spacing(2.5),
-
   [theme.breakpoints.down('md')]: {
     flex: '1 1 calc(50% - 8px)',
     maxWidth: 'calc(50% - 8px)',
     minWidth: '140px',
-
     '&.full-width': {
       flex: '1 1 100%',
       maxWidth: '100%',
@@ -112,6 +109,7 @@ export const StyledAutocomplete = styled(Autocomplete)(({ theme }) => ({
       borderColor: theme.palette.border.default,
     },
     '&:hover fieldset': {
+      color: theme.palette.textIcons.textPrimary,
       borderColor: theme.palette.border.defaultHover,
     },
     '&.Mui-focused fieldset': {
@@ -172,7 +170,7 @@ export const CheckboxCard = styled(Box)(({ theme }) => ({
   padding: theme.spacing(2.5, 3),
   border: `1px solid ${theme.palette.border.default}`,
   borderRadius: '12px',
-  backgroundColor: theme.palette.baseColors.grey.second50,
+  backgroundColor: theme.palette.backgrounds.bgSecondary,
   cursor: 'pointer',
   transition: 'all 0.2s',
   position: 'relative',
@@ -183,23 +181,23 @@ export const CheckboxCard = styled(Box)(({ theme }) => ({
   },
 
   '&.checked-nutrition': {
-    backgroundColor: theme.palette.baseColors.pastel.green[100],
-    borderColor: theme.palette.baseColors.pastel.green[300],
+    backgroundColor: theme.palette.surface.cardBackground.cardBgPastelGreen,
+    borderColor: theme.palette.surface.cardBorder.cardBorderPastelGreen,
   },
 
   '&.checked-supplement': {
-    backgroundColor: theme.palette.baseColors.pastel.cyan[100],
-    borderColor: theme.palette.baseColors.pastel.cyan[300],
+    backgroundColor: theme.palette.surface.cardBackground.cardBgPastelCyan,
+    borderColor: theme.palette.surface.cardBorder.cardBorderPastelCyan,
   },
 
   '&.checked-exercise': {
-    backgroundColor: theme.palette.baseColors.pastel.blue[100],
-    borderColor: theme.palette.baseColors.pastel.blue[300],
+    backgroundColor: theme.palette.surface.cardBackground.cardBgPastelBlue,
+    borderColor: theme.palette.surface.cardBorder.cardBorderPastelCyan,
   },
 
   '&.checked-medication': {
-    backgroundColor: theme.palette.surface.primary.hoverLight,
-    borderColor: theme.palette.baseColors.green[200],
+    backgroundColor: theme.palette.surface.cardBackground.cardBgPastelGreen,
+    borderColor: theme.palette.surface.cardBorder.cardBorderPastelGreen,
   },
 
   [theme.breakpoints.down('md')]: {
@@ -222,23 +220,35 @@ export const CheckboxIcon = styled(Box)(({ theme }) => ({
   transition: 'all 0.1s',
 
   '&.checked-nutrition': {
-    backgroundColor: theme.palette.baseColors.pastel.green[200],
-    color: theme.palette.baseColors.pastel.green.green,
+    backgroundColor: theme.palette.surface.cardIcon.cardIconGreen,
+    color:
+      theme.palette.mode === 'dark'
+        ? theme.palette.baseColors.green[100]
+        : theme.palette.baseColors.pastel.green.green,
   },
 
   '&.checked-supplement': {
-    backgroundColor: theme.palette.baseColors.pastel.cyan[200],
-    color: theme.palette.baseColors.pastel.cyan.cyan,
+    backgroundColor: theme.palette.surface.cardIcon.cardIconCyan,
+    color:
+      theme.palette.mode === 'dark'
+        ? theme.palette.baseColors.pastel.cyan[100]
+        : theme.palette.baseColors.pastel.cyan.cyan,
   },
 
   '&.checked-exercise': {
-    backgroundColor: theme.palette.baseColors.pastel.blue[200],
-    color: theme.palette.baseColors.pastel.blue.blue,
+    backgroundColor: theme.palette.surface.cardIcon.cardIconBlue,
+    color:
+      theme.palette.mode === 'dark'
+        ? theme.palette.baseColors.pastel.blue[100]
+        : theme.palette.baseColors.pastel.blue.blue,
   },
 
   '&.checked-medication': {
-    backgroundColor: theme.palette.baseColors.green[100],
-    color: theme.palette.surface.primary.default,
+    backgroundColor: theme.palette.surface.cardIcon.cardIconTeal,
+    color:
+      theme.palette.mode === 'dark'
+        ? theme.palette.baseColors.green[100]
+        : theme.palette.surface.primary.default,
   },
 
   [theme.breakpoints.down('md')]: {
@@ -360,6 +370,7 @@ export const StyledTextAreaField = styled(TextField)(({ theme }) => ({
       borderColor: theme.palette.border.default,
     },
     '&:hover fieldset': {
+      color: theme.palette.textIcons.textPrimary,
       borderColor: theme.palette.border.defaultHover,
     },
     '&.Mui-focused fieldset': {
@@ -399,6 +410,8 @@ export const ButtonContainer = styled(Box)(({ theme }) => ({
 export const BackButton = styled('button')(({ theme }) => ({
   padding: theme.spacing(1.5, 3),
   color: theme.palette.textIcons.textPrimary,
+  fontFamily: theme.typography.general.fontInter,
+  fontSize: theme.typography.sizes.size16,
   backgroundColor: theme.palette.backgrounds.white,
   border: `1px solid ${theme.palette.border.default}`,
   borderRadius: '12px',
@@ -423,13 +436,14 @@ export const BackButton = styled('button')(({ theme }) => ({
 export const ContinueButton = styled('button')(({ theme }) => ({
   width: '194px',
   padding: theme.spacing(1, 2.75),
-  color: theme.palette.backgrounds.white,
+  color: theme.palette.baseColors.grey[50],
   backgroundColor: theme.palette.surface.primary.default,
   border: 'none',
   borderRadius: '12px',
   cursor: 'pointer',
   transition: 'all 0.2s',
-
+  fontFamily: theme.typography.general.fontInter,
+  fontSize: theme.typography.sizes.size16,
   '&:hover': {
     backgroundColor: theme.palette.surface.primary.hover,
   },
