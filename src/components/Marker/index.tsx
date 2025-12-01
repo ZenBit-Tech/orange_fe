@@ -87,6 +87,9 @@ export const Marker = memo<MarkerProps>(
       showValueError,
       refMin,
       refMax,
+      tempName,
+      tempValue,
+      tempUnit,
     } = useMarker({
       id,
       name,
@@ -132,7 +135,7 @@ export const Marker = memo<MarkerProps>(
                 size="small"
                 disablePortal
                 options={MARKER_OPTIONS}
-                value={name || null}
+                value={tempName || null}
                 onChange={handleNameChange}
                 onBlur={handleBlur}
                 getOptionLabel={(option) => String(option)}
@@ -165,7 +168,7 @@ export const Marker = memo<MarkerProps>(
               <StyledTextField
                 size="small"
                 label={t('review.value')}
-                value={value}
+                value={tempValue || null}
                 onChange={handleValueChange}
                 onBlur={handleBlur}
                 error={showValueError}
@@ -184,7 +187,7 @@ export const Marker = memo<MarkerProps>(
                 size="small"
                 disablePortal
                 options={UNIT_OPTIONS}
-                value={unit}
+                value={tempUnit || unit}
                 onChange={handleUnitChange}
                 getOptionLabel={(option) => String(option)}
                 renderInput={(params) => <StyledTextField {...params} label={t('review.unit')} />}
@@ -207,7 +210,7 @@ export const Marker = memo<MarkerProps>(
             <MarkerCell>
               <MobileLabel>{t('review.normal-range')}</MobileLabel>
               <NormalRangeText>
-                {displayRefMin} - {displayRefMax} {unit}
+                {displayRefMin} - {displayRefMax} {tempUnit || unit}
               </NormalRangeText>
             </MarkerCell>
 

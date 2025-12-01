@@ -16,7 +16,7 @@ export const MarkerRow = styled(Box)(({ theme }) => ({
   },
 
   '&.last-step': {
-    gridTemplateColumns: '2fr 0.7fr 2.5fr 0fr 0px',
+    gridTemplateColumns: '2fr 0.5fr 2.5fr 0fr 0px',
     gap: 0,
   },
 
@@ -219,6 +219,7 @@ export const MarkerCircle = styled(Box)(({ theme }) => ({
   borderRadius: '50%',
   border: '1px solid',
   marginRight: theme.spacing(1),
+  flexShrink: 0,
   '&.Normal': {
     backgroundColor: theme.palette?.baseColors?.green?.[500],
     border: `1px solid ${theme.palette?.baseColors?.green?.[50]}`,
@@ -263,7 +264,7 @@ export const MarkerInterpretation = styled(Box)(({ theme }) => ({
   color: theme.palette.textIcons.textPrimary,
   fontWeight: theme.typography.weights.weight400,
   padding: theme.spacing(0.5),
-  marginRight: theme.spacing(4),
+  marginRight: theme.spacing(1),
   borderRadius: '8px',
   textAlign: 'center',
 
