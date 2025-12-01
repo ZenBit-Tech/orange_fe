@@ -77,8 +77,6 @@ export const useMarkerTable = ({
         return {
           ...marker,
           name,
-          unit: marker.unit,
-          normalRange: `${`${marker.referenceMin} - ${marker.referenceMax}`}`,
           hasError: !name || !marker.value,
         };
       });
@@ -103,13 +101,26 @@ export const useMarkerTable = ({
     });
   }, []);
 
+  const handleReferenceChange = useCallback((id: number, refMin: string, refMax: string) => {
+    setMarkers((prevMarkers) => {
+      return prevMarkers.map((marker) => {
+        if (marker.id !== id) return marker;
+        return {
+          ...marker,
+          referenceMin: refMin,
+          referenceMax: refMax,
+        };
+      });
+    });
+  }, []);
+
   const handleDelete = useCallback((id: number) => {
     setMarkers((prevMarkers) => prevMarkers.filter((marker) => marker.id !== id));
   }, []);
 
   const handleAddMarker = useCallback(() => {
     setMarkers((prevMarkers) => {
-      const newId = Math.max(...prevMarkers.map((m) => m.id), 0) + 1;
+      const newId = prevMarkers.length + 1;
       return [
         ...prevMarkers,
         {
@@ -143,6 +154,7 @@ export const useMarkerTable = ({
     handleNameChange,
     handleValueChange,
     handleUnitChange,
+    handleReferenceChange,
     handleDelete,
     handleAddMarker,
     validateMarker,

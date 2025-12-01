@@ -43,6 +43,11 @@ export const BackButton = styled(Button)`
     color: ${({ theme }) => theme.palette.textIcons.textSecondary};
     margin-right: 8px;
   }
+
+  &.marker-table-step-2 {
+    width: 100px;
+    margin-right: 8px;
+  }
 `;
 
 export const StartButton = styled(Button)`

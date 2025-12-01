@@ -22,6 +22,7 @@ export const WELLNESS_SCORE_THRESHOLDS = {
 interface GradientColors {
   startColor: string;
   endColor: string;
+  donutChartFilling: number;
 }
 
 type DoughnutChartData = ChartData<'doughnut', number[], string>;
@@ -31,6 +32,7 @@ const getGradientColors = (score: number): GradientColors => {
     return {
       startColor: theme.palette.donutGradients.moreThan85.startColor,
       endColor: theme.palette.donutGradients.moreThan85.endColor,
+      donutChartFilling: 81,
     };
   }
 
@@ -38,19 +40,20 @@ const getGradientColors = (score: number): GradientColors => {
     return {
       startColor: theme.palette.donutGradients.moreThan65.startColor,
       endColor: theme.palette.donutGradients.moreThan65.endColor,
+      donutChartFilling: 63,
     };
   }
 
   return {
     startColor: theme.palette.donutGradients.moreThan0.startColor,
     endColor: theme.palette.donutGradients.moreThan0.endColor,
+    donutChartFilling: 30,
   };
 };
 
 const DonutChart = ({ valueInsideChart }: DonutProps) => {
   const chartRef = useRef<ChartJS<'doughnut', number[], string>>(null);
   const [chartData, setChartData] = useState<DoughnutChartData | null>(null);
-  const donutChart = 67;
 
   useEffect(() => {
     if (chartRef.current) {
@@ -68,7 +71,7 @@ const DonutChart = ({ valueInsideChart }: DonutProps) => {
           labels: [],
           datasets: [
             {
-              data: [donutChart, 100 - donutChart],
+              data: [colors.donutChartFilling, 100 - colors.donutChartFilling],
               backgroundColor: [gradient, 'transparent'],
               borderWidth: 0,
               borderRadius: 20,
@@ -78,14 +81,14 @@ const DonutChart = ({ valueInsideChart }: DonutProps) => {
         });
       }
     }
-  }, [donutChart]);
+  }, []);
 
   const colors = getGradientColors(valueInsideChart);
   const initialData = {
     labels: [],
     datasets: [
       {
-        data: [donutChart, 100 - donutChart],
+        data: [colors.donutChartFilling, 100 - colors.donutChartFilling],
         backgroundColor: [colors.endColor, 'transparent'],
         borderWidth: 0,
         borderRadius: 20,

@@ -10,8 +10,7 @@ export const WrapperReviewCustomize = styled(Box)(({ theme }) => ({
   flexDirection: 'column',
   borderStyle: 'solid',
   borderRadius: 20,
-  borderWidth: 2,
-  borderColor: theme.palette.border.default,
+  border: `1px solid ${theme.palette.baseColors.grey[200]}`,
   backgroundColor: theme.palette.backgrounds.white,
   boxSizing: 'border-box',
 
@@ -22,11 +21,12 @@ export const WrapperReviewCustomize = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const TitleText = styled(Typography)(({ theme }) => ({
+export const TitleText = styled('h5')(({ theme }) => ({
   fontSize: theme.typography.sizes.size24,
   fontFamily: theme.typography.general.fontPoppins,
   fontWeight: theme.typography.weights.weight400,
   color: theme.palette.textIcons.textPrimary,
+  margin: theme.spacing(0, 0, 1, 0),
   lineHeight: '1.17',
   textAlign: 'center',
 
@@ -119,22 +119,27 @@ export const StyledAutocomplete = styled(Autocomplete)(({ theme }) => ({
       borderColor: theme.palette.textIcons.errorMain,
     },
   },
-  '& .MuiInputLabel-root': {
-    color: theme.palette.textIcons.textTeriartry,
+  '& .MuiInputLabel-root.Mui-focused': {
+    color: theme.palette.baseColors.green[700],
   },
   '& .MuiInputLabel-root.Mui-error': {
     color: theme.palette.textIcons.errorMain,
   },
 }));
 
-export const StyledTextField = styled(TextField)(({ theme }) => ({
-  '& .MuiOutlinedInput-root': {
-    color: theme.palette.textIcons.textPrimary,
-  },
-  '& .MuiInputLabel-root': {
-    color: theme.palette.textIcons.textTeriartry,
-  },
-}));
+export const StyledTextField = styled(TextField)(({ theme }) => {
+  return {
+    '& .MuiOutlinedInput-root': {
+      color: theme.palette.textIcons.textPrimary,
+    },
+    '& .MuiInputLabel-root': {
+      color: theme.palette.textIcons.textTeriartry,
+    },
+    '&.MuiInputLabel-root.Mui-focused': {
+      color: theme.palette.baseColors.green[700],
+    },
+  };
+});
 
 export const CustomizeSection = styled(Box)(({ theme }) => ({
   display: 'flex',
@@ -344,6 +349,10 @@ export const TextAreaContainer = styled(Box)(({ theme }) => ({
   flexDirection: 'column',
   marginTop: theme.spacing(2),
 
+  '& .MuiInputLabel-root.Mui-focused': {
+    color: theme.palette.baseColors.green[700],
+  },
+
   [theme.breakpoints.down('md')]: {
     marginTop: theme.spacing(3),
     marginBottom: theme.spacing(6),
@@ -452,5 +461,11 @@ export const ContinueButton = styled('button')(({ theme }) => ({
   [theme.breakpoints.down('md')]: {
     flex: '0 0 60%',
     width: '100%',
+  },
+
+  '&.marker-table-step-2': {
+    width: '100px',
+    flex: 'unset',
+    padding: '0',
   },
 }));

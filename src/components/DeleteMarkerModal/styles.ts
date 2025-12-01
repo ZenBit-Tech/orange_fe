@@ -76,6 +76,13 @@ export const ButtonContainer = styled(Box)(({ theme }) => ({
     flexDirection: 'column',
     gap: theme.spacing(1.5),
   },
+
+  '&.step-2': {
+    width: 'unset',
+    flexDirection: 'row',
+    gap: 0,
+    justifyContent: 'unset',
+  },
 }));
 
 export const CancelButton = styled('button')(({ theme }) => ({

@@ -39,7 +39,7 @@ export const AnalysisResultStep: React.FC<AnalysisResultStepProps> = ({ onBack }
       <DescriptionText>{t('results.description')}</DescriptionText>
       <Disclaimer>
         <LucideOctagonAlert className="octagon-alert" />
-        {t('results.disclaimer')}
+        <strong>{t('results.disclaimer')}</strong> &nbsp;
         {t('results.disclaimer-text')}
       </Disclaimer>
 

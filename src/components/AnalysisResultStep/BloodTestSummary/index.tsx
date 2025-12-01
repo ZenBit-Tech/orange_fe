@@ -21,6 +21,7 @@ export const BloodTestSummary = ({ data }: BloodTestSummaryProps) => {
     handleDelete,
     handleAddMarker,
     validateMarker,
+    handleReferenceChange,
   } = useMarkerTable({
     isFinalStep: true,
     markersInterpretations: data?.markersInterpretations,
@@ -38,6 +39,7 @@ export const BloodTestSummary = ({ data }: BloodTestSummaryProps) => {
         onAddMarker={handleAddMarker}
         onValidate={validateMarker}
         onValidateAll={validateAllMarkers}
+        onReferenceChange={handleReferenceChange}
         isFinalStep={true}
       />
     </>
