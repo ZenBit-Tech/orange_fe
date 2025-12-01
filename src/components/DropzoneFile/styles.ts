@@ -116,14 +116,14 @@ export const DropzoneArea = styled(Box)<{ $isUploading: boolean; $hasFiles: bool
     ...($hasFiles && {
       height: '94px',
       minHeight: '94px',
-      borderColor: theme.palette.baseColors.grey[200],
+      borderColor: theme.palette.border.default,
       borderStyle: 'solid',
     }),
     ...($isUploading && {
       height: '94px',
       minHeight: '94px',
       cursor: 'progress',
-      borderColor: theme.palette.baseColors.grey[200],
+      borderColor: theme.palette.border.default,
       borderStyle: 'solid',
     }),
     [theme.breakpoints.up('md')]: {
