@@ -32,11 +32,6 @@ export const MarkerTableBody = styled(Box)(({ theme }) => ({
     backgroundColor: theme.palette.baseColors.grey[300],
     borderRadius: '3px',
   },
-
-  '&.final-step': {
-    overflowX: 'auto',
-    overflowY: 'hidden',
-  },
 }));
 
 export const MarkerTableContent = styled(Box)(() => ({

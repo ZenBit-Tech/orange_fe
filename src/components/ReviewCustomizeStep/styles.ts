@@ -10,7 +10,7 @@ export const WrapperReviewCustomize = styled(Box)(({ theme }) => ({
   flexDirection: 'column',
   borderStyle: 'solid',
   borderRadius: 20,
-  border: `1px solid ${theme.palette.baseColors.grey[200]}`,
+  border: `1px solid ${theme.palette.border.default}`,
   backgroundColor: theme.palette.backgrounds.white,
   boxSizing: 'border-box',
 
