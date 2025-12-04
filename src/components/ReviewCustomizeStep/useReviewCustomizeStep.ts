@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 
 import type { MarkerTableRef } from '@/components/MarkerTable';
 import { useMarkerTable } from '@/components/MarkerTable/useMarkerTable';
@@ -26,6 +26,8 @@ export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepPro
   const markerTableRef = useRef<MarkerTableRef>(null);
   const [hasMarkerErrors, setHasMarkerErrors] = useState(false);
 
+  const [sendDataToBackend, { isLoading }] = useSendDataToBackendMutation();
+
   const {
     markers,
     validateAllMarkers,
@@ -39,6 +41,7 @@ export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepPro
   } = useMarkerTable({
     isFinalStep: false,
     onValidationChange: setHasMarkerErrors,
+    isDisabled: isLoading,
   });
 
   const [birthYear, setBirthYear] = useState<number | null>(null);
@@ -54,8 +57,6 @@ export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepPro
     gender: false,
     pregnancy: false,
   });
-
-  const [sendDataToBackend, { isLoading }] = useSendDataToBackendMutation();
 
   const handleBirthYear = (_event: React.SyntheticEvent, value: unknown) => {
     const newValue = value as number | null;
@@ -92,7 +93,9 @@ export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepPro
     }
   };
 
-  const validateForm = (): boolean => {
+  const handleContinue = useCallback(async () => {
+    const firstErrorId = validateAllMarkers();
+
     const errors: ValidationErrors = {
       birthYear: birthYear === null,
       gender: gender === null,
@@ -101,19 +104,10 @@ export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepPro
 
     setValidationErrors(errors);
 
-    validateAllMarkers();
+    const hasTopErrors = errors.birthYear || errors.gender || errors.pregnancy;
+    const hasMarkerErrorsNow = markers.some((m) => !m.name || !m.value);
 
-    const hasErrors = errors.birthYear || errors.gender || errors.pregnancy;
-
-    return !hasErrors;
-  };
-
-  const handleContinue = async () => {
-    const isValid = validateForm();
-
-    const hasTopErrors = !birthYear || !gender || (gender === 'female' && pregnancy === null);
-
-    if (isValid && !hasMarkerErrors) {
+    if (!hasTopErrors && !hasMarkerErrorsNow) {
       try {
         const result = await sendDataToBackend({
           birthYear: birthYear,
@@ -131,22 +125,55 @@ export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepPro
         }).unwrap();
 
         dispatch(setAnalysisResult(result));
-
         onContinue();
       } catch (err) {
-        throw new Error(`Error ${err}!`);
+        console.error('Error sending data:', err);
       }
-    } else if (hasTopErrors) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      if (hasTopErrors) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (hasMarkerErrorsNow && firstErrorId !== null && markerTableRef.current) {
+        requestAnimationFrame(() => {
+          markerTableRef.current?.scrollToMarker(firstErrorId);
+        });
+      }
+    }
+  }, [
+    validateAllMarkers,
+    birthYear,
+    gender,
+    pregnancy,
+    markers,
+    dispatch,
+    exerciseGuidelines,
+    medicationGuidance,
+    nutritionAdvice,
+    supplementRecommendations,
+    additionalQuestions,
+    sendDataToBackend,
+    onContinue,
+  ]);
+
+  const toggleNutritionAdvice = () => {
+    if (!isLoading) {
+      setNutritionAdvice(!nutritionAdvice);
     }
   };
-
-  const toggleNutritionAdvice = () => setNutritionAdvice(!nutritionAdvice);
-  const toggleExerciseGuidelines = () => setExerciseGuidelines(!exerciseGuidelines);
-  const toggleSupplementRecommendations = () =>
-    setSupplementRecommendations(!supplementRecommendations);
-  const toggleMedicationGuidance = () => setMedicationRecommendations(!medicationGuidance);
-
+  const toggleExerciseGuidelines = () => {
+    if (!isLoading) {
+      setExerciseGuidelines(!exerciseGuidelines);
+    }
+  };
+  const toggleSupplementRecommendations = () => {
+    if (!isLoading) {
+      setSupplementRecommendations(!supplementRecommendations);
+    }
+  };
+  const toggleMedicationGuidance = () => {
+    if (!isLoading) {
+      setMedicationRecommendations(!medicationGuidance);
+    }
+  };
   return {
     markerTableRef,
     markers,

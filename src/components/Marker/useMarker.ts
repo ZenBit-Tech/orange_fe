@@ -46,6 +46,18 @@ export const useMarker = ({
   const [tempRefMax, setTempRefMax] = useState(initialRefMax || '');
 
   const markers = useSelector((state: RootState) => state.markers.data);
+  useEffect(() => {
+    setTempName(name);
+  }, [name]);
+
+  useEffect(() => {
+    setTempValue(value);
+  }, [value]);
+
+  useEffect(() => {
+    if (initialRefMin) setRefMin(initialRefMin);
+    if (initialRefMax) setRefMax(initialRefMax);
+  }, [initialRefMin, initialRefMax]);
 
   useEffect(() => {
     setTempName(name);
@@ -61,8 +73,37 @@ export const useMarker = ({
   }, []);
 
   const handleBlur = useCallback(() => {
+    if (tempName !== name) {
+      onNameChange(id, tempName);
+    }
+    if (tempValue !== value) {
+      onValueChange(id, tempValue);
+    }
+    if (tempUnit && tempUnit !== '') {
+      onUnitChange(id, tempUnit);
+    }
+    if (tempRefMin !== initialRefMin || tempRefMax !== initialRefMax) {
+      onReferenceChange(id, tempRefMin, tempRefMax);
+    }
+
     onValidate(id);
-  }, [id, onValidate]);
+  }, [
+    id,
+    tempName,
+    tempValue,
+    tempUnit,
+    tempRefMin,
+    tempRefMax,
+    name,
+    value,
+    initialRefMin,
+    initialRefMax,
+    onNameChange,
+    onValueChange,
+    onUnitChange,
+    onReferenceChange,
+    onValidate,
+  ]);
 
   const handleDeleteClick = useCallback(() => {
     setIsModalOpen(true);
@@ -84,10 +125,35 @@ export const useMarker = ({
           setTempRefMax(selectedMarker.referenceMax);
           setRefMin(selectedMarker.referenceMin);
           setRefMax(selectedMarker.referenceMax);
+
+          onReferenceChange(id, selectedMarker.referenceMin, selectedMarker.referenceMax);
+          onUnitChange(id, selectedMarker.unit);
         }
       }
     },
-    [markers],
+    [markers, id, onReferenceChange, onUnitChange],
+  );
+
+  const handleUnitChange = useCallback(
+    (_event: React.SyntheticEvent, newValue: string | null) => {
+      if (newValue && markers && tempName) {
+        setTempUnit(newValue);
+
+        const markerWithNewUnit = markers.find(
+          (marker) => marker.name === tempName && marker.unit === newValue,
+        );
+
+        if (markerWithNewUnit) {
+          setTempRefMin(markerWithNewUnit.referenceMin);
+          setTempRefMax(markerWithNewUnit.referenceMax);
+          setRefMin(markerWithNewUnit.referenceMin);
+          setRefMax(markerWithNewUnit.referenceMax);
+
+          onReferenceChange(id, markerWithNewUnit.referenceMin, markerWithNewUnit.referenceMax);
+        }
+      }
+    },
+    [markers, tempName, id, onReferenceChange],
   );
 
   const handleSaveMarker = useCallback(() => {
@@ -134,28 +200,8 @@ export const useMarker = ({
     return true;
   }, [name, value, initialRefMin, initialRefMax]);
 
-  const handleUnitChange = useCallback(
-    (_event: React.SyntheticEvent, newValue: string | null) => {
-      if (newValue && markers && tempName) {
-        setTempUnit(newValue);
-
-        const markerWithNewUnit = markers.find(
-          (marker) => marker.name === tempName && marker.unit === newValue,
-        );
-
-        if (markerWithNewUnit) {
-          setTempRefMin(markerWithNewUnit.referenceMin);
-          setTempRefMax(markerWithNewUnit.referenceMax);
-          setRefMin(markerWithNewUnit.referenceMin);
-          setRefMax(markerWithNewUnit.referenceMax);
-        }
-      }
-    },
-    [markers, tempName],
-  );
-
-  const showNameError = useMemo(() => hasError && !tempName, [hasError, tempName]);
-  const showValueError = useMemo(() => hasError && !tempValue, [hasError, tempValue]);
+  const showNameError = useMemo(() => hasError && !name, [hasError, name]);
+  const showValueError = useMemo(() => hasError && !value, [hasError, value]);
 
   return {
     isModalOpen,

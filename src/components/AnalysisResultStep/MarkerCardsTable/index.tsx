@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { forwardRef, memo, useState } from 'react';
 
 import { Collapse } from '@mui/material';
 
@@ -46,25 +46,29 @@ const getStatusClassName = (statusValue: string | undefined): string => {
   return MARKER_STATUS_CLASSES[statusValue as keyof typeof MARKER_STATUS_CLASSES] || '';
 };
 
-export const MobileMarkerCard = memo<MarkerProps>(
-  ({
-    id,
-    name,
-    value,
-    unit,
-    referenceMin,
-    referenceMax,
-    status,
-    interpretation,
-    isFinalStep,
-    hasError,
-    onNameChange,
-    onValueChange,
-    onUnitChange,
-    onReferenceChange,
-    onDelete,
-    onValidate,
-  }) => {
+const MobileMarkerCardComponent = forwardRef<HTMLDivElement, MarkerProps>(
+  (
+    {
+      id,
+      name,
+      value,
+      unit,
+      referenceMin,
+      referenceMax,
+      status,
+      interpretation,
+      isFinalStep,
+      hasError,
+      onNameChange,
+      onValueChange,
+      onUnitChange,
+      onReferenceChange,
+      onDelete,
+      onValidate,
+      isDisabled = false,
+    },
+    ref,
+  ) => {
     const [isExpanded, setIsExpanded] = useState(false);
 
     const {
@@ -121,7 +125,7 @@ export const MobileMarkerCard = memo<MarkerProps>(
     };
 
     return (
-      <CardContainer className={isExpanded ? 'expanded' : ''}>
+      <CardContainer ref={ref} className={isExpanded ? 'expanded' : ''}>
         <CardHeader onClick={toggleExpanded}>
           <MarkerInfo>
             <MarkerNameRow>
@@ -159,17 +163,18 @@ export const MobileMarkerCard = memo<MarkerProps>(
                   <MobileLabel>{t('review.blood-marker')}</MobileLabel>
                   <StyledAutocomplete
                     size="small"
-                    disablePortal
                     options={MARKER_OPTIONS}
                     value={tempName || null}
                     onChange={handleNameChange}
                     onBlur={handleBlur}
+                    disabled={isDisabled}
                     getOptionLabel={(option) => String(option)}
                     renderInput={(params) => (
                       <StyledTextField
                         {...params}
                         label={t('review.blood-marker')}
                         error={showNameError}
+                        disabled={isDisabled}
                       />
                     )}
                     popupIcon={<ChevronDown />}
@@ -199,6 +204,7 @@ export const MobileMarkerCard = memo<MarkerProps>(
                       onChange={handleValueChange}
                       onBlur={handleBlur}
                       error={showValueError}
+                      disabled={isDisabled}
                       fullWidth
                       inputProps={{
                         inputMode: 'decimal',
@@ -212,13 +218,17 @@ export const MobileMarkerCard = memo<MarkerProps>(
                     <MobileLabel>{t('review.unit')}</MobileLabel>
                     <StyledAutocomplete
                       size="small"
-                      disablePortal
                       options={UNIT_OPTIONS}
                       value={tempUnit || unit}
                       onChange={handleUnitChange}
+                      disabled={isDisabled}
                       getOptionLabel={(option) => String(option)}
                       renderInput={(params) => (
-                        <StyledTextField {...params} label={t('review.unit')} />
+                        <StyledTextField
+                          {...params}
+                          label={t('review.unit')}
+                          disabled={isDisabled}
+                        />
                       )}
                       popupIcon={<ChevronDown />}
                       slotProps={{
@@ -249,16 +259,24 @@ export const MobileMarkerCard = memo<MarkerProps>(
             {!isFinalStep && (
               <MarkerRow className="step-2-buttons">
                 <MarkerCell>
-                  <DeleteButton onClick={handleDeleteClick}>
+                  <DeleteButton onClick={handleDeleteClick} disabled={isDisabled}>
                     <Trash />
                   </DeleteButton>
                 </MarkerCell>
 
                 <ButtonContainer className="step-2">
-                  <BackButton className="marker-table-step-2" onClick={handleCancel}>
+                  <BackButton
+                    className="marker-table-step-2"
+                    onClick={handleCancel}
+                    disabled={isDisabled}
+                  >
                     {t('review.delete-marker-cancel')}
                   </BackButton>
-                  <ContinueButton className="marker-table-step-2" onClick={handleSave}>
+                  <ContinueButton
+                    className="marker-table-step-2"
+                    onClick={handleSave}
+                    disabled={isDisabled}
+                  >
                     {t('review.save')}
                   </ContinueButton>
                 </ButtonContainer>
@@ -293,6 +311,27 @@ export const MobileMarkerCard = memo<MarkerProps>(
           </CardContent>
         </Collapse>
       </CardContainer>
+    );
+  },
+);
+
+MobileMarkerCardComponent.displayName = 'MobileMarkerCardComponent';
+
+export const MobileMarkerCard = memo(
+  MobileMarkerCardComponent,
+  (prevProps: MarkerProps, nextProps: MarkerProps) => {
+    return (
+      prevProps.id === nextProps.id &&
+      prevProps.name === nextProps.name &&
+      prevProps.value === nextProps.value &&
+      prevProps.unit === nextProps.unit &&
+      prevProps.referenceMin === nextProps.referenceMin &&
+      prevProps.referenceMax === nextProps.referenceMax &&
+      prevProps.hasError === nextProps.hasError &&
+      prevProps.status === nextProps.status &&
+      prevProps.isFinalStep === nextProps.isFinalStep &&
+      prevProps.isDisabled === nextProps.isDisabled &&
+      (prevProps.isFinalStep ? prevProps.interpretation === nextProps.interpretation : true)
     );
   },
 );
