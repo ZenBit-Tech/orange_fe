@@ -127,7 +127,7 @@ export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepPro
         dispatch(setAnalysisResult(result));
         onContinue();
       } catch (err) {
-        console.error('Error sending data:', err);
+        throw new Error(`Error sending data: ${err}`);
       }
     } else {
       if (hasTopErrors) {

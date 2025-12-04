@@ -119,7 +119,6 @@ export const MarkerTable = forwardRef<MarkerTableRef, MarkerTableProps>(
 
     const scrollToMarker = useCallback((markerId: number) => {
       const markerElement = markerRefs.current[markerId];
-      console.log('element ', markerElement);
       if (markerElement) {
         requestAnimationFrame(() => {
           const elementRect = markerElement.getBoundingClientRect();
