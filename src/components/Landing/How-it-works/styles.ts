@@ -22,9 +22,6 @@ export const StyledTitle = styled(Typography)`
   font-size: ${theme.typography.sizes.size48};
   color: ${({ theme }) => theme.palette.textIcons?.textPrimary};
   font-family: ${theme.typography.general.fontPoppins};
-  ${({ theme }) => theme.breakpoints.down('md')} {
-    font-size: ${theme.typography.sizes.size24};
-  }
 `;
 
 export const StyledDescription = styled(Typography)`
@@ -99,6 +96,7 @@ export const WrapperInfo = styled(Box)`
     margin-bottom: 31px;
   }
   ${({ theme }) => theme.breakpoints.down('md')} {
+    width: 100%;
     justify-content: center;
     align-items: center;
   }
@@ -121,8 +119,6 @@ export const StyledInfoTitle = styled(Typography)`
   overflow: hidden;
   text-overflow: ellipsis;
   ${({ theme }) => theme.breakpoints.down('md')} {
-    font-size: ${theme.typography.sizes.size20};
-    font-family: ${theme.typography.general.fontPoppins};
     text-align: center;
   }
 `;
@@ -133,7 +129,6 @@ export const StyledInfoDescription = styled(Typography)`
   color: ${({ theme }) => theme.palette.textIcons?.textPrimary};
   ${({ theme }) => theme.breakpoints.down('md')} {
     padding: 0 40px;
-    font-size: ${theme.typography.sizes.size16};
-    font-family: ${theme.typography.general.fontInter};
+    align-self: stretch;
   }
 `;

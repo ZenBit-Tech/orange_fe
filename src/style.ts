@@ -1,5 +1,5 @@
 import { type Theme } from '@mui/material/styles';
-import type { CSSObject } from '@mui/system';
+import { type CSSObject } from '@mui/system';
 
 export const globalStyle = (theme: Theme): Record<string, CSSObject> => ({
   html: {
@@ -37,21 +37,39 @@ export const globalStyle = (theme: Theme): Record<string, CSSObject> => ({
     },
   '.MuiTypography-h1': {
     fontSize: `${theme.typography.sizes.size96} !important`,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: `${theme.typography.sizes.size34} !important`,
+    },
   },
   '.MuiTypography-h2': {
     fontSize: `${theme.typography.sizes.size60} !important`,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: `${theme.typography.sizes.size34} !important`,
+    },
   },
   '.MuiTypography-h3': {
     fontSize: `${theme.typography.sizes.size48} !important`,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: `${theme.typography.sizes.size24} !important`,
+    },
   },
   '.MuiTypography-h4': {
     fontSize: `${theme.typography.sizes.size34} !important`,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: `${theme.typography.sizes.size20} !important`,
+    },
   },
   '.MuiTypography-h5': {
     fontSize: `${theme.typography.sizes.size24} !important`,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: `${theme.typography.sizes.size18} !important`,
+    },
   },
   '.MuiTypography-h6': {
     fontSize: `${theme.typography.sizes.size18} !important`,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: `${theme.typography.sizes.size16} !important`,
+    },
   },
   '.MuiTypography-body1': {
     fontSize: `${theme.typography.sizes.size16} !important`,
@@ -61,6 +79,9 @@ export const globalStyle = (theme: Theme): Record<string, CSSObject> => ({
   },
   '.MuiTypography-subtitle1': {
     fontSize: `${theme.typography.sizes.size18} !important`,
+    [theme.breakpoints.down('sm')]: {
+      fontSize: `${theme.typography.sizes.size16} !important`,
+    },
   },
   '.MuiTypography-subtitle2': {
     fontSize: `${theme.typography.sizes.size14} !important`,
