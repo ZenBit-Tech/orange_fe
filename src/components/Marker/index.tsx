@@ -1,8 +1,7 @@
-import { memo, useRef, useState } from 'react';
+import { forwardRef, memo, useRef, useState } from 'react';
 
 import { t } from 'i18next';
-import { ChevronDown, Trash } from 'lucide-react';
-import { CircleQuestionMark } from 'lucide-react';
+import { ChevronDown, CircleQuestionMark, Trash } from 'lucide-react';
 
 import { DeleteMarkerModal } from '@/components/DeleteMarkerModal';
 import { MARKER_OPTIONS, MARKER_STATUS_CLASSES, UNIT_OPTIONS } from '@/constants/marker';
@@ -53,27 +52,32 @@ export interface MarkerProps {
   onDelete: (id: number) => void;
   onValidate: (id: number) => void;
   isFinalStep: boolean;
+  isDisabled?: boolean;
 }
 
-export const Marker = memo<MarkerProps>(
-  ({
-    id,
-    name,
-    value,
-    unit,
-    referenceMin,
-    referenceMax,
-    status,
-    interpretation,
-    hasError,
-    onNameChange,
-    onValueChange,
-    onUnitChange,
-    onReferenceChange,
-    onDelete,
-    onValidate,
-    isFinalStep,
-  }) => {
+const MarkerComponent = forwardRef<HTMLDivElement, MarkerProps>(
+  (
+    {
+      id,
+      name,
+      value,
+      unit,
+      referenceMin,
+      referenceMax,
+      status,
+      interpretation,
+      hasError,
+      onNameChange,
+      onValueChange,
+      onUnitChange,
+      onReferenceChange,
+      onDelete,
+      onValidate,
+      isFinalStep,
+      isDisabled = false,
+    },
+    ref,
+  ) => {
     const {
       isModalOpen,
       setIsModalOpen,
@@ -125,167 +129,175 @@ export const Marker = memo<MarkerProps>(
     const displayRefMin = referenceMin || refMin;
     const displayRefMax = referenceMax || refMax;
 
+    if (isFinalStep) {
+      return (
+        <MarkerRow className="last-step">
+          <MarkerCell className="cell-markers">
+            <MarkerCircle className={statusClassName}></MarkerCircle>
+            <MarkerText>{name}</MarkerText>
+          </MarkerCell>
+
+          <MarkerCell className="cell-markers">
+            <MarkerText>{value}</MarkerText>
+          </MarkerCell>
+
+          <MarkerCell className="cell-markers">
+            <HealthBar
+              position={calculateMarkerPosition(+value, {
+                referenceMin: Number(displayRefMin),
+                referenceMax: Number(displayRefMax),
+              })}
+              status={status ?? ''}
+              isSmallScreen={false}
+            />
+            <MarkerText className="normal-range">
+              {displayRefMin} - {displayRefMax} {unit}
+            </MarkerText>
+          </MarkerCell>
+
+          <MarkerCell className="cell-markers">
+            <MarkerInterpretation className={statusClassName}>{status}</MarkerInterpretation>
+            <TooltipContainer onMouseEnter={handleMouseEnter}>
+              <QuestionIconButton ref={buttonRef}>
+                <CircleQuestionMark />
+              </QuestionIconButton>
+              <TooltipContent className="tooltip-content" style={tooltipStyle}>
+                <TooltipTitle>
+                  {t('results.about')} {name}
+                </TooltipTitle>
+                <TooltipDescription>{interpretation?.about}</TooltipDescription>
+                <TooltipImportance>
+                  <strong>{t('results.importance')}</strong> {interpretation?.whyImportant}
+                </TooltipImportance>
+              </TooltipContent>
+            </TooltipContainer>
+          </MarkerCell>
+        </MarkerRow>
+      );
+    }
+
     return (
       <>
-        {!isFinalStep ? (
-          <MarkerRow>
-            <MarkerCell>
-              <MobileLabel>{t('review.blood-marker')}</MobileLabel>
-              <StyledAutocomplete
-                size="small"
-                disablePortal
-                options={MARKER_OPTIONS}
-                value={tempName || null}
-                onChange={handleNameChange}
-                onBlur={handleBlur}
-                getOptionLabel={(option) => String(option)}
-                renderInput={(params) => (
-                  <StyledTextField
-                    {...params}
-                    label={t('review.blood-marker')}
-                    error={showNameError}
-                  />
-                )}
-                popupIcon={<ChevronDown />}
-                slotProps={{
-                  paper: {
-                    sx: (theme) => ({
-                      borderRadius: '12px',
-                      border: `1px solid ${theme.palette.border.default}`,
-                      marginTop: theme.spacing(0.5),
-                      '& .MuiAutocomplete-option[aria-selected="true"]': {
-                        backgroundColor: `${theme.palette.surface.primary.default} !important`,
-                      },
-                    }),
-                  },
-                }}
-              />
-              {showNameError && <ErrorText>{t('review.value-required')}</ErrorText>}
-            </MarkerCell>
-
-            <MarkerCell>
-              <MobileLabel>{t('review.value')}</MobileLabel>
-              <StyledTextField
-                size="small"
-                label={t('review.value')}
-                value={tempValue || null}
-                onChange={handleValueChange}
-                onBlur={handleBlur}
-                error={showValueError}
-                fullWidth
-                inputProps={{
-                  inputMode: 'decimal',
-                  pattern: '[0-9]*\\.?[0-9]*',
-                }}
-              />
-              {showValueError && <ErrorText>{t('review.value-required')}</ErrorText>}
-            </MarkerCell>
-
-            <MarkerCell>
-              <MobileLabel>{t('review.unit')}</MobileLabel>
-              <StyledAutocomplete
-                size="small"
-                disablePortal
-                options={UNIT_OPTIONS}
-                value={tempUnit || unit}
-                onChange={handleUnitChange}
-                getOptionLabel={(option) => String(option)}
-                renderInput={(params) => <StyledTextField {...params} label={t('review.unit')} />}
-                popupIcon={<ChevronDown />}
-                slotProps={{
-                  paper: {
-                    sx: (theme) => ({
-                      borderRadius: '12px',
-                      border: `1px solid ${theme.palette.border.default}`,
-                      marginTop: theme.spacing(0.5),
-                      '& .MuiAutocomplete-option[aria-selected="true"]': {
-                        backgroundColor: `${theme.palette.surface.primary.default} !important`,
-                      },
-                    }),
-                  },
-                }}
-              />
-            </MarkerCell>
-
-            <MarkerCell>
-              <MobileLabel>{t('review.normal-range')}</MobileLabel>
-              <NormalRangeText>
-                {displayRefMin} - {displayRefMax} {tempUnit || unit}
-              </NormalRangeText>
-            </MarkerCell>
-
-            <MarkerCell>
-              <DeleteButton onClick={handleDeleteClick}>
-                <Trash />
-              </DeleteButton>
-            </MarkerCell>
-
-            <DeleteMarkerModal
-              open={isModalOpen}
-              markerName={name}
-              onClose={() => setIsModalOpen(false)}
-              onConfirm={handleConfirmDelete}
+        <MarkerRow ref={ref}>
+          <MarkerCell>
+            <MobileLabel>{t('review.blood-marker')}</MobileLabel>
+            <StyledAutocomplete
+              disabled={isDisabled}
+              size="small"
+              options={MARKER_OPTIONS}
+              value={tempName || null}
+              onChange={handleNameChange}
+              onBlur={handleBlur}
+              getOptionLabel={(option) => String(option)}
+              renderInput={(params) => (
+                <StyledTextField
+                  {...params}
+                  label={t('review.blood-marker')}
+                  error={showNameError}
+                />
+              )}
+              popupIcon={<ChevronDown />}
+              slotProps={{
+                paper: {
+                  sx: (theme) => ({
+                    borderRadius: '12px',
+                    border: `1px solid ${theme.palette.border.default}`,
+                    marginTop: theme.spacing(0.5),
+                    '& .MuiAutocomplete-option[aria-selected="true"]': {
+                      backgroundColor: `${theme.palette.surface.primary.default} !important`,
+                    },
+                  }),
+                },
+              }}
             />
-          </MarkerRow>
-        ) : (
-          <MarkerRow className="last-step">
-            <MarkerCell className="cell-markers">
-              <MarkerCircle className={statusClassName}></MarkerCircle>
-              <MarkerText>{name}</MarkerText>
-            </MarkerCell>
+            {showNameError && <ErrorText>{t('review.value-required')}</ErrorText>}
+          </MarkerCell>
 
-            <MarkerCell className="cell-markers">
-              <MarkerText>{value}</MarkerText>
-            </MarkerCell>
+          <MarkerCell>
+            <MobileLabel>{t('review.value')}</MobileLabel>
+            <StyledTextField
+              disabled={isDisabled}
+              size="small"
+              label={t('review.value')}
+              value={tempValue || null}
+              onChange={handleValueChange}
+              onBlur={handleBlur}
+              error={showValueError}
+              fullWidth
+              inputProps={{
+                inputMode: 'decimal',
+                pattern: '[0-9]*\\.?[0-9]*',
+              }}
+            />
+            {showValueError && <ErrorText>{t('review.value-required')}</ErrorText>}
+          </MarkerCell>
 
-            <MarkerCell className="cell-markers">
-              <HealthBar
-                position={calculateMarkerPosition(+value, {
-                  referenceMin: Number(displayRefMin),
-                  referenceMax: Number(displayRefMax),
-                })}
-                status={status ?? ''}
-                isSmallScreen={false}
-              />
-              <MarkerText className="normal-range">
-                {displayRefMin} - {displayRefMax} {unit}
-              </MarkerText>
-            </MarkerCell>
+          <MarkerCell>
+            <MobileLabel>{t('review.unit')}</MobileLabel>
+            <StyledAutocomplete
+              disabled={isDisabled}
+              size="small"
+              options={UNIT_OPTIONS}
+              value={tempUnit || unit}
+              onChange={handleUnitChange}
+              getOptionLabel={(option) => String(option)}
+              renderInput={(params) => <StyledTextField {...params} label={t('review.unit')} />}
+              popupIcon={<ChevronDown />}
+              slotProps={{
+                paper: {
+                  sx: (theme) => ({
+                    borderRadius: '12px',
+                    border: `1px solid ${theme.palette.border.default}`,
+                    marginTop: theme.spacing(0.5),
+                    '& .MuiAutocomplete-option[aria-selected="true"]': {
+                      backgroundColor: `${theme.palette.surface.primary.default} !important`,
+                    },
+                  }),
+                },
+              }}
+            />
+          </MarkerCell>
 
-            <MarkerCell className="cell-markers">
-              <MarkerInterpretation className={statusClassName}>{status}</MarkerInterpretation>
-              <TooltipContainer onMouseEnter={handleMouseEnter}>
-                <QuestionIconButton ref={buttonRef}>
-                  <CircleQuestionMark />
-                </QuestionIconButton>
-                <TooltipContent className="tooltip-content" style={tooltipStyle}>
-                  <TooltipTitle>
-                    {t('results.about')} {name}
-                  </TooltipTitle>
-                  <TooltipDescription>{interpretation?.about}</TooltipDescription>
-                  <TooltipImportance>
-                    <strong>{t('results.importance')}</strong> {interpretation?.whyImportant}
-                  </TooltipImportance>
-                </TooltipContent>
-              </TooltipContainer>
-            </MarkerCell>
-          </MarkerRow>
-        )}
+          <MarkerCell>
+            <MobileLabel>{t('review.normal-range')}</MobileLabel>
+            <NormalRangeText>
+              {displayRefMin} - {displayRefMax} {tempUnit || unit}
+            </NormalRangeText>
+          </MarkerCell>
+
+          <MarkerCell>
+            <DeleteButton onClick={handleDeleteClick} disabled={isDisabled}>
+              <Trash />
+            </DeleteButton>
+          </MarkerCell>
+
+          <DeleteMarkerModal
+            open={isModalOpen}
+            markerName={name}
+            onClose={() => setIsModalOpen(false)}
+            onConfirm={handleConfirmDelete}
+          />
+        </MarkerRow>
       </>
     );
   },
-  (prevProps, nextProps) => {
-    return (
-      prevProps.id === nextProps.id &&
-      prevProps.name === nextProps.name &&
-      prevProps.value === nextProps.value &&
-      prevProps.unit === nextProps.unit &&
-      prevProps.referenceMin === nextProps.referenceMin &&
-      prevProps.referenceMax === nextProps.referenceMax &&
-      prevProps.hasError === nextProps.hasError &&
-      prevProps.interpretation === nextProps.interpretation
-    );
-  },
 );
+MarkerComponent.displayName = 'MarkerComponent';
+
+export const Marker = memo(MarkerComponent, (prevProps: MarkerProps, nextProps: MarkerProps) => {
+  return (
+    prevProps.id === nextProps.id &&
+    prevProps.name === nextProps.name &&
+    prevProps.value === nextProps.value &&
+    prevProps.unit === nextProps.unit &&
+    prevProps.referenceMin === nextProps.referenceMin &&
+    prevProps.referenceMax === nextProps.referenceMax &&
+    prevProps.hasError === nextProps.hasError &&
+    prevProps.status === nextProps.status &&
+    prevProps.isFinalStep === nextProps.isFinalStep &&
+    prevProps.isDisabled === nextProps.isDisabled &&
+    (prevProps.isFinalStep ? prevProps.interpretation === nextProps.interpretation : true)
+  );
+});
 
 Marker.displayName = 'Marker';

@@ -12,12 +12,14 @@ interface UseMarkerTableProps {
   initialMarkers?: MarkerData[];
   isFinalStep?: boolean;
   markersInterpretations?: MarkerDataInterpretation[];
+  isDisabled?: boolean;
 }
 
 export const useMarkerTable = ({
   onValidationChange,
   isFinalStep,
   markersInterpretations,
+  isDisabled,
 }: UseMarkerTableProps = {}) => {
   const extractedData = useSelector((state: RootState) => state.bloodTest.extractedData);
 
@@ -60,13 +62,27 @@ export const useMarkerTable = ({
     onValidationChangeRef.current?.(hasErrors);
   }, [markers]);
 
-  const validateAllMarkers = useCallback(() => {
+  const validateAllMarkers = useCallback((): number | null => {
+    let firstErrorId: number | null = null;
+
     setMarkers((prevMarkers) =>
-      prevMarkers.map((marker) => ({
-        ...marker,
-        hasError: !marker.name || !marker.value,
-      })),
+      prevMarkers.map((marker) => {
+        const hasError = !marker.name || !marker.value;
+
+        if (hasError && firstErrorId === null) {
+          firstErrorId = marker.id;
+        }
+
+        return marker.hasError === hasError
+          ? marker
+          : {
+              ...marker,
+              hasError,
+            };
+      }),
     );
+
+    return firstErrorId;
   }, []);
 
   const handleNameChange = useCallback((id: number, name: string) => {
@@ -119,6 +135,7 @@ export const useMarkerTable = ({
   }, []);
 
   const handleAddMarker = useCallback(() => {
+    if (isDisabled) return;
     setMarkers((prevMarkers) => {
       const newId = prevMarkers.length + 1;
       return [
@@ -134,7 +151,7 @@ export const useMarkerTable = ({
         },
       ];
     });
-  }, []);
+  }, [isDisabled]);
 
   const validateMarker = useCallback((id: number) => {
     setMarkers((prevMarkers) => {
