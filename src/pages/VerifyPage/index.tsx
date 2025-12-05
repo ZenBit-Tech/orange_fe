@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { Verify } from '@/components/Verify/index';
+import { Verify } from '@/pages/VerifyPage/components/Verify/index';
 
 export const VerifyPage: React.FC = () => {
   const { t } = useTranslation();

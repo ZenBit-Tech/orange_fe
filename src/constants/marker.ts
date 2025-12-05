@@ -1,5 +1,3 @@
-import type { MarkerInterpretation } from '@/components/AnalysisResultStep/types';
-
 export const BIRTH_YEARS = Array.from({ length: 2025 - 1925 + 1 }, (_, i) => 2025 - i);
 
 export const GENDER = {
@@ -28,28 +26,6 @@ export const VALIDATION_PATTERNS = {
 export const BREAKPOINTS = {
   LG: 1052,
 } as const;
-export interface MarkerData {
-  id: number;
-  name: string;
-  value: string;
-  unit: string;
-  referenceMin: string;
-  referenceMax: string;
-  status?: string;
-  interpretation?: MarkerInterpretation;
-  hasError: boolean;
-}
-export interface ReviewCustomizeData {
-  birthYear: number | null;
-  gender: string | null;
-  pregnancy: string | null;
-  markersData: MarkerData[];
-  nutritionAdvice: boolean;
-  supplementRecommendations: boolean;
-  medicationGuidance: boolean;
-  exerciseGuidelines: boolean;
-  additionalQuestions: string;
-}
 
 export const MARKER_OPTIONS = [
   'White Blood Cells',

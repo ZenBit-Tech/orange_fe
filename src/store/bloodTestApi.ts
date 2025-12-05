@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import type { BloodTestData, BloodTestValidation } from '@/constants/blood-test-data';
+import type { BloodTestData, BloodTestValidation } from '@/types/blood-test-data';
 
 export const bloodTestApi = createApi({
   reducerPath: 'bloodTestApi',

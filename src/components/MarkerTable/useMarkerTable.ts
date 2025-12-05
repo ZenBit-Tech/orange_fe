@@ -2,10 +2,10 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { useSelector } from 'react-redux';
 
-import type { MarkerData } from '@/constants/marker';
 import type { RootState } from '@/store';
+import type { MarkerData } from '@/types/marker';
 
-import type { MarkerDataInterpretation } from '../AnalysisResultStep/types';
+import type { MarkerDataInterpretation } from '../../pages/AnalysisResultPage/types';
 
 interface UseMarkerTableProps {
   onValidationChange?: (hasErrors: boolean) => void;

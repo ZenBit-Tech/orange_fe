@@ -4,8 +4,9 @@ import { useTranslation } from 'react-i18next';
 import ReactMarkdown from 'react-markdown';
 
 import { PageLayout } from '@/components/Layout';
-import termsOfUseText from '@/content/legal/terms-of-use.en.md?raw';
 import { LegalContent } from '@/pages/LegalPages/styles';
+
+import termsOfUseText from '../content/legal/terms-of-use.en.md?raw';
 
 export const TermsPage: React.FC = () => {
   const { t } = useTranslation();

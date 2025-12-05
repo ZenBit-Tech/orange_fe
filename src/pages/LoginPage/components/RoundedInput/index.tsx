@@ -1,0 +1,78 @@
+import React from 'react';
+
+import { type TextFieldProps, styled } from '@mui/material';
+import TextField from '@mui/material/TextField';
+
+import type { FieldErrors, UseFormRegister } from 'react-hook-form';
+
+import type { LoginFormInputs } from '@/pages/LoginPage/components/LoginForm/useLoginForm';
+
+const StyledTextField = styled((props: TextFieldProps) => (
+  <TextField {...props} fullWidth id="outlined-basic" label="Email" variant="outlined" />
+))`
+  && {
+    .MuiOutlinedInput-root {
+      height: 40px;
+      border-radius: 10px;
+      align-items: center;
+      @media (min-width: 1024px) and (max-height: 760px) {
+        height: 36px;
+      }
+      input {
+        height: 100%;
+        padding: 0 14px;
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+      }
+
+      fieldset {
+        transition: border-color 0.2s ease;
+      }
+
+      &:hover fieldset {
+        border-color: ${({ theme }) => theme.palette.border.default};
+      }
+
+      &.Mui-focused fieldset {
+        border-color: ${({ theme }) => theme.palette.border.default};
+        border-width: 2px;
+      }
+    }
+
+    .MuiInputLabel-root {
+      color: ${({ theme }) => theme.palette.textIcons.textPrimary};
+      transform: translate(14px, 7px) scale(1);
+      transition: all 0.2s ease;
+    }
+
+    .MuiInputLabel-root.Mui-focused,
+    .MuiInputLabel-root.MuiFormLabel-filled {
+      color: ${({ theme }) => theme.palette.textIcons.textPrimary};
+      transform: translate(8px, -8px) scale(0.85);
+      padding: 0 4px;
+    }
+  }
+`;
+interface EmailFieldProps {
+  register: UseFormRegister<LoginFormInputs>;
+  errors: FieldErrors<LoginFormInputs>;
+  t: (key: string) => string;
+}
+
+export const EmailField: React.FC<EmailFieldProps> = ({ register, errors, t }) => {
+  return (
+    <StyledTextField
+      type="email"
+      error={!!errors.email}
+      helperText={errors.email?.message}
+      {...register('email', {
+        required: t('Form.login-form.email_required') as string,
+        pattern: {
+          value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+          message: t('Form.login-form.email_invalid') as string,
+        },
+      })}
+    />
+  );
+};

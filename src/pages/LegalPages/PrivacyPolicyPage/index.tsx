@@ -4,8 +4,9 @@ import { useTranslation } from 'react-i18next';
 import ReactMarkdown from 'react-markdown';
 
 import { PageLayout } from '@/components/Layout';
-import privacyPolicyText from '@/content/legal/privacy-policy.en.md?raw';
 import { LegalContent } from '@/pages/LegalPages/styles';
+
+import privacyPolicyText from '../content/legal/privacy-policy.en.md?raw';
 
 export const PrivacyPolicyPage: React.FC = () => {
   const { t } = useTranslation();

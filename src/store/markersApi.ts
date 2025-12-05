@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import type { MarkersArr } from '@/constants/blood-test-data';
+import type { MarkersArr } from '@/types/blood-test-data';
 
 import { setMarkers } from './MarkersSlice';
 

@@ -5,11 +5,11 @@ import { Plus } from 'lucide-react';
 
 import { Marker } from '@/components/Marker';
 import { BREAKPOINTS } from '@/constants/marker';
-import type { MarkerData } from '@/constants/marker';
+import { MobileMarkerCard } from '@/pages/AnalysisResultPage/components/MarkerCardsTable';
+import { MobileMarkerCardWrapper } from '@/pages/AnalysisResultPage/components/MarkerCardsTable/styles';
 import { theme } from '@/theme';
+import type { MarkerData } from '@/types/marker';
 
-import { MobileMarkerCard } from '../AnalysisResultStep/MarkerCardsTable';
-import { MobileMarkerCardWrapper } from '../AnalysisResultStep/MarkerCardsTable/styles';
 import {
   AddMarkerButton,
   AddMarkerButtonText,

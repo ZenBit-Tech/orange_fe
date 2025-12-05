@@ -4,12 +4,12 @@ import { t } from 'i18next';
 import { ChevronDown, Trash } from 'lucide-react';
 import { CircleQuestionMark } from 'lucide-react';
 
-import { DeleteMarkerModal } from '@/components/DeleteMarkerModal';
 import { MARKER_OPTIONS, MARKER_STATUS_CLASSES, UNIT_OPTIONS } from '@/constants/marker';
-import { calculateMarkerPosition } from '@/helpers/markerPositionCalculator';
+import { DeleteMarkerModal } from '@/pages/AnalysisResultPage/components/DeleteMarkerModal';
+import { HealthBar } from '@/pages/AnalysisResultPage/components/HealthBar';
+import { calculateMarkerPosition } from '@/pages/AnalysisResultPage/utils/markerPositionCalculator';
 
-import { HealthBar } from '../AnalysisResultStep/BloodTestSummary/healthBar';
-import type { MarkerInterpretation as InterpretationType } from '../AnalysisResultStep/types';
+import type { MarkerInterpretation as InterpretationType } from '../../pages/AnalysisResultPage/types';
 import {
   DeleteButton,
   ErrorText,
