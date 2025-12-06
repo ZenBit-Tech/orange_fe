@@ -8,7 +8,7 @@ import type {
   DonutProps,
   DoughnutChartData,
   GradientColors,
-} from '@/pages/AnalysisResultPage/types/types';
+} from '@/pages/AnalysisResultPage/types';
 import { theme } from '@/theme';
 
 import { CenteredText, DoughnutWrapper } from './styles';

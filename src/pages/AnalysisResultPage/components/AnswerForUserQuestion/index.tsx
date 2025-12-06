@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import type { AnswerForUserQuestionProps } from '@/pages/AnalysisResultPage/types/types';
+import type { AnswerForUserQuestionProps } from '@/pages/AnalysisResultPage/types';
 
 import {
   QuestionBlock,

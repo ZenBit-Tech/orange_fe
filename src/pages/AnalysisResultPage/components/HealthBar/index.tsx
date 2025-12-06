@@ -1,5 +1,5 @@
 import { MARKER_STATUS_CLASSES } from '@/constants';
-import type { HealthBarProps } from '@/pages/AnalysisResultPage/types/types';
+import type { HealthBarProps } from '@/pages/AnalysisResultPage/types';
 
 import { PositionIndicator, ProgressBar, StretchedIcon } from './styles';
 

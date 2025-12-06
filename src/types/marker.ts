@@ -1,7 +1,7 @@
 import type {
   MarkerDataInterpretation,
   MarkerInterpretation,
-} from '@/pages/AnalysisResultPage/types/types';
+} from '@/pages/AnalysisResultPage/types';
 
 export interface MarkerData {
   id: number;

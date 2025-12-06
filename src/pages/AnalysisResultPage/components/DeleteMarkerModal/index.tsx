@@ -5,7 +5,7 @@ import { Modal } from '@mui/material';
 import { t } from 'i18next';
 import { X } from 'lucide-react';
 
-import type { DeleteMarkerModalProps } from '@/pages/AnalysisResultPage/types/types';
+import type { DeleteMarkerModalProps } from '@/pages/AnalysisResultPage/types';
 
 import {
   ButtonContainer,

@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
 
-import { useBloodTestValidation } from '../../pages/UploadPage/components/UploadStep/useBloodTestValidation';
+import { useBloodTestValidation } from '@/pages/UploadPage/components/UploadStep/useBloodTestValidation';
 
 export const useHorizontalLinearStepper = () => {
   const { t } = useTranslation();

@@ -1,6 +1,6 @@
 import { ArrowLeft, Clock, Download, Printer, RotateCcw } from 'lucide-react';
 
-import { ICON_SIZE_SMALL, type ResultButtonProps } from '@/pages/AnalysisResultPage/types/types';
+import { ICON_SIZE_SMALL, type ResultButtonProps } from '@/pages/AnalysisResultPage/types';
 
 import {
   BackButton,

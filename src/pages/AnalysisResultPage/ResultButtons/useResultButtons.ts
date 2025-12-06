@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 import type { RootState } from '@/store';
 
-import { PDF_POLL_INTERVAL, PDF_STATUS, type PdfJobStatus } from '../types/types';
+import { PDF_POLL_INTERVAL, PDF_STATUS, type PdfJobStatus } from '../types';
 
 const API_BASE_URL = import.meta.env.VITE_MARKERS_URL;
 

@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import type { FullBloodTestAnalysisResult } from '@/pages/AnalysisResultPage/types/types';
+import type { FullBloodTestAnalysisResult } from '@/pages/AnalysisResultPage/types';
 import type { ReviewCustomizeData } from '@/types/marker';
 
 export const reviewCustomizeApi = createApi({

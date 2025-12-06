@@ -2,7 +2,7 @@ import { useRef } from 'react';
 
 import { MarkerTable } from '@/components/MarkerTable';
 import { useMarkerTable } from '@/components/MarkerTable/useMarkerTable';
-import type { BloodTestSummaryProps } from '@/pages/AnalysisResultPage/types/types';
+import type { BloodTestSummaryProps } from '@/pages/AnalysisResultPage/types';
 import type { MarkerTableRef } from '@/types/marker';
 
 export const BloodTestSummary = ({ data }: BloodTestSummaryProps) => {

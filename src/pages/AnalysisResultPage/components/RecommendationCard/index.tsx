@@ -1,4 +1,4 @@
-import type { RecommendationSectionProps } from '@/pages/AnalysisResultPage/types/types';
+import type { RecommendationSectionProps } from '@/pages/AnalysisResultPage/types';
 
 import {
   RecommendationDescription,

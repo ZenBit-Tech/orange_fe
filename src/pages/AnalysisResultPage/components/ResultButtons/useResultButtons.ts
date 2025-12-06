@@ -9,7 +9,7 @@ import {
   type PdfJobStatus,
   type UseResultButtonsProps,
   type UseResultButtonsReturn,
-} from '@/pages/AnalysisResultPage/types/types';
+} from '@/pages/AnalysisResultPage/types';
 import type { RootState } from '@/store';
 
 const API_BASE_URL = import.meta.env.VITE_MARKERS_URL;
