@@ -1,5 +1,6 @@
-import type { RecommendationDescriptions } from '@/pages/AnalysisResultPage/types';
-
+export interface RecommendationDescriptions {
+  descriptions: string[];
+}
 export interface RecommendationsProps {
   supplementsRecommendations?: RecommendationDescriptions;
   nutritionRecommendations?: RecommendationDescriptions;

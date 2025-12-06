@@ -1,6 +1,4 @@
-export interface RecommendationDescriptions {
-  descriptions: string[];
-}
+import type { RecommendationDescriptions } from '../components/RecommendationsList/types';
 
 export interface MarkerInterpretation {
   about: string;
