@@ -1,6 +1,6 @@
 import { type PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-import type { FullBloodTestAnalysisResult } from '@/pages/AnalysisResultPage/types';
+import type { FullBloodTestAnalysisResult } from '@/types/markers-interpretation';
 
 interface AnalysisState {
   result: FullBloodTestAnalysisResult | null;

@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import type { ReviewCustomizeData } from '@/components/Marker/types';
-import type { FullBloodTestAnalysisResult } from '@/pages/AnalysisResultPage/types';
+import type { FullBloodTestAnalysisResult } from '@/types/markers-interpretation';
 
 export const reviewCustomizeApi = createApi({
   reducerPath: 'reviewCustomizeApi',

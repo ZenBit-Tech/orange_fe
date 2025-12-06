@@ -1,4 +1,4 @@
-import type { MarkerInterpretation } from '@/pages/AnalysisResultPage/types';
+import type { MarkerInterpretation } from '@/types/markers-interpretation';
 
 export interface MarkerData {
   id: number;

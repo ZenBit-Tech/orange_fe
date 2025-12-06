@@ -1,4 +1,4 @@
-import type { FullBloodTestAnalysisResult } from '@/pages/AnalysisResultPage/types';
+import type { FullBloodTestAnalysisResult } from '@/types/markers-interpretation';
 
 export interface BloodTestSummaryProps {
   data?: FullBloodTestAnalysisResult;

@@ -1,5 +1,5 @@
 import type { MarkerData } from '@/components/Marker/types';
-import type { MarkerDataInterpretation } from '@/pages/AnalysisResultPage/types';
+import type { MarkerDataInterpretation } from '@/types/markers-interpretation';
 
 export interface MarkerTableRef {
   validateAllMarkers: () => number | null;
