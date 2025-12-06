@@ -2,10 +2,10 @@ import { Typography } from '@mui/material';
 
 import { useSelector } from 'react-redux';
 
+import { UPLOAD_STATUS } from '@/pages/UploadPage/constants';
+import type { UploadStepProps } from '@/pages/UploadPage/types';
 import type { RootState } from '@/store';
 
-import { UPLOAD_STATUS } from '../../constants';
-import type { UploadStepProps } from '../../types';
 import { DropzoneFile } from '../DropzoneFile';
 import { OCRSpinner } from '../ProgressIndicator';
 import { UploadErrorState } from '../UploadErrorState';
