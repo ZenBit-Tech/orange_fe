@@ -3,9 +3,7 @@ import React from 'react';
 import { type TextFieldProps, styled } from '@mui/material';
 import TextField from '@mui/material/TextField';
 
-import type { FieldErrors, UseFormRegister } from 'react-hook-form';
-
-import type { LoginFormInputs } from '@/pages/LoginPage/components/LoginForm/useLoginForm';
+import type { EmailFieldProps } from '@/pages/LoginPage/types';
 
 const StyledTextField = styled((props: TextFieldProps) => (
   <TextField {...props} fullWidth id="outlined-basic" label="Email" variant="outlined" />
@@ -54,11 +52,6 @@ const StyledTextField = styled((props: TextFieldProps) => (
     }
   }
 `;
-interface EmailFieldProps {
-  register: UseFormRegister<LoginFormInputs>;
-  errors: FieldErrors<LoginFormInputs>;
-  t: (key: string) => string;
-}
 
 export const EmailField: React.FC<EmailFieldProps> = ({ register, errors, t }) => {
   return (

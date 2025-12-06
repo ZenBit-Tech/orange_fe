@@ -1,31 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
 
-import type { ChartData } from 'chart.js';
 import { ArcElement, Chart as ChartJS, Legend, Tooltip } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
+import { WELLNESS_SCORE_THRESHOLDS } from '@/pages/AnalysisResultPage/constants';
+import type {
+  DonutProps,
+  DoughnutChartData,
+  GradientColors,
+} from '@/pages/AnalysisResultPage/types/types';
 import { theme } from '@/theme';
 
 import { CenteredText, DoughnutWrapper } from './styles';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
-
-interface DonutProps {
-  valueInsideChart: number;
-}
-
-export const WELLNESS_SCORE_THRESHOLDS = {
-  EXCELLENT: 85,
-  GOOD: 65,
-} as const;
-
-interface GradientColors {
-  startColor: string;
-  endColor: string;
-  donutChartFilling: number;
-}
-
-type DoughnutChartData = ChartData<'doughnut', number[], string>;
 
 const getGradientColors = (score: number): GradientColors => {
   if (score >= WELLNESS_SCORE_THRESHOLDS.EXCELLENT) {

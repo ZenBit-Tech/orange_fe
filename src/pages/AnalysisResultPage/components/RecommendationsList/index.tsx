@@ -3,16 +3,10 @@ import { Box, Typography, useTheme } from '@mui/material';
 import { Dumbbell, Pill, Salad, Stethoscope } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
-import type { RecommendationDescriptions } from '../../types';
+import type { RecommendationsProps } from '@/pages/AnalysisResultPage/types/types';
+
 import { RecommendationSection } from '../RecommendationCard';
 import { RecommendationDescription, RecommendationInfo, RecommendationWrapper } from './styles';
-
-interface RecommendationsProps {
-  supplementsRecommendations?: RecommendationDescriptions;
-  nutritionRecommendations?: RecommendationDescriptions;
-  drugsRecommendations?: RecommendationDescriptions;
-  exerciseRecommendations?: RecommendationDescriptions;
-}
 
 export const Recommendations: React.FC<RecommendationsProps> = ({
   supplementsRecommendations,

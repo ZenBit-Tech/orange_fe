@@ -1,25 +1,18 @@
 import { useRef, useState } from 'react';
 
-import type { MarkerTableRef } from '@/components/MarkerTable';
 import { useMarkerTable } from '@/components/MarkerTable/useMarkerTable';
-import { GENDER } from '@/constants/marker';
+import { GENDER } from '@/constants';
 import { useAppDispatch } from '@/store';
 import { setAnalysisResult } from '@/store/analysisSlice';
 import { useSendDataToBackendMutation } from '@/store/reviewCustomizeApi';
+import type { MarkerTableRef } from '@/types/marker';
 
-type Gender = (typeof GENDER)[keyof typeof GENDER];
-type PregnancyStatus = 'pregnant' | 'not-pregnant';
-
-interface ValidationErrors {
-  birthYear: boolean;
-  gender: boolean;
-  pregnancy: boolean;
-}
-
-interface UseReviewCustomizeStepProps {
-  onContinue: () => void;
-  onBack?: () => void;
-}
+import type {
+  Gender,
+  PregnancyStatus,
+  UseReviewCustomizeStepProps,
+  ValidationErrors,
+} from './types';
 
 export const useReviewCustomizeStep = ({ onContinue }: UseReviewCustomizeStepProps) => {
   const dispatch = useAppDispatch();

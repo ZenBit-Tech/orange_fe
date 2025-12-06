@@ -13,10 +13,7 @@ import { PersonalizedRecommendations } from './components/PersonalizedRecommenda
 import { Recommendations } from './components/RecommendationsList';
 import { ResultButton } from './components/ResultButtons';
 import { Disclaimer, WrapperAnalysisResult } from './styles';
-
-interface AnalysisResultStepProps {
-  onBack: () => void;
-}
+import type { AnalysisResultStepProps } from './types/types';
 
 export const AnalysisResultStep: React.FC<AnalysisResultStepProps> = ({ onBack }) => {
   useEffect(() => {

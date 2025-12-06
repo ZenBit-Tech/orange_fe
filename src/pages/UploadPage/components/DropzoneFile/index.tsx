@@ -2,9 +2,9 @@ import { IconButton, Typography } from '@mui/material';
 
 import { MdOutlineInsertDriveFile as FileIcon } from 'react-icons/md';
 
-import type { DropzoneInputProps, DropzoneRootProps } from 'react-dropzone';
+import type { DropzoneFileProps } from '@/pages/UploadPage/types';
 
-import { UPLOAD_STATUS, type UploadStatus } from '../UploadStep/useUploadStep';
+import { UPLOAD_STATUS } from '../UploadStep/useUploadStep';
 import {
   BoxProgress,
   BrowseButton,
@@ -24,24 +24,6 @@ import {
   TextSupport,
 } from './styles';
 import { useDropzoneFile } from './useDropzoneFile';
-
-interface StatusDisplay {
-  text: string;
-  color: string;
-}
-
-interface DropzoneFileProps {
-  getRootProps: (props?: DropzoneRootProps) => DropzoneRootProps;
-  getInputProps: (props?: DropzoneInputProps) => DropzoneInputProps;
-  hasFiles: boolean;
-  isUploading: boolean;
-  files: File[];
-  uploadProgress: Record<string, number>;
-  uploadStatus: UploadStatus;
-  errorMessage: string;
-  statusDisplay: StatusDisplay;
-  handleRemoveFile: (fileName?: string, e?: React.MouseEvent) => void;
-}
 
 export const DropzoneFile: React.FC<DropzoneFileProps> = ({
   getRootProps,

@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
 import { HorizontalLinearStepper } from '@/components/HorizontalLinearStepper';
-import { PageLayout } from '@/components/Layout';
+import { PageLayout } from '@/utils/Layout';
 
 import { WrapperContent } from './styles';
 

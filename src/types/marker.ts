@@ -1,4 +1,7 @@
-import type { MarkerInterpretation } from '@/pages/AnalysisResultPage/types';
+import type {
+  MarkerDataInterpretation,
+  MarkerInterpretation,
+} from '@/pages/AnalysisResultPage/types/types';
 
 export interface MarkerData {
   id: number;
@@ -21,4 +24,63 @@ export interface ReviewCustomizeData {
   medicationGuidance: boolean;
   exerciseGuidelines: boolean;
   additionalQuestions: string;
+}
+
+export interface UseMarkerTableProps {
+  onValidationChange?: (hasErrors: boolean) => void;
+  initialMarkers?: MarkerData[];
+  isFinalStep?: boolean;
+  markersInterpretations?: MarkerDataInterpretation[];
+}
+
+export interface MarkerTableProps {
+  markers: MarkerData[];
+  onNameChange: (id: number, name: string) => void;
+  onValueChange: (id: number, value: string) => void;
+  onUnitChange: (id: number, unit: string) => void;
+  onReferenceChange: (id: number, refMin: string, refMax: string) => void;
+  onDelete: (id: number) => void;
+  onAddMarker: () => void;
+  onValidate: (id: number) => void;
+  onValidateAll: () => void;
+  isFinalStep: boolean;
+}
+
+export interface MarkerTableRef {
+  validateAllMarkers: () => void;
+}
+
+export interface UseMarkerProps {
+  id: number;
+  name: string;
+  value: string;
+  status?: string;
+  hasError: boolean;
+  refMin?: string;
+  refMax?: string;
+  onNameChange: (id: number, name: string) => void;
+  onValueChange: (id: number, value: string) => void;
+  onUnitChange: (id: number, unit: string) => void;
+  onReferenceChange: (id: number, refMin: string, refMax: string) => void;
+  onDelete: (id: number) => void;
+  onValidate: (id: number) => void;
+}
+
+export interface MarkerProps {
+  id: number;
+  name: string;
+  value: string;
+  unit: string;
+  referenceMin: string;
+  referenceMax: string;
+  status?: string;
+  interpretation?: MarkerInterpretation;
+  hasError: boolean;
+  onNameChange: (id: number, name: string) => void;
+  onValueChange: (id: number, value: string) => void;
+  onUnitChange: (id: number, unit: string) => void;
+  onReferenceChange: (id: number, refMin: string, refMax: string) => void;
+  onDelete: (id: number) => void;
+  onValidate: (id: number) => void;
+  isFinalStep: boolean;
 }

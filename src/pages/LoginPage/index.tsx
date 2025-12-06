@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 
-import { PageLayout } from '@/components/Layout';
 import { LoginForm } from '@/pages';
 import { PageWrapper } from '@/pages/LoginPage/styles';
+import { PageLayout } from '@/utils/Layout';
 
 export const LoginPage: React.FC = () => {
   const { t } = useTranslation();

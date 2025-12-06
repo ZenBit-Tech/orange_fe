@@ -4,11 +4,11 @@ import { t } from 'i18next';
 import { Plus } from 'lucide-react';
 
 import { Marker } from '@/components/Marker';
-import { BREAKPOINTS } from '@/constants/marker';
+import { BREAKPOINTS } from '@/constants';
 import { MobileMarkerCard } from '@/pages/AnalysisResultPage/components/MarkerCardsTable';
 import { MobileMarkerCardWrapper } from '@/pages/AnalysisResultPage/components/MarkerCardsTable/styles';
 import { theme } from '@/theme';
-import type { MarkerData } from '@/types/marker';
+import type { MarkerTableProps, MarkerTableRef } from '@/types/marker';
 
 import {
   AddMarkerButton,
@@ -20,23 +20,6 @@ import {
   MarkerTableHeader,
   MarkerTableHeaderCell,
 } from './styles';
-
-interface MarkerTableProps {
-  markers: MarkerData[];
-  onNameChange: (id: number, name: string) => void;
-  onValueChange: (id: number, value: string) => void;
-  onUnitChange: (id: number, unit: string) => void;
-  onReferenceChange: (id: number, refMin: string, refMax: string) => void;
-  onDelete: (id: number) => void;
-  onAddMarker: () => void;
-  onValidate: (id: number) => void;
-  onValidateAll: () => void;
-  isFinalStep: boolean;
-}
-
-export interface MarkerTableRef {
-  validateAllMarkers: () => void;
-}
 
 const useIsSmallScreen = () => {
   const [isMobile, setIsMobile] = useState(() =>

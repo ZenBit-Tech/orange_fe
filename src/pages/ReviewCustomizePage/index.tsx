@@ -4,7 +4,7 @@ import { t } from 'i18next';
 import { ArrowLeft, ChevronDown, Dumbbell, Pill, Salad, Stethoscope } from 'lucide-react';
 
 import { MarkerTable } from '@/components/MarkerTable';
-import { BIRTH_YEARS, GENDER, PREGNANCY_OPTIONS } from '@/constants/marker';
+import { BIRTH_YEARS, GENDER, PREGNANCY_OPTIONS } from '@/constants';
 
 import {
   AdditionalDescriptionText,
@@ -32,14 +32,13 @@ import {
   TitleText,
   WrapperReviewCustomize,
 } from './styles';
+import type { UseReviewCustomizeStepProps } from './types';
 import { useReviewCustomizeStep } from './useReviewCustomizeStep';
 
-interface ReviewCustomizeStepProps {
-  onContinue: () => void;
-  onBack?: () => void;
-}
-
-export const ReviewCustomizeStep: React.FC<ReviewCustomizeStepProps> = ({ onContinue, onBack }) => {
+export const ReviewCustomizeStep: React.FC<UseReviewCustomizeStepProps> = ({
+  onContinue,
+  onBack,
+}) => {
   const {
     markers,
     handleNameChange,

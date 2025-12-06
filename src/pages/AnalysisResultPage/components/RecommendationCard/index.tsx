@@ -1,18 +1,11 @@
+import type { RecommendationSectionProps } from '@/pages/AnalysisResultPage/types/types';
+
 import {
   RecommendationDescription,
   RecommendationHeader,
   RecommendationTitle,
   RecommendationWrapper,
 } from './styles';
-
-interface RecommendationSectionProps {
-  title: string;
-  icon: React.ElementType;
-  items: string[];
-  bgColor: string;
-  iconColor: string;
-  bgIconColor: string;
-}
 
 export const RecommendationSection: React.FC<RecommendationSectionProps> = ({
   title,

@@ -4,16 +4,14 @@ import { useSelector } from 'react-redux';
 
 import type { RootState } from '@/store';
 
+import { UPLOAD_STATUS } from '../../constants';
+import type { UploadStepProps } from '../../types';
 import { DropzoneFile } from '../DropzoneFile';
 import { OCRSpinner } from '../ProgressIndicator';
 import { UploadErrorState } from '../UploadErrorState';
 import { ButtonContainer, StyledButton, StyledTitle, WrapperUpload } from './styles';
 import { useBloodTestValidation } from './useBloodTestValidation';
-import { UPLOAD_STATUS, useUploadStep } from './useUploadStep';
-
-interface UploadStepProps {
-  onContinue: () => void;
-}
+import { useUploadStep } from './useUploadStep';
 
 export const UploadStep: React.FC<UploadStepProps> = ({ onContinue }) => {
   const { validateBloodTestData, isValidating, error, clearValidationError } =

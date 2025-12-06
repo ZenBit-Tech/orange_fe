@@ -1,15 +1,15 @@
 import React from 'react';
 
+import type { SocialLoginButtonProps } from '@/pages/LoginPage/types';
+
 import { Emoji, StyledButton, StyledLink, StyledRouterLink } from './styles';
 
-type Props = {
-  icon: React.ReactNode;
-  label: string;
-  onClick?: () => void;
-  linkPath?: string;
-};
-
-export const SocialLoginButton: React.FC<Props> = ({ icon, label, onClick, linkPath }) => {
+export const SocialLoginButton: React.FC<SocialLoginButtonProps> = ({
+  icon,
+  label,
+  onClick,
+  linkPath,
+}) => {
   const buttonContent = (
     <StyledButton variant="outlined" onClick={onClick}>
       <Emoji aria-hidden>{icon}</Emoji>

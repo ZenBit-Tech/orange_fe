@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
-import { PageLayout } from '@/components/Layout';
+import { PageLayout } from '@/utils/Layout';
 
 import { LinkExpired } from './components/LinkExpired';
 

@@ -3,21 +3,13 @@ import { useState } from 'react';
 import { type FileRejection, useDropzone } from 'react-dropzone';
 import { useTranslation } from 'react-i18next';
 
+import { UPLOAD_STATUS } from '@/pages/UploadPage/constants';
+import type { UploadStatus } from '@/pages/UploadPage/types';
 import { useAppDispatch } from '@/store';
 import { setExtractedData } from '@/store/bloodTestSlice/bloodTestSlice';
 import { useLazyGetMarkersQuery } from '@/store/markersApi';
 import { useExtractDataFromImageMutation } from '@/store/ocrApi';
 import { theme } from '@/theme';
-
-export const UPLOAD_STATUS = {
-  Idle: 'idle',
-  Uploading: 'uploading',
-  Success: 'success',
-  Error: 'error',
-  Rejected: 'rejected',
-} as const;
-
-export type UploadStatus = (typeof UPLOAD_STATUS)[keyof typeof UPLOAD_STATUS];
 
 export const useUploadStep = () => {
   const MAX_FILE_SIZE_BYTES = 30 * 1024 * 1024;
@@ -166,3 +158,4 @@ export const useUploadStep = () => {
     t,
   };
 };
+export { UPLOAD_STATUS };

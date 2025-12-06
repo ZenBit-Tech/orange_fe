@@ -2,24 +2,9 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { useSelector } from 'react-redux';
 
-import { VALIDATION_PATTERNS } from '@/constants/marker';
+import { VALIDATION_PATTERNS } from '@/constants';
 import type { RootState } from '@/store';
-
-interface UseMarkerProps {
-  id: number;
-  name: string;
-  value: string;
-  status?: string;
-  hasError: boolean;
-  refMin?: string;
-  refMax?: string;
-  onNameChange: (id: number, name: string) => void;
-  onValueChange: (id: number, value: string) => void;
-  onUnitChange: (id: number, unit: string) => void;
-  onReferenceChange: (id: number, refMin: string, refMax: string) => void;
-  onDelete: (id: number) => void;
-  onValidate: (id: number) => void;
-}
+import type { UseMarkerProps } from '@/types/marker';
 
 export const useMarker = ({
   id,

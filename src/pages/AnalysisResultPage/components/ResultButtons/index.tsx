@@ -1,6 +1,7 @@
 import { ArrowLeft, Clock, Download, Printer, RotateCcw } from 'lucide-react';
 
-import { ICON_SIZE_SMALL } from '../../types';
+import { ICON_SIZE_SMALL, type ResultButtonProps } from '@/pages/AnalysisResultPage/types/types';
+
 import {
   BackButton,
   ButtonSection,
@@ -11,10 +12,6 @@ import {
   StartButton,
 } from './styles';
 import { useResultButtons } from './useResultButtons';
-
-interface ResultButtonProps {
-  onBack?: () => void;
-}
 
 export const ResultButton: React.FC<ResultButtonProps> = ({ onBack }) => {
   const {

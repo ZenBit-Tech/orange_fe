@@ -3,16 +3,26 @@ import { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 
-import {
-  PDF_POLL_INTERVAL,
-  PDF_STATUS,
-  type PdfJobStatus,
-  type UseResultButtonsProps,
-  type UseResultButtonsReturn,
-} from '@/pages/AnalysisResultPage/types/types';
 import type { RootState } from '@/store';
 
+import { PDF_POLL_INTERVAL, PDF_STATUS, type PdfJobStatus } from '../types/types';
+
 const API_BASE_URL = import.meta.env.VITE_MARKERS_URL;
+
+interface UseResultButtonsProps {
+  onBack?: () => void;
+}
+
+interface UseResultButtonsReturn {
+  handleNewAnalyze: () => void;
+  handleDownloadPdf: () => Promise<void>;
+  handlePrint: () => Promise<void>;
+  isDownloading: boolean;
+  isPrinting: boolean;
+  isPdfReady: boolean;
+  isPdfPending: boolean;
+  t: (key: string) => string;
+}
 
 export const useResultButtons = ({ onBack }: UseResultButtonsProps): UseResultButtonsReturn => {
   const { t } = useTranslation();

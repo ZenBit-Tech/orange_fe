@@ -4,12 +4,12 @@ import { t } from 'i18next';
 import { ChevronDown, Trash } from 'lucide-react';
 import { CircleQuestionMark } from 'lucide-react';
 
-import { MARKER_OPTIONS, MARKER_STATUS_CLASSES, UNIT_OPTIONS } from '@/constants/marker';
+import { MARKER_OPTIONS, MARKER_STATUS_CLASSES, UNIT_OPTIONS } from '@/constants';
 import { DeleteMarkerModal } from '@/pages/AnalysisResultPage/components/DeleteMarkerModal';
 import { HealthBar } from '@/pages/AnalysisResultPage/components/HealthBar';
 import { calculateMarkerPosition } from '@/pages/AnalysisResultPage/utils/markerPositionCalculator';
+import type { MarkerProps } from '@/types/marker';
 
-import type { MarkerInterpretation as InterpretationType } from '../../pages/AnalysisResultPage/types';
 import {
   DeleteButton,
   ErrorText,
@@ -35,25 +35,6 @@ const getStatusClassName = (statusValue: string | undefined): string => {
   if (!statusValue) return '';
   return MARKER_STATUS_CLASSES[statusValue as keyof typeof MARKER_STATUS_CLASSES] || '';
 };
-
-export interface MarkerProps {
-  id: number;
-  name: string;
-  value: string;
-  unit: string;
-  referenceMin: string;
-  referenceMax: string;
-  status?: string;
-  interpretation?: InterpretationType;
-  hasError: boolean;
-  onNameChange: (id: number, name: string) => void;
-  onValueChange: (id: number, value: string) => void;
-  onUnitChange: (id: number, unit: string) => void;
-  onReferenceChange: (id: number, refMin: string, refMax: string) => void;
-  onDelete: (id: number) => void;
-  onValidate: (id: number) => void;
-  isFinalStep: boolean;
-}
 
 export const Marker = memo<MarkerProps>(
   ({
