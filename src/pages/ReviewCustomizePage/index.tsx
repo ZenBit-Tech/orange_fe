@@ -40,6 +40,7 @@ export const ReviewCustomizeStep: React.FC<UseReviewCustomizeStepProps> = ({
   onBack,
 }) => {
   const {
+    markerTableRef,
     markers,
     handleNameChange,
     handleValueChange,
@@ -80,8 +81,8 @@ export const ReviewCustomizeStep: React.FC<UseReviewCustomizeStepProps> = ({
       <FormRow>
         <FormField>
           <StyledAutocomplete
+            disabled={isLoading}
             size="small"
-            disablePortal
             options={BIRTH_YEARS}
             value={birthYear}
             onChange={handleBirthYear}
@@ -114,8 +115,8 @@ export const ReviewCustomizeStep: React.FC<UseReviewCustomizeStepProps> = ({
 
         <FormField>
           <StyledAutocomplete
+            disabled={isLoading}
             size="small"
-            disablePortal
             options={[GENDER.MALE, GENDER.FEMALE]}
             value={gender}
             onChange={handleGender}
@@ -149,8 +150,8 @@ export const ReviewCustomizeStep: React.FC<UseReviewCustomizeStepProps> = ({
         {gender === GENDER.FEMALE && (
           <FormField className="full-width">
             <StyledAutocomplete
+              disabled={isLoading}
               size="small"
-              disablePortal
               options={[...PREGNANCY_OPTIONS]}
               value={pregnancy}
               onChange={handlePregnancy}
@@ -185,6 +186,7 @@ export const ReviewCustomizeStep: React.FC<UseReviewCustomizeStepProps> = ({
 
       <SectionTitle variant="subtitle1">{t('review.review-markers-title')}</SectionTitle>
       <MarkerTable
+        ref={markerTableRef}
         markers={markers}
         onNameChange={handleNameChange}
         onValueChange={handleValueChange}
@@ -195,6 +197,7 @@ export const ReviewCustomizeStep: React.FC<UseReviewCustomizeStepProps> = ({
         onValidate={validateMarker}
         onValidateAll={validateAllMarkers}
         isFinalStep={false}
+        isDisabled={isLoading}
       />
 
       <CustomizeSection>
@@ -294,6 +297,7 @@ export const ReviewCustomizeStep: React.FC<UseReviewCustomizeStepProps> = ({
           {t('review.additional-questions-description')}
         </AdditionalDescriptionText>
         <StyledTextAreaField
+          disabled={isLoading}
           multiline
           rows={6}
           fullWidth
@@ -310,7 +314,7 @@ export const ReviewCustomizeStep: React.FC<UseReviewCustomizeStepProps> = ({
 
       <ButtonContainer>
         {onBack && (
-          <BackButton onClick={onBack}>
+          <BackButton onClick={onBack} disabled={isLoading}>
             <ArrowLeft />
             {t('review.back')}
           </BackButton>

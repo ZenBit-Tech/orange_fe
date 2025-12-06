@@ -31,6 +31,7 @@ export interface UseMarkerTableProps {
   initialMarkers?: MarkerData[];
   isFinalStep?: boolean;
   markersInterpretations?: MarkerDataInterpretation[];
+  isDisabled?: boolean;
 }
 
 export interface MarkerTableProps {
@@ -42,12 +43,14 @@ export interface MarkerTableProps {
   onDelete: (id: number) => void;
   onAddMarker: () => void;
   onValidate: (id: number) => void;
-  onValidateAll: () => void;
+  onValidateAll: () => number | null;
   isFinalStep: boolean;
+  isDisabled?: boolean;
 }
 
 export interface MarkerTableRef {
-  validateAllMarkers: () => void;
+  validateAllMarkers: () => number | null;
+  scrollToMarker: (markerId: number) => void;
 }
 
 export interface UseMarkerProps {
@@ -83,4 +86,5 @@ export interface MarkerProps {
   onDelete: (id: number) => void;
   onValidate: (id: number) => void;
   isFinalStep: boolean;
+  isDisabled?: boolean;
 }

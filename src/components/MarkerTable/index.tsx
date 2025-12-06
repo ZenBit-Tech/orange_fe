@@ -1,4 +1,12 @@
-import { forwardRef, memo, useEffect, useImperativeHandle, useState } from 'react';
+import {
+  forwardRef,
+  memo,
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from 'react';
 
 import { t } from 'i18next';
 import { Plus } from 'lucide-react';
@@ -8,7 +16,7 @@ import { BREAKPOINTS } from '@/constants';
 import { MobileMarkerCard } from '@/pages/AnalysisResultPage/components/MarkerCardsTable';
 import { MobileMarkerCardWrapper } from '@/pages/AnalysisResultPage/components/MarkerCardsTable/styles';
 import { theme } from '@/theme';
-import type { MarkerTableProps, MarkerTableRef } from '@/types/marker';
+import type { MarkerTableProps } from '@/types/marker';
 
 import {
   AddMarkerButton,
@@ -59,6 +67,11 @@ const AddMarkerBtn = memo<AddMarkerBtnProps>(({ onClick }) => (
 
 AddMarkerBtn.displayName = 'AddMarkerBtn';
 
+export interface MarkerTableRef {
+  validateAllMarkers: () => number | null;
+  scrollToMarker: (markerId: number) => void;
+}
+
 export const MarkerTable = forwardRef<MarkerTableRef, MarkerTableProps>(
   (
     {
@@ -72,17 +85,47 @@ export const MarkerTable = forwardRef<MarkerTableRef, MarkerTableProps>(
       onValidate,
       onValidateAll,
       isFinalStep,
+      isDisabled = false,
     },
     ref,
   ) => {
     const isSmallScreen = useIsSmallScreen();
+    const markerRefs = useRef<{ [key: number]: HTMLDivElement | null }>({});
+
+    const setMarkerRef = useCallback((id: number) => {
+      if (!markerRefCallbacks.current[id]) {
+        markerRefCallbacks.current[id] = (el: HTMLDivElement | null) => {
+          markerRefs.current[id] = el;
+        };
+      }
+      return markerRefCallbacks.current[id];
+    }, []);
+
+    const markerRefCallbacks = useRef<{ [key: number]: (el: HTMLDivElement | null) => void }>({});
+
+    const scrollToMarker = useCallback((markerId: number) => {
+      const markerElement = markerRefs.current[markerId];
+      if (markerElement) {
+        requestAnimationFrame(() => {
+          const elementRect = markerElement.getBoundingClientRect();
+          const absoluteElementTop = elementRect.top + window.pageYOffset;
+          const middle = absoluteElementTop - window.innerHeight / 2 + elementRect.height / 2;
+
+          window.scrollTo({
+            top: middle,
+            behavior: 'smooth',
+          });
+        });
+      }
+    }, []);
 
     useImperativeHandle(
       ref,
       () => ({
         validateAllMarkers: onValidateAll,
+        scrollToMarker,
       }),
-      [onValidateAll],
+      [onValidateAll, scrollToMarker],
     );
 
     if (isFinalStep && isSmallScreen) {
@@ -120,6 +163,7 @@ export const MarkerTable = forwardRef<MarkerTableRef, MarkerTableProps>(
             <MobileMarkerCardWrapper>
               {markers.map((marker) => (
                 <MobileMarkerCard
+                  ref={setMarkerRef(marker.id)}
                   key={marker.id}
                   id={marker.id}
                   name={marker.name}
@@ -137,6 +181,7 @@ export const MarkerTable = forwardRef<MarkerTableRef, MarkerTableProps>(
                   onDelete={onDelete}
                   onValidate={onValidate}
                   isFinalStep={isFinalStep}
+                  isDisabled={isDisabled}
                 />
               ))}
             </MobileMarkerCardWrapper>
@@ -161,6 +206,7 @@ export const MarkerTable = forwardRef<MarkerTableRef, MarkerTableProps>(
 
                   {markers.map((marker) => (
                     <Marker
+                      ref={setMarkerRef(marker.id)}
                       key={marker.id}
                       id={marker.id}
                       name={marker.name}
@@ -178,6 +224,7 @@ export const MarkerTable = forwardRef<MarkerTableRef, MarkerTableProps>(
                       onDelete={onDelete}
                       onValidate={onValidate}
                       isFinalStep={isFinalStep}
+                      isDisabled={isDisabled}
                     />
                   ))}
                 </MarkerTableContent>
