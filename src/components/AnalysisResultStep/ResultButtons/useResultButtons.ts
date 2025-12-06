@@ -131,15 +131,6 @@ export const useResultButtons = ({ onBack }: UseResultButtonsProps): UseResultBu
 
       iframe.onload = (): void => {
         iframe.contentWindow?.print();
-
-        const cleanup = () => {
-          document.body.removeChild(iframe);
-          window.URL.revokeObjectURL(url);
-          window.removeEventListener('focus', cleanup);
-        };
-
-        window.addEventListener('focus', cleanup);
-        setTimeout(cleanup, 60000);
       };
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Unknown error';
