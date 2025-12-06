@@ -2,14 +2,14 @@ import { Typography } from '@mui/material';
 
 import { useSelector } from 'react-redux';
 
-import { UPLOAD_STATUS } from '@/pages/UploadPage/constants';
-import type { UploadStepProps } from '@/pages/UploadPage/types';
+import { UPLOAD_STATUS } from '@/pages/UploadPage/components/DropzoneFile/constants';
 import type { RootState } from '@/store';
 
 import { DropzoneFile } from '../DropzoneFile';
 import { OCRSpinner } from '../ProgressIndicator';
 import { UploadErrorState } from '../UploadErrorState';
 import { ButtonContainer, StyledButton, StyledTitle, WrapperUpload } from './styles';
+import type { UploadStepProps } from './types';
 import { useBloodTestValidation } from './useBloodTestValidation';
 import { useUploadStep } from './useUploadStep';
 

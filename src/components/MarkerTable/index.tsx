@@ -16,7 +16,6 @@ import { BREAKPOINTS } from '@/constants';
 import { MobileMarkerCard } from '@/pages/AnalysisResultPage/components/MarkerCardsTable';
 import { MobileMarkerCardWrapper } from '@/pages/AnalysisResultPage/components/MarkerCardsTable/styles';
 import { theme } from '@/theme';
-import type { MarkerTableProps } from '@/types/marker';
 
 import {
   AddMarkerButton,
@@ -28,6 +27,7 @@ import {
   MarkerTableHeader,
   MarkerTableHeaderCell,
 } from './styles';
+import type { MarkerTableProps } from './types';
 
 const useIsSmallScreen = () => {
   const [isMobile, setIsMobile] = useState(() =>

@@ -5,8 +5,6 @@ import { Modal } from '@mui/material';
 import { t } from 'i18next';
 import { X } from 'lucide-react';
 
-import type { DeleteMarkerModalProps } from '@/pages/AnalysisResultPage/types';
-
 import {
   ButtonContainer,
   CancelButton,
@@ -17,6 +15,7 @@ import {
   ModalHeader,
   TitleText,
 } from './styles';
+import type { DeleteMarkerModalProps } from './types';
 
 export const DeleteMarkerModal: React.FC<DeleteMarkerModalProps> = ({
   open,

@@ -2,8 +2,6 @@ import React from 'react';
 
 import { t } from 'i18next';
 
-import type { HealthReportAnalyzerProps } from '@/pages/UploadPage/types';
-
 import {
   DescriptionText,
   RotatingSpinnerCircle,
@@ -14,6 +12,7 @@ import {
   TextBlock,
   TitleText,
 } from './styles';
+import type { HealthReportAnalyzerProps } from './types';
 
 const radius = 16;
 const circumference = 2 * Math.PI * radius;

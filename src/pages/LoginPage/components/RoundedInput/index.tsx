@@ -3,7 +3,7 @@ import React from 'react';
 import { type TextFieldProps, styled } from '@mui/material';
 import TextField from '@mui/material/TextField';
 
-import type { EmailFieldProps } from '@/pages/LoginPage/types';
+import type { EmailFieldProps } from './types';
 
 const StyledTextField = styled((props: TextFieldProps) => (
   <TextField {...props} fullWidth id="outlined-basic" label="Email" variant="outlined" />

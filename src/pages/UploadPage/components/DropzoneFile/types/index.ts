@@ -2,6 +2,8 @@ import type { DropzoneInputProps, DropzoneRootProps } from 'react-dropzone';
 
 import type { UPLOAD_STATUS } from '../constants';
 
+export type UploadStatus = (typeof UPLOAD_STATUS)[keyof typeof UPLOAD_STATUS];
+
 export interface StatusDisplay {
   text: string;
   color: string;
@@ -19,19 +21,3 @@ export interface DropzoneFileProps {
   statusDisplay: StatusDisplay;
   handleRemoveFile: (fileName?: string, e?: React.MouseEvent) => void;
 }
-
-export interface HealthReportAnalyzerProps {
-  isLoading: boolean;
-  titleKey?: string;
-  descriptionKey?: string;
-}
-
-export interface UploadErrorStateProps {
-  onRetry: () => void;
-}
-
-export interface UploadStepProps {
-  onContinue: () => void;
-}
-
-export type UploadStatus = (typeof UPLOAD_STATUS)[keyof typeof UPLOAD_STATUS];

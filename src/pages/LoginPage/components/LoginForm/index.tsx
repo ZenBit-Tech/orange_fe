@@ -19,8 +19,8 @@ import {
 } from '@/pages/LoginPage/components/LoginForm/styles';
 import { EmailField } from '@/pages/LoginPage/components/RoundedInput';
 import SocialLoginButton from '@/pages/LoginPage/components/SocialLoginButton';
-import { emailRegex } from '@/pages/LoginPage/constants/validation';
 
+import { emailRegex } from './constants';
 import { useLoginForm } from './useLoginForm';
 
 export const LoginForm: React.FC = () => {

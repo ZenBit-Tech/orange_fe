@@ -3,15 +3,11 @@ import { useEffect, useRef, useState } from 'react';
 import { ArcElement, Chart as ChartJS, Legend, Tooltip } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
-import { WELLNESS_SCORE_THRESHOLDS } from '@/pages/AnalysisResultPage/constants';
-import type {
-  DonutProps,
-  DoughnutChartData,
-  GradientColors,
-} from '@/pages/AnalysisResultPage/types';
 import { theme } from '@/theme';
 
+import { WELLNESS_SCORE_THRESHOLDS } from './constants';
 import { CenteredText, DoughnutWrapper } from './styles';
+import type { DonutProps, DoughnutChartData, GradientColors } from './types';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 

@@ -1,9 +1,9 @@
 import { useRef } from 'react';
 
-import { MarkerTable } from '@/components/MarkerTable';
+import { MarkerTable, type MarkerTableRef } from '@/components/MarkerTable';
 import { useMarkerTable } from '@/components/MarkerTable/useMarkerTable';
-import type { BloodTestSummaryProps } from '@/pages/AnalysisResultPage/types';
-import type { MarkerTableRef } from '@/types/marker';
+
+import type { BloodTestSummaryProps } from './types';
 
 export const BloodTestSummary = ({ data }: BloodTestSummaryProps) => {
   const markerTableRef = useRef<MarkerTableRef>(null);

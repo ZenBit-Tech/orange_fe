@@ -1,16 +1,6 @@
 import type { FieldErrors, UseFormRegister } from 'react-hook-form';
 
-export type LoginFormInputs = {
-  email: string;
-  message: string;
-};
-
-export type SocialLoginButtonProps = {
-  icon: React.ReactNode;
-  label: string;
-  onClick?: () => void;
-  linkPath?: string;
-};
+import type { LoginFormInputs } from '@/pages/LoginPage/components/LoginForm/types';
 
 export interface EmailFieldProps {
   register: UseFormRegister<LoginFormInputs>;

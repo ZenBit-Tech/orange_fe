@@ -3,13 +3,14 @@ import { useState } from 'react';
 import { type FileRejection, useDropzone } from 'react-dropzone';
 import { useTranslation } from 'react-i18next';
 
-import { UPLOAD_STATUS } from '@/pages/UploadPage/constants';
-import type { UploadStatus } from '@/pages/UploadPage/types';
+import { UPLOAD_STATUS } from '@/pages/UploadPage/components/DropzoneFile/constants';
 import { useAppDispatch } from '@/store';
 import { setExtractedData } from '@/store/bloodTestSlice/bloodTestSlice';
 import { useLazyGetMarkersQuery } from '@/store/markersApi';
 import { useExtractDataFromImageMutation } from '@/store/ocrApi';
 import { theme } from '@/theme';
+
+import type { UploadStatus } from '../DropzoneFile/types';
 
 export const useUploadStep = () => {
   const MAX_FILE_SIZE_BYTES = 30 * 1024 * 1024;

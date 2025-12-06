@@ -1,11 +1,11 @@
 import { useCallback, useRef, useState } from 'react';
 
+import type { MarkerTableRef } from '@/components/MarkerTable/types';
 import { useMarkerTable } from '@/components/MarkerTable/useMarkerTable';
 import { GENDER } from '@/constants';
 import { useAppDispatch } from '@/store';
 import { setAnalysisResult } from '@/store/analysisSlice';
 import { useSendDataToBackendMutation } from '@/store/reviewCustomizeApi';
-import type { MarkerTableRef } from '@/types/marker';
 
 import type {
   Gender,

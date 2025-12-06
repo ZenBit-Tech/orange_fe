@@ -11,17 +11,7 @@ import {
   SummaryText,
   WrapperBloodTestSummary,
 } from './styles';
-
-interface BloodTestSummaryProps {
-  overallWellnessScore: number;
-  overallSummary: string;
-  detailedFindings: string[];
-  conclusionStatement: string;
-}
-
-interface PersonalizedRecommendationsProps {
-  bloodTestSummary: BloodTestSummaryProps;
-}
+import type { PersonalizedRecommendationsProps } from './types';
 
 export const PersonalizedRecommendations = ({
   bloodTestSummary,

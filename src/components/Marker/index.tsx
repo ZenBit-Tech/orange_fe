@@ -7,7 +7,6 @@ import { MARKER_OPTIONS, MARKER_STATUS_CLASSES, UNIT_OPTIONS } from '@/constants
 import { DeleteMarkerModal } from '@/pages/AnalysisResultPage/components/DeleteMarkerModal';
 import { HealthBar } from '@/pages/AnalysisResultPage/components/HealthBar';
 import { calculateMarkerPosition } from '@/pages/AnalysisResultPage/utils/markerPositionCalculator';
-import type { MarkerProps } from '@/types/marker';
 
 import {
   DeleteButton,
@@ -28,6 +27,7 @@ import {
   TooltipImportance,
   TooltipTitle,
 } from './styles';
+import type { MarkerProps } from './types';
 import { useMarker } from './useMarker';
 
 const getStatusClassName = (statusValue: string | undefined): string => {

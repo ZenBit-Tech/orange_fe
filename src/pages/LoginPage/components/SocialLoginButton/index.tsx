@@ -1,8 +1,7 @@
 import React from 'react';
 
-import type { SocialLoginButtonProps } from '@/pages/LoginPage/types';
-
 import { Emoji, StyledButton, StyledLink, StyledRouterLink } from './styles';
+import type { SocialLoginButtonProps } from './types';
 
 export const SocialLoginButton: React.FC<SocialLoginButtonProps> = ({
   icon,

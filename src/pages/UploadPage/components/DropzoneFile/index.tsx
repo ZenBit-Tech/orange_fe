@@ -2,8 +2,6 @@ import { IconButton, Typography } from '@mui/material';
 
 import { MdOutlineInsertDriveFile as FileIcon } from 'react-icons/md';
 
-import type { DropzoneFileProps } from '@/pages/UploadPage/types';
-
 import { UPLOAD_STATUS } from '../UploadStep/useUploadStep';
 import {
   BoxProgress,
@@ -23,6 +21,7 @@ import {
   TextClick,
   TextSupport,
 } from './styles';
+import type { DropzoneFileProps } from './types';
 import { useDropzoneFile } from './useDropzoneFile';
 
 export const DropzoneFile: React.FC<DropzoneFileProps> = ({

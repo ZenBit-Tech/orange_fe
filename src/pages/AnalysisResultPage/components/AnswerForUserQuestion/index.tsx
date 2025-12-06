@@ -1,7 +1,5 @@
 import { useTranslation } from 'react-i18next';
 
-import type { AnswerForUserQuestionProps } from '@/pages/AnalysisResultPage/types';
-
 import {
   QuestionBlock,
   QuestionBlockDescription,
@@ -11,6 +9,7 @@ import {
   Title,
   Wrapper,
 } from './styles';
+import type { AnswerForUserQuestionProps } from './types';
 
 export const AnswerForUserQuestion: React.FC<AnswerForUserQuestionProps> = ({
   questionResponse,

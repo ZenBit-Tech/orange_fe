@@ -3,10 +3,9 @@ import { Box, Typography, useTheme } from '@mui/material';
 import { Dumbbell, Pill, Salad, Stethoscope } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
-import type { RecommendationsProps } from '@/pages/AnalysisResultPage/types';
-
 import { RecommendationSection } from '../RecommendationCard';
 import { RecommendationDescription, RecommendationInfo, RecommendationWrapper } from './styles';
+import type { RecommendationsProps } from './types';
 
 export const Recommendations: React.FC<RecommendationsProps> = ({
   supplementsRecommendations,

@@ -3,7 +3,9 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 import type { RootState } from '@/store';
-import type { MarkerData, UseMarkerTableProps } from '@/types/marker';
+
+import type { MarkerData } from '../Marker/types';
+import type { UseMarkerTableProps } from './types';
 
 export const useMarkerTable = ({
   onValidationChange,

@@ -14,13 +14,13 @@ import {
   StyledAutocomplete,
   StyledTextField,
 } from '@/components/Marker/styles';
+import type { MarkerProps } from '@/components/Marker/types';
 import { useMarker } from '@/components/Marker/useMarker';
 import { MARKER_OPTIONS, MARKER_STATUS_CLASSES, UNIT_OPTIONS } from '@/constants';
 import { DeleteMarkerModal } from '@/pages/AnalysisResultPage/components/DeleteMarkerModal';
 import { ButtonContainer } from '@/pages/AnalysisResultPage/components/DeleteMarkerModal/styles';
 import { calculateMarkerPosition } from '@/pages/AnalysisResultPage/utils/markerPositionCalculator';
 import { ContinueButton } from '@/pages/ReviewCustomizePage/styles';
-import type { MarkerProps } from '@/types/marker';
 
 import { HealthBar } from '../HealthBar';
 import { BackButton } from '../ResultButtons/styles';

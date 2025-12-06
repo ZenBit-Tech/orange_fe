@@ -4,7 +4,8 @@ import { useSelector } from 'react-redux';
 
 import { VALIDATION_PATTERNS } from '@/constants';
 import type { RootState } from '@/store';
-import type { UseMarkerProps } from '@/types/marker';
+
+import type { UseMarkerProps } from '../MarkerTable/types';
 
 export const useMarker = ({
   id,

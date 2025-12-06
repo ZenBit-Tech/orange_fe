@@ -4,9 +4,8 @@ import { Typography } from '@mui/material';
 
 import { useTranslation } from 'react-i18next';
 
-import type { UploadErrorStateProps } from '@/pages/UploadPage/types';
-
 import { StyledButton, StyledIcon, StyledTypography } from './styles';
+import type { UploadErrorStateProps } from './types';
 
 export const UploadErrorState: React.FC<UploadErrorStateProps> = ({ onRetry }) => {
   const { t } = useTranslation();

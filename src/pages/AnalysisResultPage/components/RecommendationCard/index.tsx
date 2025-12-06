@@ -1,11 +1,10 @@
-import type { RecommendationSectionProps } from '@/pages/AnalysisResultPage/types';
-
 import {
   RecommendationDescription,
   RecommendationHeader,
   RecommendationTitle,
   RecommendationWrapper,
 } from './styles';
+import type { RecommendationSectionProps } from './types';
 
 export const RecommendationSection: React.FC<RecommendationSectionProps> = ({
   title,

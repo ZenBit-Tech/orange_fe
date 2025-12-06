@@ -1,8 +1,9 @@
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import type { LoginFormInputs } from '@/pages/LoginPage/types';
 import { useSendMagicLinkMutation } from '@/store/authApi';
+
+import type { LoginFormInputs } from './types';
 
 export const useLoginForm = () => {
   const {
