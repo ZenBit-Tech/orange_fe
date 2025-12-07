@@ -93,7 +93,6 @@ export const useResultButtons = ({ onBack }: ResultButtonProps): UseResultButton
       setIsDownloading(false);
     }
   };
-
   const handlePrint = async (): Promise<void> => {
     if (!pdfJobId || pdfStatus !== PDF_STATUS.COMPLETED) return;
 
@@ -118,10 +117,6 @@ export const useResultButtons = ({ onBack }: ResultButtonProps): UseResultButton
 
       iframe.onload = (): void => {
         iframe.contentWindow?.print();
-        setTimeout(() => {
-          document.body.removeChild(iframe);
-          window.URL.revokeObjectURL(url);
-        }, PDF_POLL_INTERVAL / 2);
       };
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Unknown error';
