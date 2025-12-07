@@ -1,8 +1,8 @@
 import Step from '@mui/material/Step';
 
-import { getStepContent } from '@/helpers/getStep';
+import { getStepContent } from '@/components/HorizontalLinearStepper/utils/getStep';
+import { StyledStepIcon } from '@/pages/UploadPage/components/StyledStepIcon';
 
-import { StyledStepIcon } from '../StyledStepIcon';
 import {
   StepperWrapper,
   StyledConnector,

@@ -2,20 +2,17 @@ import { GlobalStyles } from '@mui/material';
 
 import { Route, Routes } from 'react-router-dom';
 
-import {
-  HomePage,
-  LinkExpiredPage,
-  LoginPage,
-  PrivacyPolicyPage,
-  TermsPage,
-  UploadPage,
-  VerifyPage,
-} from '@/pages';
-
-import { AuthVerify } from './components/AuthVerify';
-import { ProtectedRoute } from './components/ProtectedRoute';
-import { useAuth } from './hooks/useAuth';
+import { HomePage } from './pages/HomePage/index.tsx';
+import PrivacyPolicyPage from './pages/LegalPages/PrivacyPolicyPage';
+import TermsPage from './pages/LegalPages/TermsPage';
+import { LinkExpiredPage } from './pages/LinkExpiredPage';
+import { LoginPage } from './pages/LoginPage';
+import { UploadPage } from './pages/UploadPage';
+import { VerifyPage } from './pages/VerifyPage';
+import { AuthVerify } from './pages/VerifyPage/components/AuthVerify';
 import { globalStyle } from './style';
+import { useAuth } from './utils/AuthVerify/useAuth';
+import { ProtectedRoute } from './utils/ProtectedRoute';
 
 export const App: React.FC = () => {
   useAuth();

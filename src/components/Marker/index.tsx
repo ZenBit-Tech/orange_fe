@@ -3,12 +3,11 @@ import { forwardRef, memo, useRef, useState } from 'react';
 import { t } from 'i18next';
 import { ChevronDown, CircleQuestionMark, Trash } from 'lucide-react';
 
-import { DeleteMarkerModal } from '@/components/DeleteMarkerModal';
-import { MARKER_OPTIONS, MARKER_STATUS_CLASSES, UNIT_OPTIONS } from '@/constants/marker';
-import { calculateMarkerPosition } from '@/helpers/markerPositionCalculator';
+import { MARKER_OPTIONS, MARKER_STATUS_CLASSES, UNIT_OPTIONS } from '@/constants';
+import { DeleteMarkerModal } from '@/pages/AnalysisResultPage/components/DeleteMarkerModal';
+import { HealthBar } from '@/pages/AnalysisResultPage/components/HealthBar';
+import { calculateMarkerPosition } from '@/pages/AnalysisResultPage/utils/markerPositionCalculator';
 
-import { HealthBar } from '../AnalysisResultStep/BloodTestSummary/healthBar';
-import type { MarkerInterpretation as InterpretationType } from '../AnalysisResultStep/types';
 import {
   DeleteButton,
   ErrorText,
@@ -28,32 +27,13 @@ import {
   TooltipImportance,
   TooltipTitle,
 } from './styles';
+import type { MarkerProps } from './types';
 import { useMarker } from './useMarker';
 
 const getStatusClassName = (statusValue: string | undefined): string => {
   if (!statusValue) return '';
   return MARKER_STATUS_CLASSES[statusValue as keyof typeof MARKER_STATUS_CLASSES] || '';
 };
-
-export interface MarkerProps {
-  id: number;
-  name: string;
-  value: string;
-  unit: string;
-  referenceMin: string;
-  referenceMax: string;
-  status?: string;
-  interpretation?: InterpretationType;
-  hasError: boolean;
-  onNameChange: (id: number, name: string) => void;
-  onValueChange: (id: number, value: string) => void;
-  onUnitChange: (id: number, unit: string) => void;
-  onReferenceChange: (id: number, refMin: string, refMax: string) => void;
-  onDelete: (id: number) => void;
-  onValidate: (id: number) => void;
-  isFinalStep: boolean;
-  isDisabled?: boolean;
-}
 
 const MarkerComponent = forwardRef<HTMLDivElement, MarkerProps>(
   (

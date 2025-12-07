@@ -5,7 +5,7 @@ import type {
   BloodTestData,
   BloodTestSummaryData,
   BloodTestValidation,
-} from '@/constants/blood-test-data';
+} from '@/types/blood-test-data';
 
 interface BloodTestState {
   extractedData: BloodTestData | BloodTestSummaryData | null;

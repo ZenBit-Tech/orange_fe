@@ -1,7 +1,8 @@
-import { LinkExpired } from 'components';
 import { useTranslation } from 'react-i18next';
 
-import { PageLayout } from '@/components/Layout';
+import { PageLayout } from '@/utils/Layout';
+
+import { LinkExpired } from './components/LinkExpired';
 
 export const LinkExpiredPage: React.FC = () => {
   const { t } = useTranslation();

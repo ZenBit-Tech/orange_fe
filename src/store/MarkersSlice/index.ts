@@ -1,6 +1,6 @@
 import { type PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-import type { MarkersArr } from '@/constants/blood-test-data';
+import type { MarkersArr } from '@/types/blood-test-data';
 
 interface markersState {
   data: MarkersArr | null;

@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import type { BloodTestData } from '@/constants/blood-test-data';
+import type { BloodTestData } from '@/types/blood-test-data';
 
 export const ocrApi = createApi({
   reducerPath: 'ocrApi',
