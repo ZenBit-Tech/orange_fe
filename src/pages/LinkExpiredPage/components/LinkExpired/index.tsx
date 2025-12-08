@@ -4,18 +4,18 @@ import { t } from 'i18next';
 
 import { BtnSubmit } from '@/pages/LoginPage/components/LoginForm/styles';
 
-import { CenteredText, WrapperForm } from './styles';
+import { CenteredText, Description, Title, WrapperForm } from './styles';
 import { useLinkExpired } from './useLinkExpired';
 
 export const LinkExpired: React.FC = () => {
   const { handleNavigate } = useLinkExpired();
 
   return (
-    <WrapperForm component="div" aria-labelledby="link-expired-title">
+    <WrapperForm>
       <CiClock2 />
       <CenteredText>
-        <h5 id="link-expired-title">{t('Form.login-form.linkExpiredTitle')}</h5>
-        <p>{t('Form.login-form.linkExpiredSubtitle')}</p>
+        <Title variant="h5">{t('Form.login-form.linkExpiredTitle')}</Title>
+        <Description variant="body1">{t('Form.login-form.linkExpiredSubtitle')}</Description>
       </CenteredText>
 
       <BtnSubmit type="button" onClick={handleNavigate}>
