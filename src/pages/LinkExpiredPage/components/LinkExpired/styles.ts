@@ -1,4 +1,4 @@
-import { Box, styled } from '@mui/material';
+import { Box, Typography, styled } from '@mui/material';
 import type { BoxProps } from '@mui/material';
 
 import { theme } from '@theme';
@@ -10,7 +10,6 @@ export const WrapperForm = styled(Box)<BoxProps>`
   align-items: center;
   gap: 24px;
   max-width: 600px;
-  width: 100%;
   background: ${theme.palette.backgrounds.white};
   border-radius: 20px;
   border: 1px solid ${theme.palette.baseColors.grey[200]};
@@ -25,29 +24,16 @@ export const WrapperForm = styled(Box)<BoxProps>`
 
 export const CenteredText = styled('div')`
   text-align: center;
+`;
 
-  h5 {
-    margin: 0;
-    font-size: ${theme.typography.sizes.size24};
-    line-height: 1.33;
-    font-weight: ${theme.typography.weights.weight500};
-    font-family: ${theme.typography.general.fontPoppins};
-    color: ${theme.palette.textIcons?.textPrimary};
-  }
+export const Title = styled(Typography)`
+  margin: 0;
+  line-height: 1.33;
+  font-weight: ${theme.typography.weights.weight500} !important;
+  color: ${theme.palette.textIcons?.textPrimary};
+`;
 
-  p {
-    margin: 8px 0 0;
-    color: ${theme.palette.textIcons?.textPrimary};
-    font-size: ${theme.typography.sizes.size16};
-    font-family: ${theme.typography.general.fontInter};
-  }
-
-  @media (max-width: 480px) {
-    h5 {
-      font-size: ${theme.typography.sizes.size18};
-    }
-    p {
-      font-size: ${theme.typography.sizes.size16};
-    }
-  }
+export const Description = styled(Typography)`
+  margin: 8px 0 0;
+  color: ${theme.palette.textIcons?.textPrimary};
 `;
