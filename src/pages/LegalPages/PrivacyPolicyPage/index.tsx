@@ -11,7 +11,7 @@ import privacyPolicyText from '../content/legal/privacy-policy.en.md?raw';
 export const PrivacyPolicyPage: React.FC = () => {
   const { t } = useTranslation();
   return (
-    <PageLayout auth={true}>
+    <PageLayout auth={true} topHeader={true}>
       <title>{t('PrivacyPolicyPage.meta-title')}</title>
       <meta name="description" content={t('PrivacyPolicyPage.meta-description')} />
       <LegalContent>

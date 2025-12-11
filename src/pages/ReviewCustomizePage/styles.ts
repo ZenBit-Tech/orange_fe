@@ -1,5 +1,7 @@
 import { Autocomplete, Box, Checkbox, TextField, Typography } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import { keyframes, styled } from '@mui/material/styles';
+
+import { LoaderCircle } from 'lucide-react';
 
 export const WrapperReviewCustomize = styled(Box)(({ theme }) => ({
   width: '100%',
@@ -469,3 +471,24 @@ export const ContinueButton = styled('button')(({ theme }) => ({
     padding: '0',
   },
 }));
+
+export const LoaderWrapper = styled(Box)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+`;
+
+const spin = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+`;
+
+export const LoaderIcon = styled(LoaderCircle)`
+  display: block;
+  animation: ${spin} 1s linear infinite;
+`;

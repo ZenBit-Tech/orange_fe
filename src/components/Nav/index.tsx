@@ -19,9 +19,10 @@ import { useNav } from './useNav';
 
 interface NavProps {
   transparent?: boolean;
+  topHeader?: boolean;
 }
 
-export const Nav: React.FC<NavProps> = ({ transparent = true }) => {
+export const Nav: React.FC<NavProps> = ({ transparent = true, topHeader = false }) => {
   const {
     t,
     links,
@@ -36,8 +37,9 @@ export const Nav: React.FC<NavProps> = ({ transparent = true }) => {
     handleTop,
   } = useNav();
   const isTheme = useAppSelector((state) => state.darkTheme.isBlackTheme);
+
   return (
-    <Wrapper transparent={transparent}>
+    <Wrapper transparent={transparent} topHeader={topHeader}>
       <Link to="/" onClick={handleTop}>
         <img
           src={
@@ -103,5 +105,4 @@ export const Nav: React.FC<NavProps> = ({ transparent = true }) => {
     </Wrapper>
   );
 };
-
 export default Nav;

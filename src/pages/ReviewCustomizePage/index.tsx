@@ -23,6 +23,8 @@ import {
   FormErrorText,
   FormField,
   FormRow,
+  LoaderIcon,
+  LoaderWrapper,
   SectionTitle,
   StyledAutocomplete,
   StyledCheckbox,
@@ -320,7 +322,13 @@ export const ReviewCustomizeStep: React.FC<UseReviewCustomizeStepProps> = ({
           </BackButton>
         )}
         <ContinueButton onClick={handleContinue} disabled={isLoading}>
-          {t('review.continue')}
+          {isLoading ? (
+            <LoaderWrapper>
+              <LoaderIcon /> Analyzing
+            </LoaderWrapper>
+          ) : (
+            t('review.continue')
+          )}
         </ContinueButton>
       </ButtonContainer>
     </WrapperReviewCustomize>

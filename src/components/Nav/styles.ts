@@ -3,6 +3,7 @@ import type { BoxProps } from '@mui/material';
 
 interface WrapperProps extends BoxProps {
   transparent?: boolean;
+  topHeader?: boolean;
 }
 
 export const Wrapper = styled(Box)<WrapperProps>`
@@ -17,7 +18,7 @@ export const Wrapper = styled(Box)<WrapperProps>`
   padding: 5px 50px;
   font-family: ${({ theme }) => theme.typography.general.fontInter};
   color: ${({ theme }) => theme.palette.textIcons?.textTeriartry};
-  position: sticky;
+  position: ${({ topHeader }) => (topHeader ? 'absolute' : 'sticky')};
   top: 0;
   width: 100%;
   z-index: 101;

@@ -9,6 +9,7 @@ interface PageLayoutProps {
   children: React.ReactNode;
   transparentNav?: boolean;
   auth?: boolean;
+  topHeader?: boolean;
 }
 interface PageWrapperProps {
   auth?: boolean;
@@ -38,9 +39,14 @@ const Main = styled('div')({
   flex: 1,
 });
 
-export const PageLayout: React.FC<PageLayoutProps> = ({ children, transparentNav, auth }) => (
+export const PageLayout: React.FC<PageLayoutProps> = ({
+  children,
+  transparentNav,
+  auth,
+  topHeader,
+}) => (
   <PageWrapper auth={auth}>
-    <Nav transparent={transparentNav} />
+    <Nav transparent={transparentNav} topHeader={topHeader} />
     <Main>{children}</Main>
     <Footer transparent={transparentNav} />
   </PageWrapper>

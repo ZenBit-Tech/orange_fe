@@ -11,7 +11,7 @@ import termsOfUseText from '../content/legal/terms-of-use.en.md?raw';
 export const TermsPage: React.FC = () => {
   const { t } = useTranslation();
   return (
-    <PageLayout auth={true}>
+    <PageLayout auth={true} topHeader={true}>
       <title>{t('TermsPage.meta-title')}</title>
       <meta name="description" content={t('TermsPage.meta-description')} />
       <LegalContent>
