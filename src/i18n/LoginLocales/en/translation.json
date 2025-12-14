@@ -206,7 +206,8 @@
     "delete-marker-confirm": "Yes, delete",
     "save": "Save",
     "value-required": "Value is required",
-    "fill-field": "Fill this field to continue"
+    "fill-field": "Fill this field to continue",
+    "analyzing": "Analyzing"
   },
   "Personalized": {
     "title": "Personalized recommendations",
@@ -223,7 +224,7 @@
     "start": "Start new analysis",
     "print": "Print report",
     "download": "Download PDF",
-    "preparing":"PDF is Preparing"
+    "preparing": "PDF is Preparing"
   },
   "AnswerForUserQuestion": {
     "title": "Answer to your question",
@@ -231,15 +232,15 @@
     "ai-rec": "AI recommendations:"
   },
   "results": {
-    "title":"Your blood test analysis results",
-    "description":"Here is complete analysis with personalized recommendations",
-    "disclaimer":"Disclaimer:",
-    "disclaimer-text":"Not a medical diagnosis. AI analysis only.",
-    "summary-title":"Your blood test summary",
-    "wellness-score":"Overall wellness score",
-    "about":"About",
-    "importance":"Why it's important:",
-    "value":"Value:",
-    "normalRange":"Normal Range:"
+    "title": "Your blood test analysis results",
+    "description": "Here is complete analysis with personalized recommendations",
+    "disclaimer": "Disclaimer:",
+    "disclaimer-text": "Not a medical diagnosis. AI analysis only.",
+    "summary-title": "Your blood test summary",
+    "wellness-score": "Overall wellness score",
+    "about": "About",
+    "importance": "Why it's important:",
+    "value": "Value:",
+    "normalRange": "Normal Range:"
   }
 }

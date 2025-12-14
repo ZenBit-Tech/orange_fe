@@ -324,7 +324,7 @@ export const ReviewCustomizeStep: React.FC<UseReviewCustomizeStepProps> = ({
         <ContinueButton onClick={handleContinue} disabled={isLoading}>
           {isLoading ? (
             <LoaderWrapper>
-              <LoaderIcon /> Analyzing
+              <LoaderIcon /> {t('review.analyzing')}
             </LoaderWrapper>
           ) : (
             t('review.continue')
