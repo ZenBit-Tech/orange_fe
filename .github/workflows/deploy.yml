@@ -12,7 +12,7 @@ on:
       - develop
 
 concurrency:
-  group: deploy-orange-fe
+  group: deploy-plasmai-fe
   cancel-in-progress: false
 
 jobs:
@@ -32,4 +32,4 @@ jobs:
             echo "HEROKU_API_KEY secret is not set"
             exit 1
           fi
-          git push --force "https://heroku:$HEROKU_API_KEY@git.heroku.com/orange-fe.git" HEAD:refs/heads/main
+          git push --force "https://heroku:$HEROKU_API_KEY@git.heroku.com/plasmai-fe.git" HEAD:refs/heads/main
